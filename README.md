@@ -16,3 +16,10 @@ This platform will encompass not only a comprehensive guide for users aspiring t
 - Figma
 - Heroku
 - Google Adsence
+
+
+## Install/Run
+```
+pip3 install flask
+pip3 install requests
+```
