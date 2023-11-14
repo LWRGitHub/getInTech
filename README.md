@@ -13,13 +13,20 @@ This platform will encompass not only a comprehensive guide for users aspiring t
     - Bootstrap Icons
 - MongoDB
     - Mongoos 
-- Figma
+- [Figma](https://www.figma.com/file/NhVv9RBbRln5Y4RTX1M1Ph/How-to-get-into-Tech?type=design&node-id=0-1&mode=design&t=UnGo5DO8TltFNFDZ-0)
 - Heroku
 - Google Adsence
 
 
 ## Install/Run
+
+### Install
 ```
 pip3 install flask
 pip3 install requests
+```
+
+### Run
+```
+python3 app.py
 ```
