@@ -15,18 +15,27 @@ This platform will encompass not only a comprehensive guide for users aspiring t
     - Mongoos 
 - [Figma](https://www.figma.com/file/NhVv9RBbRln5Y4RTX1M1Ph/How-to-get-into-Tech?type=design&node-id=0-1&mode=design&t=UnGo5DO8TltFNFDZ-0)
 - Heroku
+    - Heroku CLI
+    - gunicorn
+- GitHub
 - Google Adsence
+
 
 
 ## Install/Run
 
 ### Install
 ```
-pip3 install flask
-pip3 install requests
+pip3 install -r requirements.txt
 ```
 
 ### Run
 ```
 python3 app.py
 ```
+
+## NOTES
+
+- If you introduce new requirements, please regenerate the "requirements.txt" file.
+    - `pip3 freeze > requirements.txt` 
+    - If you are not utilizing a virtual environment, it will include all items, including those from other projects. ***Make sure to only add what is needed.*** 
