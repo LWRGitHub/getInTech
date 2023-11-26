@@ -39,3 +39,9 @@ python3 app.py
 - If you introduce new requirements, please regenerate the "requirements.txt" file.
     - `pip3 freeze > requirements.txt` 
     - If you are not utilizing a virtual environment, it will include all items, including those from other projects. ***Make sure to only add what is needed.*** 
+
+## Deploy
+
+- Login to Heroku
+- `heroku login`
+- `git push heroku main`
