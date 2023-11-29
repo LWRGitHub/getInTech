@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect, render_template, url_for
-
+from flask_talisman import Talisman
 
 ############################################################
 # SETUP
@@ -84,6 +84,8 @@ def art_supplies():
 
     return render_template('search_solutions.html', **context)
 
+# Wrap Flask app with Talisman
+Talisman(app, content_security_policy=None)
 
 if __name__ == '__main__':
     app.run(debug=True)
