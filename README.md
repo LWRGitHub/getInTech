@@ -7,6 +7,7 @@ This platform will encompass not only a comprehensive guide for users aspiring t
 - Python
     - Flask
     - Jinja2
+    - Talisman >>> [Medium](https://betterprogramming.pub/from-http-to-https-easily-secure-flask-web-apps-with-talisman-3359692d3eac)
 - HTML/CSS
 - JavaScript
 - Bootstrap
@@ -17,6 +18,7 @@ This platform will encompass not only a comprehensive guide for users aspiring t
 - Heroku
     - Heroku CLI
     - gunicorn
+    - [https/SSL Certificate Setup](https://help.heroku.com/J2R1S4T8/can-heroku-force-an-application-to-use-ssl-tls)
 - GitHub
 - Google Adsence
 
@@ -38,7 +40,9 @@ python3 app.py
 
 - If you introduce new requirements, please regenerate the "requirements.txt" file.
     - `pip3 freeze > requirements.txt` 
-    - If you are not utilizing a virtual environment, it will include all items, including those from other projects. ***Make sure to only add what is needed.*** 
+    - If you are not utilizing a virtual environment, it will include all items, including those 
+    - from other projects. ***Make sure to only add what is needed.*** 
+- 
 
 ## Deploy
 
