@@ -46,7 +46,7 @@ def home():
     return render_template('home.html', **context)
 
 @app.route('/swe_career_guide')
-def about():
+def swe_career_guide():
     """Display the swe_career_guide page."""
 
     return render_template('swe_career_guide.html')
@@ -55,7 +55,7 @@ def about():
 def page_not_found(e):
     return render_template('404.html'), 404
 
-@app.route('/code_solutions')
+@app.route('/code_solution/<solution_id>')
 def art():
     """Display the Code Solutions page."""
     
@@ -70,6 +70,64 @@ def art():
                 "src": "",
                 "alt": "img"
             },
+        ],
+        "products": [
+            {
+                "src": "",
+                "alt": "img",
+                "title": "Example Product",
+                "_id": 764524756,
+                "info": "Ex",
+                "href": "/solution/764524756"
+            },
+            {
+                "src": "",
+                "alt": "img",
+                "title": "Example Product",
+                "_id": 764524756,
+                "info": "Ex",
+                "href": "/solution/764524756"
+            },
+            {
+                "src": "",
+                "alt": "img",
+                "title": "Example Product",
+                "_id": 764524756,
+                "info": "Ex",
+                "href": "/solution/764524756"
+            },
+            {
+                "src": "",
+                "alt": "img",
+                "title": "Example Product",
+                "_id": 764524756,
+                "info": "Ex",
+                "href": "/solution/764524756"
+            },
+            {
+                "src": "",
+                "alt": "img",
+                "title": "Example Product",
+                "_id": 764524756,
+                "info": "Ex",
+                "href": "/solution/764524756"
+            },
+            {
+                "src": "",
+                "alt": "img",
+                "title": "Example Product",
+                "_id": 764524756,
+                "info": "Ex",
+                "href": "/solution/764524756"
+            },
+            {
+                "src": "",
+                "alt": "img",
+                "title": "Example Product",
+                "_id": 764524756,
+                "info": "Ex",
+                "href": "/solution/764524756"
+            }
         ]
     }
 

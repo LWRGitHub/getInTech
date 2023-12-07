@@ -7,3 +7,11 @@ blinker==1.7.0
 click==8.1.7 
 itsdangerous==2.1.2
 flask-talisman==1.1.0
+
+ 
+# Probably don't need the below
+# Require dependencies for watchdog
+# pyqtwebengine=5.15.6
+# pyqt5=5.15.10
+# Issue came up with old version of watchdog
+# watchdog=3.0.0
