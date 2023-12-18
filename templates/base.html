@@ -166,8 +166,15 @@
                 webAds = document.getElementsByClassName("web-ad") //[0].style.display = "none";
                 for (let i = 0; i < webAds.length; i++) {
                     webAds[i].style.visibility = "hidden";
+                    iframe = webAds[i].getElementsByTagName('iframe');
+                    iframe[0].style.width = "0px";
+                    iframe[0].width = "0";
+                    iframe[0].style.height = "0px";
+                    iframe[0].height = "0";
                 }
             }
+
+            
         </script>
 
     </body>
