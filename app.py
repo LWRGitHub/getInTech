@@ -43,17 +43,17 @@ def home():
         ]
     }
 
-    return render_template('home.html', **context)
+    return render_template('pages/home.html', **context)
 
 @app.route('/swe_career_guide')
 def swe_career_guide():
     """Display the swe_career_guide page."""
 
-    return render_template('swe_career_guide.html')
+    return render_template('pages/swe_career_guide.html')
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return render_template('pages/404.html'), 404
 
 @app.route('/code_solution/<solution_id>')
 def art():
@@ -131,7 +131,7 @@ def art():
         ]
     }
 
-    return render_template('code_solutions.html', **context)
+    return render_template('pages/code_solutions/code_solution.html', **context)
 
 @app.route('/search_solutions')
 def art_supplies():
@@ -140,7 +140,7 @@ def art_supplies():
     context = {
     }
 
-    return render_template('search_solutions.html', **context)
+    return render_template('pages/code_solutions/search_solutions.html', **context)
 
 # Wrap Flask app with Talisman
 Talisman(app, content_security_policy=None)
