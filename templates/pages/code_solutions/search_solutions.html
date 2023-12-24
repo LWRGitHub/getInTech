@@ -7,16 +7,17 @@
     <!-- Main content -->
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xl-5 row-cols-xxl-6"> <!-- *SEARCH RES* -->
 
+        {% for solution in solutions %}
         <div class="col">
-            <a class="card h-100 btn btn-outline-secondary" href="/code_solution/9827643rb27b27v">
-                <div class="card-body">
-                    <h5 class="card-title text-center">3 Sum</h5>
-                    <p class="card-text text-center">LeetCode</p>
+            <a class="card h-100 btn btn-outline-secondary" href="/code_solution/{{ solution._id }}">
+                <div class="card-body ">
+                    <h5 class="card-title text-center">{{solution.name}}</h5>
+                    <p class="card-text text-center">{{solution.site}}</p>
                 </div>
             </a>
         </div>
-        
-        <div class="col">
+        {% endfor %}
+        <!-- <div class="col">
             <div class="card h-100">
                 <div class="card-body">
                     <h5 class="card-title text-center">3 Sum</h5>
@@ -59,7 +60,7 @@
                     <p class="card-text text-center">LeetCode</p>
                 </div>
             </div>
-        </div>
+        </div> -->
         
     </div>
 </main>
