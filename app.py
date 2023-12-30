@@ -20,7 +20,7 @@ solutions = [
         "_id": "9827643rb27b27v",
         "href": "/solution/9827643rb27b27v",
         "video": {
-            "has_video": True,
+            "has_video": False,
             "scripts": ["Video1 Script Goes Here", "Video2 Script Goes Here"]
         },
         "languages": [
@@ -194,7 +194,7 @@ class Solution {
         "_id": "lknas2387b24897b2",
         "href": "/solution/lknas2387b24897b2",
         "video": {
-            "has_video": True,
+            "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
         },
         "languages": [
@@ -329,7 +329,7 @@ const addTwoPromises = async (promise1, promise2) => await promise1 + await prom
         "_id": "kj23498234b2498724",
         "href": "/solution/kj23498234b2498724",
         "video": {
-            "has_video": True,
+            "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
         },
         "languages": [
@@ -397,7 +397,7 @@ ArrayWrapper.prototype.toString = function() {
         "_id": "bh238713yuv2397213vyu2398h",
         "href": "/solution/bh238713yuv2397213vyu2398h",
         "video": {
-            "has_video": True,
+            "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
         },
         "languages": [
