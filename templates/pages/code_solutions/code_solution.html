@@ -1,0 +1,124 @@
+{% extends 'ads.html' %}
+{% block content2 %}
+
+<head>
+    <!-- Prism e.g. code snippet styles -->
+    <link href="../../../static/css/prism.css" rel="stylesheet" />
+</head>
+
+<main>
+
+    <!-- 1st Content box -->
+    <div class="row py-2 m-0">
+        <div class="col-12 m-0">
+            <div class="p-5 m-0" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);">
+
+                <div class="row py-2 m-0 text-center">
+                    <h3 class="col-12 m-0">{{ name}}</h3>
+                </div>
+
+                <!-- Carousel  -->
+                {% if video.has_video %}
+                    <div class="row py-2 text-center">
+                        
+                        <!-- Move Carousel left -->
+                        <div class="col m-0" type="button" data-bs-target="#carouselExampleDark"  lightgray;" data-bs-slide="prev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+                            </svg>
+                        </div>
+
+                        <!-- Carousel content -->
+                        <div class="col-7 m-0">
+                            <div id="carouselExampleDark" class="carousel carousel-dark slide m-0">
+                                <div class="carousel-inner m-0">
+
+                                    {% for scripts in video.scripts%}
+                                        {% if loop.index-1 == 0 %}
+                                            <div class="carousel-item active m-0" data-bs-interval="10000">
+                                                {{video.scripts[loop.index-1]}}
+                                            </div>
+                                        {% else %}
+                                            <div class="carousel-item m-0" data-bs-interval="10000">
+                                                {{video.scripts[loop.index-1]}}
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Move Carousel right -->
+                        <div class="col m-0" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next" style="border: none;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+                            </svg>
+                        </div>
+
+                    </div>
+                {% endif %}
+
+                <div class="row py-2 m-0">
+
+                    <!-- Folder like tabs -->
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+                            {% for language in languages %}
+                                {% if loop.index-1 == 0 %}
+                                    <button class="nav-link active" id="nav-{{language.name}}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{language.name}}" type="button" role="tab" aria-controls="nav-{{language.name}}" aria-selected="true">{{language.name}}</button>
+                                {% else %}
+                                    <button class="nav-link" id="nav-{{language.name}}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{language.name}}" type="button" role="tab" aria-controls="nav-{{language.name}}" aria-selected="false">{{language.name}}</button>
+                                {% endif %}
+                            {% endfor %}
+                            <!-- <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button> -->
+
+                          <!-- <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
+
+                          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button> -->
+                          
+
+                        </div>
+                      </nav>
+                      <div class="tab-content" id="nav-tabContent">
+                        {% for language in languages %}
+                            {% if loop.index-1 == 0 %}
+                                <div class="tab-pane fade show active" id="nav-{{language.name}}" role="tabpanel" aria-labelledby="nav-{{language.name}}-tab" tabindex="0">
+                                    <pre class="line-numbers">
+                                        <code class="language-{{language.abbreviation_for_prism_styles}}">{{language.code}}</code>
+                                    </pre>
+                                </div>
+                            {% else %}
+                                <div class="tab-pane fade" id="nav-{{language.name}}" role="tabpanel" aria-labelledby="nav-{{language.name}}-tab" tabindex="0">
+                                    <pre class="line-numbers">
+                                        <code class="language-{{language.abbreviation_for_prism_styles}}">{{language.code}}</code>
+                                    </pre>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <!-- <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                            
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">...</div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">...</div>
+                        <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">...</div> -->
+                      </div>
+
+                    <!-- <div class="col-12 m-0">
+                        <h3>Code</h3>
+                        <h3>Solution to Coding Problem</h3>
+                    </div> -->
+
+                </div>
+                
+            
+
+            </div>
+        </div>
+    </div>
+    <!-- Prism JS code -->
+    <script src="../../../static/js/prism.js"></script>
+</main>
+
+{% endblock content2 %}

@@ -1,0 +1,68 @@
+{% extends 'ads.html' %}
+{% block content2 %}
+
+
+<main>
+    
+    <!-- Main content -->
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xl-5 row-cols-xxl-6 m-0"> <!-- *SEARCH RES* -->
+
+        {% for solution in solutions %}
+        <div class="col">
+            <a class="card h-100 btn btn-outline-dark" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);" href="/code_solution/{{ solution._id }}">
+                <div class="card-body ">
+                    <h5 class="card-title text-center">{{solution.name}}</h5>
+                    <p class="card-text text-center">{{solution.site}}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        <!-- <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-center">3 Sum</h5>
+                    <p class="card-text text-center">LeetCode</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-center">3 Sum</h5>
+                    <p class="card-text text-center">LeetCode</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-center">3 Sum</h5>
+                    <p class="card-text text-center">LeetCode</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-center">3 Sum</h5>
+                    <p class="card-text text-center">LeetCode</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-center">3 Sum</h5>
+                    <p class="card-text text-center">LeetCode</p>
+                </div>
+            </div>
+        </div> -->
+        
+    </div>
+</main>
+
+{% endblock content2 %}

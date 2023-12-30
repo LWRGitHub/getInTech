@@ -37,8 +37,9 @@ pip3 install -r requirements.txt
 python3 app.py
 ```
 
-## NOTES
+## When Updating
 
+- `git checkout -b <branch_name>`
 - If you introduce new requirements, please regenerate the "requirements.txt" file.
     - `pip3 freeze > requirements.txt` 
     - If you are not utilizing a virtual environment, it will include all items, including those 
