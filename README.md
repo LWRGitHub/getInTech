@@ -20,7 +20,8 @@ This platform will encompass not only a comprehensive guide for users aspiring t
     - gunicorn
     - [Heroku/NameCheep Setup Video](https://www.youtube.com/watch?v=51j_mhje9Kk)
     - [Enforce https](https://help.heroku.com/J2R1S4T8/can-heroku-force-an-application-to-use-ssl-tls)
-- GitHub
+- Git / GitHub
+- Shell
 - Web Advertising/Affiliate Marketing (Ads)
 
 
