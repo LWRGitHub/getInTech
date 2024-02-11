@@ -8,6 +8,7 @@ This platform will encompass not only a comprehensive guide for users aspiring t
     - Flask
     - Jinja2
     - Talisman >>> [Medium](https://betterprogramming.pub/from-http-to-https-easily-secure-flask-web-apps-with-talisman-3359692d3eac)
+        - `pip install flask-talisman`
 - HTML/CSS
 - JavaScript
 - Bootstrap
