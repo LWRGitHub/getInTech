@@ -13,6 +13,9 @@
         <!-- boostrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+
         <!-- my styles -->
         <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 
@@ -20,80 +23,75 @@
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3187955226926821" crossorigin="anonymous"></script>
 
     </head>
-    <!-- <body style="background: linear-gradient(176deg, rgba(242, 242, 242, 0.95) 0%, #00C2FF 99.65%);"> -->
         <body style="background: linear-gradient(176deg, rgba(242, 242, 242, 0.95) 0%, #00C2FF 99.65%)">
 
-
-        <!-- nav -->
-        <!-- TODO: >>> UX/UI Figma Design -->
-        <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-
-                <div class="col-3 col-lg-2">
-                    <p class="navbar-brand" href="#">Get In Tech</p>
-                </div>
-                
-                <div class="col-6 col-lg-4">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-
-                <div class="col-2 col-lg-5 ps-5">
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Home</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/search_solutions">Coding Solutions</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/search_solutions">SWE Career Guide</a>
-                        </li>
-                        
-                        </ul>
-                        
-                    </div>
-                </div>
-
-                <div class="col-1 col-lg-0">
-                    <button class="navbar-toggler">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-
-            </div>
-          </nav> -->
-
-            <nav class="navbar navbar-expand-lg bg-white p-0">
-                <div class="container-fluid">
-                    <a class="navbar-brand m-0 p-1" href="/">
-                        <image clsss='m-0 p-0' src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" style="width: 45px; height: 45px; margin: 0 auto; display: block;"/>
+            <!-- Navigation -->
+            <nav class="container-fluid text-center bg-white p-0 m-0">
+                <div class="row align-items-start m-0 p-0" >
+                    
+                    <!-- Logo -->
+                    <a class="navbar-brand m-0 p-1 col-1" href="/">
+                        <p class="m-0 p-0 text-center" style="size: 10px; font-size: 10px; width: 50px;">
+                            <b>Tech</b>
+                            <br>
+                            <b>Career</b>
+                            <br>
+                            <b>Time</b>
+                        </p>
                     </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button> 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-    
-                            <li class="nav-item">
-                                <a class="nav-link" href="/search_solutions">Coding Solutions</a>
-                            </li>
-    
-                            <li class="nav-item">
-                                <a class="nav-link" href="/swe_career_guide">SWE Career Guide</a>
-                            </li>
-                        </ul>
-                        <!-- <form class="d-flex bg-body-tertiary" role="search">
-                            <input class="form-control me-2" style="background: #E4F0F1;border: none;" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-dark" type="submit">Search</button>
-                        </form> -->
+
+                    <!-- Search -->
+                    <form class="mx-auto col-8 col-md-6 col-lg-4 p-2" role="search">
+                        <input 
+                            class="form-control me-2" 
+                            type="search" 
+                            placeholder="Search" 
+                            aria-label="Search"
+                            id="search"
+                        >
+                    </form>
+                    
+                    <!-- Web nav -->
+                    <div class="col-0 col-lg-4 d-none d-lg-block" style="padding-top: 12.5px;">
+                        <div class="row">
+
+                            <div class="col-6 m-0">
+                                <a 
+                                    class="nav-link nav-bar-page-link" 
+                                    href="/search_solutions"
+                                >Coding Solutions</a>
+                            </div>
+
+                            <div class="col-6 m-0">
+                                <a 
+                                    class="nav-link nav-bar-page-link" 
+                                    href="/swe_career_guide"
+                                >SWE Career Guide</a>
+                            </div>
+
+                        </div>  
                     </div>
+
+                    <!-- Small Window; Web/Mobile nav -->
+                    <div class="btn-group col-2 col-md-1 mt-2 d-block d-lg-none">
+                         
+                        <button type="button" style="border: none; background: none;" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="40,8">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                            </svg>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end p-0 m-0" style="border-radius: 0px 0px 0px 15px; border: none">
+                            <li><hr class="p-0 m-0" style="color: #CDCCCC;"></li>
+                            <li><a class="dropdown-item py-3" href="/search_solutions">Coding Solutions</a></li>
+                            <li class="px-2"><hr class="p-0 m-0" style="color: #CDCCCC;"></li>
+                            <li><a class="dropdown-item py-3" href="/swe_career_guide" style="border-radius: 0px 0px 0px 15px;">SWE Career Guide</a></li>
+                        </ul>
+                    </div>
+                    
+          
+                    <div class="col-0 col-lg-1"></div>
+                 
+                        
                 </div>
             </nav>
             
@@ -105,7 +103,9 @@
 
 
         <!-- Footer -->
-        <footer class="text-center text-lg-start text-muted border-top" style="background: linear-gradient(200deg, rgba(0, 194, 255, 0.95) 25.76%, rgba(130, 220, 248, 0.95) 52.73%, rgba(242, 242, 242, 0.95) 76.04%)">
+        <hr class="mx-5 my-0 p-0" style="background: white; color: white; height: 1px;">
+        <footer class="text-center text-lg-start text-muted" style="background: linear-gradient(200deg, rgba(0, 194, 255, 0.95) 25.76%, rgba(130, 220, 248, 0.95) 52.73%, rgba(242, 242, 242, 0.95) 76.04%)">
+            <hr class="mx-5 my-0 p-0" style="background: white; color: white; height: 1px;">
             <!-- Section: Social media -->
             <section class="d-flex justify-content-center justify-content-lg-between p-4">
           
@@ -115,22 +115,26 @@
         
             <!-- Section: Links  -->
             <section class="">
-            <div class="container text-center text-md-start mt-5">
+            <div class="container text-center text-md-start mt-0">
                 <!-- Grid row -->
                 <div class="row mt-3">
                 <!-- Grid column -->
                     
         
                 <!-- Grid column -->
-                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+                <div class="col-md-5 col-lg-4 col-xl-4 mx-auto mb-4">
                     <p>
-                        <a href="/" class="text-reset">Home page</a>
+                        <a href="/">Home page</a>
                     </p>
                     <p>
-                        <a href="/search_solutions" class="text-reset">Coding Solutions</a>
+                        <a href="/search_solutions">Coding Solutions</a>
                     </p>
                     <p>
-                        <a href="/swe_career_guide" class="text-reset">SWE Career Guide</a>
+                        <a href="/swe_career_guide">SWE Career Guide</a>
+                    </p>
+                    <p class="pt-5" style="color: black">
+                        © 2024 Copyright:
+                        <a class="text-reset fw-bold" href="/">Tech Career Time</a>
                     </p>
                 </div>
                 <!-- Grid column -->
@@ -152,10 +156,10 @@
             <!-- Section: Links  -->
         
             <!-- Copyright -->
-            <div class="text-center p-4">
-            © 2023 Copyright:
-            <a class="text-reset fw-bold" href="/">Get In Tech</a>
-            </div>
+            <!-- <div class="p-4" style="color: #000000">
+                © 2024 Copyright:
+                <a class="text-reset fw-bold" href="/">Tech Career Time</a>
+            </div> -->
             <!-- Copyright -->
         </footer>
         <!-- Footer -->
@@ -181,7 +185,7 @@
                     // console.log(iframe[0].style.cssText);
 
                     // add styles
-                    iframe[0].style = iframe[0].style.cssText + "border-radius: 5px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);"
+                    iframe[0].style = iframe[0].style.cssText + "border-radius: 5px; border: 1px solid #000000; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);"
                     // add class
                     iframe[0].classList.add("m-1");
                 }
