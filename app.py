@@ -1,15 +1,26 @@
 from flask import Flask, request, redirect, render_template, url_for
 from flask_talisman import Talisman
+import os
+
+# forms
+from web_forms import SearchForm
+
+
 
 ############################################################
 # SETUP
 ############################################################
 
+
+
 app = Flask(__name__)
 
+# Secret Key for CSRF Protection in Flask-WTF
+SECRET_KEY = os.urandom(32)
+app.config['SECRET_KEY'] = SECRET_KEY
 
 ############################################################
-# ROUTES
+# DATA
 ############################################################
 
 
@@ -422,6 +433,15 @@ const bstToGst = (root) =>{
     }
 ]
 
+
+
+
+############################################################
+# ROUTES
+############################################################
+
+
+# Home pg
 @app.route('/')
 def home():
     """Display the home page."""
@@ -430,16 +450,22 @@ def home():
 
     return render_template('pages/home.html', **context)
 
+
+# Carreer Guide pg
 @app.route('/swe_career_guide')
 def swe_career_guide():
     """Display the swe_career_guide page."""
 
     return render_template('pages/swe_career_guide.html')
 
+
+# 404 pg
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('pages/404.html'), 404
 
+
+# Code Solutions pg
 @app.route('/code_solution/<solution_id>')
 def code_solution(solution_id):
     """Display the Code Solution page."""
@@ -453,9 +479,43 @@ def code_solution(solution_id):
 
     return render_template('pages/code_solutions/code_solution.html', **context)
 
-@app.route('/search_solutions')
-def search_solutions():
+
+
+# Pass Stuff to Navbar
+@app.context_processor
+def base():
+    form = SearchForm()
+    return dict(form=form)
+
+# Pass Stuff to Navbar
+# @app.context_processor
+# def search(query):
+#     form = SearchForm()
+#     form.searched.data = query
+#     return dict(form=form)
+
+
+@app.route('/search', methods=['GET','POST'])
+def search():
+  form = SearchForm()
+
+  if form.validate_on_submit():
+    # remove extra spaces
+    query = " ".join(form.searched.data.strip().split())
+
+    return redirect(url_for('search_solutions', query=query))
+    # 
+  else:
+      print("Here")
+      return redirect(url_for('search_solutions', query="None"))
+
+
+# Search res pg
+@app.route('/search_solutions/<query>', methods=['GET','POST']) # methods=['GET','POST']
+def search_solutions(query):
     """Display the search_solutions page."""
+
+    form = SearchForm()
 
     context = {
         "page": {
@@ -468,10 +528,20 @@ def search_solutions():
                 "alt": "img"
             },
         ],
-        "solutions": solutions
+        "form": form
     }
 
+    if query != "None":
+        context["searched"] = query
+        context["solutions"] = [solution for solution in solutions if query.lower() in solution["name"].lower()]
+        # context["solutions"] = [solution for solution in solutions if query.lower() in solution["name"].like('%{query}%')]
+        # context["solutions"] = solutions.filter(solutions.name.like(f"%{query}%"))
+    else:
+        context["searched"] = False
+        context["solutions"] = solutions   
+
     return render_template('pages/code_solutions/search_solutions.html', **context)
+
 
 # Wrap Flask app with Talisman
 Talisman(app, content_security_policy=None)

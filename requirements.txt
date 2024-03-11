@@ -7,6 +7,8 @@ blinker==1.7.0
 click==8.1.7 
 itsdangerous==2.1.2
 flask-talisman==1.1.0
+flask-wtf=1.2.1 
+wtforms=3.1.2
 
  
 # Probably don't need the below
