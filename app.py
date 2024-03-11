@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect, render_template, url_for
 from flask_talisman import Talisman
 import os
+import time
 
 # forms
 from web_forms import SearchForm
@@ -497,17 +498,21 @@ def base():
 
 @app.route('/search', methods=['GET','POST'])
 def search():
-  form = SearchForm()
+    form = SearchForm()
 
-  if form.validate_on_submit():
-    # remove extra spaces
-    query = " ".join(form.searched.data.strip().split())
+    # wait a few seconds
+    time.sleep(1.5)
 
-    return redirect(url_for('search_solutions', query=query))
-    # 
-  else:
-      print("Here")
-      return redirect(url_for('search_solutions', query="None"))
+    
+    if form.validate_on_submit():
+        # remove extra spaces
+        query = " ".join(form.searched.data.strip().split())
+
+        return redirect(url_for('search_solutions', query=query))
+        # 
+    else:
+        print("Here")
+        return redirect(url_for('search_solutions', query="None"))
 
 
 # Search res pg
