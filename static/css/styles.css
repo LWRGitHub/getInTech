@@ -27,7 +27,7 @@
 .nav-bar-page-link{
     padding-top: 2px;
     padding-bottom: 2px;
-    background-color: #F4FAFB; 
+    background-color: #f8fdfd; 
     border-radius: 7px; 
     width: 150px; 
     border: 1px solid #D4D4D4;
@@ -42,12 +42,22 @@
 .nav-bar-page-link:active {
     border: 1px solid #D4D4D4;
     border-top: none;
-    background-color: #f8fdfd; 
+    background-color: #f8fdfdbc; 
+    box-shadow: 0px 0px 5px 0px #D4D4D4;
 }
 
 #svg-menu{
     fill: black;
 }
+
+/* 
+
+    TODO: 👇👇👇
+
+        - For svg-menu add lightgray circle around the svg when clicked & remove 
+        - in svg-menu:hover remove box-shadow & fill & replace it with a small slitly transparent black pop up shaped like a button that says "Expand Menu"
+
+*/
 
 #svg-menu:hover {
     /* shadow */
