@@ -69,7 +69,13 @@
 
                     <!-- Search -->
                     <form class="mx-auto col-8 col-md-6 col-lg-4 p-2 m-0" role="search" method="POST" action="{{url_for('search')}}">
-                        {{ form.hidden_tag() }}
+                         <!-- 
+                            TODO: 
+                                - fix issue with search not working due to validation 
+                                - then Uncomment validation here & in app.py 👇👇👇 
+                                    {{ form.hidden_tag() }}
+                        -->
+                        <!-- {{ form.hidden_tag() }} -->
                         <input 
                             class="form-control me-2" 
                             type="search" 

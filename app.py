@@ -499,19 +499,23 @@ def base():
 @app.route('/search', methods=['GET','POST'])
 def search():
     form = SearchForm()
-
-    # wait a few seconds
-    time.sleep(1.5)
-
     
-    if form.validate_on_submit():
+    """
+        TODO: 
+            - fix issue with search not working due to validation
+            - then Add back in validation here & in base.html 👇👇👇 
+                if form.validate_on_submit():
+    """
+
+    # if form.validate_on_submit():
+    if form.searched.data != None and form.searched.data != "":
         # remove extra spaces
         query = " ".join(form.searched.data.strip().split())
-
+        
         return redirect(url_for('search_solutions', query=query))
         # 
     else:
-        print("Here")
+        # print('form.searched.data: ',  type(form.searched.data))
         return redirect(url_for('search_solutions', query="None"))
 
 
