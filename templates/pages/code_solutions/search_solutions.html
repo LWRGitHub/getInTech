@@ -130,7 +130,7 @@
 
 
             pagination.innerHTML = `
-                <ul class="m-0 text-center text mt-3 p-0" id="left-pagination-link">
+                <ul class="m-0 text-center text mt-3 p-0" id="all-pagination-links">
 
                     <!-- Left arrow to previous page -->
                     <li>
@@ -153,7 +153,7 @@
             pageLink.innerHTML = `
                 <span class="pg-nav-active" style="${pageLinkStyleNav1}" onclick="pgNavTo(${pgNav1Var})">${pgNav1Var}</span>
             ` // Ternary operator adds an underline if user is on this page
-            document.getElementById("left-pagination-link").appendChild(pageLink);
+            document.getElementById("all-pagination-links").appendChild(pageLink);
             
             /*
                 <!-- Depending on how many search results we find the navigation at the bottom of the page the chain -->
@@ -168,7 +168,7 @@
                     <span class="pg-nav-active" style="${pageLinkStyle}" onclick="pgNavTo(${pgNav2Var})">${pgNav2Var}</span>
                 `;
             }
-            if(pageLink2 !== '') document.getElementById("left-pagination-link").appendChild(pageLink2);
+            if(pageLink2 !== '') document.getElementById("all-pagination-links").appendChild(pageLink2);
 
             let pageLink3 = ''
             if(pgNav3Var){
@@ -179,7 +179,7 @@
                     <span class="pg-nav-active" style="${pageLinkStyle}" onclick="pgNavTo(${pgNav2Var})">${pgNav2Var}</span>
                 `;
             }
-            if(pageLink3 !== '') document.getElementById("left-pagination-link").appendChild(pageLink3);
+            if(pageLink3 !== '') document.getElementById("all-pagination-links").appendChild(pageLink3);
 
             let doteX3 = ''
             if(pgNav3Var && pgNav4Var !== 4){ // if there are more than 4 pages
@@ -188,7 +188,7 @@
                     <span>...</span>
                 `;
             }
-            if(doteX3 !== '') document.getElementById("left-pagination-link").appendChild(doteX3);
+            if(doteX3 !== '') document.getElementById("all-pagination-links").appendChild(doteX3);
 
             let lastPageLink = ''
             if(pgNav4Var && pgNav4Var !== pgNav2Var && pgNav4Var !== pgNav3Var){ // if there are more than 4 pages
@@ -200,12 +200,12 @@
                     <span class="pg-nav-active" style="border-radius: 0px 5px 5px 0px;" onclick="pgNavTo(${pgNav4Var})">${pgNav4Var}</span>
                 `
             }
-            if(lastPageLink !== '') document.getElementById("left-pagination-link").appendChild(lastPageLink);
+            if(lastPageLink !== '') document.getElementById("all-pagination-links").appendChild(lastPageLink);
 
             const rightPageLink = document.createElement("li"); // create 1st page link element
             rightPageLink.innerHTML = `<span class="rounded-circle mx-2 pg-nav-active" onclick="pgNavRight()">&gt;</span>`;  // adds underline if user is on this page
             // <!-- Right arrow to next page -->
-            document.getElementById("left-pagination-link").appendChild(rightPageLink);
+            document.getElementById("all-pagination-links").appendChild(rightPageLink);
         }  
 
         upDatePagination(); // run function to show pagination

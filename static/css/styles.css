@@ -85,7 +85,7 @@ li {
     display: inline;
     
 }
-li span {
+#all-pagination-links li span {
     width: 100%;
     margin: 10px 0px 10px 0px;
     font-size: 21px;
