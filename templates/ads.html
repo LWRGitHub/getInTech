@@ -52,7 +52,7 @@
                 {% block content2 %}{% endblock %}
 
                 <!-- Bottom Ad -->
-                <div class="row py-0 m-0">
+                <div class="row py-0 m-0" id="main-ads-starter">
                     <div class="col-12 m-0">
                         <div class="text-center px-1 pt-0 m-0">
 
@@ -94,8 +94,16 @@
             </div>
 
             <!-- Right content -->
-            <div class="d-none d-lg-block col-lg-auto mx-auto pt-5 mt-5"> 
-                <div class="sticky-top pt-5 web-ad ads">
+            <div class="d-none d-lg-block col-lg-auto mx-auto pt-5 mt-5" > 
+
+                <!-- 
+
+                    TODO: 
+                        - Adjust padding-top for below tag making it start where left contect does on all pages; you will need to find out why "Coding Solutions" page is different from other pages "all other page seem to be same"
+
+                 -->
+
+                <div class="sticky-top web-ad ads" style="padding-top: 130px;">
                     <!-- vvv code from Ad site vvv -->
                     <script type="text/javascript" src="https://udbaa.com/bnr.php?section=GeneralSide&pub=848887&format=160x600&ga=g"></script>
                     <noscript>
