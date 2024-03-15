@@ -5,66 +5,243 @@
 <main>
     
     <!-- Main content -->
-    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xl-5 row-cols-xxl-6 m-0"> <!-- *SEARCH RES* -->
-
-        <!-- <p>{{test}}</p> -->
-
-        {% for solution in solutions %}
-        <div class="col">
-            <a class="card h-100 btn btn-outline-dark" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);" href="/code_solution/{{ solution._id }}">
-                <div class="card-body ">
-                    <h5 class="card-title text-center">{{solution.name}}</h5>
-                    <p class="card-text text-center">{{solution.site}}</p>
-                </div>
-            </a>
-        </div>
-        {% endfor %}
-        <!-- <div class="col">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title text-center">3 Sum</h5>
-                    <p class="card-text text-center">LeetCode</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title text-center">3 Sum</h5>
-                    <p class="card-text text-center">LeetCode</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title text-center">3 Sum</h5>
-                    <p class="card-text text-center">LeetCode</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title text-center">3 Sum</h5>
-                    <p class="card-text text-center">LeetCode</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title text-center">3 Sum</h5>
-                    <p class="card-text text-center">LeetCode</p>
-                </div>
-            </div>
-        </div> -->
-        
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xxl-6 m-0" id="search-query-res"> 
+        <!-- *SEARCH RES* -->
     </div>
+    <div class="row py-2 pt-5 m-0" id="search-res-Pagination"> <!--search-res-Pagination-->
+        <!-- *PAGINATION* -->
+    </div>
+
+    <!-- This <script> Allows us to load the next page without doing a new API call "Saves Money 💰" -->
+    <script>
+        const searchSolutions = {{solutions|tojson}}; // get solutions from server
+        let pgNum;
+
+        const upDateContent = () =>{
+            let pgNumMinus1 = Number(window.location.href.split("/").pop()); // get page number from URL
+            let showFromIdx = (pgNumMinus1 * 24); // get starting index for solutions to show
+            
+            // loop through solutions and show only 24 solutions
+            for (let i = showFromIdx; i < showFromIdx + 24; i++) {
+                if (searchSolutions[i]) {
+                    const solution = searchSolutions[i];
+                    const card = document.createElement("div"); // create search result element
+                    card.classList.add("col"); // add bootstrap class
+                    // add data, design, etc. to search result element
+                    card.innerHTML = `
+                        <a class="card h-100 btn btn-outline-dark p-0" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);" href="/code_solution/${solution._id}">
+                            <div class="card-body" style="padding: 15px;">
+                                <h5 class="card-title text-center" style="font-size: 15px; font-weight: bold;">${solution.name}</h5>
+                                <p class="card-text text-center" style="font-size: 12px;">${solution.site}</p>
+                            </div>
+                        </a>
+                    `;
+                    document.getElementById("search-query-res").appendChild(card);
+                }
+            }
+        }
+        upDateContent(); // run function to show solutions
+
+        
+        let pgNav1Var, pgNav2Var, pgNav3Var, pgNav4Var;
+        function setPaginationNumbers(){
+            pgNum = Number(window.location.href.split("/").pop())+1;
+            // Determines how many pg nav numbers will show, depending on Current page & number of search res
+            if(pgNum > 3){
+
+                pgNav4Var = Math.ceil(searchSolutions.length/24) // last page number
+
+                if(pgNum !== pgNav4Var){
+                    pgNav1Var = pgNum - 2
+                    pgNav2Var = pgNum - 1
+                    pgNav3Var = pgNum
+                } else {
+                    pgNav1Var = pgNum - 3
+                    pgNav2Var = pgNum - 2
+                    pgNav3Var = pgNum - 1
+                }
+
+            } else {
+
+                if(searchSolutions.length > 95){ 
+
+                    pgNav1Var = 1
+                    pgNav2Var = 2
+                    pgNav3Var = 3
+                    pgNav4Var = Math.ceil(searchSolutions.length/24)
+
+                } else if(searchSolutions.length > 24){ 
+
+                    pgNav1Var = 1
+                    pgNav2Var = 2
+                    pgNav3Var = false
+                    pgNav4Var = Math.ceil(searchSolutions.length/24)
+
+                } else { 
+
+                    pgNav1Var = 1
+                    pgNav2Var = false
+                    pgNav3Var = false
+                    pgNav4Var = false
+
+                }
+            }
+        }
+
+        function pgNavLeft() {
+            // console.log(pgNum)
+            if (pgNum-1 > 0) {
+                changePage(pgNum - 2);
+            }
+        }
+
+        function pgNavTo(pgVar) {
+            // console.log(pgVar)
+            if (pgNum !== pgVar) {
+                changePage(pgVar-1);
+                window.scrollTo(0, 0);
+                // Safari scroll work around 👇👇👇
+                el.style.overflow = 'auto';
+                // window.scroll(0,0)
+                window.requestAnimationFrame(() => el.scrollTo({ left: 100, behavior: 'smooth' }));
+                // setTimeout(() => (el.style.overflow = 'hidden'), 1000);
+                
+            }
+        }
+
+        function pgNavRight() {
+            let totalPages = Math.ceil(searchSolutions.length / 24);
+            if (pgNum < totalPages) {
+                changePage(pgNum);
+                window.scrollTo(0, 0);
+                // Safari scroll work around 👇👇👇
+                el.style.overflow = 'auto';
+                window.requestAnimationFrame(() => el.scrollTo({ left: 100, behavior: 'smooth' }));
+            }
+        }
+
+        function upDatePagination() {
+
+            setPaginationNumbers() // update pagination numbers
+
+            const pagination = document.createElement("div"); // create search result element
+            pagination.classList.add("mx-auto"); // add bootstrap class
+            // add data, design, etc. to search result element
+
+
+            pagination.innerHTML = `
+                <ul class="m-0 text-center text mt-3 p-0" id="left-pagination-link">
+
+                    <!-- Left arrow to previous page -->
+                    <li>
+                        <span class="rounded-circle mx-2 pg-nav-active"  onclick="pgNavLeft()">&lt;</span>
+                    </li>
+                    
+                </ul>
+            `;
+            document.getElementById("search-res-Pagination").appendChild(pagination);
+
+            const pgNumUnderline = 'text-decoration: underline solid #0280C8 !important; -webkit-text-decoration-line: underline !important;-webkit-text-decoration-color: #0280C8 !important; -webkit-text-decoration-style: solid !important;-webkit-text-decoration-thickness: 2px !important;'
+
+            //  1st page link as a number 
+            let pageLinkStyleNav1 = `border-radius: 5px ${
+                !pgNav2Var ? "5px 5px" : "0px 0px"
+            } 5px${ 
+                pgNav1Var == pgNum ? `; ${pgNumUnderline}` : ';' 
+            }`
+            const pageLink = document.createElement("li"); // create 1st page link element
+            pageLink.innerHTML = `
+                <span class="pg-nav-active" style="${pageLinkStyleNav1}" onclick="pgNavTo(${pgNav1Var})">${pgNav1Var}</span>
+            ` // Ternary operator adds an underline if user is on this page
+            document.getElementById("left-pagination-link").appendChild(pageLink);
+            
+            /*
+                <!-- Depending on how many search results we find the navigation at the bottom of the page the chain -->
+                <!-- These shows this page in bottom nav if pgNav2Var, pgNav3Var, pgNav4Var is true -->
+            */
+            let pageLink2 = ''
+            if(pgNav2Var){
+                let pageLinkStyle = pgNav2Var == pgNum ? pgNumUnderline  : ""  // adds underline if user is on this page
+                if(!pgNav3Var) pageLinkStyle += "border-radius: 0px 5px 5px 0px;"
+                pageLink2 = document.createElement("li"); // create 2nd page link element
+                pageLink2.innerHTML = `
+                    <span class="pg-nav-active" style="${pageLinkStyle}" onclick="pgNavTo(${pgNav2Var})">${pgNav2Var}</span>
+                `;
+            }
+            if(pageLink2 !== '') document.getElementById("left-pagination-link").appendChild(pageLink2);
+
+            let pageLink3 = ''
+            if(pgNav3Var){
+                let pageLinkStyle = pgNav2Var == pgNum ? pgNumUnderline  : ""  // adds underline if user is on 
+                if(!pgNav4Var) pageLinkStyle += "border-radius: 0px 5px 5px 0px;"
+                pageLink3 = document.createElement("li"); // create 2nd page link element
+                pageLink3.innerHTML = `
+                    <span class="pg-nav-active" style="${pageLinkStyle}" onclick="pgNavTo(${pgNav2Var})">${pgNav2Var}</span>
+                `;
+            }
+            if(pageLink3 !== '') document.getElementById("left-pagination-link").appendChild(pageLink3);
+
+            let doteX3 = ''
+            if(pgNav3Var && pgNav4Var !== 4){ // if there are more than 4 pages
+                doteX3 = document.createElement("li"); // create 3rd page link element
+                doteX3.innerHTML = `
+                    <span>...</span>
+                `;
+            }
+            if(doteX3 !== '') document.getElementById("left-pagination-link").appendChild(doteX3);
+
+            let lastPageLink = ''
+            if(pgNav4Var && pgNav4Var !== pgNav2Var && pgNav4Var !== pgNav3Var){ // if there are more than 4 pages
+                lastPageLink = document.createElement("li"); // create last page link element
+                lastPageLink.innerHTML = pgNav4Var == pgNum ?
+                `
+                    <span class="pg-nav-active" style="border-radius: 0px 5px 5px 0px; ${pgNumUnderline}" onclick="pgNavTo(${pgNav4Var})">${pgNav4Var}</span>
+                `: `
+                    <span class="pg-nav-active" style="border-radius: 0px 5px 5px 0px;" onclick="pgNavTo(${pgNav4Var})">${pgNav4Var}</span>
+                `
+            }
+            if(lastPageLink !== '') document.getElementById("left-pagination-link").appendChild(lastPageLink);
+
+            const rightPageLink = document.createElement("li"); // create 1st page link element
+            rightPageLink.innerHTML = `<span class="rounded-circle mx-2 pg-nav-active" onclick="pgNavRight()">&gt;</span>`;  // adds underline if user is on this page
+            // <!-- Right arrow to next page -->
+            document.getElementById("left-pagination-link").appendChild(rightPageLink);
+        }  
+
+        upDatePagination(); // run function to show pagination
+
+        function changePage(pgNum) {
+            window.history.pushState("object or string", "Title", `/search_solutions/None/${pgNum}`); // update URL page number without refreshing page
+            document.getElementById("search-query-res").innerHTML = ""; // clear search results
+            document.getElementById("search-res-Pagination").innerHTML = ""; // clear search-res-Pagination
+            upDateContent(); // update content
+            upDatePagination()
+            // document.getElementById("search-res-main").appendChild(pagination);
+        }
+
+        
+        window.addEventListener('popstate', function (event) {
+            document.getElementById("search-query-res").innerHTML = ""; // clear search results
+            document.getElementById("search-res-Pagination").innerHTML = ""; // clear search-res-Pagination
+            upDateContent(); // update content
+            upDatePagination()
+            // document.getElementById("search-res-main").appendChild(pagination);
+        });
+
+
+    </script>        
+    <!-- 
+
+        TODO: 
+            - Add a "Load More" button to load more solutions e.g. (<) [1 2 3 ... 10] (>)
+                - Use JavaScript >>> `window.history.pushState("object or string", "Title", `/search_solutions/None/${pgNum}`);` to change URL without refreshing page
+
+            - Add a "Filter" button to filter solutions 三 
+
+        -->
+        
+    
 </main>
 
 {% endblock content2 %}
+

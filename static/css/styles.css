@@ -79,3 +79,25 @@ button:focus {outline:0;}
     font-variation-settings:
         "slnt" 0;
 }
+
+/* search item nav at bottom */
+li {
+    display: inline;
+    
+}
+li span {
+    width: 100%;
+    margin: 10px 0px 10px 0px;
+    font-size: 21px;
+    color: #0280C8;
+    padding: 4px 10px 4px 10px;
+    display: inline;
+    text-decoration: none;
+    /* background-color: #F1F5F6; */
+    background-color: white;
+}
+.pg-nav-active:hover{
+    color: #03659e;
+    cursor: pointer;
+}
+/* /search item nav at bottom */
