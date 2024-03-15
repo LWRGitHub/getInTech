@@ -81,7 +81,7 @@ button:focus {outline:0;}
 }
 
 /* search item nav at bottom */
-li {
+#all-pagination-links li {
     display: inline;
     
 }

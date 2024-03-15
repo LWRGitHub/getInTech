@@ -12,6 +12,15 @@
         <!-- *PAGINATION* -->
     </div>
 
+    <!-- 
+
+        TODO: 
+            - Refactor code e.g. clean & add comments
+            - window.scrollTo(0, 0) doesn't work on firefox
+            - Maybe get rid of space between pagination numbers
+
+     -->
+
     <!-- This <script> Allows us to load the next page without doing a new API call "Saves Money 💰" -->
     <script>
         const searchSolutions = {{solutions|tojson}}; // get solutions from server
