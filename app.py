@@ -24,13 +24,164 @@ app.config['SECRET_KEY'] = SECRET_KEY
 # DATA
 ############################################################
 
-
 solutions = [
     {
         "name": "3 Sum",
         "site": "LeetCode",
-        "_id": "9827643rb27b27v",
-        "href": "/solution/9827643rb27b27v",
+        "_id": "LeetCode-3sum",
+        "href": "/solution/LeetCode-3sum",
+    },
+    {
+        "name": "Two Sum",
+        "site": "LeetCode",
+        "_id": "LeetCode-Two-Sum",
+        "href": "/solution/LeetCode-Two-Sum",
+    },
+    {
+        "name": "Add Two Numbers",
+        "site": "LeetCode",
+        "_id": "LeetCode-Add-Two-Numbers",
+        "href": "/solution/LeetCode-Add-Two-Numbers",
+    },
+    {
+        "name": "Add Two Promises",
+        "site": "LeetCode",
+        "_id": "LeetCode-Add-Two-Promises",
+        "href": "/solution/LeetCode-Add-Two-Promises",
+    },
+    {
+        "name": "All Paths From Source to Target",
+        "site": "LeetCode",
+        "_id": "LeetCode-All-Paths-From-Source-to-Target",
+        "href": "/solution/LeetCode-All-Paths-From-Source-to-Target",
+    },
+    {
+        "name": "Array Wrapper",
+        "site": "LeetCode",
+        "_id": "LeetCode-Array-Wrapper",
+        "href": "/solution/LeetCode-Array-Wrapper",
+    },
+    {
+        "name": "Binary Search Tree to Greater Sum Tree",
+        "site": "LeetCode",
+        "_id": "LeetCode-Binary-Search-Tree-to-Greater-Sum-Tree",
+        "href": "/solution/LeetCode-Binary-Search-Tree-to-Greater-Sum-Tree",
+    },
+    {
+        "name": "Best Time to Buy and Sell Stock",
+        "site": "LeetCode",
+        "_id": "LeetCode-Best-Time-to-Buy-and-Sell-Stock",
+        "href": "/solution/LeetCode-Best-Time-to-Buy-and-Sell-Stock",
+    },
+    {
+        "name": "Coin Change",
+        "site": "LeetCode",
+        "_id": "LeetCode-Coin-Change",
+        "href": "/solution/LeetCode-Coin-Change",
+    },
+    {
+        "name": "Compare Version Numbers",
+        "site": "LeetCode",
+        "_id": "LeetCode-Compare-Version-Numbers",
+        "href": "/solution/LeetCode-Compare-Version-Numbers",
+    },
+    {
+        "name": "Concatenation of Array",
+        "site": "LeetCode",
+        "_id": "LeetCode-Concatenation-of-Array",
+        "href": "/solution/LeetCode-Concatenation-of-Array",
+    },
+    {
+        "name": "Convert The Temperature",
+        "site": "LeetCode",
+        "_id": "LeetCode-Convert-The-Temperature",       "href": "/solution/LeetCode-Convert-The-Temperature",
+    },
+    {
+        "name": "Count Complete Tree Nodes",
+        "site": "LeetCode",
+        "_id": "LeetCode-Count-Complete-Tree-Nodes",
+        "href": "/solution/LeetCode-Count-Complete-Tree-Nodes",
+    },
+    {
+        "name": "Course Schedule",
+        "site": "LeetCode",
+        "_id": "LeetCode-Course-Schedule",
+        "href": "/solution/LeetCode-Course-Schedule",
+    },
+    {
+        "name": "Course Schedule II",
+        "site": "LeetCode",
+        "_id": "LeetCode-Course-Schedule-II",
+        "href": "/solution/LeetCode-Course-Schedule-II",
+    },
+    {
+        "name": "Course Schedule III",
+        "site": "LeetCode",
+        "_id": "LeetCode-Course-Schedule-III",
+        "href": "/solution/LeetCode-Course-Schedule-III",
+    },
+    {
+        "name": "Deepest Leaves Sum",
+        "site": "LeetCode",
+        "_id": "LeetCode-Deepest-Leaves-Sum",
+        "href": "/solution/LeetCode-Deepest-Leaves-Sum",
+    },
+    {
+        "name": "Defanging an IP Address",
+        "site": "LeetCode",
+        "_id": "LeetCode-Defanging-an-IP-Address",
+        "href": "/solution/LeetCode-Defanging-an-IP-Address",
+    },
+    {
+        "name": "Design Parking System",
+        "site": "LeetCode",
+        "_id": "LeetCode-Design-Parking-System",
+        "href": "/solution/LeetCode-Design-Parking-System",
+    },
+    {
+        "name": "Edit Distance",
+        "site": "LeetCode",
+        "_id": "LeetCode-Edit-Distance",
+        "href": "/solution/LeetCode-Edit-Distance",
+    },
+    {
+        "name": "Final Value of Variable After Performing Operations",
+        "site": "LeetCode",
+        "_id": "LeetCode-Final-Value-of-Variable-After-Performing-Operations",
+        "href": "/solution/LeetCode-Final-Value-of-Variable-After-Performing-Operations",
+    },
+    {
+        "name": "Find Center of Star Graph",
+        "site": "LeetCode",
+        "_id": "LeetCode-Find-Center-of-Star-Graph",
+        "href": "/solution/LeetCode-Find-Center-of-Star-Graph",
+    },
+    {
+        "name": "Find Median from Data Stream",
+        "site": "LeetCode",
+        "_id": "LeetCode-Find-Median-from-Data-Stream",
+        "href": "/solution/LeetCode-Find-Median-from-Data-Stream",
+    },
+    {
+        "name": "Find Mode in Binary Search Tree",
+        "site": "LeetCode",
+        "_id": "LeetCode-Find-Mode-in-Binary-Search-Tree",
+        "href": "/solution/LeetCode-Find-Mode-in-Binary-Search-Tree",
+    },
+    {
+        "name": "Find the Index of the First Occurrence in a String",
+        "site": "LeetCode",
+        "_id": "LeetCode-Find-the-Index-of-the-First-Occurrence-in-a-String",
+        "href": "/solution/LeetCode-Find-the-Index-of-the-First-Occurrence-in-a-String",
+    },
+]
+
+solutions_info = [
+    {
+        "name": "3 Sum",
+        "site": "LeetCode",
+        "_id": "LeetCode-3sum",
+        "href": "/solution/LeetCode-3sum",
         "video": {
             "has_video": False,
             "scripts": ["Video1 Script Goes Here", "Video2 Script Goes Here"]
@@ -107,13 +258,104 @@ const sum0 = (nums, i, res, sm=i+1, lg=nums.length-1) => {
     }
 };'''
             }
-        ]
+        ],
+        "search_res": {
+            "video": {
+                "has_video": True,
+                "src": [
+                    "https://www.youtube.com/embed/jzZsG8n2R9A?si=uwDfaIS98YU3Xb0T",
+                    "https://www.youtube.com/embed/cRBSOz49fQk?si=jTOTlZh0rFbZnmPF",
+                    "https://www.youtube.com/embed/qJSPYnS35SE?si=uLOE-LePO8NRJa8Q"
+                ]
+            },
+            "languages": [
+                {
+                    "name": "Python",
+                    "solutions": [
+                        {
+                            "site_name": "Coding Broz",
+                            "href": "https://www.codingbroz.com/3sum-leetcode-solution/"
+                        },
+                        {
+                            "site_name": "Medium @Norman Aranez",
+                            "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+                        }
+                    ],
+                },
+                {
+                    "name": "JavaScript",
+                    "solutions": [
+                        {
+                            "site_name": "Medium @Norman Aranez",
+                            "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+                        }
+                    ],
+                },
+                {
+                    "name": "TypeScript",
+                    "solutions": [
+                        {
+                            "site_name": "Medium @Norman Aranez",
+                            "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+                        }
+                    ],
+                },
+                {
+                    "name": "PHP",
+                    "solutions": [
+                        {
+                            "site_name": "Medium @Norman Aranez",
+                            "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+                        }
+                    ],
+                },
+                {
+                    "name": "C-Sharp",
+                    "solutions": [
+                        {
+                            "site_name": "Medium @Norman Aranez",
+                            "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+                        }
+                    ],
+                },
+                {
+                    "name": "C-Plus-Plus",
+                    "solutions": [
+                        {
+                            "site_name": "Coding Broz",
+                            "href": "https://www.codingbroz.com/3sum-leetcode-solution/"
+                        },
+                        {
+                            "site_name": "Tutorial Cup",
+                            "href": "https://tutorialcup.com/leetcode-solutions/3sum-leetcode-solution.htm"
+                        }
+                    ],
+                },
+                {
+                    "name": "Java",
+                    "solutions": [
+                        {
+                            "site_name": "Coding Broz",
+                            "href": "https://www.codingbroz.com/3sum-leetcode-solution/"
+                        },
+                        {
+                            "site_name": "Tutorial Cup",
+                            "href": "https://tutorialcup.com/leetcode-solutions/3sum-leetcode-solution.htm"
+                        },
+                        {
+                            "site_name": "Medium @Norman Aranez",
+                            "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+                        }
+                    ],
+                }
+            ]
+        },
     },
     {
         "name": "Two Sum",
         "site": "LeetCode",
-        "_id": "liauwehfipuwefhlkw98237r23",
-        "href": "/solution/liauwehfipuwefhlkw98237r23",
+        "_id": "LeetCode-Two-Sum",
+        "href": "/solution/LeetCode-Two-Sum",
         "video": {
             "has_video": False
         },
@@ -203,8 +445,8 @@ class Solution {
     {
         "name": "Add Two Numbers",
         "site": "LeetCode",
-        "_id": "lknas2387b24897b2",
-        "href": "/solution/lknas2387b24897b2",
+        "_id": "LeetCode-Add-Two-Numbers",
+        "href": "/solution/LeetCode-Add-Two-Numbers",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -321,8 +563,8 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
     {
         "name": "Add Two Promises",
         "site": "LeetCode",
-        "_id": "injr237823b2497824",
-        "href": "/solution/injr237823b2497824",
+        "_id": "LeetCode-Add-Two-Promises",
+        "href": "/solution/LeetCode-Add-Two-Promises",
         "video": {
             "has_video": False
         },
@@ -338,8 +580,8 @@ const addTwoPromises = async (promise1, promise2) => await promise1 + await prom
     {
         "name": "All Paths From Source to Target",
         "site": "LeetCode",
-        "_id": "kj23498234b2498724",
-        "href": "/solution/kj23498234b2498724",
+        "_id": "LeetCode-All-Paths-From-Source-to-Target",
+        "href": "/solution/LeetCode-All-Paths-From-Source-to-Target",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -379,8 +621,8 @@ const allPathsSourceTarget = (graph) =>{
     {
         "name": "Array Wrapper",
         "site": "LeetCode",
-        "_id": "bkhj23893by234872",
-        "href": "/solution/bkhj23893by234872",
+        "_id": "LeetCode-Array-Wrapper",
+        "href": "/solution/LeetCode-Array-Wrapper",
         "video": {
             "has_video": False
         },
@@ -406,8 +648,8 @@ ArrayWrapper.prototype.toString = function() {
     {
         "name": "Binary Search Tree to Greater Sum Tree",
         "site": "LeetCode",
-        "_id": "bh238713yuv2397213vyu2398h",
-        "href": "/solution/bh238713yuv2397213vyu2398h",
+        "_id": "LeetCode-Binary-Search-Tree-to-Greater-Sum-Tree",
+        "href": "/solution/LeetCode-Binary-Search-Tree-to-Greater-Sum-Tree",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -435,8 +677,8 @@ const bstToGst = (root) =>{
     {
         "name": "Best Time to Buy and Sell Stock",
         "site": "LeetCode",
-        "_id": "bnv872bg82yvf79h2guf892hib",
-        "href": "/solution/bnv872bg82yvf79h2guf892hib",
+        "_id": "LeetCode-Best-Time-to-Buy-and-Sell-Stock",
+        "href": "/solution/LeetCode-Best-Time-to-Buy-and-Sell-Stock",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -464,8 +706,8 @@ const maxProfit = (prices, prf=0, buy=Infinity, sell=-Infinity) =>{
     {
         "name": "Coin Change",
         "site": "LeetCode",
-        "_id": "ibf37894y78asdgf3q4awef22u3yryvbf723bn",
-        "href": "/solution/ibf37894y78asdgf3q4awef22u3yryvbf723bn",
+        "_id": "LeetCode-Coin-Change",
+        "href": "/solution/LeetCode-Coin-Change",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -503,8 +745,8 @@ var coinChange = function(coins, amount) {
     {
         "name": "Compare Version Numbers",
         "site": "LeetCode",
-        "_id": "nklgvno934uongn98923uogboub8h989ukvkb",
-        "href": "/solution/nklgvno934uongn98923uogboub8h989ukvkb",
+        "_id": "LeetCode-Compare-Version-Numbers",
+        "href": "/solution/LeetCode-Compare-Version-Numbers",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -521,8 +763,8 @@ const addTwoPromises = async (promise1, promise2) => await promise1 + await prom
     {
         "name": "Concatenation of Array",
         "site": "LeetCode",
-        "_id": "knjsd8923hbg89723jknalkdjvb2837rbfy482bnv",
-        "href": "/solution/knjsd8923hbg89723jknalkdjvb2837rbfy482bnv",
+        "_id": "LeetCode-Concatenation-of-Array",
+        "href": "/solution/LeetCode-Concatenation-of-Array",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -547,8 +789,7 @@ class Solution(object):
     {
         "name": "Convert The Temperature",
         "site": "LeetCode",
-        "_id": "n823ihbgf9723bgf89723b219b2",
-        "href": "/solution/n823ihbgf9723bgf89723b219b2",
+        "_id": "LeetCode-Convert-The-Temperature",       "href": "/solution/LeetCode-Convert-The-Temperature",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -573,8 +814,8 @@ class Solution(object):
     {
         "name": "Count Complete Tree Nodes",
         "site": "LeetCode",
-        "_id": "nv9238gn298nvgqbg6363bvdkslwop39i4756fghbvn",
-        "href": "/solution/nv9238gn298nvgqbg6363bvdkslwop39i4756fghbvn",
+        "_id": "LeetCode-Count-Complete-Tree-Nodes",
+        "href": "/solution/LeetCode-Count-Complete-Tree-Nodes",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -603,8 +844,8 @@ var countNodes = function(root) {
     {
         "name": "Course Schedule",
         "site": "LeetCode",
-        "_id": "nnv38e92784bv29772934bvb297379bvvb",
-        "href": "/solution/nnv38e92784bv29772934bvb297379bvvb",
+        "_id": "LeetCode-Course-Schedule",
+        "href": "/solution/LeetCode-Course-Schedule",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -678,8 +919,8 @@ const canFinish = (numCourses, prerequisites) =>{
     {
         "name": "Course Schedule II",
         "site": "LeetCode",
-        "_id": "nfv8923bg298b24362b3f8024u249gbg",
-        "href": "/solution/nfv8923bg298b24362b3f8024u249gbg",
+        "_id": "LeetCode-Course-Schedule-II",
+        "href": "/solution/LeetCode-Course-Schedule-II",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -717,8 +958,8 @@ const findOrder = (numC, prerequ, adj=Array.from({length:numC},()=>[]), idg=Arra
     {
         "name": "Course Schedule III",
         "site": "LeetCode",
-        "_id": "ndv8923bv2978b230823bv23u82389b2427hk",
-        "href": "/solution/ndv8923bv2978b230823bv23u82389b2427hk",
+        "_id": "LeetCode-Course-Schedule-III",
+        "href": "/solution/LeetCode-Course-Schedule-III",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -752,8 +993,8 @@ const scheduleCourse = (courses) =>{
     {
         "name": "Deepest Leaves Sum",
         "site": "LeetCode",
-        "_id": "vnqoievbg47gg47b2f39823gb298ub42vb80",
-        "href": "/solution/vnqoievbg47gg47b2f39823gb298ub42vb80",
+        "_id": "LeetCode-Deepest-Leaves-Sum",
+        "href": "/solution/LeetCode-Deepest-Leaves-Sum",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -794,8 +1035,8 @@ const deepestLeavesSum = (root) =>{
     {
         "name": "Defanging an IP Address",
         "site": "LeetCode",
-        "_id": "nvui4329248bg29823ubg2980b23h2vfy28973",
-        "href": "/solution/nvui4329248bg29823ubg2980b23h2vfy28973",
+        "_id": "LeetCode-Defanging-an-IP-Address",
+        "href": "/solution/LeetCode-Defanging-an-IP-Address",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -812,8 +1053,8 @@ const defangIPaddr = (address) => address.split('.').join("[.]")'''
     {
         "name": "Design Parking System",
         "site": "LeetCode",
-        "_id": "nvjn2oi389424ghbv94894gvbn12308ivbhy5gy5y75",
-        "href": "/solution/nvjn2oi389424ghbv94894gvbn12308ivbhy5gy5y75",
+        "_id": "LeetCode-Design-Parking-System",
+        "href": "/solution/LeetCode-Design-Parking-System",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -855,8 +1096,8 @@ ParkingSystem.prototype.addCar = function(carType){
     {
         "name": "Edit Distance",
         "site": "LeetCode",
-        "_id": "nvui4vb2478bf2298bvb2837vr2892nvb387ygh",
-        "href": "/solution/nvui4vb2478bf2298bvb2837vr2892nvb387ygh",
+        "_id": "LeetCode-Edit-Distance",
+        "href": "/solution/LeetCode-Edit-Distance",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -891,8 +1132,8 @@ const minDistance = (word1, word2)=>{
     {
         "name": "Final Value of Variable After Performing Operations",
         "site": "LeetCode",
-        "_id": "vn40g75b209fn2ou3bt08312bt10r18o3tb1o3ubfb",
-        "href": "/solution/vn40g75b209fn2ou3bt08312bt10r18o3tb1o3ubfb",
+        "_id": "LeetCode-Final-Value-of-Variable-After-Performing-Operations",
+        "href": "/solution/LeetCode-Final-Value-of-Variable-After-Performing-Operations",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -920,8 +1161,8 @@ const finalValueAfterOperations = (operations) => {
     {
         "name": "Find Center of Star Graph",
         "site": "LeetCode",
-        "_id": "nv894bg2987bg9284bg2ou3bfnbdkeytghnr48",
-        "href": "/solution/nv894bg2987bg9284bg2ou3bfnbdkeytghnr48",
+        "_id": "LeetCode-Find-Center-of-Star-Graph",
+        "href": "/solution/LeetCode-Find-Center-of-Star-Graph",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -938,8 +1179,8 @@ const findCenter = (e) => e[0][0] === e[1][0] || e[0][0] === e[1][1] ? e[0][0] :
     {
         "name": "Find Median from Data Stream",
         "site": "LeetCode",
-        "_id": "vnowgb94782fb293ufhbfg984gub",
-        "href": "/solution/vnowgb94782fb293ufhbfg984gub",
+        "_id": "LeetCode-Find-Median-from-Data-Stream",
+        "href": "/solution/LeetCode-Find-Median-from-Data-Stream",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -1007,8 +1248,8 @@ MedianFinder.prototype.findMedian = function() {
     {
         "name": "Find Mode in Binary Search Tree",
         "site": "LeetCode",
-        "_id": "vnieb23948b2i3yfbbfoiug2498bgi2u34hg2u3bnf2io3gn",
-        "href": "/solution/vnieb23948b2i3yfbbfoiug2498bgi2u34hg2u3bnf2io3gn",
+        "_id": "LeetCode-Find-Mode-in-Binary-Search-Tree",
+        "href": "/solution/LeetCode-Find-Mode-in-Binary-Search-Tree",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -1052,8 +1293,8 @@ var findMode = function(root) {
     {
         "name": "Find the Index of the First Occurrence in a String",
         "site": "LeetCode",
-        "_id": "vnwoengv2497gb1287bemeort9uytb3m2k2v9",
-        "href": "/solution/vnwoengv2497gb1287bemeort9uytb3m2k2v9",
+        "_id": "LeetCode-Find-the-Index-of-the-First-Occurrence-in-a-String",
+        "href": "/solution/LeetCode-Find-the-Index-of-the-First-Occurrence-in-a-String",
         "video": {
             "has_video": False,
             "scripts": ["Video Script Goes Here", "Video2 Script Goes Here"]
@@ -1108,10 +1349,105 @@ def code_solution(solution_id):
 
     context = {}
 
-    for product in solutions:
+    for product in solutions_info:
         if product["_id"] == solution_id:
             context = product
+            if not "search_res" in product:
+                context["search_res"] = False
             break
+
+    # context["search_res"] = {
+    #     "video": {
+    #         "has_video": True,
+    #         "src": [
+    #             "https://www.youtube.com/embed/jzZsG8n2R9A?si=uwDfaIS98YU3Xb0T",
+    #             "https://www.youtube.com/embed/cRBSOz49fQk?si=jTOTlZh0rFbZnmPF",
+    #             "https://www.youtube.com/embed/qJSPYnS35SE?si=uLOE-LePO8NRJa8Q"
+    #         ]
+    #     },
+    #     "languages": [
+    #         {
+    #             "name": "Python",
+    #             "solutions": [
+    #                 {
+    #                     "site_name": "Coding Broz",
+    #                     "href": "https://www.codingbroz.com/3sum-leetcode-solution/"
+    #                 },
+    #                 {
+    #                     "site_name": "Medium @Norman Aranez",
+    #                     "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+    #                 }
+    #             ],
+    #         },
+    #         {
+    #             "name": "JavaScript",
+    #             "solutions": [
+    #                 {
+    #                     "site_name": "Medium @Norman Aranez",
+    #                     "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+    #                 }
+    #             ],
+    #         },
+    #         {
+    #             "name": "TypeScript",
+    #             "solutions": [
+    #                 {
+    #                     "site_name": "Medium @Norman Aranez",
+    #                     "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+    #                 }
+    #             ],
+    #         },
+    #         {
+    #             "name": "PHP",
+    #             "solutions": [
+    #                 {
+    #                     "site_name": "Medium @Norman Aranez",
+    #                     "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+    #                 }
+    #             ],
+    #         },
+    #         {
+    #             "name": "C-Sharp",
+    #             "solutions": [
+    #                 {
+    #                     "site_name": "Medium @Norman Aranez",
+    #                     "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+    #                 }
+    #             ],
+    #         },
+    #         {
+    #             "name": "C-Plus-Plus",
+    #             "solutions": [
+    #                 {
+    #                     "site_name": "Coding Broz",
+    #                     "href": "https://www.codingbroz.com/3sum-leetcode-solution/"
+    #                 },
+    #                 {
+    #                     "site_name": "Tutorial Cup",
+    #                     "href": "https://tutorialcup.com/leetcode-solutions/3sum-leetcode-solution.htm"
+    #                 }
+    #             ],
+    #         },
+    #         {
+    #             "name": "Java",
+    #             "solutions": [
+    #                 {
+    #                     "site_name": "Coding Broz",
+    #                     "href": "https://www.codingbroz.com/3sum-leetcode-solution/"
+    #                 },
+    #                 {
+    #                     "site_name": "Tutorial Cup",
+    #                     "href": "https://tutorialcup.com/leetcode-solutions/3sum-leetcode-solution.htm"
+    #                 },
+    #                 {
+    #                     "site_name": "Medium @Norman Aranez",
+    #                     "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+    #                 }
+    #             ],
+    #         }
+    #     ]
+
+    # }
 
     return render_template('pages/code_solutions/code_solution.html', **context)
 
