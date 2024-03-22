@@ -299,6 +299,16 @@
                 }
                 // add styles to mob ads
                 adCSS("mob-ad");
+
+                codeSolutionYouTubeVideo = document.getElementsByClassName("code-solution-youtube-video");
+
+                console.log(codeSolutionYouTubeVideo)
+                // change width & height Attributes not style of youtube video
+                for (let i = 0; i < codeSolutionYouTubeVideo.length; i++) {
+                    codeSolutionYouTubeVideo[i].width = "270";
+                    codeSolutionYouTubeVideo[i].height = "152";
+                }
+
             }
 
             // if not mobile browser, add styles to web ads
