@@ -145,18 +145,18 @@
     </div>
 
     <!-- 2nd Content box / Seach Res -->
-    {% if search_res %}
+    <!-- {% if search_res %}
         <div class="row p-0 py-md-2 m-0">
             <div class="col-12 p-0 m-0">
                 <div class="p-0 pb-4 p-md-5 m-0" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);">
 
                     <div class="row py-2 m-0 text-center">
                         <h3 class="col-12 m-0">Search Results</h3>
-                    </div>
+                    </div> -->
 
                     <!-- YouTube Video(s) -->
                     <!-- Carousel  -->
-                    {% if search_res.video.has_video %} 
+                    <!-- {% if search_res.video.has_video %} 
                         <div class="row py-2 text-center m-0">
 
                             <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
@@ -176,9 +176,9 @@
                                             </div>
                                         {% endif %}
                                     {% endfor %}
-                                </div>
+                                </div> -->
 
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                                <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
@@ -190,15 +190,15 @@
 
                             </div>
 
-                        </div>
-                    {% endif %} 
+                        </div> -->
+                    <!-- {% endif %}  -->
 
                     <!-- Solutions in language tabs -->
-                    <div class="row ppy-2 m-0">
+                    <!-- <div class="row ppy-2 m-0"> -->
 
                         <!-- Choose language -->
                         <!-- Folder like tabs -->
-                        <nav>
+                        <!-- <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
                                 {% for language in search_res.languages %}
@@ -214,12 +214,12 @@
                                 {% endfor %}
 
                             </div>
-                        </nav>
+                        </nav> -->
 
                         
 
                         <!-- Other Sites Solution(s) UI -->
-                        <div class="tab-content" id="nav-tabContent">
+                        <!-- <div class="tab-content" id="nav-tabContent">
                             
                             {% for language in search_res.languages %}
 
@@ -227,9 +227,9 @@
 
                                     <div class="tab-pane fade show active" id="nav-{{language.name}}-search-res" role="tabpanel" aria-labelledby="nav-{{language.name}}-search-res-tab" tabindex="0">
 
-                                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xxl-6 m-0" id="search-query-{{language.name}}-res"> 
+                                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xxl-6 m-0" id="search-query-{{language.name}}-res">  -->
                                             <!-- *SEARCH RES* -->
-                                        </div>
+                                        <!-- </div>
                                         
                                         <script>
 
@@ -274,14 +274,14 @@
                                             
                                             upDateContent(searchSolutionsObj[language.name], language.name)
                                         </script>
-                                    </div>
+                                    </div> -->
 
-                                {% else %}
+                                <!-- {% else %}
 
                                     <div class="tab-pane fade"  id="nav-{{language.name}}-search-res" role="tabpanel" aria-labelledby="nav-{{language.name}}-search-res-tab" tabindex="0">
-                                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xxl-6 m-0" id="search-query-{{language.name}}-res"> 
+                                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xxl-6 m-0" id="search-query-{{language.name}}-res">  -->
                                             <!-- *SEARCH RES* -->
-                                        </div>
+                                        <!-- </div>
                                         
                                         <script>
 
@@ -307,7 +307,7 @@
                 </div>
             </div>
         </div>
-    {% endif %}
+    {% endif %} -->
 
     <!-- Prism JS code -->
     <script src="../../../static/js/prism.js"></script>
