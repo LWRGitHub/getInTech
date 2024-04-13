@@ -3363,7 +3363,7 @@ def home():
 def swe_career_guide():
     """Display the swe_career_guide page."""
 
-    return render_template('pages/swe_career_guide.html')
+    return render_template('pages/career_guide/guide.html')
 
 
 # 404 pg

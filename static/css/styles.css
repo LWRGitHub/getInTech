@@ -1,3 +1,7 @@
+*{
+    line-height: 1.6;
+}
+
 /* nav  */
 #search { /* nav Search */
     border: none; 
@@ -100,4 +104,3 @@ button:focus {outline:0;}
     color: #03659e;
     cursor: pointer;
 }
-/* /search item nav at bottom */

@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<main class="wrapper">
+
+    <!-- Bootstrap CSS CDN -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
+   
+    
+    <!-- career guide styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/career-guide.css') }}">
+
+ 
+
+    
+
+
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>SWE Career Guide</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>3 Steps</p>
+            
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">1. Education</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="#">Getting Started</a>
+                    </li>
+                    <li>
+                        <a href="#">A. Community College Certification</a>
+                    </li>
+                    <li>
+                        <a href="#">B. Nonprofit Boot Camp</a>
+                    </li>
+                    <li>
+                        <a href="#">C. Coding Bootcamp</a>
+                    </li>
+                    <!-- High School diploma -> College Certification -->
+                    <li>
+                        <a href="#">D. High School Diploma >>> College Certification</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- <li>
+                <a href="#">About</a>
+            </li> -->
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">2. Technical Interview</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="#">Important</a>
+                    </li>
+                    <li>
+                        <a href="#">A. Structy</a>
+                    </li>
+                    <li>
+                        <a href="#">B. AlgoExpert</a>
+                    </li>
+                    <li>
+                        <a href="#">C. Coderbyte</a>
+                    </li>
+                    <!-- High School diploma -> College Certification -->
+                    <li>
+                        <a href="#">D. Crack The Coding Interview</a>
+                    </li>
+                    <li>
+                        <a href="#">E. Coding Challenges</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#pageSubmenu2" data-toggle="collapse" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">3. Job Search</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu2">
+                    <li>
+                        <a href="#">Important</a>
+                    </li>
+                    <li>
+                        <a href="#">A. Work It Daily</a>
+                    </li>
+                    <li>
+                        <a href="#">B. Pathrise</a>
+                    </li>
+                    <li>
+                        <a href="#">C. HatchWays</a>
+                    </li>
+                    <li>
+                        <a href="#">D. Triple Byte</a>
+                    </li>
+                </ul>
+        </ul>
+
+        <!-- <ul class="list-unstyled CTAs">
+            <li>
+                <a href="#" class="download">Download ...</a>
+            </li>
+            <li>
+                <a href="#" class="article">Back to ...</a>
+            </li>
+        </ul> -->
+    </nav>
+
+   <!-- 1st Content box -->
+   <div class="row pb-2 m-0">
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-outline-dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-text-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+                    </svg>
+                    <span>Toggle Sidebar</span>
+                </button>
+                <!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-bs-toggle="collapse" data-toggle="collapse" data-bs-target="#navbarSupportedContent" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+                    </svg>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                    </ul>
+                </div> -->
+            </div>
+        </nav>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                document.getElementById('sidebarCollapse').addEventListener('click', function () {
+                    var sidebar = document.getElementById('sidebar');
+                    sidebar.classList.toggle('active');
+                });
+            });
+
+            // $(document).ready(function () {
+            //     $('#sidebarCollapse').on('click', function () {
+            //         $('#sidebar').toggleClass('active');
+            //     });
+            // });
+        </script>
+
+       
+        <div class="row m-0 p-0">
+        {% block content2 %}{% endblock %}
+        <div class="d-none d-xl-block col-xl-auto mx-auto"></div>
+        </div>
+        <!-- **********HERE******** -->
+
+
+        
+    </div>
+
+    
+
+</main>
+
+
+
+{% endblock content %}
