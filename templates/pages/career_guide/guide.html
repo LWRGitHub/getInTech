@@ -5,71 +5,168 @@
     <div class="p-4 p-md-5 m-0" style="border-radius: 10px; border: 1px solid #ededed26; background: linear-gradient(169deg, rgba(255, 255, 255, 0.2) 8.61%, rgba(255, 255, 255, 0.1) 76.57%);">
 
        
-        <h1>Education</h1>
-        <p class="bd-lead pb-5">Select one of the following paths: A, B, C, or D.</p>
+        <h1>{{ heading }}</h1>
+        <p class="bd-lead pb-5">{{ sub_heading }}</p>
+
+        {% for section in content %}
+
+            {% if section.has_heading_link %}
+                <h3 class="pt-4 pb-1" style="display: flex; align-items: center;">
+                    <a href="{{ section.heading_link }}" style="text-decoration: none; color: black;" class="header-link pe-2" id="header-link">{{ section.heading }}</a>
+                    <span class="link-emoji" id="link-emoji">🔗</span>
+                </h3>
+            {% else %}
+                <h3 class="pt-4 pb-1">{{ section.heading }}</h3>
+            {% endif %}
 
 
-        <h3 class="pt-4 pb-1">Paths</h3>
-        <ol type="A">
-            <li class="pb-1">
-                <b>Community College Certification:</b>
-                <span>Requires a high school diploma. Note that while community colleges are often more affordable than boot camps, not all courses are accredited.</span>
-            </li>
-            <li  class="pb-1">
-                <b>Nonprofit Boot Camp:</b>
-                <span>These programs are free and open to individuals without a high school diploma.</span>
-            </li>
-            <li  class="pb-1">
-                <b>Coding Bootcamp: </b>
-                <span>If you lack a high school diploma but have financial resources, consider a specialized bootcamp, especially if time is limited.</span>
-            </li>
-            <li  class="pb-1">
-                <b>High School Diploma to Community College Certification:</b>
-                <span>Community College Certification if you lack a high school diploma and cannot access or afford a coding bootcamp.</span>
-            </li>
-        </ol>
+            {% for p in section.content %}
 
-        
-        <h3 class="pt-4 pb-1">Initial Course</h3>
+                {% if p.src %}
 
-        <p>Ensure that one of your initial courses focuses on a programming language, such as JavaScript, Python, Java, etc., Why?</p>
-        
-        <p>Commencing your technical interview preparation at the earliest possible juncture offers distinct advantages. Nevertheless, it is paramount to underscore the prerequisite of acquiring proficiency in a programming language before embarking on this endeavor. To facilitate this, it is recommended to prioritize the completion of your initial programming language course.</p>  
-        
-        <p>Furthermore, at the completion it is advisable to initiate the second step concurrently with the first, thus enabling you to commence the arduous and demanding process of dedicated technical interview practice even before you have concluded the first step. This approach ultimately serves to expedite your journey toward achieving mastery in this specialized domain.</p>
+                    {% if p.href %}
+                        <div class="text-center p-4">
+                            <a href="{{ p.href }}">
+                                <img src="{{ p.src }}" alt="{{ p.alt }}" class="img-fluid" style="border-radius: 10px; border: 1px solid #ededed26; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);">
+                            </a>
+                        </div>
+                    {% else %}
+                        <div class="text-center p-4">
+                            <img src="{{ p.src }}" alt="{{ p.alt }}" class="img-fluid" style="border-radius: 10px; border: 1px solid #ededed26; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);">
+                        </div>
+                    {% endif %}
 
-        
-        <h3 class="pt-4 pb-1">Retain School Projects</h3>
-        
-        <p>
-            <span>Retain all of your school projects in</span> 
-            <a href="https://github.com">GitHub</a> 
-            <span>and promptly commence the development of personal projects to enhance your résumé.</span>
-        </p>
-        
-        <p>Upon successful completion of your initial technical course, it is advisable to update your résumé and include a comprehensive selection of projects accomplished during the course. Furthermore, since you have completed your first technical course, it is prudent to embark on personal project development and subsequently incorporate them into your résumé.</p>
 
-        <p>For inspiration, one can explore YouTube for projects created by others in the field of their programming languages and technical skills, aiming to undertake similar initiatives. Ensuring the inclusion of these projects in your résumé is of paramount importance.</p> 
-        
-        <p>It is advisable to keep your résumé concise, usually limited to one page, you should strive to include as many pertinent projects as possible within this page, as they are deemed valuable experiential assets.</p>
+                {% elif p.multi_tags %}
+                    {% if p.callout and p.callout[0] %}
 
-        <div class="bd-callout bd-callout-warning">
-            <strong>
-                <span>Ensuring the availability of your projects on</span>
-                <a href="https://github.com">GitHub</a>
-                <span>is imperative.</span>
-            </strong>
-        </div>
-            
+                        <div class="bd-callout bd-callout-{{p.callout[1]}}">
+                            <strong>
+                                {% for tag in p.content %}
+                                    {% if tag.type == 'a' %}
+                                        <a href="{{ tag.href }}" style="">{{ tag.content }}</a>
+                                    {% else %}
+                                        <span>{{ tag.content }}</span>
+                                    {% endif %}
+                                {% endfor %}
+                            </strong>
+                        </div> 
+                        
+                    {% elif p.list and p.list[0] %}
+                        {% if p.list[1] == 'ul' %} 
+                        
+                            {% if p.link %}
+                            
+                                <ul> 
+                                    {% for data in p.content %}
+                                        <li>
+                                            <b>
+                                                {% for tag in data.title %}
+                                                    {% if tag.type == 'a' %}
+                                                        <a href="{{ tag.href }}">{{ tag.content }}</a>
+                                                    {% else %}
+                                                        <span>{{ tag.content }}</span>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </b>
+                                            <span>
+                                                {% for tag in data.content %}
+                                                    {% if tag.type == 'a' %}
+                                                        <a href="{{ tag.href }}">{{ tag.content }}</a>
+                                                    {% else %}
+                                                        <span>{{ tag.content }}</span>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
 
-        <h3 class="pt-4 pb-1">Internship</h3>
+                            {% else %}
 
-        <p>Initiate the process of applying for internships immediately upon the conclusion of your initial technical course. <p>Internships hold a distinct advantage over projects when it comes to enhancing your résumé, and in some cases, you can secure an internship even before completing your first technical course. The sooner you obtain an internship and include it on your résumé, the more it will bolster your chances of securing future employment. </p>
+                                <ul>
+                                    {% for tag in p.content %}
+                                        <li>
+                                            <b>{{ tag.title }}:</b>
+                                            <span>{{ tag.content }}</span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                
+                            {% endif %}
 
-        <div class="bd-callout bd-callout-info">
-            <strong>It is strongly recommend to prioritize paid internships as the preferred choice over unpaid ones.</strong>
-        </div>
+                        {% else %}
+                            {% if p.with_link %}
 
+                            <ol type="{{p.list[1]}}"> 
+                                {% for data in p.content %}
+                                    <li>
+                                        <b>
+                                            {% for tag in data.title %}
+                                                {% if tag.type == 'a' %}
+                                                    <a href="{{ tag.href }}">{{ tag.content }}</a>
+                                                {% else %}
+                                                    <span>{{ tag.content }}</span>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </b>
+                                        <span>
+                                            {% for tag in data.content %}
+                                                {% if tag.type == 'a' %}
+                                                    <a href="{{ tag.href }}">{{ tag.content }}</a>
+                                                {% else %}
+                                                    <span>{{ tag.content }}</span>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </span>
+                                    </li>
+                                {% endfor %}
+                            </ol>
+
+                            {% else %}
+
+                                <ol type="{{p.list[1]}}">
+                                    {% for tag in p.content %}
+                                        <li>
+                                            <b>{{ tag.title }}:</b>
+                                            <span>{{ tag.content }}</span>
+                                        </li>
+                                    {% endfor %}
+                                </ol>
+
+                            {% endif %}    
+
+                        {% endif %}
+
+                    {% else %}
+                    
+                        <p>
+                            {% for tag in p.content %}
+                                {% if tag.type == 'a' %}
+                                    <a href="{{ tag.href }}">{{ tag.content }}</a>
+                                {% else %}
+                                    <span>{{ tag.content }}</span>
+                                {% endif %}
+                            {% endfor %}
+                        </p>
+
+                    {% endif %}
+
+                {% elif p.callout and p.callout[0] %}
+
+                    <div class="bd-callout bd-callout-{{p.callout[1]}}">
+                        <strong>{{ p.content }}</strong>
+                    </div>  
+
+                {% else %}
+
+                    <p>{{ p.content }}</p>
+
+                {% endif %}
+
+            {% endfor %}
+        {% endfor %}
+ 
     </div>
 </div>
 

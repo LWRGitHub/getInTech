@@ -159,6 +159,33 @@
     --bd-callout-border: var(--bs-warning-border-subtle);
 }
 
+/* #link-emoji {
+    display: none;
+}
+      
+#header-link:hover + #link-emoji {
+    display: block;
+    color: red;
+} */
+
+.link-emoji {
+    display: none;  
+}
+    
+.header-link:hover + .link-emoji {
+    display: block;
+    color: red;
+}
+strong a {
+    color: #0280C8
+}
+
+strong a:hover {
+    color: #03659e;
+}
+
+/* color: #03659e; */
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
