@@ -678,7 +678,7 @@ class Swe_career_guide:
                     {
                         'title': 'Getting Started',
                         'heading': 'Technical Interview',
-                        'sub_heading': 'Please choose one of the following options (A, B, C, D, or E) to enhance your technical interview skills.', 
+                        'sub_heading': 'Choose one of the following options (A, B, C, D, or E) to enhance your technical interview skills.', 
                         'content': [
                             {
                                 'heading': 'Paths',
@@ -1369,41 +1369,60 @@ class Swe_career_guide:
             #############################
 
             {
-                'id': '1',
-                'title': 'Education',
+                'id': '3',
+                'title': 'Job_Search',
                 'pages' : [
 
 
-                    #################################################
-                    #                                               #
-                    #       __________________________________      # 
-                    #                                               #
-                    #################################################
+                    #############################################
+                    #                                           #
+                    #       3. Job Search / Getting Started     # 
+                    #                                           #
+                    #############################################
 
                     {
-                        'title': '',
-                        'heading': '',
-
-
-                        # ******* vvv Add Path e.g. >>> 1-C' vvv *************
-                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, ', # 
-
-
-                        'content': [
-                            # {
-                            #     'heading': '',
-                            #     'content': [
-                            #         {
-                            #             'title': '',
-                            #             'content': '',
-                            #         },
-                            #     ]
-                            # },
+                        'title': 'Getting Started',
+                        'heading': 'Job Search',
+                        'sub_heading': 'Carefully evaluate the following job search and educational programs (A, B, C, or D) for your consideration.', 'content': [
+                            {
+                                'heading': '',
+                                'content': [
+                                    # While participation in one of these programs is not necessary, doing so could make it much easier to secure a job. Particularly for those with no work experience and only a single educational certification.
+                                    {
+                                        'callout': [True, 'warning'],
+                                        'content': 'Participation in these programs can ease job acquisition, especially for those with no experience and a single educational certification, though it is not necessary.'
+                                    },
+                                ]
+                            },
+                            {
+                                'heading': 'Programs',
+                                'content': [
+                                    {
+                                        'multi_tags': True,
+                                        'list': [True, 'A'],
+                                        'content': [
+                                            {
+                                                'title': 'Work It Daily',
+                                                'content': '',
+                                            },
+                                            {
+                                                'title': 'Tangerine Search',
+                                                'content': '',
+                                            },
+                                            {
+                                                'title': 'Pathrise',
+                                                'content': '',
+                                            },
+                                        ]
+                                    },
+                                ],
+                            },
+                            
                             {
                                 'heading': '',
                                 'content': [
                                     {
-                                        'content':'.',
+                                        'content':'',
                                     },
                                     {
                                         'content':'',
@@ -1416,20 +1435,20 @@ class Swe_career_guide:
                                     {
                                         'content': ''
                                     },
-                                    {
-                                        'multi_tags': True,
-                                        'list': [True, 'ul'],
-                                        'content': [
-                                            {
-                                                'title': '',
-                                                'content': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'callout': [True, 'info'],
-                                        'content': ''
-                                    },
+                                    # {
+                                    #     'multi_tags': True,
+                                    #     'list': [True, 'ul'],
+                                    #     'content': [
+                                    #         {
+                                    #             'title': '',
+                                    #             'content': '' 
+                                    #         },
+                                    #     ]
+                                    # },
+                                    # {
+                                    #     'callout': [True, 'info'],
+                                    #     'content': ''
+                                    # },
                                     # {
                                     #     'multi_tags': True, 
                                     #     'content': [
