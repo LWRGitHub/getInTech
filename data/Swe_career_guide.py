@@ -335,13 +335,6 @@ class Swe_career_guide:
                                                     },
                                                 ],
                                             },
-                                        ]
-                                    },
-                                    {
-                                        'multi_tags': True,
-                                        'list': [True, 'ul'],
-                                        'link': True,
-                                        'content': [
                                             {
                                                 'title': [
                                                     {
@@ -363,10 +356,8 @@ class Swe_career_guide:
                                         'callout': [True, 'info'],
                                         'content': 'It is essential to successfully complete and obtain the certificate offered by your chosen program.'
                                     },
-                                    
                                 ]
                             },
-                            
                             {
                                 'heading': 'Code the Dream',
                                 'has_heading_link': True,
@@ -657,124 +648,10 @@ class Swe_career_guide:
                                             },
                                         ]
                                     },
-                                    # 
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                    
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'callout': [True, 'warning'],
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': ' ',
-                                                'href': '' 
-                                            },
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
                                 ]
                             },
                         ]
                     },
-
-
-
-
-
 
                 ]
             },
@@ -787,175 +664,190 @@ class Swe_career_guide:
             #####################################
 
             {
-                'id': '1',
-                'title': 'Education',
+                'id': '2',
+                'title': 'Technical Interview',
                 'pages' : [
 
 
-                    #################################################
-                    #                                               #
-                    #       __________________________________      # 
-                    #                                               #
-                    #################################################
+                    #########################################################
+                    #                                                       #
+                    #       2. Technical Interview / Getting Started        # 
+                    #                                                       #
+                    #########################################################
 
                     {
-                        'title': '',
-                        'heading': '',
-
-
-                        # ******* vvv Add Path e.g. >>> 1-C' vvv *************
-                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, ', # 
-
-
+                        'title': 'Getting Started',
+                        'heading': 'Technical Interview',
+                        'sub_heading': 'Please choose one of the following options (A, B, C, D, or E) to enhance your technical interview skills.', 
                         'content': [
-                            # {
-                            #     'heading': '',
-                            #     'content': [
-                            #         {
-                            #             'title': '',
-                            #             'content': '',
-                            #         },
-                            #     ]
-                            # },
                             {
-                                'heading': '',
+                                'heading': 'Paths',
                                 'content': [
-                                    {
-                                        'content':'.',
-                                    },
-                                    {
-                                        'content':'',
-                                    },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'content': ''
-                                    },
                                     {
                                         'multi_tags': True,
-                                        'list': [True, 'ul'],
+                                        'list': [True, 'A'],
                                         'content': [
                                             {
-                                                'title': '',
-                                                'content': '' 
+                                                'title': 'Structy',
+                                                'content': 'Structy provides efficient algorithm learning and mastery, targeting improved problem-solving skills for technical interview prep.',
+                                            },
+                                            {
+                                                'title': 'AlgoExpert',
+                                                'content': 'AlgoExpert offers resources for mastering coding interviews with detailed video lessons and practice problems focused on algorithms and data structures.',
+                                            },
+                                            {
+                                                'title': 'Coderbyte',
+                                                'content': 'Coderbyte offers coding challenges and technical assessments for developers and organizations.',
+                                            },
+                                            {
+                                                'title': 'Crack The Coding Interview',
+                                                'content': 'offers extensive resources for coding interview prep, including 189 programming questions with detailed solutions and strategies for problem-solving.',
+                                            },
+                                            {
+                                                'title': 'Coding Challenges',
+                                                'content': 'LeetCode focuses on interview prep, HackerRank offers coding tests for jobs, and ProjectEuler provides math-based programming puzzles.',
                                             },
                                         ]
                                     },
                                     {
+                                        'multi_tags': True, 
                                         'callout': [True, 'info'],
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                    
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'callout': [True, 'warning'],
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
                                         'content': [
                                             {
                                                 'type': 'span',
-                                                'content': '' 
+                                                'content': 'Option "E" offers a no-cost access option to challenging technical coding exercises, demanding persistence but enabling mastery of advanced skills. And if you are struggling with coding problems, ' 
                                             },
                                             {
                                                 'type': 'a',
-                                                'content': '',
-                                                'href': '' 
+                                                'content': 'TechCareerTime.com',
+                                                'href': 'https://techcareertime.com/search_solutions/None/0' 
                                             },
+                                            {
+                                                'type': 'span',
+                                                'content': 'offers help for free. Just search for challenge in the'
+                                            },
+                                            {
+                                                'type': 'a',
+                                                'content': 'Coding Solutions',
+                                                'href': 'https://techcareertime.com/search_solutions/None/0' 
+                                            },
+                                            {
+                                                'type': 'span',
+                                                'content': 'tab.'
+                                            }
                                         ]
                                     },
+                                ],
+                            },
+                            # {
+                            #     'heading': 'Paths',
+                            #     'content': [
+                            #         {
+                            #             'multi_tags': True,
+                            #             'list': [True, 'A'],
+                            #             'link': True,
+                            #             'content': [
+                            #                 {
+                            #                     'title': [
+                            #                         {
+                            #                             'type': 'a',
+                            #                             'content': 'Structy',
+                            #                             'href': '/swe_career_guide/Technical_Interview/Structy'
+                            #                         },
+                            #                     ],
+                            #                     'content': [
+                            #                         {
+                            #                             'type': 'span',
+                            #                             'content': 'Structy provides efficient algorithm learning and mastery, targeting improved problem-solving skills for technical interview prep.'
+                            #                         },
+                            #                     ],
+                            #                 },
+                            #                 {
+                            #                     'title': [
+                            #                         {
+                            #                             'type': 'a',
+                            #                             'content': 'AlgoExpert',
+                            #                             'href': '/swe_career_guide/Technical_Interview/AlgoExpert'
+                            #                         },
+                            #                     ],
+                            #                     'content': [
+                            #                         {
+                            #                             'type': 'span',
+                            #                             'content': 'AlgoExpert offers resources for mastering coding interviews with detailed video lessons and practice problems focused on algorithms and data structures.'
+                            #                         },
+                            #                     ],
+                            #                 },
+                            #                 {
+                            #                     'title': [
+                            #                         {
+                            #                             'type': 'a',
+                            #                             'content': 'Coderbyte',
+                            #                             'href': '/swe_career_guide/Technical_Interview/Coderbyte'
+                            #                         },
+                            #                     ],
+                            #                     'content': [
+                            #                         {
+                            #                             'type': 'span',
+                            #                             'content': 'Coderbyte offers coding challenges and technical assessments for developers and organizations.'
+                            #                         },
+                            #                     ],
+                            #                 },
+                            #                 {
+                            #                     'title': [
+                            #                         {
+                            #                             'type': 'a',
+                            #                             'content': 'Crack The Coding Interview',
+                            #                             'href': '/swe_career_guide/Technical_Interview/Crack_The_Coding_Interview'
+                            #                         },
+                            #                     ],
+                            #                     'content': [
+                            #                         {
+                            #                             'type': 'span',
+                            #                             'content': 'offers extensive resources for coding interview prep, including 189 programming questions with detailed solutions and strategies for problem-solving.'
+                            #                         },
+                            #                     ],
+                            #                 },
+                            #                 {
+                            #                     'title': [
+                            #                         {
+                            #                             'type': 'a',
+                            #                             'content': 'Coding Challenges:',
+                            #                             'href': '/swe_career_guide/Technical_Interview/Coding_Challenges'
+                            #                         },
+                            #                     ],
+                            #                     'content': [
+                            #                         {
+                            #                             'type': 'span',
+                            #                             'content': 'LeetCode focuses on interview prep, HackerRank offers coding tests for jobs, and ProjectEuler provides math-based programming puzzles.'
+                            #                         },
+                            #                     ],
+                            #                 },
+                            #             ]
+                            #         },
+                            #         {
+                            #             'callout': [True, 'info'],
+                            #             'content': 'Option "E" offers a cost-free version of challenging technical coding exercises, accessible despite financial constraints. It demands persistence but enables mastery of advanced coding skills.'
+                            #         },
+                            #     ],
+                            # },
+                            
+                            {
+                                'heading': 'Objective',
+                                'content': [
                                     {
-                                        'content': ''
+                                        'content':'Your objective in this endeavor is to attain a high level of proficiency in technical interviews, enabling you to effectively tackle coding challenges classified at the most demanding difficulty level, such as "Hard." Although this is your goal it is arguably unnecessary.',
                                     },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
                                 ]
                             },
                             {
-                                'heading': '',
+                                'heading': 'Understand',
                                 'content': [
                                     {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
-                                            },
-                                        ]
+                                        'content':"Many individuals secure employment without excelling in technical interviews. It's entirely possible to secure a job even if you struggle with technical interviews, although this may limit your access to various opportunities. It's important to note that most technical interviews are typically of moderate difficulty, with some being easier. In certain cases, you may not even encounter a technical interview.",
                                     },
                                     {
-                                        'content': ''
+                                        'content':'However, your prospects of securing a job significantly improve if you can successfully navigate technical interviews at the "Hard" difficulty level. If you find that completing options A, B, C, or D still does not enable you to excel in coding challenges at the highest difficulty level. You may want to contemplate completing one additional or all of options A, B, C, & D. If challenges persist despite these efforts, you may want to explore option "E."',
                                     },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': ' ',
-                                                'href': '' 
-                                            },
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
                                 ]
                             },
                         ]
@@ -964,848 +856,504 @@ class Swe_career_guide:
 
                     #################################################
                     #                                               #
-                    #       __________________________________      # 
+                    #       2. Technical Interview / A. Structy     # 
                     #                                               #
                     #################################################
 
                     {
-                        'title': '',
-                        'heading': '',
-
-
-                        # ******* vvv Add Path e.g. >>> 1-C' vvv *************
-                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, ', # 
-
-
+                        'title': 'Structy',
+                        'heading': 'Structy',
+                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, 2-A', 
                         'content': [
-                            # {
-                            #     'heading': '',
-                            #     'content': [
-                            #         {
-                            #             'title': '',
-                            #             'content': '',
-                            #         },
-                            #     ]
-                            # },
                             {
                                 'heading': '',
                                 'content': [
                                     {
-                                        'content':'.',
-                                    },
-                                    {
-                                        'content':'',
+                                        'callout': [True, 'warning'],
+                                        'content': 'Proficiency in JavaScript, Python, C++, or Java is required.'
                                     },
                                 ]
                             },
                             {
-                                'heading': '',
+                                'heading': 'Structy.net',
+                                'has_heading_link': True,
+                                'heading_link': 'https://structy.net/',
                                 'content': [
                                     {
-                                        'content': ''
+                                        'content': 'Structy is a specialized online platform designed to streamline the learning of algorithms and data structures, making it an ideal resource for those preparing for technical interviews.'
                                     },
                                     {
-                                        'multi_tags': True,
-                                        'list': [True, 'ul'],
-                                        'content': [
-                                            {
-                                                'title': '',
-                                                'content': '' 
-                                            },
-                                        ]
+                                        'content': 'The platform offers a structured curriculum that includes video tutorials, practical coding challenges, and detailed solutions, all aimed at enhancing problem-solving abilities in programming.'
+                                    },
+                                    {
+                                        'content': 'The courses are tailored to build a deep understanding of key concepts, ensuring that learners not only memorize algorithms but also grasp their applications. This methodical approach helps in developing the skills necessary to solve new and complex problems, a critical requirement for technical interviews at top tech firms.'
                                     },
                                     {
                                         'callout': [True, 'info'],
-                                        'content': ''
+                                        'content': 'Structy is often easier to grasp, primarily due to the availability of video explanations that enhance understanding.'
                                     },
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                    
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'callout': [True, 'warning'],
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
                                     {
                                         'multi_tags': True, 
+                                        'callout': [True, 'info'],
                                         'content': [
                                             {
                                                 'type': 'span',
-                                                'content': '' 
+                                                'content': 'I highly recommend' 
                                             },
                                             {
                                                 'type': 'a',
-                                                'content': '',
-                                                'href': '' 
+                                                'content': 'Structy',
+                                                'href': 'https://structy.net/' 
                                             },
+                                            {
+                                                'type': 'span',
+                                                'content': 'as it offers a straightforward and comprehensible approach, supplemented by an abundance of instructional videos that thoroughly elucidate every aspect.'
+                                            }
                                         ]
                                     },
                                     {
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
+                                        'src': '/static/img/structy.webp',
+                                        'alt': "The image is a logo on a vibrant green background. On the left, there is a stylized, three-dimensional structure resembling a building made of cubes, primarily in two shades of green, suggesting depth and perspective. To the right, the word 'structy' is written in a bold, sans-serif, lowercase font, in a lighter shade of green that complements the background. The design conveys a sense of structure and architectural design, fitting the name 'structy'.",
+                                        'href': 'https://structy.net'
+                                    }
                                 ]
                             },
                             {
-                                'heading': '',
+                                'heading': 'Structy Payment Options',
                                 'content': [
                                     {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
-                                            },
-                                        ]
+                                        'content': 'Structy provides two subscription options for its courses: a monthly plan, allowing access to all materials with the flexibility to cancel anytime, and an annual plan, which is a one-time payment offering significant savings and is our most popular option.'
                                     },
                                     {
-                                        'content': ''
+                                        'content': 'Payments for either subscription are processed through Stripe. The monthly option renews automatically, while the annual option does not.'
                                     },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': ' ',
-                                                'href': '' 
-                                            },
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
                                 ]
                             },
                         ]
                     },
 
 
-                    #################################################
-                    #                                               #
-                    #       __________________________________      # 
-                    #                                               #
-                    #################################################
+                    #####################################################
+                    #                                                   #
+                    #       2. Technical Interview / B. AlgoExpert      # 
+                    #                                                   #
+                    #####################################################
 
                     {
-                        'title': '',
-                        'heading': '',
-
-
-                        # ******* vvv Add Path e.g. >>> 1-C' vvv *************
-                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, ', # 
-
-
+                        'title': 'AlgoExpert',
+                        'heading': 'AlgoExpert',
+                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, 2-B', 
                         'content': [
-                            # {
-                            #     'heading': '',
-                            #     'content': [
-                            #         {
-                            #             'title': '',
-                            #             'content': '',
-                            #         },
-                            #     ]
-                            # },
                             {
                                 'heading': '',
                                 'content': [
                                     {
-                                        'content':'.',
-                                    },
-                                    {
-                                        'content':'',
+                                        'callout': [True, 'warning'],
+                                        'content': 'Familiarity with the Python programming language is a prerequisite.'
                                     },
                                 ]
                             },
                             {
-                                'heading': '',
+                                'heading': 'AlgoExpert.io',
+                                'has_heading_link': True,
+                                'heading_link': 'https://www.algoexpert.io/',
                                 'content': [
                                     {
-                                        'content': ''
+                                        'content':'AlgoExpert is a specialized educational platform designed to help users prepare for software engineering interviews, particularly focusing on algorithmic and coding challenges.',
                                     },
                                     {
-                                        'multi_tags': True,
-                                        'list': [True, 'ul'],
+                                        'content':'It offers a curated set of coding problems, which are commonly used to assess problem-solving skills during technical interviews at major tech companies. The platform provides detailed video explanations for each problem, aiming to teach users both how to solve specific problems and how to approach algorithmic thinking more broadly.',
+                                    },
+                                    {
+                                        'content':'Additionally, AlgoExpert includes features like a coding workspace, language flexibility, and mock interviews. These tools are designed to simulate real interview environments, allowing users to practice under conditions similar to actual technical interviews.',
+                                    },
+                                    {
+                                        'multi_tags': True, 
                                         'content': [
                                             {
-                                                'title': '',
-                                                'content': '' 
+                                                'type': 'span',
+                                                'content': "This comprehensive preparation is geared towards boosting users' confidence and enhancing their problem-solving skills in a technical interview context. For more specific details, visiting their website at" 
+                                            },
+                                            {
+                                                'type': 'a',
+                                                'content': 'AlgoExpert.io',
+                                                'href': 'https://www.algoexpert.io/' 
+                                            },
+                                            {
+                                                'type': 'span',
+                                                'content': "would be the best approach." 
                                             },
                                         ]
                                     },
                                     {
                                         'callout': [True, 'info'],
-                                        'content': ''
+                                        'content': 'AlgoExpert is often more straightforward and easier to understand, primarily because it offers video explanations that clarify complex concepts.'
                                     },
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                    
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'callout': [True, 'warning'],
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
+                                    {
+                                        'src': '/static/img/algoexpert.webp',
+                                        'alt': "AlgoExpert logo with an atomic symbol to the left of the white text on a navy blue background",
+                                        'href': 'https://www.algoexpert.io'
+                                    }
                                 ]
                             },
                             {
-                                'heading': '',
+                                'heading': 'Subscription-Based Mmodel',
                                 'content': [
                                     {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
-                                            },
-                                        ]
+                                        'content': 'AlgoExpert utilizes a subscription-based model, allowing users to access a wide range of educational materials tailored for coding interview preparation.'
                                     },
                                     {
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
-                                            },
-                                        ]
+                                        'content': 'The platform provides various subscription options, catering to different learning needs and preferences. For the most accurate and up-to-date information on pricing and available packages, it is advisable to consult the official AlgoExpert website.'
                                     },
                                     {
-                                        'content': ''
+                                        'content': 'For the most accurate and up-to-date information on pricing and available packages, it is advisable to consult the official AlgoExpert website.'
                                     },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': ' ',
-                                                'href': '' 
-                                            },
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
                                 ]
                             },
                         ]
                     },
 
 
-                    #################################################
-                    #                                               #
-                    #       __________________________________      # 
-                    #                                               #
-                    #################################################
+                    #####################################################
+                    #                                                   #
+                    #       2. Technical Interview / C. Coderbyte       # 
+                    #                                                   #
+                    #####################################################
 
                     {
-                        'title': '',
-                        'heading': '',
-
-
-                        # ******* vvv Add Path e.g. >>> 1-C' vvv *************
-                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, ', # 
+                        'title': 'Coderbyte',
+                        'heading': 'Coderbyte',
+                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, 2-C', # 
 
 
                         'content': [
-                            # {
-                            #     'heading': '',
-                            #     'content': [
-                            #         {
-                            #             'title': '',
-                            #             'content': '',
-                            #         },
-                            #     ]
-                            # },
                             {
                                 'heading': '',
                                 'content': [
                                     {
-                                        'content':'.',
-                                    },
-                                    {
-                                        'content':'',
+                                        'callout': [True, 'warning'],
+                                        'content': 'Proficiency in the programming language JavaScript is required'
                                     },
                                 ]
                             },
                             {
-                                'heading': '',
+                                'heading': 'CoderByte.com',
+                                'has_heading_link': True,
+                                'heading_link': 'https://coderbyte.com',
                                 'content': [
                                     {
-                                        'content': ''
+                                        'content':"Coderbyte is a platform designed for both individuals and organizations, focusing on improving coding skills and conducting technical assessments.",
                                     },
                                     {
-                                        'multi_tags': True,
-                                        'list': [True, 'ul'],
-                                        'content': [
-                                            {
-                                                'title': '',
-                                                'content': '' 
-                                            },
-                                        ]
+                                        'content':"It offers a range of coding challenges and projects that help developers prepare for interviews and enhance their programming abilities. The platform is also utilized by companies to evaluate potential candidates efficiently through automated scoring and structured interviews, promoting a comprehensive understanding of a candidate's technical skills.",
+                                    },
+                                    {
+                                        'content':'Individuals using Coderbyte can access a plethora of coding challenges that range in difficulty, enabling them to develop their problem-solving skills at their own pace. The platform also offers educational resources and a community forum where developers can interact and share insights. ',
                                     },
                                     {
                                         'callout': [True, 'info'],
-                                        'content': ''
+                                        'content': 'Coderbyte is often more accessible and easier to understand, largely thanks to the video explanations that accompany its content.'
                                     },
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                    
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'callout': [True, 'warning'],
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
+                                    {
+                                        'src': '/static/img/coderbyte.webp',
+                                        'alt': 'The image features the logo of "Coderbyte" on a dark background. The logo is predominantly white and consists of the word "coderbyte" in lowercase letters, with a stylized representation of a "C" to the left that incorporates elements reminiscent of both a crescent moon and a digital data stream pattern.',
+                                        'href': 'https://coderbyte.com'
+                                    }
                                 ]
                             },
                             {
-                                'heading': '',
+                                'heading': 'Subscription Options',
                                 'content': [
                                     {
                                         'multi_tags': True, 
                                         'content': [
                                             {
-                                                'type': 'span',
-                                                'content': '' 
+                                                'type': 'a',
+                                                'content': 'Coderbyte',
+                                                'href': 'https://coderbyte.com' 
                                             },
                                             {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
+                                                'type': 'span',
+                                                'content': 'offers various subscription plans for its coding challenge platform. Users can choose a monthly subscription, an annual subscription, or a one-time payment option for 90 days access.' 
                                             },
                                         ]
                                     },
                                     {
-                                        'content': ''
+                                        'content':" Each subscription grants access to over 300 coding challenges, interview prep materials, exclusive video tutorials, and enhanced code compilers. Additional features include Big-O runtime analysis and simulated interviews, catering to both beginners and seasoned developers preparing for tech interviews.",
                                     },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': ' ',
-                                                'href': '' 
-                                            },
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
                                 ]
                             },
                         ]
                     },
 
 
-                    #################################################
-                    #                                               #
-                    #       __________________________________      # 
-                    #                                               #
-                    #################################################
+                    #####################################################################
+                    #                                                                   #
+                    #       2. Technical Interview / D. Crack The Coding Interview      # 
+                    #                                                                   #
+                    #####################################################################
 
                     {
-                        'title': '',
-                        'heading': '',
-
-
-                        # ******* vvv Add Path e.g. >>> 1-C' vvv *************
-                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, ', # 
-
-
+                        'title': 'Crack The Coding Interview',
+                        'heading': 'Crack The Coding Interview',
+                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, 2-D',
                         'content': [
-                            # {
-                            #     'heading': '',
-                            #     'content': [
-                            #         {
-                            #             'title': '',
-                            #             'content': '',
-                            #         },
-                            #     ]
-                            # },
                             {
-                                'heading': '',
+                                'heading': 'Cracking the Coding Interview',
+                                'has_heading_link': True,
+                                'heading_link': 'https://www.crackingthecodinginterview.com/',
                                 'content': [
                                     {
-                                        'content':'.',
+                                        'content':'Cracking the Coding Interview, is a comprehensive resource for aspiring software engineers preparing for technical interviews.',
                                     },
                                     {
-                                        'content':'',
+                                        'content':'Authored by Gayle Laakmann McDowell, the book offers 189 programming questions that cover essential topics such as data structures, algorithms, and big O time complexity. It not only provides detailed solutions and strategies for tackling interview questions but also includes insights into the hiring practices of top tech companies.',
                                     },
+                                    {
+                                        'content':'With additional advice on behavioral questions and interview etiquette, the book aims to equip candidates with the tools needed to excel in their interviews.',
+                                    },
+                                    {
+                                        'src': '/static/img/cracking-the-coding-interview.webp',
+                                        'alt': "The image shows a stack of bright lime green books titled CRACKING the CODING INTERVIEW with the subtitle 189 Programming Questions & Solutions by Gayle Laakmann McDowell, 6th Edition. On the cover, there's an illustration of a classic alarm clock with visible gears, signifying the intricate and time-sensitive nature of preparing for coding interviews. The books are arranged in a slightly fanned-out stack, with the frontmost book standing upright and facing the viewer.",
+                                        'href': 'https://www.crackingthecodinginterview.com'
+                                    }
                                 ]
                             },
                             {
-                                'heading': '',
+                                'heading': 'Pros and Cons',
                                 'content': [
                                     {
-                                        'content': ''
-                                    },
-                                    {
-                                        'multi_tags': True,
-                                        'list': [True, 'ul'],
+                                        'multi_tags': True, 
                                         'content': [
                                             {
-                                                'title': '',
-                                                'content': '' 
+                                                'type': 'a',
+                                                'content': 'Cracking the Coding Interview',
+                                                'href': 'https://www.crackingthecodinginterview.com' 
+                                            },
+                                            {
+                                                'type': 'span',
+                                                'content': 'is available as a one-time purchase, offering permanent ownership rather than a subscription model.' 
                                             },
                                         ]
+                                    },
+                                    {
+                                        'content': 'This means that with a single purchase, you gain indefinite access to all of the book\'s content, allowing for continuous learning and review as needed without any recurring fees.'
+                                    },
+                                    {
+                                        'content': 'This approach ensures that learners can revisit the material anytime as they prepare for technical interviews or seek to refresh their knowledge.'
+                                    },
+                                    {
+                                        'callout': [True, 'warning'],
+                                        'content': 'Proficiency in efficiently comprehending and assimilating information from written materials is essential. '
                                     },
                                     {
                                         'callout': [True, 'info'],
-                                        'content': ''
+                                        'content': 'Familiarity with strongly typed programming languages and advanced algorithms—such as graphs, trees, and linked lists—is highly recommended.'
                                     },
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                    
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'callout': [True, 'warning'],
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': ' ',
-                                                'href': '' 
-                                            },
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
                                 ]
                             },
                         ]
                     },
 
 
-                    #################################################
-                    #                                               #
-                    #       __________________________________      # 
-                    #                                               #
-                    #################################################
+                    #############################################################
+                    #                                                           #
+                    #       2. Technical Interview / E. Coding Challenges       # 
+                    #                                                           #
+                    #############################################################
 
                     {
-                        'title': '',
-                        'heading': '',
-
-
-                        # ******* vvv Add Path e.g. >>> 1-C' vvv *************
-                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, ', # 
-
-
+                        'title': 'Coding Challenges',
+                        'heading': 'Coding Challenges',
+                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, 2-E',
                         'content': [
-                            # {
-                            #     'heading': '',
-                            #     'content': [
-                            #         {
-                            #             'title': '',
-                            #             'content': '',
-                            #         },
-                            #     ]
-                            # },
                             {
                                 'heading': '',
                                 'content': [
                                     {
-                                        'content':'.',
-                                    },
-                                    {
-                                        'content':'',
-                                    },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'content': ''
-                                    },
-                                    {
-                                        'multi_tags': True,
-                                        'list': [True, 'ul'],
-                                        'content': [
-                                            {
-                                                'title': '',
-                                                'content': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
+                                        'multi_tags': True, 
                                         'callout': [True, 'info'],
-                                        'content': ''
+                                        'content': [
+                                            {
+                                                'type': 'span',
+                                                'content': 'If finances are tight,' 
+                                            },
+                                            {
+                                                'type': 'a',
+                                                'content': 'TechCareerTime.com',
+                                                'href': 'https://techcareertime.com/search_solutions/None/0' 
+                                            },
+                                            {
+                                                'type': 'span',
+                                                'content': 'can help for free. Simply search for coding challenges in the ' 
+                                            },
+                                            {
+                                                'type': 'a',
+                                                'content': 'Coding Solutions',
+                                                'href': 'https://techcareertime.com/search_solutions/None/0' 
+                                            },
+                                            {
+                                                'type': 'span',
+                                                'content': 'tab to enhance your skills.' 
+                                            },
+                                        ]
                                     },
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
+                                ]
+                            },
+                            {
+                                'heading': 'Accessing Coding Challenges',
+                                'content': [
+                                    {
+                                        'content':'To use LeetCode, HackerRank, and Project Euler, sign up on their respective websites. LeetCode and HackerRank are ideal for practicing coding problems for tech interviews, while Project Euler focuses on mathematical programming challenges. Each site allows you to solve problems, submit solutions, and track progress.',
+                                    },
                                     
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'callout': [True, 'warning'],
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
+                                    {
+                                        'content':'To use LeetCode, HackerRank, and Project Euler, sign up on their respective websites. LeetCode and HackerRank are ideal for practicing coding problems for tech interviews, while Project Euler focuses on mathematical programming challenges. Each site allows you to solve problems, submit solutions, and track progress.',
+                                    },
                                     {
                                         'multi_tags': True, 
                                         'content': [
                                             {
                                                 'type': 'span',
-                                                'content': '' 
+                                                'content': 'Should you prefer not to invest in premium versions, it is frequently possible to find instructional YouTube videos elucidating solutions to specific problems. Moreover, there is a wealth of online resources available across various languages, elucidating and offering solutions for a wide range of issues. Accessing these resources is as simple as utilizing a our website' 
                                             },
                                             {
                                                 'type': 'a',
-                                                'content': '',
-                                                'href': '' 
+                                                'content': 'TechCareerTime.com',
+                                                'href': 'https://techcareertime.com/search_solutions/None/0' 
+                                            },
+                                            
+                                            {
+                                                'type': 'span',
+                                                'content': '.' 
                                             },
                                         ]
                                     },
                                     {
-                                        'content': ''
+                                        'content':'You can utilize TechCareerTime.com to deepen your understanding of coding challenges and access the correct solutions. Our site offers some solutions with video explanations and links to external resources that further clarify the coding problems you are tackling.',
                                     },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
+                                    {
+                                        'multi_tags': True, 
+                                        'callout': [True, 'info'],
+                                        'content': [
+                                            {
+                                                'type': 'a',
+                                                'content': 'HackerRank',
+                                                'href': 'https://www.hackerrank.com' 
+                                            },
+                                            {
+                                                'type': 'span',
+                                                'content': 'and' 
+                                            },
+                                            {
+                                                'type': 'a',
+                                                'content': 'LeetCode',
+                                                'href': 'https://leetcode.com' 
+                                            },
+                                            {
+                                                'type': 'span',
+                                                'content': 'provide both free and premium options, while' 
+                                            },
+                                            {
+                                                'type': 'a',
+                                                'content': 'Project Euler',
+                                                'href': 'https://projecteuler.net' 
+                                            },
+                                            {
+                                                'type': 'span',
+                                                'content': 'is entirely free.' 
+                                            },
+                                        ]
+                                    },
+                                ]
+                            },
+                            # 
+                            {
+                                'heading': 'LeetCode',
+                                'has_heading_link': True,
+                                'heading_link': 'https://leetcode.com/',
+                                'content': [
+                                     {
+                                        'multi_tags': True, 
+                                        'content': [
+                                            {
+                                                'type': 'a',
+                                                'content': 'LeetCode',
+                                                'href': 'https://leetcode.com/' 
+                                            },
+                                            {
+                                                'type': 'span',
+                                                'content': 'is a premier online platform renowned for helping users enhance their programming skills through a vast array of coding challenges. It caters to both beginners and experienced programmers with problems that range in difficulty, covering various aspects of computer science and software engineering.' 
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        'content':'LeetCode is particularly valuable for those preparing for technical interviews, offering practice questions similar to those asked by major tech companies. It provides a supportive community and tools for users to track their progress and discuss strategies.',
+                                    },
+                                    {
+                                        'src': '/static/img/leetcode.webp',
+                                        'alt': "The image is a logo for 'LeetCode'. It features an orange and white circular symbol that resembles both a power button and a stylized letter 'L', which is integrated with the letter 'C'. Next to this symbol is the word 'LeetCode' in a sleek, sans-serif font. The letters 'Leet' are in white, and 'Code' is in orange, maintaining the color scheme from the symbol. The logo is set against a dark gray background, giving it a clean and modern appearance.",
+                                        'href': 'https://leetcode.com/'
+                                    }
                                 ]
                             },
                             {
-                                'heading': '',
+                                'heading': 'HackerRank',
+                                'has_heading_link': True,
+                                'heading_link': 'https://www.hackerrank.com/',
                                 'content': [
                                     {
                                         'multi_tags': True, 
                                         'content': [
                                             {
-                                                'type': 'span',
-                                                'content': '' 
+                                                'type': 'a',
+                                                'content': 'HackerRank',
+                                                'href': 'https://www.hackerrank.com/' 
                                             },
                                             {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
+                                                'type': 'span',
+                                                'content': 'is a dynamic online platform that serves as a crucial tool for both developers aiming to enhance their programming skills and companies seeking to improve their tech hiring processes.' 
                                             },
                                         ]
                                     },
                                     {
-                                        'content': ''
+                                        'content':'It offers a variety of coding challenges, real-world programming tasks, and technical interview simulations that are designed to reflect the actual demands of tech jobs. With its comprehensive suite of tools, HackerRank facilitates skill-based assessments and efficient candidate screening, helping over 3,000 companies worldwide streamline their hiring process. ',
                                     },
+                                    {
+                                        'src': '/static/img/hacker-rank.webp',
+                                        'alt': 'The image is a logo for HackerRank. It features the name "HackerRank" in a sans-serif font, primarily in black with the "R" in "Rank" capitalized and in green. A green square is positioned next to this "R," aligning with its upper right corner. The design is sleek and modern, with a color contrast that emphasizes the Rank aspect of the name.',
+                                        'href': 'https://www.hackerrank.com'
+                                    }
                                 ]
                             },
                             {
-                                'heading': '',
+                                'heading': 'Project Euler',
+                                'has_heading_link': True,
+                                'heading_link': 'https://projecteuler.net/',
                                 'content': [
                                     {
                                         'multi_tags': True, 
                                         'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
+                                            
                                             {
                                                 'type': 'a',
-                                                'content': ' ',
-                                                'href': '' 
+                                                'content': 'Project Euler',
+                                                'href': 'https://projecteuler.net/' 
                                             },
                                             {
                                                 'type': 'span',
-                                                'content': '' 
+                                                'content': 'is an online platform that offers a series of challenging mathematical and computer programming problems designed to require more than just mathematical insights to solve. This initiative aims to encourage learning through fun and recreational activities, catering to anyone with a curiosity for mathematics and problem-solving.' 
                                             },
                                         ]
                                     },
                                     {
-                                        'content': ''
+                                        'content':' Participants can progress at their own pace, learning new concepts by solving problems, which prepares them for more complex challenges ahead. The site has a global community of registered members, highlighting its diverse and inclusive nature. ',
                                     },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
+                                    {
+                                        'src': '/static/img/project-euler-net.webp',
+                                        'alt': "The image shows the logo for 'Project Euler.net'. The name 'Project Euler' is in a large, serif font, predominantly in a brown color, which conveys a classic and academic feel, appropriate for a project named after the mathematician Leonhard Euler. Below 'Project Euler', there is '.net' in a much smaller, sans-serif font, indicating the website's domain. The text is against a light background which enhances the visibility of the brown color palette used for the text.",
+                                        'href': 'https://projecteuler.net'
+                                    }
                                 ]
                             },
                         ]

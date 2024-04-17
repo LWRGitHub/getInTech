@@ -53,14 +53,17 @@ def swe_career_guide(step, step_sections):
 
     context = {}
     for step_data in Swe_career_guide().swe_career_guide:
-        if step_data["title"] == step:
-            # context = step_data
+        
+        if step_data["title"].replace(" ", "_") == step:
+            
             for page in step_data["pages"]:
                 if page["title"].replace(" ", "_") == step_sections:
                     print('here*****')
                     context = page
                     break
             break
+
+        print('context: ', context)
 
     return render_template('pages/career_guide/guide.html', **context)
 
