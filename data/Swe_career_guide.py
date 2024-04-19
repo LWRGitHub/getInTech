@@ -1494,15 +1494,16 @@ class Swe_career_guide:
                         'heading': 'Work It Daily',
                         'sub_heading': 'SWE (Software Engineer) Career Guide Path, 3-A',
                         'content': [
-                            # {
-                            #     'heading': '',
-                            #     'content': [
-                            #         {
-                            #             'title': '',
-                            #             'content': '',
-                            #         },
-                            #     ]
-                            # },
+                            {
+                                'heading': '',
+                                'content': [
+                                    {
+                                        'src': '/static/img/work-it-daily.webp',
+                                        'alt': "The image displays a logo consisting of the phrase 'WORK IT DAILY' in uppercase, bold, sans-serif lettering. The color of the text is a vibrant blue. To the left of the text is a graphic element that resembles a calendar icon with a play button symbol inside, suggesting a focus on daily progress or activity. The icon is also in the same shade of blue, creating a cohesive and energetic visual identity.",
+                                        'href': 'https://www.workitdaily.com/'
+                                    }
+                                ]
+                            },
                             {
                                 'heading': 'Exploring Work It Daily',
                                 'has_heading_link': True,
@@ -1529,6 +1530,10 @@ class Swe_career_guide:
                                     {
                                         'content':'The site provides access to various courses and resources that cover essential aspects of career development, from crafting impactful resumes to mastering job interviews and networking effectively.',
                                     },
+                                    {
+                                        'callout': [True, 'info'],
+                                        'content': 'Ideal for self-driven job seekers willing to do the work on their own, yet seeking guidance.'
+                                    },
                                 ]
                             },
                             {
@@ -1539,6 +1544,10 @@ class Swe_career_guide:
                                     },
                                     {
                                         'content':'This fosters a supportive environment conducive to learning and improvement. Members can choose from different membership levels, each providing tailored services to meet diverse needs, from recent graduates to seasoned professionals.',
+                                    },
+                                    {
+                                        'callout': [True, 'info'],
+                                        'content': 'Provides instruction not only on securing employment but also on cultivating your professional network to ensure a continuous ability to find job opportunities.'
                                     },
                                 ]
                             },
@@ -1569,13 +1578,17 @@ class Swe_career_guide:
                                         'content':"Her vision is evident in the proactive, member-focused services the platform offers, aimed at reducing the common frustrations associated with job searching and career progression.",
                                     },
                                     {
+                                        'content':"This approach has positioned Work It Daily as a pivotal resource for those looking to significantly improve their professional lives and achieve career satisfaction.",
+                                    },
+                                ]
+                            },
+                            {
+                                'heading': 'Membership Tiers',
+                                'content': [
+                                    {
                                         'multi_tags': True, 
                                         
                                         'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': "This approach has positioned "
-                                            },
                                             {
                                                 'type': 'a',
                                                 'content': 'Work It Daily',
@@ -1583,143 +1596,16 @@ class Swe_career_guide:
                                             },
                                             {
                                                 'type': 'span',
-                                                'content': "as a pivotal resource for those looking to significantly improve their professional lives and achieve career satisfaction."
+                                                'content': "offers three main membership plans at a significantly lower rate than most competitors. The Standard Membership includes a premium Job Search Accountability Program, weekly group coaching sessions, and access to a private community."
                                             },
                                         ]
                                     },
                                     {
-                                        'content':"",
-                                    },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'multi_tags': True,
-                                    #     'list': [True, 'ul'],
-                                    #     'content': [
-                                    #         {
-                                    #             'title': '',
-                                    #             'content': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                    
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'callout': [True, 'warning'],
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
-                                            },
-                                        ]
+                                        'content': 'The Premium Membership, most popular, provides unlimited private email coaching in addition to the standard features.'
                                     },
                                     {
-                                        'content': ''
+                                        'content': 'The Elite Membership, offers exclusive one-on-one coaching with J.T., the founder, and unlimited personal email coaching. All plans can be canceled anytime. For more detailed information, you can visit their pricing page.'
                                     },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': ' ',
-                                                'href': '' 
-                                            },
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
                                 ]
                             },
                         ]
@@ -1737,24 +1623,14 @@ class Swe_career_guide:
                         'heading': 'Tangerine Search',
                         'sub_heading': 'SWE (Software Engineer) Career Guide Path, 3-B', 
                         'content': [
-                            # {
-                            #     'heading': '',
-                            #     'content': [
-                            #         {
-                            #             'title': '',
-                            #             'content': '',
-                            #         },
-                            #     ]
-                            # },
                             {
                                 'heading': '',
                                 'content': [
                                     {
-                                        'content':'.',
-                                    },
-                                    {
-                                        'content':'',
-                                    },
+                                        'src': '/static/img/tangerine-search.webp',
+                                        'alt': "The image displays the word tangerine in lowercase, modern sans-serif font, colored in a soft orange hue. The i in tangerine is dotted with a stylized orange circle that loops around the word, suggesting a tangerine fruit and giving a fresh, clean, and modern aesthetic to the brand's logo.",
+                                        'href': 'https://tangerine-search.ck.page/products/from-resume-refresh-to-interview-ready-'
+                                    }
                                 ]
                             },
                             {
@@ -1790,195 +1666,129 @@ class Swe_career_guide:
                                 ]
                             },
                             {
-                                'heading': '',
+                                'heading': "Tangerine's 4-Week Guide",
                                 'content': [
                                     {
-                                        'content': ''
+                                        'content': 'Enhance your job-seeking prowess with our acclaimed 4-Week Email Course, offering comprehensive tools and insights:'
                                     },
                                     {
                                         'multi_tags': True,
-                                        'list': [True, 'ul'],
+                                        'list': [True, 'ol'],
                                         'content': [
                                             {
-                                                'title': '',
-                                                'content': '' 
+                                                'title': 'Devise',
+                                                'content': 'Build a measurable job search plan with clear objectives.' 
+                                            },
+                                            {
+                                                'title': 'Identify',
+                                                'content': 'Analyze personal competencies and development areas for effective articulation.' 
+                                            },
+                                            {
+                                                'title': 'Leverage',
+                                                'content': 'Optimize your LinkedIn presence for networking with recruiters and hiring managers.' 
+                                            },
+                                            {
+                                                'title': 'Access',
+                                                'content': 'Gain access to professional recruitment resources and methodologies for achieving career aspirations.' 
                                             },
                                         ]
                                     },
-                                    {
-                                        'callout': [True, 'info'],
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                    
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'callout': [True, 'warning'],
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
                                 ]
                             },
                             {
-                                'heading': '',
+                                'heading': 'Reasonable Pricing',
                                 'content': [
                                     {
                                         'multi_tags': True, 
                                         'content': [
                                             {
-                                                'type': 'span',
-                                                'content': '' 
+                                                'type': 'a',
+                                                'content': 'Tangerine Search',
+                                                'href': 'https://tangerine-search.ck.page/products/from-resume-refresh-to-interview-ready-' 
                                             },
                                             {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
+                                                'type': 'span',
+                                                'content': 'offers its job search course as a one-time payment option, priced significantly lower than many of its competitors. This affordable pricing strategy ensures broader accessibility without recurring costs.' 
                                             },
                                         ]
                                     },
-                                    {
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': ' ',
-                                                'href': '' 
-                                            },
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
                                 ]
                             },
                         ]
                     },
 
 
-                    #################################################
-                    #                                               #
-                    #       __________________________________      # 
-                    #                                               #
-                    #################################################
+                    #########################################
+                    #                                       #
+                    #       3. Job Search / C. Pathrise     # 
+                    #                                       #
+                    #########################################
 
                     {
-                        'title': '',
-                        'heading': '',
-
-
-                        # ******* vvv Add Path e.g. >>> 1-C' vvv *************
-                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, ', # 
+                        'title': 'Pathrise',
+                        'heading': 'Pathrise',
+                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, 3-C', # 
 
 
                         'content': [
-                            # {
-                            #     'heading': '',
-                            #     'content': [
-                            #         {
-                            #             'title': '',
-                            #             'content': '',
-                            #         },
-                            #     ]
-                            # },
                             {
                                 'heading': '',
                                 'content': [
                                     {
-                                        'content':'.',
-                                    },
-                                    {
-                                        'content':'',
+                                        'callout': [True, 'warning'],
+                                        'content': 'Pathrise is quite expensive and it may be worth looking into other alternatives.'
                                     },
                                 ]
                             },
                             {
-                                'heading': '',
+                                'heading': 'About Pathrise',
+                                'has_heading_link': True,
+                                'heading_link': 'https://www.pathrise.com/',
                                 'content': [
                                     {
-                                        'content': ''
-                                    },
-                                    {
-                                        'multi_tags': True,
-                                        'list': [True, 'ul'],
+                                        'multi_tags': True, 
                                         'content': [
                                             {
-                                                'title': '',
-                                                'content': '' 
+                                                'type': 'a',
+                                                'content': 'Pathrise',
+                                                'href': 'https://www.pathrise.com/' 
+                                            },
+                                            {
+                                                'type': 'span',
+                                                'content': 'is a career accelerator designed to help job seekers land their dream job in the tech industry. The program offers tailored mentorship from industry insiders across various tracks like software engineering, data science, marketing, and more.' 
                                             },
                                         ]
                                     },
                                     {
-                                        'callout': [True, 'info'],
-                                        'content': ''
+                                        'content':'Mentors, who are professionals from top companies like Google and Amazon, guide fellows through the entire job application process, from resume review to interview preparation.',
                                     },
+                                    {
+                                        'content':'Pathrise claims significant success in helping its fellows achieve higher interview scores and secure better job offers, boasting an average salary increase. Their services include extensive preparation materials, 1-on-1 sessions with mentors, and access to a network of tech professionals.',
+                                    },
+                                    {
+                                        'content':'Overall, Pathrise presents itself as a comprehensive resource for aspiring tech professionals to accelerate their career growth by leveraging expert knowledge and a supportive network.',
+                                    },
+                                    {
+                                        'src': '/static/img/pathrise.webp',
+                                        'alt': "The image displays the logo for 'Pathrise' on a light beige background. The logo features the word 'pathrise' in lowercase, sans-serif, bold font in a violet color. The 'p' in 'path' is uniquely designed with an upward arrow integrated into its spine, and the dot on the 'i' is represented by a circle slightly detached from the letter, floating above it.",
+                                        'href': 'https://www.pathrise.com'
+                                    }
+                                ]
+                            },
+                            {
+                                'heading': 'Strategies',
+                                'content': [
+                                    {
+                                        'content': "The platform emphasizes data-driven strategies and proprietary technology to enhance the job search experience. One notable feature is the Income Based Financing model, which allows fellows to participate in the program with a financial agreement that aligns Pathrise's success with the job seeker's placement.",
+                                    },
+                                    {
+                                        'content': "This model includes caps on interest rates and protections like flexibility in payment schedules in case of financial hardships.",
+                                    },
+                                    
+                                    # {
+                                    #     'callout': [True, 'info'],
+                                    #     'content': ''
+                                    # },
                                     # {
                                     #     'multi_tags': True, 
                                     #     'content': [
@@ -2012,8 +1822,25 @@ class Swe_career_guide:
                                 ]
                             },
                             {
-                                'heading': '',
+                                'heading': 'Catered to',
                                 'content': [
+                                    {
+                                        'multi_tags': True, 
+                                        'content': [
+                                            {
+                                                'type': 'a',
+                                                'content': 'Pathrise',
+                                                'href': 'https://www.pathrise.com/' 
+                                            },
+                                            {
+                                                'type': 'span',
+                                                'content': 'caters to a variety of fields within tech and offers resources like blogs, company guides, and recruitment tips to further support job seekers.' 
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        'content':'Pathrise requires applicants to be 18 or older and eligible to work in the United States, looking for individuals committed to advancing their careers through structured guidance and expert advice.',
+                                    },
                                     {
                                         'multi_tags': True, 
                                         'content': [
@@ -2038,24 +1865,35 @@ class Swe_career_guide:
                                 ]
                             },
                             {
-                                'heading': '',
+                                'heading': 'Payment Options',
                                 'content': [
                                     {
-                                        'multi_tags': True, 
+                                        'content': 'Pathrise offers three flexible payment options to accommodate different financial situations for its fellows.'
+                                    },
+                                    {
+                                        'callout': [True, 'warning'],
+                                        'content': 'ISAs can be costly with high salaries, necessitate long-term repayments, and have faced criticism for disproportionately affecting underrepresented communities.'
+                                    },
+                                    {
+                                        'multi_tags': True,
+                                        'list': [True, 'A'],
                                         'content': [
                                             {
-                                                'type': 'span',
-                                                'content': '' 
+                                                'title': 'The Income Share Agreement (ISA)',
+                                                'content': 'This allows participants to pay a percentage of their salary once they secure a job.' 
                                             },
                                             {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
+                                                'title': 'Loan',
+                                                'content': 'Alternatively, fellows can opt for a loan, spreading the cost over time.' 
+                                            },
+                                            {
+                                                'title': 'One Time Payment',
+                                                'content': "For those able to do so, there's also the option to make a one-time, full upfront payment, eliminating future financial commitments related to the program."
                                             },
                                         ]
                                     },
                                     {
-                                        'content': ''
+                                        'content': "These options aim to make the program accessible regardless of one's immediate financial status."
                                     },
                                 ]
                             },
