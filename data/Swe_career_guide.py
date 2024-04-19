@@ -1387,7 +1387,6 @@ class Swe_career_guide:
                             {
                                 'heading': '',
                                 'content': [
-                                    # While participation in one of these programs is not necessary, doing so could make it much easier to secure a job. Particularly for those with no work experience and only a single educational certification.
                                     {
                                         'callout': [True, 'warning'],
                                         'content': 'Participation in these programs can ease job acquisition, especially for those with no experience and a single educational certification, though it is not necessary.'
@@ -1403,29 +1402,193 @@ class Swe_career_guide:
                                         'content': [
                                             {
                                                 'title': 'Work It Daily',
-                                                'content': '',
+                                                'content': 'Work It Daily is a career coaching platform providing job search help, resume reviews, interview preparation, LinkedIn optimization and professional development resources.',
                                             },
                                             {
                                                 'title': 'Tangerine Search',
-                                                'content': '',
+                                                'content': 'offers a competitively priced email course, to boost job search strategies, LinkedIn, resume and interview readiness.',
                                             },
                                             {
                                                 'title': 'Pathrise',
-                                                'content': '',
+                                                'content': 'is a career accelerator with specialized tracks in fields like Software Engineering, Data Science etc. It emphasizes resume enhancement, interview prep, personalized mentorship, and effective job hunting strategies, including LinkedIn profile optimization.',
                                             },
+                                        ]
+                                    },
+                                    {
+                                        'multi_tags': True, 
+                                        'callout': [True, 'info'],
+                                        'content': [
+                                            {
+                                                'type': 'span',
+                                                'content': 'The' 
+                                            },
+                                            {
+                                                'type': 'a',
+                                                'content': 'Tangerine Search',
+                                                'href': 'https://tangerine-search.ck.page/products/from-resume-refresh-to-interview-ready-' 
+                                            },
+                                            {
+                                                'type': 'span',
+                                                'content': 'course is emailed weekly for 4 weeks without a direct URL; content is delivered exclusively by email.'
+                                            }
                                         ]
                                     },
                                 ],
                             },
-                            
                             {
-                                'heading': '',
+                                'heading': 'Maintain a strong professional network.',
                                 'content': [
+                                    
                                     {
-                                        'content':'',
+                                        'content':"Efficient job seeking becomes considerably more manageable when you have established and nurtured an extensive professional network.",
                                     },
                                     {
-                                        'content':'',
+                                        'content':"Building a robust professional network involves maintaining ongoing connections with individuals in your industry through channels like email, text messages, or LinkedIn messaging. You can expand this network by staying in touch with former classmates, colleagues from previous jobs, or individuals you've encountered in the tech sector. ",
+                                    },
+                                    {
+                                        'content':"It is crucial to uphold positive relationships and sustain ongoing communication. Your network can serve as valuable references when pursuing potential job opportunities.",
+                                    },
+                                    {
+                                        'content':"Furthermore, in the event of job loss, having a well-maintained network can facilitate a quicker return to a high-paying position by reaching out to network contacts and requesting referrals to positions within their respective companies. Often, these companies incentivize referrals with bonuses, making your request well-received and beneficial for both parties involved.",
+                                    },
+                                ]
+                            },
+                            {
+                                'heading': 'Please Be Advised:',
+                                'content': [
+                                    {
+                                        'multi_tags': True, 
+                                        'callout': [True, 'info'],
+                                        'content': [
+                                            {
+                                                'type': 'span',
+                                                'content': 'A significant number of individuals successfully secure employment exclusively through the use of' 
+                                            },
+                                            {
+                                                'type': 'a',
+                                                'content': 'LinkedIn.',
+                                                'href': 'https://www.linkedin.com/' 
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        'content': 'An effective method for leveraging LinkedIn to seek employment entails utilizing their job search tool to identify positions for which you possess the requisite qualifications.'
+                                    },
+                                    {
+                                        'content': 'Following this, you can proceed to submit your applications for these roles and subsequently engage with individuals employed at the respective companies to request job referrals specific to the positions you have applied for.'
+                                    },
+                                ]
+                            },
+                        ]
+                    },
+
+
+                    #################################################
+                    #                                               #
+                    #       3. Job Search / A. Work It Daily        # 
+                    #                                               #
+                    #################################################
+
+                    {
+                        'title': 'Work It Daily',
+                        'heading': 'Work It Daily',
+                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, 3-A',
+                        'content': [
+                            # {
+                            #     'heading': '',
+                            #     'content': [
+                            #         {
+                            #             'title': '',
+                            #             'content': '',
+                            #         },
+                            #     ]
+                            # },
+                            {
+                                'heading': 'Exploring Work It Daily',
+                                'has_heading_link': True,
+                                'heading_link': 'https://www.workitdaily.com/',
+                                'content': [
+                                    {
+                                        'multi_tags': True, 
+                                        
+                                        'content': [
+                                            {
+                                                'type': 'a',
+                                                'content': 'Work It Daily',
+                                                'href': 'https://www.workitdaily.com/' 
+                                            },
+                                            {
+                                                'type': 'span',
+                                                'content': 'is a comprehensive career coaching platform designed to assist individuals in transforming their job searches and career paths.' 
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        'content':'The site provides access to various courses and resources that cover essential aspects of career development, from crafting impactful resumes to mastering job interviews and networking effectively.',
+                                    },
+                                    {
+                                        'content':'The site provides access to various courses and resources that cover essential aspects of career development, from crafting impactful resumes to mastering job interviews and networking effectively.',
+                                    },
+                                ]
+                            },
+                            {
+                                'heading': 'Approach and Services',
+                                'content': [
+                                    {
+                                        'content':'The platform emphasizes a community-driven approach, giving members access to a private community where they can engage with peers and experts.',
+                                    },
+                                    {
+                                        'content':'This fosters a supportive environment conducive to learning and improvement. Members can choose from different membership levels, each providing tailored services to meet diverse needs, from recent graduates to seasoned professionals.',
+                                    },
+                                ]
+                            },
+                            {
+                                'heading': 'Work It Daily Vision',
+                                'has_heading_link': True,
+                                'heading_link': 'https://www.workitdaily.com/',
+                                'content': [
+                                    {
+                                        'multi_tags': True, 
+                                        'content': [
+                                            {
+                                                'type': 'span',
+                                                'content': "Work It Daily is led by"
+                                            },
+                                            {
+                                                'type': 'a',
+                                                'content': "J.T. O'Donnell,",
+                                                'href': 'https://www.linkedin.com/in/jtodonnell/' 
+                                            },
+                                            {
+                                                'type': 'span',
+                                                'content': "a well-known career expert who brings over two decades of experience in the field."
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        'content':"Her vision is evident in the proactive, member-focused services the platform offers, aimed at reducing the common frustrations associated with job searching and career progression.",
+                                    },
+                                    {
+                                        'multi_tags': True, 
+                                        
+                                        'content': [
+                                            {
+                                                'type': 'span',
+                                                'content': "This approach has positioned "
+                                            },
+                                            {
+                                                'type': 'a',
+                                                'content': 'Work It Daily',
+                                                'href': 'https://www.workitdaily.com/' 
+                                            },
+                                            {
+                                                'type': 'span',
+                                                'content': "as a pivotal resource for those looking to significantly improve their professional lives and achieve career satisfaction."
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        'content':"",
                                     },
                                 ]
                             },
@@ -1565,19 +1728,14 @@ class Swe_career_guide:
 
                     #################################################
                     #                                               #
-                    #       __________________________________      # 
+                    #       3. Job Search / B. Tangerine Search     # 
                     #                                               #
                     #################################################
 
                     {
-                        'title': '',
-                        'heading': '',
-
-
-                        # ******* vvv Add Path e.g. >>> 1-C' vvv *************
-                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, ', # 
-
-
+                        'title': 'Tangerine Search',
+                        'heading': 'Tangerine Search',
+                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, 3-B', 
                         'content': [
                             # {
                             #     'heading': '',
@@ -1600,172 +1758,34 @@ class Swe_career_guide:
                                 ]
                             },
                             {
-                                'heading': '',
+                                'heading': 'Tangerine Search',
+                                'has_heading_link': True,
+                                'heading_link': 'https://tangerine-search.ck.page/products/from-resume-refresh-to-interview-ready-',
                                 'content': [
                                     {
-                                        'content': ''
-                                    },
-                                    {
-                                        'multi_tags': True,
-                                        'list': [True, 'ul'],
+                                        'multi_tags': True, 
                                         'content': [
                                             {
-                                                'title': '',
-                                                'content': '' 
+                                                'type': 'span',
+                                                'content': 'Tangerine Search presents its competitively priced' 
+                                            },
+                                            {
+                                                'type': 'a',
+                                                'content': 'Resume Refresh to Interview Ready: 4-Week Job Search Roadmap.',
+                                                'href': 'https://tangerine-search.ck.page/products/from-resume-refresh-to-interview-ready-' 
+                                            },
+                                            {
+                                                'type': 'span',
+                                                'content': 'This email course is structured to enhance job search strategies and interview preparedness.' 
                                             },
                                         ]
+                                    },
+                                    {
+                                        'content': 'Subscribers receive weekly emails for four weeks, containing both video and written content that guide through various job search techniques and tools, designed for easy weekly consumption to maximize job-seeking effectiveness.'
                                     },
                                     {
                                         'callout': [True, 'info'],
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                    
-                                    # {
-                                    #     'multi_tags': True, 
-                                    #     'callout': [True, 'warning'],
-                                    #     'content': [
-                                    #         {
-                                    #             'type': 'span',
-                                    #             'content': '' 
-                                    #         },
-                                    #         {
-                                    #             'type': 'a',
-                                    #             'content': '',
-                                    #             'href': '' 
-                                    #         },
-                                    #     ]
-                                    # },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': '',
-                                                'href': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                ]
-                            },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'multi_tags': True, 
-                                        'content': [
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                            {
-                                                'type': 'a',
-                                                'content': ' ',
-                                                'href': '' 
-                                            },
-                                            {
-                                                'type': 'span',
-                                                'content': '' 
-                                            },
-                                        ]
-                                    },
-                                    {
-                                        'content': ''
-                                    },
-                                    # {
-                                    #     'callout': [True, 'info'],
-                                    #     'content': ''
-                                    # },
-                                ]
-                            },
-                        ]
-                    },
-
-
-                    #################################################
-                    #                                               #
-                    #       __________________________________      # 
-                    #                                               #
-                    #################################################
-
-                    {
-                        'title': '',
-                        'heading': '',
-
-
-                        # ******* vvv Add Path e.g. >>> 1-C' vvv *************
-                        'sub_heading': 'SWE (Software Engineer) Career Guide Path, ', # 
-
-
-                        'content': [
-                            # {
-                            #     'heading': '',
-                            #     'content': [
-                            #         {
-                            #             'title': '',
-                            #             'content': '',
-                            #         },
-                            #     ]
-                            # },
-                            {
-                                'heading': '',
-                                'content': [
-                                    {
-                                        'content':'.',
-                                    },
-                                    {
-                                        'content':'',
+                                        'content': 'This course is sent via email weekly for 4 weeks, without a direct URL; all materials are exclusively emailed.'
                                     },
                                 ]
                             },
