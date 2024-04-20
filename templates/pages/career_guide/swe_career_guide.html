@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<main class="wrapper">
+
+    <!-- Bootstrap CSS CDN -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
+   
+    
+    <!-- career guide styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/career-guide.css') }}">
+
+ 
+
+    
+
+
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>SWE Career Guide</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>3 Steps</p>
+            
+            <li class="" id="education">
+                <a href="#homeSubmenu" data-toggle="collapse" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">1. Education</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="/swe_career_guide/Education/Getting_Started">Getting Started</a>
+                    </li>
+                    <li>
+                        <a href="/swe_career_guide/Education/Community_College_Certification">A. Community College Certification</a>
+                    </li>
+                    <li>
+                        <a href="/swe_career_guide/Education/Nonprofit_Boot_Camp">B. Nonprofit Boot Camp</a>
+                    </li>
+                    <li>
+                        <a href="/swe_career_guide/Education/Coding_Bootcamp">C. Coding Bootcamp</a>
+                    </li>
+                    <!-- High School diploma -> College Certification -->
+                    <li>
+                        <a href="/swe_career_guide/Education/High_School_Diploma_>>>_College_Certification">D. High School Diploma >>> College Certification</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- <li>
+                <a href="#">About</a>
+            </li> -->
+            <li id="technical-interview">
+                <a href="#pageSubmenu" data-toggle="collapse" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">2. Technical Interview</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="/swe_career_guide/Technical_Interview/Getting_Started">Getting Started</a>
+                    </li>
+                    <li>
+                        <a href="/swe_career_guide/Technical_Interview/Structy">A. Structy</a>
+                    </li>
+                    <li>
+                        <a href="/swe_career_guide/Technical_Interview/AlgoExpert">B. AlgoExpert</a>
+                    </li>
+                    <li>
+                        <a href="/swe_career_guide/Technical_Interview/Coderbyte">C. Coderbyte</a>
+                    </li>
+                    <!-- High School diploma -> College Certification -->
+                    <li>
+                        <a href="/swe_career_guide/Technical_Interview/Crack_The_Coding_Interview">D. Crack The Coding Interview</a>
+                    </li>
+                    <li>
+                        <a href="/swe_career_guide/Technical_Interview/Coding_Challenges">E. Coding Challenges</a>
+                    </li>
+                </ul>
+            </li>
+            <li id="job-search">
+                <a href="#pageSubmenu2" data-toggle="collapse" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">3. Job Search</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu2">
+                    <li>
+                        <a href="/swe_career_guide/Job_Search/Getting_Started">Getting Started</a>
+                    </li>
+                    <li>
+                        <a href="/swe_career_guide/Job_Search/Work_It_Daily">A. Work It Daily</a>
+                    </li>
+                    <li>
+                        <a href="/swe_career_guide/Job_Search/Tangerine_Search">B. Tangerine Search</a>
+                    </li>
+                    <li>
+                        <a href="/swe_career_guide/Job_Search/Pathrise">C. Pathrise</a>
+                    </li>
+
+                    <!-- 
+
+                        tangerine-search
+
+                        https://tangerine-search.ck.page/products/from-resume-refresh-to-interview-ready-
+
+                     -->
+
+                    <!-- <li>
+                        <a href="/swe_career_guide/Job_Search/">C. HatchWays</a>
+                    </li>
+                    <li>
+                        <a href="/swe_career_guide/Job_Search/">D. Triple Byte</a>
+                    </li> -->
+                </ul>
+        </ul>
+
+        <!-- <ul class="list-unstyled CTAs">
+            <li>
+                <a href="#" class="download">Download ...</a>
+            </li>
+            <li>
+                <a href="#" class="article">Back to ...</a>
+            </li>
+        </ul> -->
+    </nav>
+
+   <!-- 1st Content box -->
+   <div class="row pb-2 m-0">
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-outline-dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-text-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+                    </svg>
+                    <span>Toggle Sidebar</span>
+                </button>
+                <!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-bs-toggle="collapse" data-toggle="collapse" data-bs-target="#navbarSupportedContent" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+                    </svg>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                    </ul>
+                </div> -->
+            </div>
+        </nav>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                document.getElementById('sidebarCollapse').addEventListener('click', function () {
+                    var sidebar = document.getElementById('sidebar');
+                    sidebar.classList.toggle('active');
+                });
+            });
+
+            // Add event listener to the URL
+            document.addEventListener('DOMContentLoaded', function () {
+                var url = window.location.href;
+                // if URL has Education make id education active
+                if (url.includes('Education')) {
+                    document.getElementById('education').classList.add('active');
+                    document.getElementById('homeSubmenu').classList.add('show');
+                }else if(url.includes('Technical_Interview')){
+                    document.getElementById('technical-interview').classList.add('active');
+                    document.getElementById('pageSubmenu').classList.add('show');
+                }else if(url.includes('Job_Search')){
+                    document.getElementById('job-search').classList.add('active');
+                    document.getElementById('pageSubmenu2').classList.add('show');
+                }
+            });
+
+            // $(document).ready(function () {
+            //     $('#sidebarCollapse').on('click', function () {
+            //         $('#sidebar').toggleClass('active');
+            //     });
+            // });
+        </script>
+
+       
+        <div class="row m-0 p-0">
+        {% block content2 %}{% endblock %}
+        <div class="d-none d-xl-block col-xl-auto mx-auto"></div>
+        </div>
+        <!-- **********HERE******** -->
+
+
+        
+    </div>
+
+    
+
+</main>
+
+
+
+{% endblock content %}

@@ -1,0 +1,173 @@
+{% extends 'pages/career_guide/swe_career_guide.html' %}
+{% block content2 %}
+
+<div class="col-12 col-xl-9 m-0 p-0 p-sm-1 p-md-2">
+    <div class="p-4 p-md-5 m-0" style="border-radius: 10px; border: 1px solid #ededed26; background: linear-gradient(169deg, rgba(255, 255, 255, 0.2) 8.61%, rgba(255, 255, 255, 0.1) 76.57%);">
+
+       
+        <h1>{{ heading }}</h1>
+        <p class="bd-lead pb-5">{{ sub_heading }}</p>
+
+        {% for section in content %}
+
+            {% if section.has_heading_link %}
+                <h3 class="pt-4 pb-1" style="display: flex; align-items: center;">
+                    <a href="{{ section.heading_link }}" style="text-decoration: none; color: black;" class="header-link pe-2" id="header-link">{{ section.heading }}</a>
+                    <span class="link-emoji" id="link-emoji">🔗</span>
+                </h3>
+            {% else %}
+                <h3 class="pt-4 pb-1">{{ section.heading }}</h3>
+            {% endif %}
+
+
+            {% for p in section.content %}
+
+                {% if p.src %}
+
+                    {% if p.href %}
+                        <div class="text-center p-4">
+                            <a href="{{ p.href }}">
+                                <img src="{{ p.src }}" alt="{{ p.alt }}" class="img-fluid" style="border-radius: 10px; border: 1px solid #ededed26; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);">
+                            </a>
+                        </div>
+                    {% else %}
+                        <div class="text-center p-4">
+                            <img src="{{ p.src }}" alt="{{ p.alt }}" class="img-fluid" style="border-radius: 10px; border: 1px solid #ededed26; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);">
+                        </div>
+                    {% endif %}
+
+
+                {% elif p.multi_tags %}
+                    {% if p.callout and p.callout[0] %}
+
+                        <div class="bd-callout bd-callout-{{p.callout[1]}}">
+                            <strong>
+                                {% for tag in p.content %}
+                                    {% if tag.type == 'a' %}
+                                        <a href="{{ tag.href }}" style="">{{ tag.content }}</a>
+                                    {% else %}
+                                        <span>{{ tag.content }}</span>
+                                    {% endif %}
+                                {% endfor %}
+                            </strong>
+                        </div> 
+                        
+                    {% elif p.list and p.list[0] %}
+                        {% if p.list[1] == 'ul' %} 
+                        
+                            {% if p.link %}
+                            
+                                <ul> 
+                                    {% for data in p.content %}
+                                        <li>
+                                            <b>
+                                                {% for tag in data.title %}
+                                                    {% if tag.type == 'a' %}
+                                                        <a href="{{ tag.href }}">{{ tag.content }}</a>
+                                                    {% else %}
+                                                        <span>{{ tag.content }}</span>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </b>
+                                            <span>
+                                                {% for tag in data.content %}
+                                                    {% if tag.type == 'a' %}
+                                                        <a href="{{ tag.href }}">{{ tag.content }}</a>
+                                                    {% else %}
+                                                        <span>{{ tag.content }}</span>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+
+                            {% else %}
+
+                                <ul>
+                                    {% for tag in p.content %}
+                                        <li>
+                                            <b>{{ tag.title }}:</b>
+                                            <span>{{ tag.content }}</span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                
+                            {% endif %}
+
+                        {% else %}
+                            {% if p.link %}
+
+                            <ol type="{{p.list[1]}}"> 
+                                {% for data in p.content %}
+                                    <li>
+                                        <b>
+                                            {% for tag in data.title %}
+                                                {% if tag.type == 'a' %}
+                                                    <a href="{{ tag.href }}">{{ tag.content }}</a>
+                                                {% else %}
+                                                    <span>{{ tag.content }}</span>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </b>
+                                        <span>
+                                            {% for tag in data.content %}
+                                                {% if tag.type == 'a' %}
+                                                    <a href="{{ tag.href }}">{{ tag.content }}</a>
+                                                {% else %}
+                                                    <span>{{ tag.content }}</span>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </span>
+                                    </li>
+                                {% endfor %}
+                            </ol>
+
+                            {% else %}
+
+                                <ol type="{{p.list[1]}}">
+                                    {% for tag in p.content %}
+                                        <li>
+                                            <b>{{ tag.title }}:</b>
+                                            <span>{{ tag.content }}</span>
+                                        </li>
+                                    {% endfor %}
+                                </ol>
+
+                            {% endif %}    
+
+                        {% endif %}
+
+                    {% else %}
+                    
+                        <p>
+                            {% for tag in p.content %}
+                                {% if tag.type == 'a' %}
+                                    <a href="{{ tag.href }}">{{ tag.content }}</a>
+                                {% else %}
+                                    <span>{{ tag.content }}</span>
+                                {% endif %}
+                            {% endfor %}
+                        </p>
+
+                    {% endif %}
+
+                {% elif p.callout and p.callout[0] %}
+
+                    <div class="bd-callout bd-callout-{{p.callout[1]}}">
+                        <strong>{{ p.content }}</strong>
+                    </div>  
+
+                {% else %}
+
+                    <p>{{ p.content }}</p>
+
+                {% endif %}
+
+            {% endfor %}
+        {% endfor %}
+ 
+    </div>
+</div>
+
+{% endblock content2 %}
