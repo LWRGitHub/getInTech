@@ -42,7 +42,7 @@
                     </li>
                     <!-- High School diploma -> College Certification -->
                     <li>
-                        <a href="/swe_career_guide/Education/High_School_Diploma_>>>_College_Certification">D. High School Diploma >>> College Certification</a>
+                        <a href="/swe_career_guide/Education/High_School_Diploma_to_College_Certification">D. High School Diploma >>> College Certification</a>
                     </li>
                 </ul>
             </li>
@@ -166,14 +166,57 @@
                 var url = window.location.href;
                 // if URL has Education make id education active
                 if (url.includes('Education')) {
+
                     document.getElementById('education').classList.add('active');
                     document.getElementById('homeSubmenu').classList.add('show');
+
+                    // if URL has Getting_Started make id education active
+                    if (url.includes('Getting_Started')) {
+                        document.getElementById('homeSubmenu').children[0].classList.add('active');
+                    } else if (url.includes('Community_College_Certification')) {
+                        document.getElementById('homeSubmenu').children[1].classList.add('active');
+                    } else if (url.includes('Nonprofit_Boot_Camp')) {
+                        document.getElementById('homeSubmenu').children[2].classList.add('active');
+                    } else if (url.includes('Coding_Bootcamp')) {
+                        document.getElementById('homeSubmenu').children[3].classList.add('active');
+                    } else if (url.includes('High_School_Diploma_to_College_Certification')) {
+                        document.getElementById('homeSubmenu').children[4].classList.add('active');
+                    }
+
                 }else if(url.includes('Technical_Interview')){
+
                     document.getElementById('technical-interview').classList.add('active');
                     document.getElementById('pageSubmenu').classList.add('show');
+
+                    if(url.includes('Getting_Started')){
+                        document.getElementById('pageSubmenu').children[0].classList.add('active');
+                    }else if(url.includes('Structy')){
+                        document.getElementById('pageSubmenu').children[1].classList.add('active');
+                    }else if(url.includes('AlgoExpert')){
+                        document.getElementById('pageSubmenu').children[2].classList.add('active');
+                    }else if(url.includes('Coderbyte')){
+                        document.getElementById('pageSubmenu').children[3].classList.add('active');
+                    }else if(url.includes('Crack_The_Coding_Interview')){
+                        document.getElementById('pageSubmenu').children[4].classList.add('active');
+                    }else if(url.includes('Coding_Challenges')){
+                        document.getElementById('pageSubmenu').children[5].classList.add('active');
+                    }
+
                 }else if(url.includes('Job_Search')){
+
                     document.getElementById('job-search').classList.add('active');
                     document.getElementById('pageSubmenu2').classList.add('show');
+
+                    if(url.includes('Getting_Started')){
+                        document.getElementById('pageSubmenu2').children[0].classList.add('active');
+                    }else if(url.includes('Work_It_Daily')){
+                        document.getElementById('pageSubmenu2').children[1].classList.add('active');
+                    }else if(url.includes('Tangerine_Search')){
+                        document.getElementById('pageSubmenu2').children[2].classList.add('active');
+                    }else if(url.includes('Pathrise')){
+                        document.getElementById('pageSubmenu2').children[3].classList.add('active');
+                    }
+
                 }
             });
 
