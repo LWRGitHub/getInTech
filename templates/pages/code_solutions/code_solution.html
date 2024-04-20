@@ -17,6 +17,47 @@
                     <h1 class="col-12 m-0">{{name}}</h1>
                 </div>
 
+                <!-- YouTube Video(s) -->
+                <!-- Carousel  -->
+                {% if video.has_video %} 
+                    <div class="row py-2 text-center m-0 px-0 py-5">
+
+                        <div id="carousel1" class="carousel slide p-0 m-0" data-bs-ride="carousel">
+
+                            <div class="carousel-inner">
+
+                                {% for src in video.scripts%}
+                                    {% if loop.index-1 == 0 %}
+                                        <div class="carousel-item active" data-bs-interval="10000">
+                                        
+                                            <iframe class="code-solution-youtube-video" width="450" height="253" src="{{src}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                        </div>
+                                    {% else %}
+                                        <div class="carousel-item" data-bs-interval="10000">
+
+                                            <iframe class="code-solution-youtube-video" width="450" height="253" src="{{src}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+
+                            {% if video.scripts|length > 1 %}
+                                <button style="width: 5%;" class="carousel-control-prev p-0 m-0" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                
+                                <button style="width: 5%;" class="carousel-control-next p-0 m-0" type="button" data-bs-target="#carousel1" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+                {% endif %} 
+
                 {% if how_to %}
                     <div class="row py-2 m-0 px-0">
                         {% for data in how_to %}
@@ -57,48 +98,7 @@
                         {% endfor %}
                 {% endif %}
 
-                <!-- YouTube Video(s) -->
-                <!-- Carousel  -->
-                {% if video.has_video %} 
-                    <div class="row py-2 text-center">
-                        
-                        <!-- Move Carousel left -->
-                        <div class="col m-0" type="button" data-bs-target="#carouselExampleDark  lightgray;" data-bs-slide="prev">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
-                            </svg>
-                        </div>
-
-                        <!-- Carousel content -->
-                        <div class="col-7 m-0">
-                            <div id="carouselExampleDark" class="carousel carousel-dark slide m-0">
-                                <div class="carousel-inner m-0">
-
-                                    {% for scripts in video.scripts%}
-                                        {% if loop.index-1 == 0 %}
-                                            <div class="carousel-item active m-0" data-bs-interval="10000">
-                                                {{video.scripts[loop.index-1]}}
-                                            </div>
-                                        {% else %}
-                                            <div class="carousel-item m-0" data-bs-interval="10000">
-                                                {{video.scripts[loop.index-1]}}
-                                            </div>
-                                        {% endif %}
-                                    {% endfor %}
-
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Move Carousel right -->
-                        <div class="col m-0" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next" style="border: none;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
-                            </svg>
-                        </div>
-
-                    </div>
-                {% endif %} 
+            
 
                 <!-- Solutions in language tabs -->
                 <div class="row py-2 m-0 px-0">
@@ -145,21 +145,21 @@
     </div>
 
     <!-- 2nd Content box / Seach Res -->
-    <!-- {% if search_res %}
+    {% if search_res %}
         <div class="row p-0 py-md-2 m-0">
             <div class="col-12 p-0 m-0">
                 <div class="p-0 pb-4 p-md-5 m-0" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);">
 
                     <div class="row py-2 m-0 text-center">
                         <h3 class="col-12 m-0">Search Results</h3>
-                    </div> -->
+                    </div>
 
                     <!-- YouTube Video(s) -->
                     <!-- Carousel  -->
-                    <!-- {% if search_res.video.has_video %} 
-                        <div class="row py-2 text-center m-0">
+                    {% if search_res.video.has_video %} 
+                        <div class="row py-2 text-center m-0 p-0">
 
-                            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                            <div id="carouse2" class="carousel slide m-0 p-0" data-bs-ride="carousel">
 
                                 <div class="carousel-inner">
 
@@ -176,22 +176,24 @@
                                             </div>
                                         {% endif %}
                                     {% endfor %}
-                                </div> -->
+                                </div>
 
-                                <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
+                                {% if search_res.video.src|length > 1 %}
+                                    <button style="width: 5%;" class="carousel-control-prev m-0 p-0" type="button" data-bs-target="#carouse2" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    
+                                    <button style="width: 5%;" class="carousel-control-next m-0 p-0" type="button" data-bs-target="#carouse2" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                {% endif %}
 
                             </div>
 
-                        </div> -->
-                    <!-- {% endif %}  -->
+                        </div>
+                    {% endif %} 
 
                     <!-- Solutions in language tabs -->
                     <!-- <div class="row ppy-2 m-0"> -->
@@ -306,8 +308,8 @@
 
                 </div>
             </div>
-        </div>
-    {% endif %} -->
+        </div> -->
+    {% endif %} 
 
     <!-- Prism JS code -->
     <script src="../../../static/js/prism.js"></script>
