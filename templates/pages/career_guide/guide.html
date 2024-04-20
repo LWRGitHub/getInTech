@@ -166,6 +166,21 @@
 
             {% endfor %}
         {% endfor %}
+
+        <!-- add next page and previous page -->
+        <div class="d-flex justify-content-between pt-5">
+            <div>
+                {% if prev_page %}
+                    <a href="/swe_career_guide/{{ prev_page }}" class="btn btn-primary"> ← Previous Page </a>
+                {% endif %}
+            </div>
+            <div>
+                {% if next_page %}
+                    <a href="/swe_career_guide/{{ next_page }}" class="btn btn-primary"> Next Page → </a>
+                {% endif %}
+            </div>
+        </div>
+        
  
     </div>
 </div>
