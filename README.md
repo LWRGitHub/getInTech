@@ -36,6 +36,7 @@ This platform will encompass not only a comprehensive guide for users aspiring t
 - Shell / bash / Terminal / CLI
 - Web Advertising/Affiliate Marketing (Ads)
 - Photoshop
+- Google Analytics
 
 
 
