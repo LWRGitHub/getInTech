@@ -51,19 +51,52 @@ def home():
 def swe_career_guide(step, step_sections):
     """Display the swe_career_guide page."""
 
+    step_num_idx = 0
+    step_letter_idx = 0
     context = {}
-    for step_data in Swe_career_guide().swe_career_guide:
+
+    for idx1, step_data in enumerate(Swe_career_guide().swe_career_guide):
         
         if step_data["title"].replace(" ", "_") == step:
-            
-            for page in step_data["pages"]:
+
+            step_num_idx = idx1
+            for idx2, page in enumerate(step_data["pages"]):
+
                 if page["title"].replace(" ", "_") == step_sections:
-                    print('here*****')
+
+                    step_letter_idx = idx2
                     context = page
                     break
             break
 
-        print('context: ', context)
+    # set Breadcrumb variables
+    context['step'] = step
+    context['step_sections'] = step_sections
+    context['step_display'] = step.replace('_', ' ')
+    context['step_sections_display'] = step_sections.replace('_', ' ')
+
+    # assign next page 
+    if step_letter_idx+1 < len(Swe_career_guide().swe_career_guide[step_num_idx]['pages']):
+        print('\n\n*********\n\n',Swe_career_guide().swe_career_guide[step_num_idx]['title'].replace(' ', '_'),'\n\n*********\n\n')
+        print('\n\n*********\n\n',Swe_career_guide().swe_career_guide[step_num_idx]['pages'][step_letter_idx+1]['title'].replace(' ', '_'),'\n\n*********\n\n')
+
+        context['next_page'] = f"{Swe_career_guide().swe_career_guide[step_num_idx]['title'].replace(' ', '_')}/{Swe_career_guide().swe_career_guide[step_num_idx]['pages'][step_letter_idx+1]['title'].replace(' ', '_')}"
+    else:
+        if step_num_idx+1 < len(Swe_career_guide().swe_career_guide):
+            context['next_page'] = f"{Swe_career_guide().swe_career_guide[step_num_idx+1]['title'].replace(' ', '_')}/{Swe_career_guide().swe_career_guide[step_num_idx+1]['pages'][0]['title'].replace(' ', '_')}"
+        else:
+            context['next_page'] = False
+    
+    # assign prev page
+    if step_letter_idx-1 > -1:
+        context['prev_page'] = f"{Swe_career_guide().swe_career_guide[step_num_idx]['title'].replace(' ', '_')}/{Swe_career_guide().swe_career_guide[step_num_idx]['pages'][step_letter_idx-1]['title'].replace(' ', '_')}"
+    else:
+        if step_num_idx-1 > -1:
+            context['prev_page'] = f"{Swe_career_guide().swe_career_guide[step_num_idx-1]['title'].replace(' ', '_')}/{Swe_career_guide().swe_career_guide[step_num_idx-1]['pages'][-1]['title'].replace(' ', '_')}"
+        else:
+            context['prev_page'] = False
+
+
 
     return render_template('pages/career_guide/guide.html', **context)
 
