@@ -8,8 +8,8 @@ class Solutions_info:
         "_id": "LeetCode-3sum",
         "href": "/solution/LeetCode-3sum",
         "video": {
-            "has_video": False,
-            "scripts": ["Video1 Script Goes Here", "Video2 Script Goes Here"]
+            "has_video": True,
+            "scripts": ["https://www.youtube.com/embed/qmntcyBt-5s?si=nUJQ3Unrd6RDdKzG"]
         },
         "how_to": [
             {
@@ -268,7 +268,8 @@ const sum0 = (nums, i, res, sm=i+1, lg=nums.length-1) => {
         "_id": "LeetCode-Two-Sum",
         "href": "/solution/LeetCode-Two-Sum",
         "video": {
-            "has_video": False
+            "has_video": True,
+            "scripts": ["https://www.youtube.com/embed/S_Nic1VxgPg?si=nThhdnGjD1_aUDJg"]
         },
         "how_to": [
             {
