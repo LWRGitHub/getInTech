@@ -123,6 +123,13 @@ def code_solution(solution_id):
 
     return render_template('pages/code_solutions/code_solution.html', **context)
 
+# Code Solutions pg
+@app.route('/about')
+def about():
+    """Display the About page."""
+
+    return render_template('pages/about.html')
+
 
 
 # Pass Stuff to Navbar

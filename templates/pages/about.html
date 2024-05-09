@@ -1,0 +1,131 @@
+{% extends 'ads.html' %}
+{% block content2 %}
+
+<main>
+    <!-- 
+        About page that will include the following details:
+
+            My name: Logan Reynolds
+            A professional photograph
+            A biography detailing my education in software engineering and my professional experience, including past positions and companies where I have worked
+            Links to my professional profiles and content:
+                LinkedIn
+                GitHub
+                Personal software engineering portfolio
+                YouTube channel
+
+        support email
+
+        policy-compliant privacy policy
+    
+    -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/career-guide.css') }}">
+
+    <div class="row py-0 py-md-2 m-0">
+        <div class="col-12 m-0 p-0">
+            <div class="p-5 m-0" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);">
+                <div class="p-md-5">
+
+                    <section class="about">
+                        <h1>About</h2>
+                        <p class="bd-lead pb-5">Meet Logan Reynolds, the Tech Mistro Behind TechCareerTime.com!</p>
+
+                        <div class="about-image py-4">
+                            <img src="{{ url_for('static', filename='img/logan-reynolds.jpg') }}" alt="Logan Reynolds" class="img-fluid " style="border-radius: 10px; border: 1px solid #ededed26; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);" width="35%" />
+                        </div>
+
+                        <h3 class="pt-4 pb-1" style="display: flex; align-items: center;">
+                            <a href="https://www.linkedin.com/in/logan-reynolds/" style="text-decoration: none; color: black;" class="header-link pe-2" id="header-link">The Mind Behind TechCareerTime.com!</a>
+                            <span class="link-emoji" id="link-emoji">🔗</span>
+                        </h3>
+
+                        <p>Hey there, tech enthusiasts! 🚀 I'm Logan Reynolds, the brain and spark behind TechCareerTime.com. Let me take you on a quick tour through my journey from a curious learner to the creator of your go-to tech career hub.</p>
+
+                        <h3 class="pt-4 pb-1" style="display: flex; align-items: center;">
+                            <a href="https://engineerlwr.com/#/education" style="text-decoration: none; color: black;" class="header-link pe-2" id="header-link">Educational Expedition</a>
+                            <span class="link-emoji" id="link-emoji">🔗</span>
+                        </h3>
+
+                        <p>My tech adventure started in the City of San Francisco, where I snagged a bunch of cool certs from places like Code the Dream and Meda Mission Techies. Every course, every project was a building block for what TechCareerTime.com is today!</p>
+                        <p>I powered through to 🎓 Dominican University of California, beefing up my backend and data science skills, but I didn’t stop there! I dived into Computer Networking and Information Technology, specializing in Front End Web Development. 🌐</p>
+
+                        <h3 class="pt-4 pb-1" style="display: flex; align-items: center;">
+                            <a href="https://www.linkedin.com/in/logan-reynolds/details/experience/" style="text-decoration: none; color: black;" class="header-link pe-2" id="header-link">Professional Playground</a>
+                            <span class="link-emoji" id="link-emoji">🔗</span>
+                        </h3>
+
+                        <p>Over the last five years, I've had the thrill of shaping tech across giants and startups alike—from Adobe, where I boosted product data by a whopping 35%, to Verizon, speeding up solutions faster than you can say "reboot!" 🌐</p> 
+                        <p>At Adobe, not only did I push data boundaries, but I also got to tinker with CI/CD pipelines that would make any tech geek swoon. And now? I’m steering the ship at a stealth startup in San Francisco, refining code and transforming tech workflows with my super SWE skills. 💻🛠️</p>
+
+                        <h3 class="pt-4 pb-1" style="display: flex; align-items: center;">
+                            <a href="https://www.linkedin.com/in/logan-reynolds/details/skills/" style="text-decoration: none; color: black;" class="header-link pe-2" id="header-link">Tech Toolkit</a>
+                            <span class="link-emoji" id="link-emoji">🔗</span>
+                        </h3>
+
+                        <p>I'm all about Python, JavaScript, Node.js, React, you name it! From cloud-surfing with MongoDB and SQL to geeking out with AI and machine learning, I’ve got my hands on all the tech toys. 🤖 And yes, Adobe and I are best buds—I know my way around their analytics like the back of my hand!</p>
+
+                        <h3 class="pt-4 pb-1">Why TechCareerTime.com?</h3>
+
+                        <p>Because who better to guide you through your tech career than someone who's lived it? I created TechCareerTime.com to be your friendly neighborhood tech space. Whether you're just booting up or ready to compile some serious code, I’m here to light the way! 🌟</p>
+
+                        <!-- <h3 class="pt-4 pb-1"></h3> -->
+
+                        <h3 class="pt-4 pb-1" style="display: flex; align-items: center;">
+                            <a href="https://lwrgithub.github.io/" style="text-decoration: none; color: black;" class="header-link pe-2" id="header-link">A Little More About Me</a>
+                            <span class="link-emoji" id="link-emoji">🔗</span>
+                        </h3>
+
+                        <p>I'm a certified tech lover, a problem-solver, and your ally in this crazy coding world. My mission? To make TechCareerTime.com a place where you can grow, learn, and connect with fellow tech-heads. Let's code, create, and celebrate our tech triumphs together!</p>
+
+                        <p>So, whether you’re here to pick up a new skill or to push your tech career to the next level, you’re in the right place. Let’s make some digital magic happen! ✨</p>
+
+                        <p>
+                            <span>Cheers to our tech adventures,</span> 
+                            <br>
+                            <span>Logan 🚀</span>
+                        </p>
+
+                        <h3 class="pt-4 pb-1">Here are some 🔗 cool spots to connect with me and check out my work! 😄</h3>
+
+                        <ol type="A">
+                            <li>
+                                <b><a href="https://www.linkedin.com/in/logan-reynolds">LinkedIn</a></b>
+                            </li>
+                            <li>
+                                <b><a href="https://github.com/LWRGitHub">GitHub</a></b>
+                            </li>
+                            <li>
+                                <b><a href="https://lwrgithub.github.io/">Personal Portfolio</a></b>
+                            </li>
+                            <li>
+                                <b><a href="https://www.youtube.com/channel/UCyFO54MoE8bjtaLEw_8b3Rg">YouTube Channel</a></b>
+                            </li>
+                        </ol>
+
+                        <!-- <h2>Contact</h2>
+                        <p>If you have any questions or need support, please contact use at <a href="mailto:techcareertime@gmail.com">TechCareerTime@gmail.com</a>.</p>
+
+                        <h2>Privacy Policy</h2>
+                        <p>This website is committed to protecting your privacy and ensuring the security of your personal information. This website is hosted on a secure server and is regularly monitored for security vulnerabilities. If you have any questions or concerns about our privacy policy, please contact us at <a href="mailto:techcareertime@gmail.com">TechCareerTime@gmail.com</a>.</p> -->
+
+                    </section>
+
+                    <section class="contact">
+                        <h2>Contact</h2>
+                        <p>If you have any questions or need support, please contact use at: <a href="mailto:techcareertime@gmail.com">TechCareerTime@gmail.com</a></p>
+                    </section>
+
+                    <!-- <section class="privacy-policy">
+                        <h2>Privacy Policy</h2>
+                        <p>This website is committed to protecting your privacy and ensuring the security of your personal information. This website is hosted on a secure server and is regularly monitored for security vulnerabilities. If you have any questions or concerns about our privacy policy, please contact us at <a href="mailto:techcareertime@gmail.com">TechCareerTime@gmail.com</a>.</p>
+                    </section> -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+{% endblock content2 %}
