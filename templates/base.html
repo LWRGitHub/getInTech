@@ -2,15 +2,80 @@
 <html lang="en">
     <head>
 
+        
+
+        <!-- ***Default Consent*** | Security & Privacy | Consent banner | gtag.js -->
+        <!-- <script>
+            gtag('consent', 'default', {
+                'analytics_storage': 'denied',
+                'region': ['ES', 'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'SE']
+            });
+
+            gtag('consent', 'default', {
+                'ad_storage': 'granted'
+            });
+        </script> -->
+
         <!-- Google Analytics "Google tag (gtag.js)" -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKJNMQ58LS"></script>
         <script>
+
+            function allConsentGranted() {
+                gtag('consent', 'update', {
+                    'ad_user_data': 'granted',
+                    'ad_personalization': 'granted',
+                    'ad_storage': 'granted',
+                    'analytics_storage': 'granted'
+                });
+            }
+
+            const cookieRestrictiveCountries = new Set(["Austria","Belgium","Bulgaria","Croatia","Cyprus","Czechia","Denmark","Estonia","Finland","France","Germany","Greece","Hungary","Ireland","Italy","Latvia","Lithuania","Luxembourg","Malta","The Netherlands","Poland","Portugal","Romania","Slovakia","Slovenia","Spain","Sweden"]);
+
+            // get IP Adress of user
+            function getIP(json) {
+            // Get Users Contry
+              fetch(`http://ip-api.com/json/${json.ip}`)
+                .then((response) => response.json())
+                .then((json) =>{ 
+                    country = json.country
+                    if(country && cookieRestrictiveCountries.has(country)){
+                        // Show Consent Banner
+                        
+                    }
+                    // console.log(country)
+                });
+            }
+
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            // ***Default Consent***
+            gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'analytics_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'ads_data_redaction': true,
+                'region': ['ES', 'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'SE'],
+                'wait_for_update': 500
+            });
+
             gtag('js', new Date());
 
             gtag('config', 'G-YKJNMQ58LS');
         </script>
+
+         <!-- Security & Privacy | Consent Banner | gtag.js -->
+        <script type="application/javascript">
+            
+
+        </script>
+          
+        <!-- IP-API.com | Get IP Adress API call code -->
+        <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+        <!-- Google Analytics "Google tag (gtag.js)" -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKJNMQ58LS"></script>
+
+
+        
 
         <title>Tech Career Time</title>
 
@@ -61,7 +126,9 @@
 
          -->
 
-        <body style="background: linear-gradient(-65deg, rgba(0, 194, 255, 0.95) 65%, rgba(130, 220, 248, 0.95) 75%, rgba(242, 242, 242, 0.95) 99.99%)">
+        <body class="body" style="background: linear-gradient(-65deg, rgba(0, 194, 255, 0.95) 65%, rgba(130, 220, 248, 0.95) 75%, rgba(242, 242, 242, 0.95) 99.99%)">
+
+            
 
             <!-- Navigation -->
             <nav class="container-fluid text-center bg-white p-0 m-0">
@@ -259,7 +326,7 @@
                     <div class="col-md-5 col-lg-4 col-xl-4 mx-auto mb-4">
                     <!-- <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4"> -->
                         
-                        
+                        <p>Tech Career Time is committed to fostering your success in the technology industry. Should you have any inquiries or require assistance, please do not hesitate to contact us at: <a href="mailto:techcareertime@gmail.com">TechCareerTime@gmail.com</a></p>
                         
                         
                     </div>
@@ -370,6 +437,8 @@
             */
 
         </script>
+
+        
 
     </body>
 </html>
