@@ -142,6 +142,42 @@ def privacy_policy():
 
     return render_template('pages/privacy/privacy_policy.html')
 
+@app.route('/sitemap')
+def sitemap():
+    """Display the sitemap page."""
+
+    context = {}
+    context["solutions"] = []
+    context["steps"] = []
+
+    for product in solutions_info:
+        solution = {}
+
+        solution["id"] = product["_id"]
+        solution["name"] = product["name"]
+
+        context["solutions"].append(solution)
+
+    for step in Swe_career_guide().swe_career_guide:
+
+        step_info = {}
+        step_info['title'] = step["title"]
+        step_info['url'] = f'{step["title"].replace(" ", "_")}/Getting_Started'
+        step_info["pages"] = []
+
+        for page in step['pages']:
+            page_info = {}
+
+            page_info["title"] = page["title"]
+            page_info["url"] = f'{step["title"].replace(" ", "_")}/{page["title"].replace(" ", "_")}'
+
+            step_info["pages"].append(page_info)
+
+
+        context["steps"].append(step_info)
+        
+    return render_template('pages/sitemap.html', **context)
+
 # Pass Stuff to Navbar
 @app.context_processor
 def base():

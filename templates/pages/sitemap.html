@@ -1,0 +1,96 @@
+{% extends 'ads.html' %}
+{% block content2 %}
+
+<main>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/career-guide.css') }}">
+
+    <div class="row py-0 py-md-2 m-0">
+        <div class="col-12 m-0 p-0">
+            <div class="p-5 m-0" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);">
+                <div class="p-md-5">
+
+                    <section class="sitemap">
+                        <h1>Sitemap</h2>
+                        <p class="bd-lead pb-5">Tech Career Time Sitemap</p>
+
+                        <div class="bd-callout bd-callout-info">
+                            <h5>What is an HTML Sitemap?</h5>
+                            <br/>
+                            <strong>An HTML sitemap is a page on a website that provides a human-readable, organized list of all the pages on the site. It helps visitors navigate the site more easily by giving them an overview of the available content. Unlike XML sitemaps, which are designed for search engines, HTML sitemaps are intended for users.</strong>
+                        </div>
+
+                        
+
+
+                        <h3 class="pt-4 pb-1" style="display: flex; align-items: center;"><span>1)&nbsp;</span> 
+                            <a href="/" style="text-decoration: none;" class="header-link pe-2" id="header-link">Home</a>
+                            <span class="link-emoji" id="link-emoji">🔗</span>
+                        </h3>
+                        <ol type="A">
+                            <li>
+                                <b>
+                                    <a href="/search_solutions/None/0">Coding Solutions</a>
+                                </b>
+                                <ol>
+                                    {% for solution in solutions %}
+                                    <li>
+                                        <b><a href="/code_solution/{{solution.id}}">{{solution.name}}</a></b>
+                                    </li>
+                                    {% endfor %}
+                                </ol>
+                            </li>
+                            <li>
+                                <b>
+                                    <a href="/swe_career_guide/Education/Getting_Started">SWE Career Guide</a>
+                                </b>
+                                <ol>
+                                    {% for step in steps %}
+                                    <li>
+                                        <b><a href="/swe_career_guide/{{step.url}}">{{step.title}}</a></b>
+                                        <ol>
+                                            {% for page in step.pages %}
+                                            <li type="A">
+                                                <b><a href="/swe_career_guide/{{page.url}}">{{page.title}}</a></b>
+                                            </li>
+                                            {% endfor %}
+                                        </ol>
+                                    </li>
+                                    {% endfor %}
+                                </ol>
+                            </li>
+                            <li>
+                                <b><a href="/about">About</a></b>
+                            </li>
+                            <li>
+                                <b><a href="/privacy_policy">Privacy Policy</a></b>
+                            </li>
+                            <li>
+                                <b><a href="/sitemap">Sitemap</a></b>
+                            </li>
+                        </ol>
+
+                        <!-- <h3 class="pt-4 pb-1" style="display: flex; align-items: center;"><span>1-A)&nbsp;</span> 
+                            <a href="/search_solutions/None/0" style="text-decoration: none;" class="header-link pe-2" id="header-link">Coding Solutions</a>
+                            <span class="link-emoji" id="link-emoji">🔗</span>
+                        </h3>
+                        <ol>
+                            {% for solution in solutions %}
+                            <li>
+                                <b><a href="/code_solution/{{solution.id}}">{{solution.name}}</a></b>
+                            </li>
+                            {% endfor %}
+                        </ol> -->
+                        
+
+                    </section>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+{% endblock content2 %}
