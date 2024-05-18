@@ -142,6 +142,12 @@ def privacy_policy():
 
     return render_template('pages/privacy/privacy_policy.html')
 
+@app.route('/sitemap.xml')
+def sitemap_xml():
+    """Display the sitemap page."""
+
+    return render_template('pages/sitemap.xml')
+
 @app.route('/sitemap')
 def sitemap():
     """Display the sitemap page."""
