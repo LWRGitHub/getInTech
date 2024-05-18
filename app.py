@@ -123,14 +123,24 @@ def code_solution(solution_id):
 
     return render_template('pages/code_solutions/code_solution.html', **context)
 
-# Code Solutions pg
+# About pg
 @app.route('/about')
 def about():
     """Display the About page."""
 
     return render_template('pages/about.html')
 
+@app.route('/cookie_policies')
+def cookie_policies():
+    """Display the cookie_policies page."""
 
+    return render_template('pages/privacy/cookie_policies.html')
+
+@app.route('/privacy_policy')
+def privacy_policy():
+    """Display the privacy_policy page."""
+
+    return render_template('pages/privacy/privacy_policy.html')
 
 # Pass Stuff to Navbar
 @app.context_processor

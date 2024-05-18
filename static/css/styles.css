@@ -133,3 +133,17 @@ button:focus {outline:0;}
 .carousel-control-prev /*, .carousel-indicators */ {
     filter: invert(100%);
 }
+
+
+/* cookie consent */
+.bottomright {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+}
+
+.demo {
+    /* background-color: HotPink; */
+    padding: 20px;
+    margin: 5px;
+}
