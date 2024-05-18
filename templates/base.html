@@ -26,6 +26,17 @@
                     'ad_storage': 'granted',
                     'analytics_storage': 'granted'
                 });
+                localStorage.setItem("cookieConsent", "granted");
+                removeCookiePopUp();
+            }
+
+            function onlyEssentialCookies(){
+                localStorage.setItem("cookieConsent", "essentialCookies");
+                removeCookiePopUp();
+            }
+
+            function closeCookieConsentWindow(){
+                localStorage.setItem("cookieConsent", "xCookieConsentWindow");
                 removeCookiePopUp();
             }
 
@@ -35,66 +46,68 @@
                 element.remove();
             }
 
-            const cookieRestrictiveCountries = new Set(["United States" ,"Austria","Belgium","Bulgaria","Croatia","Cyprus","Czechia","Denmark","Estonia","Finland","France","Germany","Greece","Hungary","Ireland","Italy","Latvia","Lithuania","Luxembourg","Malta","The Netherlands","Poland","Portugal","Romania","Slovakia","Slovenia","Spain","Sweden"]); // "United States" <-- for testing
+            const cookieRestrictiveCountries = new Set(["Austria","Belgium","Bulgaria","Croatia","Cyprus","Czechia","Denmark","Estonia","Finland","France","Germany","Greece","Hungary","Ireland","Italy","Latvia","Lithuania","Luxembourg","Malta","The Netherlands","Poland","Portugal","Romania","Slovakia","Slovenia","Spain","Sweden"]); // "United States" <-- for testing
 
             // get IP Adress of user
             function getIP(json) {
-            // Get Users Contry
-              fetch(`http://ip-api.com/json/${json.ip}`)
-                .then((response) => response.json())
-                .then((json) =>{ 
-                    country = json.country
-                    console.log(country && cookieRestrictiveCountries.has(country))
-                    if(country && cookieRestrictiveCountries.has(country)){
-                        // Show Consent Banner
-                        
-                        // Create the outer div
-                        const outerDiv = document.createElement('div');
-                        outerDiv.className = 'demo bottomright rounded';
-                        outerDiv.id = 'cookie-consent';
-                        outerDiv.style.cssText = 'padding: 2px 0px 0px 2px; width: 300px; background: linear-gradient(185deg, rgba(0, 194, 255, 0.95) 20.76%, rgba(130, 220, 248, 0.95) 52.73%, rgba(242, 242, 242, 0.95) 75%);';
-                    
-                        // Create the close button
-                        const closeButton = document.createElement('button');
-                        closeButton.type = 'button';
-                        closeButton.className = 'btn btn-outline-dark p-0';
-                        closeButton.style.left = '0px';
-                        closeButton.onclick = removeCookiePopUp;
-                        closeButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/></svg>';
-                    
-                        // Create the content div
-                        const contentDiv = document.createElement('div');
-                        contentDiv.className = 'text-center';
-                        contentDiv.style.padding = '2px 12px 12px 12px';
-                        contentDiv.innerHTML = '<p class="m-0">This site uses cookies. Visit our <a href="/privacy_policy#cookies-policy">cookies policy page</a> or click the link in any footer for more information and to change your preferences.</p>';
-                    
-                        // Create the accept all cookies button
-                        const acceptAllButton = document.createElement('button');
-                        acceptAllButton.type = 'button';
-                        acceptAllButton.className = 'btn btn-outline-dark m-1';
-                        acceptAllButton.textContent = 'Accept all cookies';
-                        acceptAllButton.onclick = allConsentGranted;
-                    
-                        // Create the accept essential cookies button
-                        const acceptEssentialButton = document.createElement('button');
-                        acceptEssentialButton.type = 'button';
-                        acceptEssentialButton.className = 'btn btn-outline-dark m-1';
-                        acceptEssentialButton.textContent = 'Accept only essential cookies';
-                        acceptEssentialButton.onclick = removeCookiePopUp;
-                    
-                        // Append buttons to contentDiv
-                        contentDiv.appendChild(acceptAllButton);
-                        contentDiv.appendChild(acceptEssentialButton);
-                    
-                        // Append elements to outerDiv
-                        outerDiv.appendChild(closeButton);
-                        outerDiv.appendChild(contentDiv);
-                    
-                        // Append outerDiv to body
-                        document.body.appendChild(outerDiv);
-                    }
-                    // console.log(country)
-                });
+                if(!localStorage.getItem("cookieConsent")){
+                    // Get Users Contry
+                    fetch(`http://ip-api.com/json/${json.ip}`)
+                        .then((response) => response.json())
+                        .then((json) =>{ 
+                            country = json.country
+                            // console.log(localStorage.getItem("cookieConsent"))
+                            if(country && cookieRestrictiveCountries.has(country)){
+                                // Show Consent Banner
+                                
+                                // Create the outer div
+                                const outerDiv = document.createElement('div');
+                                outerDiv.className = 'demo bottomright rounded';
+                                outerDiv.id = 'cookie-consent';
+                                outerDiv.style.cssText = 'padding: 2px 0px 0px 2px; width: 300px; background: linear-gradient(185deg, rgba(0, 194, 255, 0.95) 20.76%, rgba(130, 220, 248, 0.95) 52.73%, rgba(242, 242, 242, 0.95) 75%);';
+                            
+                                // Create the close button
+                                const closeButton = document.createElement('button');
+                                closeButton.type = 'button';
+                                closeButton.className = 'btn btn-outline-dark p-0';
+                                closeButton.style.left = '0px';
+                                closeButton.onclick = closeCookieConsentWindow;
+                                closeButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/></svg>';
+                            
+                                // Create the content div
+                                const contentDiv = document.createElement('div');
+                                contentDiv.className = 'text-center';
+                                contentDiv.style.padding = '2px 12px 12px 12px';
+                                contentDiv.innerHTML = '<p class="m-0">This site uses cookies. Visit our <a href="/privacy_policy#cookies-policy">cookies policy page</a> or click the link in any footer for more information and to change your preferences.</p>';
+                            
+                                // Create the accept all cookies button
+                                const acceptAllButton = document.createElement('button');
+                                acceptAllButton.type = 'button';
+                                acceptAllButton.className = 'btn btn-outline-dark m-1';
+                                acceptAllButton.textContent = 'Accept all cookies';
+                                acceptAllButton.onclick = allConsentGranted;
+                            
+                                // Create the accept essential cookies button
+                                const acceptEssentialButton = document.createElement('button');
+                                acceptEssentialButton.type = 'button';
+                                acceptEssentialButton.className = 'btn btn-outline-dark m-1';
+                                acceptEssentialButton.textContent = 'Accept only essential cookies';
+                                acceptEssentialButton.onclick = onlyEssentialCookies;
+                            
+                                // Append buttons to contentDiv
+                                contentDiv.appendChild(acceptAllButton);
+                                contentDiv.appendChild(acceptEssentialButton);
+                            
+                                // Append elements to outerDiv
+                                outerDiv.appendChild(closeButton);
+                                outerDiv.appendChild(contentDiv);
+                            
+                                // Append outerDiv to body
+                                document.body.appendChild(outerDiv);
+                            }
+                            // console.log(country)
+                        });
+                }
             }
 
             window.dataLayer = window.dataLayer || [];
