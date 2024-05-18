@@ -37,12 +37,13 @@ This platform will encompass not only a comprehensive guide for users aspiring t
 - Web Advertising/Affiliate Marketing (Ads)
 - Photoshop
 - Google Analytics
+- [XML-Sitemaps.com](https://www.xml-sitemaps.com/)
 
 
 
 ## Helpful Tutorials    
 - [YouTube: Flask/Jina2 Nav Search Component](https://www.youtube.com/watch?v=kmtZTo-_gJY)
-    
+
 
 
 ## Install/Run
