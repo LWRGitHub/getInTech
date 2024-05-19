@@ -6,10 +6,83 @@
     
     <!-- Main content -->
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xxl-6 m-0" id="search-query-res"> 
-        <!-- *SEARCH RES* -->
+
+        {% for solution in solutions %}
+
+            <div class="col">
+                <a class="card h-100 btn btn-outline-dark p-0" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);" href="/code_solution/{{solution._id}}">
+                    <div class="card-body" style="padding: 15px;">
+                        <h5 class="card-title text-center" style="font-size: 15px; font-weight: bold;">{{solution.name}}</h5>
+                        <p class="card-text text-center" style="font-size: 12px;">{{solution.site}}</p>
+                    </div>
+                </a>
+            </div>
+
+        {% endfor %}
+
     </div>
+
     <div class="row py-2 pt-5 m-0" id="search-res-Pagination"> <!--search-res-Pagination-->
         <!-- *PAGINATION* -->
+
+
+        <div class="mx-auto">
+
+            <ul class="m-0 text-center text mt-3 p-0" id="all-pagination-links">
+
+                <!-- Left arrow to previous page -->
+                <li>
+                    {% if page_number > 0 %}
+                        <a class="rounded-circle mx-2 pg-nav-active" href="/search_solutions/{{ searched }}/{{ page_number-1 }}">&lt;</a>
+                    {% else %}
+                        <span class="rounded-circle mx-2 pg-nav-active">&lt;</span>
+                    {% endif %}
+                </li>
+
+                <!-- current pg / 1st pagination area/number -->
+                <li>
+                    {% if pg_nav2_var %}
+                        <a class="pg-nav-active" style="{{ page_link_style_nav1 }}" href="/search_solutions/{{ searched }}/{{ pg_nav1_var-1 }}">{{ pg_nav1_var }}</a>
+                    {% else %}
+                        <span class="pg-nav-active" style="{{ page_link_style_nav1 }}">{{ pg_nav1_var }}</span>
+                    {% endif %}
+                </li>
+
+                <!-- next/other pg(s) -->
+                <!-- 2nd & 3rd pagination areas/numbers -->
+                {% for link in pagination_links %}
+                    <li>
+                        <a class="pg-nav-active" style="{{ link.page_link_style }}" href="/search_solutions/{{ searched }}/{{ link.pg_nav_var-1 }}">{{ link.pg_nav_var }}</a>
+                    </li>
+                {% endfor %}
+
+                <!-- 4th pagination area -->
+                {% if pg_nav3_var and pg_nav4_var %}
+                    <li>
+                        <span>...</span>
+                    </li>
+                {% endif %}
+
+                <!-- 5th/last pagination area/number -->
+                {% if show_last_page_link %}
+                    <li>
+                        <a class="pg-nav-active" style="{{ last_page_link_style }}" href="/search_solutions/{{ searched }}/{{ pg_nav4_var-1 }}">{{ pg_nav4_var }}</a>
+                    </li>
+                {% endif %}
+
+                <!-- Right arrow to next pg-->
+                <!-- res_count/24 = total_page_numbers ; if res_count < total_page_numbers show right arrow -->
+                <li>
+                    {% if res_count/24 > page_number+1 %}
+                        <a class="rounded-circle mx-2 pg-nav-active" href="/search_solutions/{{ searched }}/{{ page_number+1 }}">&gt;</a>
+                    {% else %}
+                        <span class="rounded-circle mx-2 pg-nav-active">&gt;</span>
+                    {% endif %}
+                </li>
+
+            </ul>
+
+        </div>
     </div>
 
     <!-- 
@@ -21,42 +94,43 @@
 
      -->
 
+
     <!-- This <script> Allows us to load the next page without doing a new API call "Saves Money 💰" -->
-    <script>
+    <!-- <script>
 
         const searchSolutions = {{solutions|tojson}}; // get solutions from server Jinja2
         let pgNum; // Global variable to store page/pagination number
 
-        const upDateContent = () =>{
+        // const upDateContent = () =>{
 
-            let pgNumMinus1 = Number(window.location.href.split("/").pop()); // get page number from URL
-            let showFromIdx = (pgNumMinus1 * 24); // get starting index for solutions to show
+        //     let pgNumMinus1 = Number(window.location.href.split("/").pop()); // get page number from URL
+        //     let showFromIdx = (pgNumMinus1 * 24); // get starting index for solutions to show
             
-            // loop through solutions and show only 24 solutions
-            for (let i = showFromIdx; i < showFromIdx + 24; i++) {
+        //     // loop through solutions and show only 24 solutions
+        //     for (let i = showFromIdx; i < showFromIdx + 24; i++) {
 
-                if (searchSolutions[i]) {
+        //         if (searchSolutions[i]) {
 
-                    const solution = searchSolutions[i];
-                    const card = document.createElement("div"); // create search result element
-                    card.classList.add("col"); // add bootstrap class
+        //             const solution = searchSolutions[i];
+        //             const card = document.createElement("div"); // create search result element
+        //             card.classList.add("col"); // add bootstrap class
 
-                    // add data, design, etc. to search result element
-                    card.innerHTML = `
-                        <a class="card h-100 btn btn-outline-dark p-0" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);" href="/code_solution/${solution._id}">
-                            <div class="card-body" style="padding: 15px;">
-                                <h5 class="card-title text-center" style="font-size: 15px; font-weight: bold;">${solution.name}</h5>
-                                <p class="card-text text-center" style="font-size: 12px;">${solution.site}</p>
-                            </div>
-                        </a>
-                    `;
-                    document.getElementById("search-query-res").appendChild(card);
+        //             // add data, design, etc. to search result element
+        //             card.innerHTML = `
+        //                 <a class="card h-100 btn btn-outline-dark p-0" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);" href="/code_solution/${solution._id}">
+        //                     <div class="card-body" style="padding: 15px;">
+        //                         <h5 class="card-title text-center" style="font-size: 15px; font-weight: bold;">${solution.name}</h5>
+        //                         <p class="card-text text-center" style="font-size: 12px;">${solution.site}</p>
+        //                     </div>
+        //                 </a>
+        //             `;
+        //             document.getElementById("search-query-res").appendChild(card);
 
-                }
+        //         }
 
-            }
-        }
-        upDateContent(); // run function to show solutions
+        //     }
+        // }
+        // upDateContent(); // run function to show solutions
 
         
         let pgNav1Var, pgNav2Var, pgNav3Var, pgNav4Var; // Global variables to store pagination numbers
@@ -152,7 +226,7 @@
             pagination.innerHTML = `
                 <ul class="m-0 text-center text mt-3 p-0" id="all-pagination-links">
 
-                    <!-- Left arrow to previous page -->
+                    
                     <li>
                         <span class="rounded-circle mx-2 pg-nav-active"  onclick="pgNavLeft()">&lt;</span>
                     </li>
@@ -240,7 +314,9 @@
             upDatePagination() // update pagination
         });
 
-    </script>        
+    </script>         -->
+    
+    
     <!-- 
 
         TODO: 

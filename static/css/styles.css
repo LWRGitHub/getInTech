@@ -99,6 +99,17 @@ button:focus {outline:0;}
     /* background-color: #F1F5F6; */
     background-color: white;
 }
+#all-pagination-links li a {
+    width: 100%;
+    margin: 10px 0px 10px 0px;
+    font-size: 21px;
+    color: #0280C8;
+    padding: 4px 10px 4px 10px;
+    display: inline;
+    text-decoration: none;
+    /* background-color: #F1F5F6; */
+    background-color: white;
+}
 .pg-nav-active:hover{
     color: #03659e;
     cursor: pointer;
