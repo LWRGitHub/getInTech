@@ -9,6 +9,7 @@ itsdangerous==2.1.2
 flask-talisman==1.1.0
 flask-wtf==1.2.1 
 wtforms==3.1.2
+# jinjaMarkdown==0.0.8
 
  
 # Probably don't need the below

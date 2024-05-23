@@ -10,6 +10,8 @@ from data.Solutions_info import Solutions_info
 from data.Swe_career_guide import Swe_career_guide 
 import pprint
 import math
+from jinjaMarkdown.markdownExtension import markdownExtension
+
 
 
 
@@ -18,16 +20,20 @@ import math
 ############################################################
 
 
-
 app = Flask(__name__)
 
 # Secret Key for CSRF Protection in Flask-WTF
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
 
+#add markdownExtension to enviroment (by default jinja_env)
+app.jinja_env.add_extension(markdownExtension)
+
+
 ############################################################
 # DATA
 ############################################################
+
 
 solutions = Solutions().solutions
 solutions_info = Solutions_info().solutions_info
@@ -149,6 +155,219 @@ def sitemap_xml():
     """Display the sitemap page."""
 
     return render_template('pages/sitemap.xml')
+
+@app.route('/test')
+def test():
+    """Display the test page."""
+   
+
+    context = {
+        "name": "Test",
+        "site": "LeetCode",
+        "_id": "LeetCode-test",
+        "href": "/solution/LeetCode-test",
+        "video": {
+            "has_video": True,
+            "scripts": ["https://www.youtube.com/embed/qmntcyBt-5s?si=nUJQ3Unrd6RDdKzG"]
+        },
+        "how_to": False,
+        "markdown_how_to_solve": "To solve this coding challenge, we first need to understand the structure and functioning of a Trie (Prefix Tree). A Trie is a tree-like data structure that stores strings in a way that allows for efficient retrieval of words, especially when dealing with operations like prefix searches.\n\n## Explanation\n\n1. **Trie Initialization (`__init__` method)**:\n   - We initialize our Trie with an empty dictionary `root` which will act as the root node of the Trie.\n\n2. **Insert a Word into the Trie (`insert` method)**:\n   - We start at the root of the Trie.\n   - For each character in the word, if the character is not already present as a child of the current node, we create a new dictionary for that character.\n   - We then move to the next level (child node) and repeat until all characters are inserted.\n   - After inserting all characters of the word, we mark the end of the word by adding a special symbol `$` with a value of `True`.\n\n3. **Search for a Word in the Trie (`search` method)**:\n   - We start at the root and traverse through each character of the word.\n   - For each character, if the character is not found in the current node, the word does not exist in the Trie and we return `False`.\n   - If we successfully traverse through all characters, we then check for the special end-of-word symbol `$` to confirm the presence of the complete word.\n\n4. **Check for a Prefix in the Trie (`startsWith` method)**:\n   - Similar to the search method, we start at the root and traverse through each character of the prefix.\n   - If any character in the prefix is not found in the current node, the prefix does not exist in the Trie and we return `False`.\n   - If we successfully traverse through all characters, we return `True` since the prefix exists in the Trie.\n\n## Pseudocode\n\n```pseudo\nclass Trie:\n    # Initialize the Trie with an empty dictionary as root\n    method __init__():\n        root = {}\n\n    # Insert a word into the Trie\n    method insert(word):\n        node = root\n        for each char in word:\n            if char not in node:\n                node[char] = {}\n            node = node[char]\n        node['$'] = True  # Mark the end of the word\n\n    # Search for a word in the Trie\n    method search(word) -> boolean:\n        node = root\n        for each char in word:\n            if char not in node:\n                return False\n            node = node[char]\n        return '$' in node  # Return True if the end of word marker is found\n\n    # Check if there is any word in the Trie that starts with the given prefix\n    method startsWith(prefix) -> boolean:\n        node = root\n        for each char in prefix:\n            if char not in node:\n                return False\n            node = node[char]\n        return True  # All characters in prefix are found, so return True\n```\n\nThis pseudocode covers the initialization, insertion of words, searching for words, and checking for prefixes in a Trie data structure. This is the methodology for solving the coding challenge.",
+        "languages": [
+            {
+                "name": "Python",
+                "abbreviation_for_prism_styles": "py",
+                "code": '''
+def threeSum(nums):
+
+    nums.sort()
+    res = []
+
+    for i in range(len(nums)):
+
+        if nums[i] > 0:
+            break
+        elif i == 0 or nums[i-1] != nums[i]:
+            sum0(nums, i, res)
+
+    return res
+
+def sum0(nums, i, res):
+
+    sm = i + 1
+    lg = len(nums) - 1
+
+    while sm < lg:
+        sum = nums[i] + nums[sm] + nums[lg]
+
+        if sum < 0:
+            sm+= 1
+        elif sum > 0:
+            lg-= 1
+        else:
+            res.append([nums[i], nums[sm], nums[lg]])
+            sm+= 1
+            lg-= 1
+            while(sm < len(nums) and nums[sm] == nums[sm-1]):
+                sm+= 1'''
+            },
+            {
+                "name": "JavaScript",
+                "abbreviation_for_prism_styles": "js",
+                "code": '''
+const threeSum = function(nums, res=[]) {
+    nums.sort((a,b) => a - b);
+    for(let i = 0; i < nums.length; i++){
+        if(nums[i] > 0){
+            break;
+        } else if(i === 0 || nums[i-1] !== nums[i]){
+            sum0(nums, i, res);
+        }
+    }
+    return res;
+};
+
+const sum0 = (nums, i, res, sm=i+1, lg=nums.length-1) => {
+    while(sm < lg){
+        const sum = nums[i] + nums[sm] + nums[lg];
+        if(sum < 0){
+            sm++;
+        } else if(sum > 0) {
+            lg--;
+        } else {
+            res.push([nums[i], nums[sm], nums[lg]]);
+            sm++;
+            lg--;
+            while(nums[sm] === nums[sm-1]){
+                sm++;
+            }
+        }
+    }
+};'''
+            }
+        ],
+        "search_res": {
+            "video": {
+                "has_video": True,
+                "src": [
+                    "https://www.youtube.com/embed/jzZsG8n2R9A?si=uwDfaIS98YU3Xb0T",
+                    "https://www.youtube.com/embed/cRBSOz49fQk?si=jTOTlZh0rFbZnmPF",
+                    "https://www.youtube.com/embed/qJSPYnS35SE?si=uLOE-LePO8NRJa8Q"
+                ]
+            },
+            "languages": [
+                {
+                    "name": "Python",
+                    "solutions": [
+                        {
+                            "site_name": "Coding Broz",
+                            "href": "https://www.codingbroz.com/3sum-leetcode-solution/"
+                        },
+                        {
+                            "site_name": "Medium @Norman Aranez",
+                            "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+                        }
+                    ],
+                },
+                {
+                    "name": "JavaScript",
+                    "solutions": [
+                        {
+                            "site_name": "Medium @Norman Aranez",
+                            "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+                        }
+                    ],
+                },
+                {
+                    "name": "TypeScript",
+                    "solutions": [
+                        {
+                            "site_name": "Medium @Norman Aranez",
+                            "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+                        }
+                    ],
+                },
+                {
+                    "name": "PHP",
+                    "solutions": [
+                        {
+                            "site_name": "Medium @Norman Aranez",
+                            "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+                        }
+                    ],
+                },
+                {
+                    "name": "C-Sharp",
+                    "solutions": [
+                        {
+                            "site_name": "Medium @Norman Aranez",
+                            "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+                        }
+                    ],
+                },
+                {
+                    "name": "C-Plus-Plus",
+                    "solutions": [
+                        {
+                            "site_name": "Coding Broz",
+                            "href": "https://www.codingbroz.com/3sum-leetcode-solution/"
+                        },
+                        {
+                            "site_name": "Tutorial Cup",
+                            "href": "https://tutorialcup.com/leetcode-solutions/3sum-leetcode-solution.htm"
+                        }
+                    ],
+                },
+                {
+                    "name": "Java",
+                    "solutions": [
+                        {
+                            "site_name": "Coding Broz",
+                            "href": "https://www.codingbroz.com/3sum-leetcode-solution/"
+                        },
+                        {
+                            "site_name": "Tutorial Cup",
+                            "href": "https://tutorialcup.com/leetcode-solutions/3sum-leetcode-solution.htm"
+                        },
+                        {
+                            "site_name": "Medium @Norman Aranez",
+                            "href": "https://medium.com/@araneznorman/15-3sum-leetcode-31ab6df7969e"
+                        }
+                    ],
+                }
+            ]
+        },
+    }
+    
+    how_to = []
+
+    # split contest["markdown_how_to_solve"] at \n to get the list of lines
+    markdown_list = context["markdown_how_to_solve"].split("\n")
+  
+    idx = 0
+    # loop through markdown_list
+    while idx < len(markdown_list):
+        # check if line starts with # followed by a space
+        if markdown_list[idx][0] == "#":
+            # add a class to the line
+            how_to[idx] = {
+                "tag": "h2",
+                "content": f"{markdown_list[idx][2:]}"
+            }
+
+        # check if line starts with a number followed by a period
+        elif markdown_list[idx].isdigit() and markdown_list[idx][1] == ".":
+            # add a class to the line
+            how_to[idx] = {
+                "tag": "h5",
+                "content": f"{markdown_list[idx]}"
+            }
+        else:
+            
+
+        idx += 1
+
+
+    return render_template('pages/test.html', **context)
 
 @app.route('/sitemap')
 def sitemap():
