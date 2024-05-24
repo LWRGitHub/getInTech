@@ -10,7 +10,17 @@ from data.Solutions_info import Solutions_info
 from data.Swe_career_guide import Swe_career_guide 
 import pprint
 import math
+import re
+import json
+
+# Markdown 
 from jinjaMarkdown.markdownExtension import markdownExtension
+# from mistune import html
+# import argparse
+# import sys
+
+# import jinja2
+# import markdown
 
 
 
@@ -29,6 +39,15 @@ app.config['SECRET_KEY'] = SECRET_KEY
 #add markdownExtension to enviroment (by default jinja_env)
 app.jinja_env.add_extension(markdownExtension)
 
+# Jija2 custom filters
+def is_list(value):
+    return isinstance(value, list)
+
+def is_str(value):
+    return isinstance(value, str)
+
+app.jinja_env.filters['is_list'] = is_list
+app.jinja_env.filters['is_str'] = is_str
 
 ############################################################
 # DATA
@@ -85,8 +104,6 @@ def swe_career_guide(step, step_sections):
 
     # assign next page 
     if step_letter_idx+1 < len(Swe_career_guide().swe_career_guide[step_num_idx]['pages']):
-        print('\n\n*********\n\n',Swe_career_guide().swe_career_guide[step_num_idx]['title'].replace(' ', '_'),'\n\n*********\n\n')
-        print('\n\n*********\n\n',Swe_career_guide().swe_career_guide[step_num_idx]['pages'][step_letter_idx+1]['title'].replace(' ', '_'),'\n\n*********\n\n')
 
         context['next_page'] = f"{Swe_career_guide().swe_career_guide[step_num_idx]['title'].replace(' ', '_')}/{Swe_career_guide().swe_career_guide[step_num_idx]['pages'][step_letter_idx+1]['title'].replace(' ', '_')}"
     else:
@@ -154,7 +171,7 @@ def privacy_policy():
 def sitemap_xml():
     """Display the sitemap page."""
 
-    return render_template('pages/sitemap.xml')
+    return render_template('pages/sitemap.xml')    
 
 @app.route('/test')
 def test():
@@ -342,30 +359,402 @@ const sum0 = (nums, i, res, sm=i+1, lg=nums.length-1) => {
 
     # split contest["markdown_how_to_solve"] at \n to get the list of lines
     markdown_list = context["markdown_how_to_solve"].split("\n")
+
+    # find all pairs🍐 of a * | ** | *** in a string
+    def find(s):
+        patterns = {
+            3: r'\*\*\*[^*]+\*\*\*',
+            2: r'\*\*[^*]+\*\*',
+            1: r'\*[^*]+\*'
+        }
+        
+        result = []
+        i = 0
+        while i < len(s):
+            match = None
+            for type_, pattern in patterns.items():
+                regex = re.compile(pattern)
+                current_match = regex.match(s, i)
+                if current_match:
+                    match = {'type': type_, 'idxs': [current_match.start(), current_match.end() - 1]}
+                    break
+            
+            if match:
+                result.append(match)
+                i = match['idxs'][1] + 1
+            else:
+                i += 1
+        
+        return result
   
-    idx = 0
+    # find all pairs🍐 of ` in a string
+    def find_back_ticks(s):
+        patterns = {
+            1: r'`[^`]+`'
+        }
+        
+        result = []
+        i = 0
+        while i < len(s):
+            match = None
+            for type_, pattern in patterns.items():
+                regex = re.compile(pattern)
+                current_match = regex.match(s, i)
+                if current_match:
+                    match = {'type': type_, 'idxs': [current_match.start(), current_match.end() - 1]}
+                    break
+            
+            if match:
+                result.append(match)
+                i = match['idxs'][1] + 1
+            else:
+                i += 1
+        
+        return result
+
+    # check if line starts with >
+    # if so get indent
+    def bd_callout(markdown_list, idx):
+        html_data = {}
+
+        if markdown_list[idx][0:1] == '>':
+            html_data["bd_callout"] = {}
+
+            if markdown_list[idx][0:2] == '>>':
+                if markdown_list[idx][0:3] == '>>>':
+                    html_data["bd_callout"]["indent"] = 3
+                else:
+                    html_data["bd_callout"]["indent"] = 2
+            else:
+                html_data["bd_callout"]["indent"] = 1
+
+        # remove all > from the front of the line
+        markdown_list[idx] = markdown_list[idx].lstrip('>')
+
+        return html_data
+    prior_line_has_callout = False
+
+    # check if prior_line_has_callout & "bd_callout" in html_data add to last dict in how_to
+    def if_need_add_callout_line(prior_line_has_callout, how_to, html_data):
+        if prior_line_has_callout and "bd_callout" in html_data:
+                
+            # check if str, list or dict
+            if type(how_to[-1]["content"]) == list:
+                how_to[idx-1]["content"].append([*how_to[idx-1]["content"], html_data])
+            else: # type(how_to[-1]["content"]) == str or type(how_to[-1]["content"]) == dict
+                how_to[idx-1]["content"].append([how_to[idx-1]["content"], html_data])
+
+    # order data acording to Md `
+    def sort_buld_sm_code_block(data, ch_idxs):
+        code_data = {}
+
+        code_data["tag"] = "span"
+        code_data["content"] = []
+
+        print('\n\n*********\n\n',"len(data): \n",len(data),'\n\n*********\n\n')
+        print('\n\n*********\n\n',"data: \n",data,'\n\n*********\n\n')
+        print('\n\n*********\n\n',"ch_idxs: \n",ch_idxs,'\n\n*********\n\n')
+
+        if ch_idxs[0]["idxs"][0] != 0:
+            content = data[0:ch_idxs[0]["idxs"][0]]
+            code_data["content"].append({
+                "tag": "span",
+                "content": content
+            })
+
+        # loop through ch_idxs
+        last_i2 = None
+        for code_info in ch_idxs:
+            [i1, i2] = code_info["idxs"]
+
+            # if last_i2 is not None add the text between the last_i2 and i1 to the list
+            if last_i2 != None:
+                content = data[last_i2:i1]
+                code_data["content"].append({
+                    "tag": "span",
+                    "content": content
+                })
+
+            content = data[i1+1:i2]
+            code_data["content"].append({
+                "tag": "code",
+                "content": content
+            })
+
+            last_i2 = i2 + 1
+        
+
+
+        return code_data
+
+    # order data acording to Md * | ** | ***
+    def sort_buld_italic(text, ch_idxs):
+        astrict_data = {}
+
+        astrict_data["tag"] = "p"
+        astrict_data["content"] = []
+
+        # print('\n\n*********\n\n',"len(text): \n",len(text),'\n\n*********\n\n')
+        # print('\n\n*********\n\n',"text: \n",text,'\n\n*********\n\n')
+        # print('\n\n*********\n\n',"ch_idxs: \n",ch_idxs,'\n\n*********\n\n')
+        # print('\n\n*********\n\n','ch_idxs[0]["idxs"][0] != 0: \n', ch_idxs[0]["idxs"][0] != 0,'\n\n*********\n\n')
+
+        
+        if ch_idxs[0]["idxs"][0] != 0:
+            content = text[0:ch_idxs[0]["idxs"][0]]
+
+            # if even instances of ` 
+            # if content.find('`') != -1 and content.count("`") % 2 == 0:
+            #     ch_idxs = find(content)
+            #     content = sort_buld_sm_code_block(content, ch_idxs)
+
+            astrict_data["content"].append({
+                "tag": "span",
+                "content": content
+            })
+
+        # loop through ch_idxs
+        last_i2 = None
+        for astrict_info in ch_idxs:
+            [i1, i2] = astrict_info["idxs"]
+            astrid_count = astrict_info["type"]
+
+            # if last_i2 is not None add the text between the last_i2 and i1 to the list 
+            if last_i2 != None:
+                content = text[last_i2:i1]
+
+                # if even instances of ` 
+                # if content.find('`') != -1 and content.count("`") % 2 == 0:
+                #     ch_idxs = find(content)
+                #     content = sort_buld_sm_code_block(content, ch_idxs)
+
+                astrict_data["content"].append({
+                "tag": "span",
+                "content": content
+            })
+                
+            if astrid_count == 3:
+                content = text[i1+3:i2-2]
+
+                # if even instances of ` 
+                # if content.find('`') != -1 and content.count("`") % 2 == 0:
+                #     ch_idxs = find(content)
+                #     content = sort_buld_sm_code_block(content, ch_idxs)
+
+                # add the text between i1 and i2 to the list as a bold tag
+                astrict_data["content"].append({
+                    "tag": "strong",
+                    "content": {
+                        "tag": "em",
+                        "content": content,
+                    }
+                })
+            else:
+                content = text[i1+astrid_count:i2-astrid_count+1]
+
+                # if even instances of ` 
+                # if content.find('`') != -1 and content.count("`") % 2 == 0:
+                #     ch_idxs = find(content)
+                #     content = sort_buld_sm_code_block(content, ch_idxs)
+
+                # add the text between i1 and i2 to the list as a bold tag
+                astrict_data["content"].append({
+                    "tag": "strong" if astrid_count == 2 else "em",
+                    "content": content
+                })
+                
+            last_i2 = i2 + 1  
+          
+        return astrict_data
+    
+    # make html list data >>> ol | ul
+    def make_html_list_data(html_data, markdown_list, idx, prior_line_has_callout, how_to, depth):
+
+        li_data = {}
+
+        li_data["tag"] = "ol" if markdown_list[idx].lstrip()[0].isnumeric() else "ul"
+        li_data["content"] = []
+
+        
+        # while not empty line and starts with number immediately followed by '.' or starts with space(s) then number immediately followed by '.'
+        while (idx < len(markdown_list) and len(markdown_list[idx]) > 0 and markdown_list[idx] != '') and (markdown_list[idx].lstrip()[0] == '-' or (markdown_list[idx].lstrip()[0].isnumeric() and markdown_list[idx].lstrip()[1] == '.') or (markdown_list[idx].lstrip()[0:2].isnumeric() and markdown_list[idx].lstrip()[2] == '.')):
+
+            # if line spaces in front of the number make sub list
+            if markdown_list[idx][0] == ' ':
+                # count how many spaces are in front of the number
+                spaces = len(markdown_list[idx]) - len(markdown_list[idx].lstrip())
+                # if spaces are greater than depth make a new list
+                if spaces > depth:
+                    li_data["content"].append(make_html_list_data(html_data, markdown_list, idx, prior_line_has_callout, how_to, spaces))
+                    idx += 1
+                    continue
+            
+            # remove the number and the '.' or the '-' and the spaces
+            rm_count = 2 if markdown_list[idx].lstrip()[0] == '-' else 3 
+
+            data = markdown_list[idx].lstrip()[rm_count:]
+
+            # check if even instances of ** are present in the line
+            if data.find('*') != -1 and data.count("*") % 2 == 0:
+                ch_idxs = find(data)
+                data = sort_buld_italic(data, ch_idxs)
+            # elif data.find('`') != -1 and data.count("`") % 2 == 0:
+            #     ch_idxs = find(data)
+            #     data = sort_buld_sm_code_block(data, ch_idxs)
+                
+            # make {tag: li, content: data}
+            li_data["content"].append({
+                "tag": "li",
+                "content": data,
+            })
+
+            idx += 1
+
+        # if prior_line_has_callout & "bd_callout" in html_data add to last dict in how_to
+        # if_need_add_callout_line(prior_line_has_callout, how_to, html_data)
+
+        return li_data
+
+    idx = 0  
     # loop through markdown_list
     while idx < len(markdown_list):
-        # check if line starts with # followed by a space
-        if markdown_list[idx][0] == "#":
-            # add a class to the line
-            how_to[idx] = {
-                "tag": "h2",
-                "content": f"{markdown_list[idx][2:]}"
-            }
+        """
+            html_data = {
+                # key: Str | List | Dict
 
-        # check if line starts with a number followed by a period
-        elif markdown_list[idx].isdigit() and markdown_list[idx][1] == ".":
-            # add a class to the line
-            how_to[idx] = {
-                "tag": "h5",
-                "content": f"{markdown_list[idx]}"
+                # Optional ⌥
+                "bd_callout": {"indent": Int},
+
+                # Required❗️
+                "tag": Str,
+                # Str >>> "tag": "h2" | "h4" | "h5" | "p" | "code" | "strong" | "ul" | "ol" | "li" | "span" | "hr" | "em"
+                # TODO: add to Str >>> "a" | "img" | "iframe" | "table" | "tr" | "th" | "td" | "pre" | "b" | "div" | "br" | 
+
+                # Required❗️ unless otherwise specified 
+                # ∞ Infinite Possible nested tags 🆘 
+                "content": Str | List | Dict
+                # "Content_Str" >>> "content": "text to display",
+                ''' [Content_List] >>> 
+                "content": [
+                    # Str | [Content_List] | {Content_Dict} 
+                    "text to display",
+                    [ [Content_List] ],
+                    {Content_Dict}
+                ],'''
+                ''' {Content_Dict} >>> 
+                "content": {
+                    "tag": Str, 
+                    "content": Str | [Content_List] | {Content_Dict},
+                    "bd_callout": {"indent": Int} # Optional ⌥
+                },'''
             }
-        else:
+        """
+        html_data = {}
+
+        # if empty line continue
+        if markdown_list[idx] == "":
+            idx += 1
+            continue
+
+        # check if line starts with >
+        html_data = bd_callout(markdown_list, idx)
+
+        # check if code block e.g. ``` 
+        if markdown_list[idx].find("```") != -1:
+            # loop through the list until the next ``` is found
+            idx += 1
+            # make {tag: code, content: code}
+            html_data["tag"] = "code"
+            html_data["content"] = '\n'
+
+            # loop through code_lines and add each line to the content keep indentations "space(s)" the same
+            while idx < len(markdown_list) and markdown_list[idx].find("```") == -1:
+                html_data["content"] += f"{markdown_list[idx]}\n"
+                idx += 1
+
+            # if prior_line_has_callout & "bd_callout" in html_data add to last dict in how_to
+            if_need_add_callout_line(prior_line_has_callout, how_to, html_data)
             
+        # check if line starts with # | ## | ### followed by a space
+        elif markdown_list[idx][0] == "#":
+            ymbol_count = 1
+            if markdown_list[idx][0:2] == "##":
+                if markdown_list[idx][0:3] == "###":
 
+                    symbol_count = 3
+                    html_data["tag"] = "h5"
+                else:
+                    symbol_count = 2
+                    html_data["tag"] = "h4"
+            else:
+                html_data["tag"] = "h2"
+            
+            html_data["content"] = f"{markdown_list[idx][symbol_count+1:]}"
+
+        # if --- create hr tag & continue
+        elif markdown_list[idx][0:3] == "---":
+            html_data["tag"] = "hr"
+            html_data["content"] = ""
+
+        # if starts with number immediately followed by '.' or starts with space(s) then number immediately followed by '.'
+        elif markdown_list[idx].lstrip()[0].isnumeric() and markdown_list[idx].lstrip()[1] == '.' or markdown_list[idx].lstrip()[0] == '-':
+            html_data["tag"] = "span"
+            html_data["content"] = []
+
+            # get indent info
+            depth = len(markdown_list[idx]) - len(markdown_list[idx].lstrip())
+            # make html list data
+            li_data = make_html_list_data(html_data, markdown_list, idx, prior_line_has_callout, how_to, depth)
+
+            html_data["content"].append(li_data)
+
+        # check if even instances of ** are present in the line
+        elif markdown_list[idx].find('*') != -1 and markdown_list[idx].count("*") % 2 == 0:
+            html_data["tag"] = "p"
+            html_data["content"] = []
+
+            ch_idxs = find(markdown_list[idx])
+            
+            # order data acording to Md * | ** | ***
+            html_data["content"].append(sort_buld_italic(markdown_list[idx], ch_idxs))
+        
+        # if even instances of ` are present in the line
+        # elif markdown_list[idx].find('`') != -1 and markdown_list[idx].count("`") % 2 == 0:
+        #     html_data["tag"] = "p"
+        #     html_data["content"] = []
+            
+        #     ch_idxs = find_back_ticks(markdown_list[idx])
+
+        #     # order data acording to Md `
+        #     html_data["content"].append(sort_buld_sm_code_block(markdown_list[idx], ch_idxs))
+        
+        else:
+            html_data["tag"] = "p"
+            html_data["content"] = markdown_list[idx]
+
+
+        # if prior_line_has_callout & "bd_callout" in html_data add to last dict in how_to
+        if_need_add_callout_line(prior_line_has_callout, how_to, html_data)
+        # if html_data["bd_callout"] prior_line_has_callout = True
+        if "bd_callout" in html_data: 
+            prior_line_has_callout = True
+        else:
+            prior_line_has_callout = False
+
+        how_to.append(html_data)
         idx += 1
 
+    context["how_to"] = how_to
+
+    # turn how_to into json
+    # write data to JSON file
+    f = open('how_to.json', 'w', encoding="utf-8")
+    json.dump(how_to, f, indent=4)
+    f.close()  
+
+
+    # print('\n\n*********\n\n',context["how_to"],'\n\n*********\n\n')
+    print('DONE✨')
 
     return render_template('pages/test.html', **context)
 
@@ -439,9 +828,8 @@ def search():
         
         
         return redirect(url_for('search_solutions', query=query, page_number=0))
-        # 
+    
     else:
-        # print('form.searched.data: ',  type(form.searched.data))
         return redirect(url_for('search_solutions', query="None", page_number=0))
 
 
@@ -485,10 +873,6 @@ def search_solutions(query, page_number):
         context["searched"] = "None"
         context["solutions"] = get_24_seach_res(solutions_info)
         context["res_count"] = len(solutions_info)
-
-    # print('\n ********** \n')
-    # pprint.pprint(context["solutions"]) 
-    # print('\n ********** \n')
 
     # Global variables to store pagination numbers
     # pg_nav1_var = pg_nav2_var = pg_nav3_var = pg_nav4_var = None
