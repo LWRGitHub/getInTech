@@ -73,7 +73,7 @@
                         {% if data.content | is_str %}
 
                             {% if data.tag == "p" %}
-                                <p class="col-12 m-0 py-3">{{data.content}}</p>
+                                <span class="col-12 m-0 py-3">{{data.content}}</span>
                             {% elif data.tag == "h2" %}
                                 <h2 class="col-12 m-0 py-3">{{data.content}}</h2>
                             {% elif data.tag == "h4" %}
@@ -81,11 +81,24 @@
                             {% elif data.tag == "h5" %}
                                 <h5 class="col-12 m-0 py-1">{{data.content}}</h5>
                             {% elif data.tag == "span" %}
-                                <span class="col-12 m-0 py-1">{{data.content}}</span>
-                                <!-- <br> -->
+                                <span>{{data.content}}</span>
                             {% elif data.tag == "li" %}
                                 <li>{{data.content}}</li>
                             {% elif data.tag == "code" %}
+                                <!-- <code class="px-1" style="background-color: rgb(235, 227, 228); border-radius: 3px; font-family: 'Source Code Pro', monospace;">{{data.content}}</code> -->
+                                <!-- <code class="px-1" style="background-color: rgb(86, 86, 86); border-radius: 3px; font-family: 'Source Code Pro', monospace; color: rgb(191, 255, 0);">{{data.content}}</code> -->
+                                <!-- <code class="px-1" style="background-color: rgb(109, 109, 109); border-radius: 3px; font-family: 'Source Code Pro', monospace; color: rgb(255, 196, 0);">{{data.content}}</code> -->
+
+                                <!-- <code class="px-1" style="background: linear-gradient(70deg, rgba(0, 0, 128), rgba(255, 0, 0), rgba(255, 192, 0), rgba(128, 255, 128), rgba(0, 255, 255), rgba(0, 255, 255), rgba(0, 192, 255), rgba(0, 192, 255), rgba(0, 192, 255), rgba(0, 128, 255), rgba(0, 128, 255), rgba(0, 128, 255), rgb(0, 128, 255), rgb(0, 102, 180)); border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 5px solid rgb(0, 0, 0); border-radius: 3px; font-family: 'Source Code Pro', monospace; color: black; text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fff, 0 0 30px #fff; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);">{{data.content}}</code> -->
+
+                                
+                                <div style="display: inline-block; position: relative;">
+                                    <code style="padding: 2px 5px 2px 5px; background: linear-gradient(70deg, rgba(0, 0, 128), rgba(255, 0, 0), rgba(255, 192, 0), rgba(128, 255, 128), rgba(0, 255, 255), rgba(0, 255, 255), rgba(0, 192, 255), rgba(0, 192, 255), rgba(0, 192, 255), rgba(0, 128, 255), rgba(0, 128, 255), rgba(0, 128, 255), rgb(0, 128, 255), rgb(0, 102, 180)); border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 5px solid rgb(0, 0, 0); border-radius: 3px; color: black; text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fff, 0 0 30px #fff; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);">{{data.content}}</code>
+                                    <div style="position: absolute; bottom: -5.5px; left: 50%; transform: translateX(-50%); width: 25%; height: 3px; background: rgb(34, 33, 33); border-radius: 0 0 2px 2px;"></div>
+                                </div>
+                                  
+
+                            {% elif data.tag == "fenced_code_block" %}
                                 <pre class="line-numbers py-3">
                                     <code class="language-markup">{{data.content}}</code>
                                 </pre>
@@ -109,11 +122,11 @@
                         {% elif data.content | is_list %}
 
                             {% if data.tag == "p" %}
-                                <p class="col-12 m-0 py-3">
+                                <span class="col-12 m-0 py-3">
                                     {% for item in data.content %}
                                         {{ render_content(item) }}
                                     {% endfor %}
-                                </p>
+                                </span>
                             {% elif data.tag == "h2" %}
                                 <h2 class="col-12 m-0 py-3">
                                     {% for item in data.content %}
@@ -133,24 +146,29 @@
                                     {% endfor %}
                                 </h5>
                             {% elif data.tag == "span" %}
-                                <span class="col-12 m-0 py-1">
+                                <span>
                                     {% for item in data.content %}
                                         {{ render_content(item) }}
                                     {% endfor %}
                                 </span>
-                                <!-- <br> -->
                             {% elif data.tag == "li" %}
                                 <li>
                                     {% for item in data.content %}
                                         {{ render_content(item) }}
                                     {% endfor %}
                                 </li>
-                            <!-- {% elif data.tag == "code" %}
+                            {% elif data.tag == "code" %}
+                                <code>
+                                    {% for item in data.content %}
+                                        {{ render_content(item) }}
+                                    {% endfor %}
+                                </code>
+                            <!-- {% elif data.tag == "fenced_code_block" %}
                                 <pre class="line-numbers py-3">
                                     <code class="language-markup">
                                         {% for item in data.content %}
-                                        {{ render_content(item) }}
-                                    {% endfor %}
+                                            {{ render_content(item) }}
+                                        {% endfor %}
                                     </code>
                                 </pre>
                             {% elif data.tag == "hr" %}
@@ -185,14 +203,13 @@
                         <!-- is Dict -->
                         {% else %}
                             {% if data.tag == "p" %}
-                                <p class="col-12 m-0 py-3">
-                                    {{ render_content(data.content) }}
-                                </p>
-                            {% elif data.tag == "span" %}
-                                <span class="col-12 m-0 py-1">
+                                <span class="col-12 m-0 py-3">
                                     {{ render_content(data.content) }}
                                 </span>
-                                <br>
+                            {% elif data.tag == "span" %}
+                                <span>
+                                    {{ render_content(data.content) }}
+                                </span>
                             {% elif data.tag == "li" %}
                                 <li>
                                     {{ render_content(data.content) }}
@@ -203,7 +220,17 @@
                                         {{ render_content(data.content) }}
                                     </li>
                                 </ol>
+                            {% elif data.tag == "ul" %}
+                                <ul class="col-12 m-0 py-1 p-5">
+                                    <li>
+                                        {{ render_content(data.content) }}
+                                    </li>
+                                </ul>
                             <!-- {% elif data.tag == "code" %}
+                                <code>
+                                    {{ render_content(data.content) }}
+                                </code> -->
+                            <!-- {% elif data.tag == "fenced_code_block" %}
                                 <pre class="line-numbers py-3">
                                     <code class="language-markup">
                                         {{ render_content(data.content) }}

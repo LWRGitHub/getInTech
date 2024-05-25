@@ -1,142 +1,109 @@
 [
     {
         "tag": "p",
-        "content": "To solve this coding challenge, we first need to understand the structure and functioning of a Trie (Prefix Tree). A Trie is a tree-like data structure that stores strings in a way that allows for efficient retrieval of words, especially when dealing with operations like prefix searches."
-    },
-    {
-        "tag": "h4",
-        "content": "Explanation"
-    },
-    {
-        "tag": "span",
         "content": [
             {
-                "tag": "ol",
-                "content": [
-                    {
-                        "tag": "li",
-                        "content": {
-                            "tag": "p",
-                            "content": [
-                                {
-                                    "tag": "strong",
-                                    "content": "Trie Initialization (`__init__` method)"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "tag": "ul",
-                        "content": [
-                            {
-                                "tag": "li",
-                                "content": "We initialize our Trie with an empty dictionary `root` which will act as the root node of the Trie."
-                            }
-                        ]
-                    }
-                ]
+                "tag": "span",
+                "content": "To solve this "
+            },
+            {
+                "tag": "code",
+                "content": "coding"
+            },
+            {
+                "tag": "span",
+                "content": " challenge, we first need to understand the structure and functioning of a Trie (Prefix Tree). A Trie is a tree-like data structure that stores strings in a way that allows for efficient retrieval of words, especially when dealing with operations like prefix searches."
             }
         ]
     },
     {
-        "tag": "span",
+        "tag": "h2",
+        "content": "Explanation"
+    },
+    {
+        "tag": "ol",
         "content": [
+            {
+                "tag": "li",
+                "content": {
+                    "tag": "span",
+                    "content": [
+                        {
+                            "tag": "span",
+                            "content": "Trie "
+                        },
+                        {
+                            "tag": "strong",
+                            "content": "Initialization"
+                        },
+                        {
+                            "tag": "span",
+                            "content": {
+                                "tag": "span",
+                                "content": [
+                                    {
+                                        "tag": "span",
+                                        "content": " ("
+                                    },
+                                    {
+                                        "tag": "code",
+                                        "content": "__init__"
+                                    },
+                                    {
+                                        "tag": "span",
+                                        "content": " method):"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
             {
                 "tag": "ul",
                 "content": [
                     {
                         "tag": "li",
-                        "content": "We initialize our Trie with an empty dictionary `root` which will act as the root node of the Trie."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "tag": "span",
-        "content": [
-            {
-                "tag": "ol",
-                "content": [
-                    {
-                        "tag": "li",
                         "content": {
-                            "tag": "p",
+                            "tag": "span",
                             "content": [
                                 {
-                                    "tag": "strong",
-                                    "content": "Insert a Word into the Trie (`insert` method)"
+                                    "tag": "span",
+                                    "content": "We initialize our Trie with an empty dictionary "
+                                },
+                                {
+                                    "tag": "code",
+                                    "content": "root"
+                                },
+                                {
+                                    "tag": "span",
+                                    "content": " which will act as the root node of the Trie."
                                 }
                             ]
                         }
-                    },
-                    {
-                        "tag": "ul",
-                        "content": [
-                            {
-                                "tag": "li",
-                                "content": "We start at the root of the Trie."
-                            },
-                            {
-                                "tag": "li",
-                                "content": "For each character in the word, if the character is not already present as a child of the current node, we create a new dictionary for that character."
-                            },
-                            {
-                                "tag": "li",
-                                "content": "We then move to the next level (child node) and repeat until all characters are inserted."
-                            },
-                            {
-                                "tag": "li",
-                                "content": "After inserting all characters of the word, we mark the end of the word by adding a special symbol `$` with a value of `True`."
-                            }
-                        ]
-                    },
-                    {
-                        "tag": "ul",
-                        "content": [
-                            {
-                                "tag": "li",
-                                "content": "For each character in the word, if the character is not already present as a child of the current node, we create a new dictionary for that character."
-                            },
-                            {
-                                "tag": "li",
-                                "content": "We then move to the next level (child node) and repeat until all characters are inserted."
-                            },
-                            {
-                                "tag": "li",
-                                "content": "After inserting all characters of the word, we mark the end of the word by adding a special symbol `$` with a value of `True`."
-                            }
-                        ]
-                    },
-                    {
-                        "tag": "ul",
-                        "content": [
-                            {
-                                "tag": "li",
-                                "content": "We then move to the next level (child node) and repeat until all characters are inserted."
-                            },
-                            {
-                                "tag": "li",
-                                "content": "After inserting all characters of the word, we mark the end of the word by adding a special symbol `$` with a value of `True`."
-                            }
-                        ]
-                    },
-                    {
-                        "tag": "ul",
-                        "content": [
-                            {
-                                "tag": "li",
-                                "content": "After inserting all characters of the word, we mark the end of the word by adding a special symbol `$` with a value of `True`."
-                            }
-                        ]
                     }
                 ]
-            }
-        ]
-    },
-    {
-        "tag": "span",
-        "content": [
+            },
+            {
+                "tag": "li",
+                "content": {
+                    "tag": "span",
+                    "content": [
+                        {
+                            "tag": "span",
+                            "content": "Insert a "
+                        },
+                        {
+                            "tag": "strong",
+                            "content": "Word into the Trie"
+                        },
+                        {
+                            "tag": "span",
+                            "content": " (insert method):"
+                        }
+                    ]
+                }
+            },
             {
                 "tag": "ul",
                 "content": [
@@ -154,130 +121,66 @@
                     },
                     {
                         "tag": "li",
-                        "content": "After inserting all characters of the word, we mark the end of the word by adding a special symbol `$` with a value of `True`."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "tag": "span",
-        "content": [
-            {
-                "tag": "ul",
-                "content": [
-                    {
-                        "tag": "li",
-                        "content": "For each character in the word, if the character is not already present as a child of the current node, we create a new dictionary for that character."
-                    },
-                    {
-                        "tag": "li",
-                        "content": "We then move to the next level (child node) and repeat until all characters are inserted."
-                    },
-                    {
-                        "tag": "li",
-                        "content": "After inserting all characters of the word, we mark the end of the word by adding a special symbol `$` with a value of `True`."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "tag": "span",
-        "content": [
-            {
-                "tag": "ul",
-                "content": [
-                    {
-                        "tag": "li",
-                        "content": "We then move to the next level (child node) and repeat until all characters are inserted."
-                    },
-                    {
-                        "tag": "li",
-                        "content": "After inserting all characters of the word, we mark the end of the word by adding a special symbol `$` with a value of `True`."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "tag": "span",
-        "content": [
-            {
-                "tag": "ul",
-                "content": [
-                    {
-                        "tag": "li",
-                        "content": "After inserting all characters of the word, we mark the end of the word by adding a special symbol `$` with a value of `True`."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "tag": "span",
-        "content": [
-            {
-                "tag": "ol",
-                "content": [
-                    {
-                        "tag": "li",
                         "content": {
-                            "tag": "p",
+                            "tag": "span",
                             "content": [
                                 {
-                                    "tag": "strong",
-                                    "content": "Search for a Word in the Trie (`search` method)"
+                                    "tag": "span",
+                                    "content": "After inserting all characters of the word, we mark the end of the word by adding a special symbol "
+                                },
+                                {
+                                    "tag": "code",
+                                    "content": "$"
+                                },
+                                {
+                                    "tag": "span",
+                                    "content": " with a value of "
+                                },
+                                {
+                                    "tag": "code",
+                                    "content": "True"
+                                },
+                                {
+                                    "tag": "span",
+                                    "content": "."
                                 }
                             ]
                         }
-                    },
-                    {
-                        "tag": "ul",
-                        "content": [
-                            {
-                                "tag": "li",
-                                "content": "We start at the root and traverse through each character of the word."
-                            },
-                            {
-                                "tag": "li",
-                                "content": "For each character, if the character is not found in the current node, the word does not exist in the Trie and we return `False`."
-                            },
-                            {
-                                "tag": "li",
-                                "content": "If we successfully traverse through all characters, we then check for the special end-of-word symbol `$` to confirm the presence of the complete word."
-                            }
-                        ]
-                    },
-                    {
-                        "tag": "ul",
-                        "content": [
-                            {
-                                "tag": "li",
-                                "content": "For each character, if the character is not found in the current node, the word does not exist in the Trie and we return `False`."
-                            },
-                            {
-                                "tag": "li",
-                                "content": "If we successfully traverse through all characters, we then check for the special end-of-word symbol `$` to confirm the presence of the complete word."
-                            }
-                        ]
-                    },
-                    {
-                        "tag": "ul",
-                        "content": [
-                            {
-                                "tag": "li",
-                                "content": "If we successfully traverse through all characters, we then check for the special end-of-word symbol `$` to confirm the presence of the complete word."
-                            }
-                        ]
                     }
                 ]
-            }
-        ]
-    },
-    {
-        "tag": "span",
-        "content": [
+            },
+            {
+                "tag": "li",
+                "content": {
+                    "tag": "span",
+                    "content": [
+                        {
+                            "tag": "strong",
+                            "content": {
+                                "tag": "span",
+                                "content": [
+                                    {
+                                        "tag": "span",
+                                        "content": "Search for a Word in the Trie ("
+                                    },
+                                    {
+                                        "tag": "code",
+                                        "content": "search"
+                                    },
+                                    {
+                                        "tag": "span",
+                                        "content": " method)"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "tag": "span",
+                            "content": ":"
+                        }
+                    ]
+                }
+            },
             {
                 "tag": "ul",
                 "content": [
@@ -287,112 +190,78 @@
                     },
                     {
                         "tag": "li",
-                        "content": "For each character, if the character is not found in the current node, the word does not exist in the Trie and we return `False`."
-                    },
-                    {
-                        "tag": "li",
-                        "content": "If we successfully traverse through all characters, we then check for the special end-of-word symbol `$` to confirm the presence of the complete word."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "tag": "span",
-        "content": [
-            {
-                "tag": "ul",
-                "content": [
-                    {
-                        "tag": "li",
-                        "content": "For each character, if the character is not found in the current node, the word does not exist in the Trie and we return `False`."
-                    },
-                    {
-                        "tag": "li",
-                        "content": "If we successfully traverse through all characters, we then check for the special end-of-word symbol `$` to confirm the presence of the complete word."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "tag": "span",
-        "content": [
-            {
-                "tag": "ul",
-                "content": [
-                    {
-                        "tag": "li",
-                        "content": "If we successfully traverse through all characters, we then check for the special end-of-word symbol `$` to confirm the presence of the complete word."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "tag": "span",
-        "content": [
-            {
-                "tag": "ol",
-                "content": [
-                    {
-                        "tag": "li",
                         "content": {
-                            "tag": "p",
+                            "tag": "span",
                             "content": [
                                 {
-                                    "tag": "strong",
-                                    "content": "Check for a Prefix in the Trie (`startsWith` method)"
+                                    "tag": "span",
+                                    "content": "For each character, if the character is not found in the current node, the word does not exist in the Trie and we return "
+                                },
+                                {
+                                    "tag": "code",
+                                    "content": "False"
+                                },
+                                {
+                                    "tag": "span",
+                                    "content": "."
                                 }
                             ]
                         }
                     },
                     {
-                        "tag": "ul",
-                        "content": [
-                            {
-                                "tag": "li",
-                                "content": "Similar to the search method, we start at the root and traverse through each character of the prefix."
-                            },
-                            {
-                                "tag": "li",
-                                "content": "If any character in the prefix is not found in the current node, the prefix does not exist in the Trie and we return `False`."
-                            },
-                            {
-                                "tag": "li",
-                                "content": "If we successfully traverse through all characters, we return `True` since the prefix exists in the Trie."
-                            }
-                        ]
-                    },
-                    {
-                        "tag": "ul",
-                        "content": [
-                            {
-                                "tag": "li",
-                                "content": "If any character in the prefix is not found in the current node, the prefix does not exist in the Trie and we return `False`."
-                            },
-                            {
-                                "tag": "li",
-                                "content": "If we successfully traverse through all characters, we return `True` since the prefix exists in the Trie."
-                            }
-                        ]
-                    },
-                    {
-                        "tag": "ul",
-                        "content": [
-                            {
-                                "tag": "li",
-                                "content": "If we successfully traverse through all characters, we return `True` since the prefix exists in the Trie."
-                            }
-                        ]
+                        "tag": "li",
+                        "content": {
+                            "tag": "span",
+                            "content": [
+                                {
+                                    "tag": "span",
+                                    "content": "If we successfully traverse through all characters, we then check for the special end-of-word symbol "
+                                },
+                                {
+                                    "tag": "code",
+                                    "content": "$"
+                                },
+                                {
+                                    "tag": "span",
+                                    "content": " to confirm the presence of the complete word."
+                                }
+                            ]
+                        }
                     }
                 ]
-            }
-        ]
-    },
-    {
-        "tag": "span",
-        "content": [
+            },
+            {
+                "tag": "li",
+                "content": {
+                    "tag": "span",
+                    "content": [
+                        {
+                            "tag": "strong",
+                            "content": {
+                                "tag": "span",
+                                "content": [
+                                    {
+                                        "tag": "span",
+                                        "content": "Check for a Prefix in the Trie ("
+                                    },
+                                    {
+                                        "tag": "code",
+                                        "content": "startsWith"
+                                    },
+                                    {
+                                        "tag": "span",
+                                        "content": " method)"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "tag": "span",
+                            "content": ":"
+                        }
+                    ]
+                }
+            },
             {
                 "tag": "ul",
                 "content": [
@@ -402,55 +271,55 @@
                     },
                     {
                         "tag": "li",
-                        "content": "If any character in the prefix is not found in the current node, the prefix does not exist in the Trie and we return `False`."
+                        "content": {
+                            "tag": "span",
+                            "content": [
+                                {
+                                    "tag": "span",
+                                    "content": "If any character in the prefix is not found in the current node, the prefix does not exist in the Trie and we return "
+                                },
+                                {
+                                    "tag": "code",
+                                    "content": "False"
+                                },
+                                {
+                                    "tag": "span",
+                                    "content": "."
+                                }
+                            ]
+                        }
                     },
                     {
                         "tag": "li",
-                        "content": "If we successfully traverse through all characters, we return `True` since the prefix exists in the Trie."
+                        "content": {
+                            "tag": "span",
+                            "content": [
+                                {
+                                    "tag": "span",
+                                    "content": "If we successfully traverse through all characters, we return "
+                                },
+                                {
+                                    "tag": "code",
+                                    "content": "True"
+                                },
+                                {
+                                    "tag": "span",
+                                    "content": " since the prefix exists in the Trie."
+                                }
+                            ]
+                        }
                     }
                 ]
             }
         ]
     },
     {
-        "tag": "span",
-        "content": [
-            {
-                "tag": "ul",
-                "content": [
-                    {
-                        "tag": "li",
-                        "content": "If any character in the prefix is not found in the current node, the prefix does not exist in the Trie and we return `False`."
-                    },
-                    {
-                        "tag": "li",
-                        "content": "If we successfully traverse through all characters, we return `True` since the prefix exists in the Trie."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "tag": "span",
-        "content": [
-            {
-                "tag": "ul",
-                "content": [
-                    {
-                        "tag": "li",
-                        "content": "If we successfully traverse through all characters, we return `True` since the prefix exists in the Trie."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "tag": "h4",
+        "tag": "h2",
         "content": "Pseudocode"
     },
     {
-        "tag": "code",
-        "content": "\nclass Trie:\n    # Initialize the Trie with an empty dictionary as root\n    method __init__():\n        root = {}\n\n    # Insert a word into the Trie\n    method insert(word):\n        node = root\n        for each char in word:\n            if char not in node:\n                node[char] = {}\n            node = node[char]\n        node['$'] = True  # Mark the end of the word\n\n    # Search for a word in the Trie\n    method search(word) -> boolean:\n        node = root\n        for each char in word:\n            if char not in node:\n                return False\n            node = node[char]\n        return '$' in node  # Return True if the end of word marker is found\n\n    # Check if there is any word in the Trie that starts with the given prefix\n    method startsWith(prefix) -> boolean:\n        node = root\n        for each char in prefix:\n            if char not in node:\n                return False\n            node = node[char]\n        return True  # All characters in prefix are found, so return True\n"
+        "tag": "fenced_code_block",
+        "content": "\nclass Trie:\n    # Initialize the Trie with an empty dictionary as root\n    method __init__():\n        root = {}\n    # Insert a word into the Trie\n    method insert(word):\n        node = root\n        for each char in word:\n            if char not in node:\n                node[char] = {}\n            node = node[char]\n        node['$'] = True  # Mark the end of the word\n    # Search for a word in the Trie\n    method search(word) -> boolean:\n        node = root\n        for each char in word:\n            if char not in node:\n                return False\n            node = node[char]\n        return '$' in node  # Return True if the end of word marker is found\n    # Check if there is any word in the Trie that starts with the given prefix\n    method startsWith(prefix) -> boolean:\n        node = root\n        for each char in prefix:\n            if char not in node:\n                return False\n            node = node[char]\n        return True  # All characters in prefix are found, so return True\n"
     },
     {
         "tag": "p",

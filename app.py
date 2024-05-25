@@ -188,7 +188,7 @@ def test():
             "scripts": ["https://www.youtube.com/embed/qmntcyBt-5s?si=nUJQ3Unrd6RDdKzG"]
         },
         "how_to": False,
-        "markdown_how_to_solve": "To solve this coding challenge, we first need to understand the structure and functioning of a Trie (Prefix Tree). A Trie is a tree-like data structure that stores strings in a way that allows for efficient retrieval of words, especially when dealing with operations like prefix searches.\n\n## Explanation\n\n1. **Trie Initialization (`__init__` method)**:\n   - We initialize our Trie with an empty dictionary `root` which will act as the root node of the Trie.\n\n2. **Insert a Word into the Trie (`insert` method)**:\n   - We start at the root of the Trie.\n   - For each character in the word, if the character is not already present as a child of the current node, we create a new dictionary for that character.\n   - We then move to the next level (child node) and repeat until all characters are inserted.\n   - After inserting all characters of the word, we mark the end of the word by adding a special symbol `$` with a value of `True`.\n\n3. **Search for a Word in the Trie (`search` method)**:\n   - We start at the root and traverse through each character of the word.\n   - For each character, if the character is not found in the current node, the word does not exist in the Trie and we return `False`.\n   - If we successfully traverse through all characters, we then check for the special end-of-word symbol `$` to confirm the presence of the complete word.\n\n4. **Check for a Prefix in the Trie (`startsWith` method)**:\n   - Similar to the search method, we start at the root and traverse through each character of the prefix.\n   - If any character in the prefix is not found in the current node, the prefix does not exist in the Trie and we return `False`.\n   - If we successfully traverse through all characters, we return `True` since the prefix exists in the Trie.\n\n## Pseudocode\n\n```pseudo\nclass Trie:\n    # Initialize the Trie with an empty dictionary as root\n    method __init__():\n        root = {}\n\n    # Insert a word into the Trie\n    method insert(word):\n        node = root\n        for each char in word:\n            if char not in node:\n                node[char] = {}\n            node = node[char]\n        node['$'] = True  # Mark the end of the word\n\n    # Search for a word in the Trie\n    method search(word) -> boolean:\n        node = root\n        for each char in word:\n            if char not in node:\n                return False\n            node = node[char]\n        return '$' in node  # Return True if the end of word marker is found\n\n    # Check if there is any word in the Trie that starts with the given prefix\n    method startsWith(prefix) -> boolean:\n        node = root\n        for each char in prefix:\n            if char not in node:\n                return False\n            node = node[char]\n        return True  # All characters in prefix are found, so return True\n```\n\nThis pseudocode covers the initialization, insertion of words, searching for words, and checking for prefixes in a Trie data structure. This is the methodology for solving the coding challenge.",
+        "markdown_how_to_solve": "To solve this `coding` challenge, we first need to understand the structure and functioning of a Trie (Prefix Tree). A Trie is a tree-like data structure that stores strings in a way that allows for efficient retrieval of words, especially when dealing with operations like prefix searches.\n\n# Explanation\n\n1. Trie **Initialization** (`__init__` method):\n   - We initialize our Trie with an empty dictionary `root` which will act as the root node of the Trie.\n\n2. Insert a **Word into the Trie** (insert method):\n   - We start at the root of the Trie.\n   - For each character in the word, if the character is not already present as a child of the current node, we create a new dictionary for that character.\n   - We then move to the next level (child node) and repeat until all characters are inserted.\n   - After inserting all characters of the word, we mark the end of the word by adding a special symbol `$` with a value of `True`.\n\n3. **Search for a Word in the Trie (`search` method)**:\n   - We start at the root and traverse through each character of the word.\n   - For each character, if the character is not found in the current node, the word does not exist in the Trie and we return `False`.\n   - If we successfully traverse through all characters, we then check for the special end-of-word symbol `$` to confirm the presence of the complete word.\n\n4. **Check for a Prefix in the Trie (`startsWith` method)**:\n   - Similar to the search method, we start at the root and traverse through each character of the prefix.\n   - If any character in the prefix is not found in the current node, the prefix does not exist in the Trie and we return `False`.\n   - If we successfully traverse through all characters, we return `True` since the prefix exists in the Trie.\n\n# Pseudocode\n\n```pseudo\nclass Trie:\n    # Initialize the Trie with an empty dictionary as root\n    method __init__():\n        root = {}\n\n    # Insert a word into the Trie\n    method insert(word):\n        node = root\n        for each char in word:\n            if char not in node:\n                node[char] = {}\n            node = node[char]\n        node['$'] = True  # Mark the end of the word\n\n    # Search for a word in the Trie\n    method search(word) -> boolean:\n        node = root\n        for each char in word:\n            if char not in node:\n                return False\n            node = node[char]\n        return '$' in node  # Return True if the end of word marker is found\n\n    # Check if there is any word in the Trie that starts with the given prefix\n    method startsWith(prefix) -> boolean:\n        node = root\n        for each char in prefix:\n            if char not in node:\n                return False\n            node = node[char]\n        return True  # All characters in prefix are found, so return True\n```\n\nThis pseudocode covers the initialization, insertion of words, searching for words, and checking for prefixes in a Trie data structure. This is the methodology for solving the coding challenge.",
         "languages": [
             {
                 "name": "Python",
@@ -358,7 +358,13 @@ const sum0 = (nums, i, res, sm=i+1, lg=nums.length-1) => {
     how_to = []
 
     # split contest["markdown_how_to_solve"] at \n to get the list of lines
-    markdown_list = context["markdown_how_to_solve"].split("\n")
+    markdown_list = [line for line in context["markdown_how_to_solve"].split("\n") if line.strip() != ""]
+
+    # markdown_list = context["markdown_how_to_solve"].split("\n")
+
+    f = open('markdown_list.json', 'w', encoding="utf-8")
+    json.dump(markdown_list, f, indent=4)
+    f.close() 
 
     # find all pairs🍐 of a * | ** | *** in a string
     def find(s):
@@ -447,13 +453,9 @@ const sum0 = (nums, i, res, sm=i+1, lg=nums.length-1) => {
     # order data acording to Md `
     def sort_buld_sm_code_block(data, ch_idxs):
         code_data = {}
-
+        
         code_data["tag"] = "span"
         code_data["content"] = []
-
-        print('\n\n*********\n\n',"len(data): \n",len(data),'\n\n*********\n\n')
-        print('\n\n*********\n\n',"data: \n",data,'\n\n*********\n\n')
-        print('\n\n*********\n\n',"ch_idxs: \n",ch_idxs,'\n\n*********\n\n')
 
         if ch_idxs[0]["idxs"][0] != 0:
             content = data[0:ch_idxs[0]["idxs"][0]]
@@ -482,36 +484,47 @@ const sum0 = (nums, i, res, sm=i+1, lg=nums.length-1) => {
             })
 
             last_i2 = i2 + 1
+
+
+        # if last the last list in ch_idxs at index 1 is not the last index of text add the text between the last_i2 and the end of the text to the list
+        if last_i2 != None and last_i2 < len(data):
+            content = data[last_i2:]
+            code_data["content"].append({
+                "tag": "span",
+                "content": content
+            })
         
-
-
         return code_data
 
     # order data acording to Md * | ** | ***
+    # **Trie Initialization (`__init__` method)**
+    # Trie **Initialization** (`__init__` method)
     def sort_buld_italic(text, ch_idxs):
         astrict_data = {}
 
-        astrict_data["tag"] = "p"
+        astrict_data["tag"] = "span"
         astrict_data["content"] = []
 
-        # print('\n\n*********\n\n',"len(text): \n",len(text),'\n\n*********\n\n')
-        # print('\n\n*********\n\n',"text: \n",text,'\n\n*********\n\n')
-        # print('\n\n*********\n\n',"ch_idxs: \n",ch_idxs,'\n\n*********\n\n')
-        # print('\n\n*********\n\n','ch_idxs[0]["idxs"][0] != 0: \n', ch_idxs[0]["idxs"][0] != 0,'\n\n*********\n\n')
+        def has_backticks(content):
+            # if even instances of ` 
+            if content.find('`') != -1 and content.count("`") % 2 == 0:
+                ch_idxs = find_back_ticks(content)
+                content = sort_buld_sm_code_block(content, ch_idxs)
+            return content
 
         
         if ch_idxs[0]["idxs"][0] != 0:
             content = text[0:ch_idxs[0]["idxs"][0]]
 
             # if even instances of ` 
-            # if content.find('`') != -1 and content.count("`") % 2 == 0:
-            #     ch_idxs = find(content)
-            #     content = sort_buld_sm_code_block(content, ch_idxs)
+            content = has_backticks(content)
 
             astrict_data["content"].append({
                 "tag": "span",
                 "content": content
             })
+        #     astrict_data["tag"] = "span"
+        # elif text[0] == "***":
 
         # loop through ch_idxs
         last_i2 = None
@@ -524,22 +537,18 @@ const sum0 = (nums, i, res, sm=i+1, lg=nums.length-1) => {
                 content = text[last_i2:i1]
 
                 # if even instances of ` 
-                # if content.find('`') != -1 and content.count("`") % 2 == 0:
-                #     ch_idxs = find(content)
-                #     content = sort_buld_sm_code_block(content, ch_idxs)
+                content = has_backticks(content)
 
                 astrict_data["content"].append({
-                "tag": "span",
-                "content": content
-            })
+                    "tag": "span",
+                    "content": content
+                })
                 
             if astrid_count == 3:
                 content = text[i1+3:i2-2]
 
                 # if even instances of ` 
-                # if content.find('`') != -1 and content.count("`") % 2 == 0:
-                #     ch_idxs = find(content)
-                #     content = sort_buld_sm_code_block(content, ch_idxs)
+                content = has_backticks(content)
 
                 # add the text between i1 and i2 to the list as a bold tag
                 astrict_data["content"].append({
@@ -553,71 +562,140 @@ const sum0 = (nums, i, res, sm=i+1, lg=nums.length-1) => {
                 content = text[i1+astrid_count:i2-astrid_count+1]
 
                 # if even instances of ` 
-                # if content.find('`') != -1 and content.count("`") % 2 == 0:
-                #     ch_idxs = find(content)
-                #     content = sort_buld_sm_code_block(content, ch_idxs)
+                content = has_backticks(content)
 
                 # add the text between i1 and i2 to the list as a bold tag
+                # astrict_data["tag"] = "strong" if astrid_count == 2 else "em"
                 astrict_data["content"].append({
                     "tag": "strong" if astrid_count == 2 else "em",
                     "content": content
                 })
+
+               
                 
             last_i2 = i2 + 1  
           
+        # if last the last list in ch_idxs at index 1 is not the last index of text add the text between the last_i2 and the end of the text to the list
+        if last_i2 != None and last_i2 < len(text):
+            content = text[last_i2:]
+
+            # if even instances of ` 
+            content = has_backticks(content)
+
+            astrict_data["content"].append({
+                "tag": "span",
+                "content": content
+            })
+
         return astrict_data
     
     # make html list data >>> ol | ul
     def make_html_list_data(html_data, markdown_list, idx, prior_line_has_callout, how_to, depth):
 
+        
         li_data = {}
-
         li_data["tag"] = "ol" if markdown_list[idx].lstrip()[0].isnumeric() else "ul"
         li_data["content"] = []
 
+        # use to keep track of the parent type (e.g. ol | ul) incase of children so onece the children are done we can continue with the sibling node of the parent
+        main_old_idx = idx 
+        is_ol_main = "ol" if li_data["tag"] == "ol" else "ul" 
+
         
         # while not empty line and starts with number immediately followed by '.' or starts with space(s) then number immediately followed by '.'
-        while (idx < len(markdown_list) and len(markdown_list[idx]) > 0 and markdown_list[idx] != '') and (markdown_list[idx].lstrip()[0] == '-' or (markdown_list[idx].lstrip()[0].isnumeric() and markdown_list[idx].lstrip()[1] == '.') or (markdown_list[idx].lstrip()[0:2].isnumeric() and markdown_list[idx].lstrip()[2] == '.')):
+        def make_li_tags(idx, markdown_list, depth, li_data):
 
-            # if line spaces in front of the number make sub list
-            if markdown_list[idx][0] == ' ':
-                # count how many spaces are in front of the number
+            # print("here 2")
+            # print("\n*****\n", "\n li_data['content']: ", li_data["content"], "\n*****\n")
+
+            loop_count = 0
+
+            while (idx < len(markdown_list) and len(markdown_list[idx]) > 0 and markdown_list[idx] != '') and (markdown_list[idx].lstrip()[0] == '-' or (markdown_list[idx].lstrip()[0].isnumeric() and markdown_list[idx].lstrip()[1] == '.') or (markdown_list[idx].lstrip()[0:2].isnumeric() and markdown_list[idx].lstrip()[2] == '.')):
+                loop_count += 1
+                print("\n loop_count: ", loop_count, "\n*****\n")
+
+                # print("here 3")
                 spaces = len(markdown_list[idx]) - len(markdown_list[idx].lstrip())
-                # if spaces are greater than depth make a new list
+                # if line spaces in front of the number make sub list
                 if spaces > depth:
-                    li_data["content"].append(make_html_list_data(html_data, markdown_list, idx, prior_line_has_callout, how_to, spaces))
+
+                    # sub_old_idx = idx
+                    # is_ol_sub = True if markdown_list[idx].lstrip()[0].isnumeric() else False
+
+                    content_res, idx = make_html_list_data(html_data, markdown_list, idx, prior_line_has_callout, how_to, spaces)
+                    li_data["content"].append(content_res)
                     idx += 1
+                    print("\n*****\n", "\n SPACE li_data['content']:\n ", li_data["content"], "\n*****\n")
                     continue
-            
-            # remove the number and the '.' or the '-' and the spaces
-            rm_count = 2 if markdown_list[idx].lstrip()[0] == '-' else 3 
-
-            data = markdown_list[idx].lstrip()[rm_count:]
-
-            # check if even instances of ** are present in the line
-            if data.find('*') != -1 and data.count("*") % 2 == 0:
-                ch_idxs = find(data)
-                data = sort_buld_italic(data, ch_idxs)
-            # elif data.find('`') != -1 and data.count("`") % 2 == 0:
-            #     ch_idxs = find(data)
-            #     data = sort_buld_sm_code_block(data, ch_idxs)
+                elif spaces < depth:
+                    # print("here 4")
+                    return [idx, li_data]
                 
-            # make {tag: li, content: data}
-            li_data["content"].append({
-                "tag": "li",
-                "content": data,
-            })
+                # remove the number and the '.' or the '-' and the spaces
+                rm_count = 2 if markdown_list[idx].lstrip()[0] == '-' else 3 
 
-            idx += 1
+                data = markdown_list[idx].lstrip()[rm_count:]
+
+                # check if even instances of ** are present in the line
+                if data.find('*') != -1 and data.count("*") % 2 == 0:
+                    ch_idxs = find(data)
+                    data = sort_buld_italic(data, ch_idxs)
+                elif data.find('`') != -1 and data.count("`") % 2 == 0:
+                    ch_idxs = find_back_ticks(data)
+                    data = sort_buld_sm_code_block(data, ch_idxs)
+                    
+                # make {tag: li, content: data}
+                li_data["content"].append({
+                    "tag": "li",
+                    "content": data,
+                })
+
+                idx += 1
+            
+            return [idx, li_data]
+
+        idx, li_data = make_li_tags(idx, markdown_list, depth, li_data)
+
 
         # if prior_line_has_callout & "bd_callout" in html_data add to last dict in how_to
         # if_need_add_callout_line(prior_line_has_callout, how_to, html_data)
+        # def is_ol_sibling(idx, markdown_list):
+        #     return True if idx < len(markdown_list) and len(markdown_list[idx]) != 0 and markdown_list[idx].lstrip()[0].isnumeric() else False
 
-        return li_data
+        # # is_ol_sibling = markdown_list[idx].lstrip()[0].isnumeric()
+
+        # siblying_l_type = "ol" if markdown_list[idx].lstrip()[0].isnumeric() else "ul" if markdown_list[idx].lstrip()[0] == "-" else False
+
+        # while idx < len(markdown_list) and is_ol_main == ("ol" if markdown_list[idx].lstrip()[0].isnumeric() else "ul" if markdown_list[idx].lstrip()[0] == "-" else False):
+        #     # print("\n*****\n", "\n in 2nd while loop \n", [idx, depth, li_data], "\n*****\n")
+            
+        #     if markdown_list[idx] == "":
+        #         idx += 1
+        #         continue
+
+        #     # print(idx < len(markdown_list) and is_ol_main == markdown_list[idx].lstrip()[0].isnumeric())
+            
+        #     # print("\n*****\n", "\n is_ol_main \n: ", is_ol_main == markdown_list[idx].lstrip()[0].isnumeric(), "\n*****\n")
+        #     # print("\n*****\n", "\n is_ol_main \n: ", is_ol_main, "\n*****\n")
+        #     # print("\n*****\n" "\n is_ol_sibling \n: ", markdown_list[idx].lstrip()[0].isnumeric(), "\n*****\n")
+        #     # print("\n*****\n", markdown_list[idx], "\n*****\n")
+        #     # f = open('in 2nd while loop [idx, depth, li_data].json', 'w', encoding="utf-8")
+        #     # json.dump([markdown_list, idx, depth, li_data], f, indent=4)
+        #     # f.close() 
+        #     print("here 1")
+        #     idx, li_data = make_li_tags(idx, markdown_list, depth, li_data)
+
+        return [li_data, idx-1]
 
     idx = 0  
     # loop through markdown_list
     while idx < len(markdown_list):
+        
+        # if empty line continue
+        if markdown_list[idx] == "":
+            idx += 1
+            continue
+        
         """
             html_data = {
                 # key: Str | List | Dict
@@ -627,7 +705,7 @@ const sum0 = (nums, i, res, sm=i+1, lg=nums.length-1) => {
 
                 # Required❗️
                 "tag": Str,
-                # Str >>> "tag": "h2" | "h4" | "h5" | "p" | "code" | "strong" | "ul" | "ol" | "li" | "span" | "hr" | "em"
+                # Str >>> "tag": "h2" | "h4" | "h5" | "p" | "fenced_code_block" | "code" | "strong" | "ul" | "ol" | "li" | "span" | "hr" | "em" 
                 # TODO: add to Str >>> "a" | "img" | "iframe" | "table" | "tr" | "th" | "td" | "pre" | "b" | "div" | "br" | 
 
                 # Required❗️ unless otherwise specified 
@@ -649,12 +727,8 @@ const sum0 = (nums, i, res, sm=i+1, lg=nums.length-1) => {
                 },'''
             }
         """
-        html_data = {}
-
-        # if empty line continue
-        if markdown_list[idx] == "":
-            idx += 1
-            continue
+        
+        html_data = {}  
 
         # check if line starts with >
         html_data = bd_callout(markdown_list, idx)
@@ -664,7 +738,7 @@ const sum0 = (nums, i, res, sm=i+1, lg=nums.length-1) => {
             # loop through the list until the next ``` is found
             idx += 1
             # make {tag: code, content: code}
-            html_data["tag"] = "code"
+            html_data["tag"] = "fenced_code_block"
             html_data["content"] = '\n'
 
             # loop through code_lines and add each line to the content keep indentations "space(s)" the same
@@ -677,7 +751,7 @@ const sum0 = (nums, i, res, sm=i+1, lg=nums.length-1) => {
             
         # check if line starts with # | ## | ### followed by a space
         elif markdown_list[idx][0] == "#":
-            ymbol_count = 1
+            symbol_count = 1
             if markdown_list[idx][0:2] == "##":
                 if markdown_list[idx][0:3] == "###":
 
@@ -696,37 +770,45 @@ const sum0 = (nums, i, res, sm=i+1, lg=nums.length-1) => {
             html_data["tag"] = "hr"
             html_data["content"] = ""
 
-        # if starts with number immediately followed by '.' or starts with space(s) then number immediately followed by '.'
+        # ? Starts w/ (num >>> '.' | '-')  | space(s) >>> ( "-" | num >>> '.' )  
         elif markdown_list[idx].lstrip()[0].isnumeric() and markdown_list[idx].lstrip()[1] == '.' or markdown_list[idx].lstrip()[0] == '-':
-            html_data["tag"] = "span"
-            html_data["content"] = []
 
             # get indent info
             depth = len(markdown_list[idx]) - len(markdown_list[idx].lstrip())
-            # make html list data
-            li_data = make_html_list_data(html_data, markdown_list, idx, prior_line_has_callout, how_to, depth)
 
-            html_data["content"].append(li_data)
+            # print(depth)
+            # make html list data
+            li_data, idx = make_html_list_data(html_data, markdown_list, idx, prior_line_has_callout, how_to, depth)
+
+
+            html_data["tag"] = li_data["tag"]
+            html_data["content"] = li_data["content"]
 
         # check if even instances of ** are present in the line
         elif markdown_list[idx].find('*') != -1 and markdown_list[idx].count("*") % 2 == 0:
-            html_data["tag"] = "p"
-            html_data["content"] = []
 
             ch_idxs = find(markdown_list[idx])
             
             # order data acording to Md * | ** | ***
-            html_data["content"].append(sort_buld_italic(markdown_list[idx], ch_idxs))
+            res = sort_buld_italic(markdown_list[idx], ch_idxs)
+
+            html_data["tag"] = res["tag"]
+            html_data["content"] = res["content"]
         
         # if even instances of ` are present in the line
-        # elif markdown_list[idx].find('`') != -1 and markdown_list[idx].count("`") % 2 == 0:
-        #     html_data["tag"] = "p"
-        #     html_data["content"] = []
-            
-        #     ch_idxs = find_back_ticks(markdown_list[idx])
+        elif markdown_list[idx].find('`') != -1 and markdown_list[idx].count("`") % 2 == 0:
+            ch_idxs = find_back_ticks(markdown_list[idx])
 
-        #     # order data acording to Md `
-        #     html_data["content"].append(sort_buld_sm_code_block(markdown_list[idx], ch_idxs))
+            # order data acording to Md `
+            data_res = sort_buld_sm_code_block(markdown_list[idx], ch_idxs)
+
+            if data_res["tag"] == "span":
+                html_data["tag"] = "p"
+            else:
+                html_data["tag"] = data_res["tag"]
+
+            html_data["content"] = data_res["content"]
+            
         
         else:
             html_data["tag"] = "p"
@@ -752,8 +834,6 @@ const sum0 = (nums, i, res, sm=i+1, lg=nums.length-1) => {
     json.dump(how_to, f, indent=4)
     f.close()  
 
-
-    # print('\n\n*********\n\n',context["how_to"],'\n\n*********\n\n')
     print('DONE✨')
 
     return render_template('pages/test.html', **context)
