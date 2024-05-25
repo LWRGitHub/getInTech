@@ -1,1 +1,40 @@
-"To solve this coding challenge, we first need to understand the structure and functioning of a Trie (Prefix Tree). A Trie is a tree-like data structure that stores strings in a way that allows for efficient retrieval of words, especially when dealing with operations like prefix searches.\n\n# Explanation\n\n1. **Trie Initialization (`__init__` method)**:\n   - We initialize our Trie with an empty dictionary `root` which will act as the root node of the Trie.\n\n2. **Insert a Word into the Trie (`insert` method)**:\n   - We start at the root of the Trie.\n   - For each character in the word, if the character is not already present as a child of the current node, we create a new dictionary for that character.\n   - We then move to the next level (child node) and repeat until all characters are inserted.\n   - After inserting all characters of the word, we mark the end of the word by adding a special symbol `$` with a value of `True`.\n\n3. **Search for a Word in the Trie (`search` method)**:\n   - We start at the root and traverse through each character of the word.\n   - For each character, if the character is not found in the current node, the word does not exist in the Trie and we return `False`.\n   - If we successfully traverse through all characters, we then check for the special end-of-word symbol `$` to confirm the presence of the complete word.\n\n4. **Check for a Prefix in the Trie (`startsWith` method)**:\n   - Similar to the search method, we start at the root and traverse through each character of the prefix.\n   - If any character in the prefix is not found in the current node, the prefix does not exist in the Trie and we return `False`.\n   - If we successfully traverse through all characters, we return `True` since the prefix exists in the Trie.\n\n# Pseudocode\n\n```pseudo\nclass Trie:\n    # Initialize the Trie with an empty dictionary as root\n    method __init__():\n        root = {}\n\n    # Insert a word into the Trie\n    method insert(word):\n        node = root\n        for each char in word:\n            if char not in node:\n                node[char] = {}\n            node = node[char]\n        node['$'] = True  # Mark the end of the word\n\n    # Search for a word in the Trie\n    method search(word) -> boolean:\n        node = root\n        for each char in word:\n            if char not in node:\n                return False\n            node = node[char]\n        return '$' in node  # Return True if the end of word marker is found\n\n    # Check if there is any word in the Trie that starts with the given prefix\n    method startsWith(prefix) -> boolean:\n        node = root\n        for each char in prefix:\n            if char not in node:\n                return False\n            node = node[char]\n        return True  # All characters in prefix are found, so return True\n```\n\nThis pseudocode covers the initialization, insertion of words, searching for words, and checking for prefixes in a Trie data structure. This is the methodology for solving the coding challenge."
+To solve this coding challenge, we will implement a Trie (Prefix Tree) data structure. This data structure will allow us to store and retrieve strings efficiently, and answer prefix-related queries effectively. The Trie class will have methods to insert a string, search for an exact string, and check if any previously inserted strings start with a given prefix.
+
+## Explanation
+1. **Initialization:** We initialize the Trie with an empty root dictionary.
+2. **Insertion:** We insert a string into the Trie. For each character in the string, if the character does not exist in the current node, we create a new node for that character. After inserting all characters, we mark the end of the word by adding a special symbol.
+3. **Search:** We search for an exact string in the Trie. We iterate through each character of the string. If at any point, a character is not found, the search fails. If all characters are found, we check for the end marker to confirm the word's presence.
+4. **StartsWith:** We check if any previously inserted word starts with the given prefix by iterating through each character of the prefix. If all characters of the prefix are found in the Trie, it confirms the presence of such a prefix.
+
+## Pseudocode
+```
+Class Trie:
+    Method __init__():
+        Initialize the root as an empty dictionary
+
+    Method insert(word: String):
+        Initialize node as root
+        For each character char in word:
+            If char is not in node:
+                Set node[char] = empty dictionary
+            Move to the node[char]
+        Mark the end of the word by setting node['$'] = True
+
+    Method search(word: String) -> Boolean:
+        Initialize node as root
+        For each character char in word:
+            If char is not in node:
+                Return False
+            Move to the node[char]
+        Return True if '$' is in node, else return False
+
+    Method startsWith(prefix: String) -> Boolean:
+        Initialize node as root
+        For each character char in prefix:
+            If char is not in node:
+                Return False
+            Move to the node[char]
+        Return True
+```
+
+The above explanation and pseudocode outline the steps to implement the `Trie` class, providing a clear and detailed approach to solve this coding challenge.
