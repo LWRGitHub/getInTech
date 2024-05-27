@@ -238,47 +238,15 @@
                         -->
                         <!-- {{ form.hidden_tag() }} -->
                         <input 
-                            class="form-control me-2" 
+                            class="form-control me-2 search" 
                             type="search" 
                             placeholder="Search" 
                             aria-label="Search"
-                            id="search"
+                            id="search1"
                             name="searched"
                         >
 
-                        <!-- 
-                            Adds search query to search/input Field "from URL" if value Exist, ONLY on search_solutions & remove page number
-                        -->
-                        <script>
-                            if(window.location.href.includes('/search_solutions/')){
-
-                                searchQueryPgNumURL = window.location.href.split('/search_solutions/')[1];
-
-                                function findIndexes(string, char) { // finds all indexes of a character in a string e.g [1, 3, 5, ...]
-                                    return string
-                                        .split('')
-                                        .map((c, idx) => {
-                                            if (c === char) {
-                                                return idx;
-                                            }
-
-                                            return -1;
-                                        })
-                                        .filter(element => element !== -1);
-                                }
-
-                                const indexes = findIndexes(searchQueryPgNumURL, '/'); // find all indexes of '/' in the URL
-                                // removes the page number in the URL and leaves only the search query
-                                searched = searchQueryPgNumURL.slice(0, indexes[indexes.length - 1]); 
-
-                                if(searched !== "None"){
-                                    // Remove/Replace/Decode "%<20|3E|3C|...>"" from searched
-                                    searched = decodeURIComponent(searched)
-
-                                    document.getElementById("search").value = searched;
-                                } 
-                            }
-                        </script>
+                        
 
                     </form>
                     
@@ -482,6 +450,46 @@
             <!-- Copyright -->
         </footer>
         <!-- Footer -->
+
+        <!-- 
+            Adds search query to search/input Field "from URL" if value Exist, ONLY on search_solutions & remove page number
+        -->
+        <script>
+            if(window.location.href.includes('/search_solutions/')){
+
+                searchQueryPgNumURL = window.location.href.split('/search_solutions/')[1];
+
+                function findIndexes(string, char) { // finds all indexes of a character in a string e.g [1, 3, 5, ...]
+                    return string
+                        .split('')
+                        .map((c, idx) => {
+                            if (c === char) {
+                                return idx;
+                            }
+
+                            return -1;
+                        })
+                        .filter(element => element !== -1);
+                }
+
+                const indexes = findIndexes(searchQueryPgNumURL, '/'); // find all indexes of '/' in the URL
+                // removes the page number in the URL and leaves only the search query
+                searched = searchQueryPgNumURL.slice(0, indexes[indexes.length - 1]); 
+
+                if(searched !== "None"){
+                    // Remove/Replace/Decode "%<20|3E|3C|...>"" from searched
+                    searched = decodeURIComponent(searched)
+
+                    searchInputs = document.getElementsByClassName("search")
+                    // add searched to search/input Field
+                    // loop through all search inputs
+                    console.log(searchInputs)
+                    for (let i = 0; i < searchInputs.length; i++) {
+                        searchInputs[i].value = searched;
+                    }
+                } 
+            }
+        </script>
 
         <!-- my scripts -->
         <script>
