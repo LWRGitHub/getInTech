@@ -258,23 +258,83 @@ def search():
     # if form.validate_on_submit():
     if form.searched.data != None and form.searched.data != "":
        
-
+        print("HERE")
+        
         # remove extra spaces
-        query = " ".join(form.searched.data.strip().split())
+        search_term = " ".join(form.searched.data.strip().split())
+
+        topic = platform = language = sort = page = None
+
+        for key in form:
+            print(key)
+
+        if "page" in form: page = form.page.data
+        if "topic" in form: topic = form.topic.data
+        if "platform" in form: platform = form.platform.data
+        if "language" in form: language = form.language.data
+        if "sort" in form: sort = form.sort.data
+
+
+        print(page)
+
+        query = f"{search_term}?page={page if page else 0}{f'&platform={platform}'if platform else ''}{f'&topic={topic}'if topic else ''}{f'&language={language}'if language else ''}{f'&sort={sort}'if sort else ''}"
         
         
-        return redirect(url_for('search_solutions', query=query, page_number=0))
+        return redirect(url_for('search_solutions', query=query))
     
     else:
-        return redirect(url_for('search_solutions', query="None", page_number=0))
+        return redirect(url_for('search_solutions', query="None?page=0"))
 
 
 # Search res pg
-@app.route('/search_solutions/<query>/<page_number>') 
-def search_solutions(query, page_number):
+@app.route('/search_solutions/<query>') 
+def search_solutions(query):
     """Display the search_solutions page."""
 
-    page_number = int(page_number)
+    # search data
+    sort = all_query_data = other_query_data = page_number = platform = topic = language = None
+
+    if "?" in query:
+        all_query_data = query.split("?")
+        query = all_query_data[0]
+        other_query_data = all_query_data[1].split("&")
+
+        # check if <search filter> is in query
+        # if it is get the <search filter>
+        if "page" in all_query_data[0]:
+            # find index of page
+            page_number = all_query_data[0].split("page=")[1]
+            # remove & and all after if it exists
+            if "&" in page_number:
+                page_number = page_number.split("&")[0]
+        else:
+            page_number = 0
+            
+        if "platform" in all_query_data[0]:
+            platform = other_query_data[0].split("platform=")[1]
+            if "&" in platform:
+                platform = platform.split("&")[0]
+
+        if "topic" in all_query_data[0]:
+            topic = other_query_data[1].split("topic=")[1]
+            if "&" in topic:
+                topic = topic.split("&")[0]
+
+        if "language" in all_query_data[0]:
+            language = other_query_data[2].split("language=")[1]
+            if "&" in language:
+                language = language.split("&")[0]
+
+        if "sort" in all_query_data[0]:
+            sort = other_query_data[3].split("sort=")[1]
+            if "&" in sort:
+                sort = sort.split("&")[0]
+        
+    else:
+        query = "None"
+
+
+    # page_number = int(page_number)
     context = {}
     context["page_number"] = page_number
 

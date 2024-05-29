@@ -24,7 +24,7 @@ class Search_solutions:
             "Database",
             "Regex",
             "String",
-            "Array"
+            "Array",
             # "Hash Table",
             # "Dynamic Programming",
             "Math",
@@ -41,7 +41,7 @@ class Search_solutions:
             # "Heap (Priority Queue)",
             # "Prefix Sum",
             "Stack",
-            "Shell"
+            "Shell",
             "Simulation",
             "Graph",
             "Counting",
@@ -96,7 +96,7 @@ class Search_solutions:
         ]
         self.languages = {
             'Python': 'Python', 
-            'Python 3': 'Python 3', 
+            # 'Python 3': 'Python 3', 
             'JavaScript': 'JavaScript', 
             'TypeScript': 'TypeScript', 
             'Swift': 'Swift', 
@@ -118,5 +118,5 @@ class Search_solutions:
             'MySQL': 'MySQL', 
             'MS SQL Server': 'MS SQL Server', 
             'Pandas': 'Pandas', 
-            'PostgreSQL': 'PostgreSQL'
+            'PostgreSQL': 'PostgreSQL',
         }

@@ -6,17 +6,13 @@
 
     <!-- Main Content -->
     <div class="row mt-1 mb-5 mx-3 p-4" style="border-radius: 10px; border: 1px solid #ededed26; background: linear-gradient(169deg, rgba(255, 255, 255, 0.2) 8.61%, rgba(255, 255, 255, 0.1) 76.57%);">
-       <!-- <p>Welcome to the Tech Career Time coding challenge solutions page! Here, you can easily search for solutions to coding challenges from top platforms like LeetCode, HackerRank, and Project Euler.</p> 
+       <p>Welcome to the Tech Career Time coding challenge solutions page! Here, you can easily search for solutions to coding challenges from top platforms like LeetCode, HackerRank, and Project Euler.</p> 
 
        <p>This page has been designed to be your ultimate companion on your coding journey. With our detailed explanations, you'll not only find the solution but also understand the logic behind it. In each solution page coding challenges are broken down into pseudocode, additionally you will find the actual code, and will be give a thorough explanation of the steps to solve it.</p>
 
        <p>Whether you're a beginner looking to learn or a pro sharpening your skills, our solutions are crafted to be both educational and engaging. Dive in and explore a world of coding challenges made simple and fun!</p> 
 
-       <p>Happy coding!</p>  -->
-
-       <p>Welcome to the Tech Career Time coding challenge solutions page! Easily search for solutions to challenges from LeetCode, HackerRank, and Project Euler. Each solution is detailed with pseudocode, actual code, and thorough explanations. Whether you're a beginner or a pro, our solutions are educational and engaging.</p>
-
-        <p>Explore a world of coding challenges made simple and fun, Happy coding!</p>
+       <p>Happy coding!</p>
 
     </div>
 
@@ -132,14 +128,15 @@
         
         <div class="col-12 col-lg-12 d-none">
             <input 
-            class="form-control me-2 search" 
-            type="search" 
-            placeholder="Search" 
-            aria-label="Search"
-            id="search2"
-            name="searched"
-        >   
+                class="form-control me-2 Query" 
+                type="Query" 
+                placeholder="Query" 
+                aria-label="Query"
+                id="Query"
+                name="Query"
+            >   
         </div>
+
         
         
         <div class="col">
@@ -189,7 +186,7 @@
             <label class="form-check-label" for="sortSelect">
                 <strong>Sort By</strong>
             </label>
-            <select class="form-select" id="sortSelect" name="sort_by">
+            <select class="form-select" id="sortSelect" name="sort">
                 <option selected>...</option>
 
                 <option value="name">Name</option>
@@ -205,9 +202,72 @@
             </label>
           </div>
         </div> -->
-    
-</form>
 
+        <!-- set form -->
+        <script>
+            query = window.location.href.split('/search_solutions/')[1];
+
+            // add search query to search input
+            document.getElementById('Query').value = query;
+
+            const upDataSearchFilter = (options, val) => {
+                // loop through options and set selected
+                for (let i = 0; i < options.length; i++) {
+
+                // remove selected
+                if(options[i].hasAttribute("selected")) options[i].removeAttribute("selected");
+
+                // set new >>> selected
+                if (options[i].value.toLowerCase() == val) {
+                    
+                    options[i].setAttribute("selected", "");
+                }
+                }
+            }
+
+            // set platform select
+            if (query.includes('platform')) {
+                platform = query.split('platform=')[1]
+
+                if(platform.includes('&')) platform = platform.split('&')[0];
+
+                upDataSearchFilter(document.getElementById('platformSelect').options, platform);
+
+            }
+            // set language select
+            if (query.includes('language')) {
+                language = query.split('language=')[1]
+
+                if(language.includes('&')) language = language.split('&')[0]
+
+                upDataSearchFilter(document.getElementById('languageSelect').options, language);
+
+                
+            }
+            // set topic select
+            if (query.includes('topic')) {
+                topic = query.split('topic=')[1]
+
+                if(topic.includes('&')) topic = topic.split('&')[0]
+                
+                upDataSearchFilter(document.getElementById('topicSelect').options, topic);
+            }
+            // set sort select
+            if (query.includes('sort')) {
+                console.log("HERE _ SORT")
+                sort = query.split('sort=')[1]
+
+                if(sort.includes('&')) sort = sort.split('&')[0]
+                
+                upDataSearchFilter(document.getElementById('sortSelect').options, sort);
+            }
+        </script>
+    
+</form> 
+
+<!-- 
+    http://127.0.0.1:5000/search_solutions/None%3Fpage=0&platform=leetcode&language=javascript&topic=array&sort=name 
+-->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const selects = document.querySelectorAll('.form-select');

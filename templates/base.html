@@ -472,7 +472,7 @@
                         .filter(element => element !== -1);
                 }
 
-                const indexes = findIndexes(searchQueryPgNumURL, '/'); // find all indexes of '/' in the URL
+                const indexes = findIndexes(searchQueryPgNumURL, '%'); // find all indexes of '/' in the URL
                 // removes the page number in the URL and leaves only the search query
                 searched = searchQueryPgNumURL.slice(0, indexes[indexes.length - 1]); 
 
