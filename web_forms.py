@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired, URL
 from wtforms.validators import DataRequired#, Length, Email, EqualTo, ValidationError
 # from wtforms.widgets import TextArea
 
@@ -12,7 +13,5 @@ class SearchForm(FlaskForm):
     platform = StringField('Platform')
     language = StringField('Language')
     sort = StringField('Sort')
-    page = StringField('Page')
-    old_query = StringField('Query')
 
     submit = SubmitField('Search')

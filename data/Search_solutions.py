@@ -3,8 +3,8 @@ class Search_solutions:
     def __init__(self):
         self.platforms = [ 
             "LeetCode",
-            # "HackerRank",
-            # "Project Euler",
+            "HackerRank",
+            "Project Euler",
             # "CodeSignal",
             # "CodeWars",
             # "TopCoder",

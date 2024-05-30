@@ -255,78 +255,137 @@ def search():
                 if form.validate_on_submit():
     """
 
-    # if form.validate_on_submit():
-    if form.searched.data != None and form.searched.data != "":
-       
-        print("HERE")
+    old_url = request.referrer
+    # "/search_solutions" in old_url 
+    # print(request.referrer)
+
+    search_text = old_search_text = page = topic = platform = language = sort = None
+
+    # assing search_text
+    if "/search_solutions/" in old_url:
+
+        old_query = request.referrer.split("/search_solutions/")[1]
+        # splite request.referrer at "/search_solutions/"
+        search_text = old_query
+
+        # split at "%3F" || "?"
+        search_text = search_text.split("%3F")[0]
+        if "%20" in search_text:
+            search_text = search_text.split("%20")
+            search_text = " ".join(search_text)
         
-        # remove extra spaces
-        search_term = " ".join(form.searched.data.strip().split())
+        # if old_query has platform
+        if "platform" in old_query:
+            platform = old_query.split("platform=")[1]
+            if "&" in platform:
+                platform = platform.split("&")[0]
+            if "%20" in platform:
+                platform = platform.split("%20")
+                platform = " ".join(platform)
+        # if old_query has topic
+        if "topic" in old_query:
+            topic = old_query.split("topic=")[1]
+            if "&" in topic:
+                topic = topic.split("&")[0]
+            if "%20" in topic:
+                topic = topic.split("%20")
+                topic = " ".join(topic)
+        # if old_query has language
+        if "language" in old_query:
+            language = old_query.split("language=")[1]
+            if "&" in language:
+                language = language.split("&")[0]
+            if "%20" in language:   
+                language = language.split("%20")
+                language = " ".join(language)
+        # if old_query has sort
+        if "sort" in old_query:
+            sort = old_query.split("sort=")[1]
+            if "&" in sort:
+                sort = sort.split("&")[0]
+            if "%20" in sort:
+                sort = sort.split("%20")
+                sort = " ".join(sort)
 
-        topic = platform = language = sort = page = None
+    if form.searched.data != None:
+        new_search_text = " ".join(form.searched.data.strip().split())
+        if new_search_text == "":
+            search_text = None
+        else:
+            # remove extra spaces
+            search_text = new_search_text
 
-        for key in form:
-            print(key)
-
-        if "page" in form: page = form.page.data
-        if "topic" in form: topic = form.topic.data
-        if "platform" in form: platform = form.platform.data
-        if "language" in form: language = form.language.data
-        if "sort" in form: sort = form.sort.data
-
-
-        print(page)
-
-        query = f"{search_term}?page={page if page else 0}{f'&platform={platform}'if platform else ''}{f'&topic={topic}'if topic else ''}{f'&language={language}'if language else ''}{f'&sort={sort}'if sort else ''}"
-        
-        
-        return redirect(url_for('search_solutions', query=query))
+    # get the search filter data
+    if "topic" in form and form.topic.data != None: 
+        topic = form.topic.data if form.topic.data != "All" else None
+    if "platform" in form and form.platform.data != None: 
+        platform = form.platform.data if form.platform.data != "All" else None
+    if "language" in form and form.language.data != None: 
+        language = form.language.data if form.language.data != "All" else None
+    if "sort" in form and form.sort.data != None: 
+        sort = form.sort.data if form.sort.data != "..." else None
     
-    else:
-        return redirect(url_for('search_solutions', query="None?page=0"))
+    query = f"{search_text}?page={page if page else 0}{f'&platform={platform}'if platform else ''}{f'&topic={topic}'if topic else ''}{f'&language={language}'if language else ''}{f'&sort={sort}'if sort else ''}"
+
+    return redirect(url_for('search_solutions', query=query))
 
 
 # Search res pg
 @app.route('/search_solutions/<query>') 
 def search_solutions(query):
     """Display the search_solutions page."""
+    context = {}
 
     # search data
     sort = all_query_data = other_query_data = page_number = platform = topic = language = None
+    filter_data = ""
+
+    # print(query)
+
+    # filter data (not page or search text)
+    if "&" in query:
+        idx = query.index("&")
+        filter_data = query[idx:]
+
+    print(filter_data)
+
+    context["filter_data"] = filter_data
 
     if "?" in query:
         all_query_data = query.split("?")
         query = all_query_data[0]
-        other_query_data = all_query_data[1].split("&")
+        other_query_data = all_query_data[1]
 
         # check if <search filter> is in query
         # if it is get the <search filter>
-        if "page" in all_query_data[0]:
+        if "page" in other_query_data:
+            print("HERE_page")
             # find index of page
-            page_number = all_query_data[0].split("page=")[1]
+            page_number = other_query_data.split("page=")[1]
             # remove & and all after if it exists
             if "&" in page_number:
                 page_number = page_number.split("&")[0]
+            page_number = int(page_number)
         else:
             page_number = 0
             
-        if "platform" in all_query_data[0]:
-            platform = other_query_data[0].split("platform=")[1]
+        if "platform" in other_query_data:
+            platform = other_query_data.split("platform=")[1]
             if "&" in platform:
                 platform = platform.split("&")[0]
 
-        if "topic" in all_query_data[0]:
-            topic = other_query_data[1].split("topic=")[1]
+        if "topic" in other_query_data:
+            topic = other_query_data.split("topic=")[1]
             if "&" in topic:
                 topic = topic.split("&")[0]
 
-        if "language" in all_query_data[0]:
-            language = other_query_data[2].split("language=")[1]
+        if "language" in other_query_data:
+            language = other_query_data.split("language=")[1]
             if "&" in language:
                 language = language.split("&")[0]
 
-        if "sort" in all_query_data[0]:
-            sort = other_query_data[3].split("sort=")[1]
+        if "sort" in other_query_data:
+            sort = other_query_data.split("sort=")[1]
             if "&" in sort:
                 sort = sort.split("&")[0]
         
@@ -335,7 +394,7 @@ def search_solutions(query):
 
 
     # page_number = int(page_number)
-    context = {}
+    
     context["page_number"] = page_number
 
     def get_24_seach_res(res):

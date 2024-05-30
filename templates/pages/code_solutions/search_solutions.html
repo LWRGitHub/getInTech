@@ -4,287 +4,197 @@
 
 <main>
 
-    <!-- Main Content -->
-    <div class="row mt-1 mb-5 mx-3 p-4" style="border-radius: 10px; border: 1px solid #ededed26; background: linear-gradient(169deg, rgba(255, 255, 255, 0.2) 8.61%, rgba(255, 255, 255, 0.1) 76.57%);">
-       <p>Welcome to the Tech Career Time coding challenge solutions page! Here, you can easily search for solutions to coding challenges from top platforms like LeetCode, HackerRank, and Project Euler.</p> 
-
-       <p>This page has been designed to be your ultimate companion on your coding journey. With our detailed explanations, you'll not only find the solution but also understand the logic behind it. In each solution page coding challenges are broken down into pseudocode, additionally you will find the actual code, and will be give a thorough explanation of the steps to solve it.</p>
-
-       <p>Whether you're a beginner looking to learn or a pro sharpening your skills, our solutions are crafted to be both educational and engaging. Dive in and explore a world of coding challenges made simple and fun!</p> 
-
-       <p>Happy coding!</p>
-
-    </div>
-
-    <div class="row mb-4 px-1 pb-4">
-
-        <div class="row px-4">
-            <h1>Search By Platform</h1>
-        </div>
-
-        <div class="col-4 text-center p-3 p-md-4">
+    <div class="pt-0 pb-4 px-3">
+        <form class="row mx-0 px-4 pb-4 pt-2 row-cols-2 row-cols-md-auto g-3 align-items-center" style="margin-top: -8px; border-radius: 0px 0px 10px 10px; border: 1px solid #ededed26; background: linear-gradient(169deg, rgba(255, 255, 255, 0.2) 8.61%, rgba(255, 255, 255, 0.1) 76.57%); top: 50px;" role="search" method="POST" action="{{url_for('search')}}" id="searchForm">
             
-            <a href="#">
-                <img src="/static/img/leetcode-solutions.webp" alt="Words LeetCode with a dark background, featuring a stylized coding symbol in orange and white on the left, and the text 'LeetCode' in a clean, rounded font on the right." class="img-fluid" style="border-radius: 10px; border: 1px solid #ededed26; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);">
-            </a>
+            <div class="col">
+                <label class="form-check-label" for="platformSelect">
+                    <strong>Platform</strong>
+                </label>
+                <select class="form-select" id="platformSelect" name="platform">
+                    <option selected>All</option>
+
+                    {% for platform in search_filters.platforms %}
+                        <option value="{{ platform }}">{{ platform }}</option>
+                    {% endfor %}
+
+                </select>
+            </div>
+
+            <div class="col">
+                <label class="form-check-label" for="languageSelect">
+                    <strong>Language</strong>
+                </label>
+                <select class="form-select" id="languageSelect" name="language">
+                    <option selected>All</option>
+
+                    {% for lang in search_filters.languages %}
+                        <option value="{{ lang }}">{{ lang }}</option>
+                    {% endfor %}
+                    
+                </select>
+            </div>
+        
+            
+            <div class="col">
+                <label class="form-check-label" for="topicSelect">
+                    <strong>Topic</strong>
+                </label>
+                <select class="form-select" id="topicSelect" name="topic">
+                    <option selected>All</option>
+                    
+                    {% for topic in search_filters.topics %}
+                        <option value="{{ topic }}">{{ topic }}</option>
+                    {% endfor %}
+
+                </select>
+            </div>
+
+            <div class="col">
+                <label class="form-check-label" for="sortSelect">
+                    <strong>Sort By</strong>
+                </label>
+                <select class="form-select" id="sortSelect" name="sort">
+                    <option selected>...</option>
+
+                    <option value="name">Name</option>
+                    
+                </select>
+            </div>
+
+            <!-- set form filters -->
+            <script>
+                query = window.location.href.split('/search_solutions/')[1];
+
+                // add search query to search input
+                // document.getElementById('Query').value = query;
+
+                const upDataSearchFilter = (options, val) => {
+                    // loop through options and set selected
+                    for (let i = 0; i < options.length; i++) {
+                        if(val == "python")
+                        // remove selected
+                        if(options[i].hasAttribute("selected")) options[i].removeAttribute("selected");
+
+                        // set new >>> selected
+                        if (options[i].value.toLowerCase() == val) {
+                            
+                            options[i].setAttribute("selected", "");
+                        }
+                    }
+                }
+
+                // set platform select
+                if (query.includes('platform')) {
+                    platform = query.split('platform=')[1]
+
+                    if(platform.includes('&')) platform = platform.split('&')[0];
+
+                    if(platform.includes('%20')) platform = platform.split('%20').join(' ');
+
+                    upDataSearchFilter(document.getElementById('platformSelect').options, platform.toLowerCase());
+
+                }
+                // set language select
+                if (query.includes('language')) {
+                    language = query.split('language=')[1]
+
+                    if(language.includes('&')) language = language.split('&')[0]
+
+                    if(language.includes('%20')) language = language.split('%20').join(' ');
+
+                    upDataSearchFilter(document.getElementById('languageSelect').options, language.toLowerCase());
+                    
+                }
+                // set topic select
+                if (query.includes('topic')) {
+                    topic = query.split('topic=')[1]
+
+                    if(topic.includes('&')) topic = topic.split('&')[0]
+
+                    if(topic.includes('%20')) topic = topic.split('%20').join(' ');
+                    
+                    upDataSearchFilter(document.getElementById('topicSelect').options, topic.toLowerCase());
+                }
+                // set sort select
+                if (query.includes('sort')) {
+                    sort = query.split('sort=')[1]
+
+                    if(sort.includes('&')) sort = sort.split('&')[0]
+
+                    if(sort.includes('%20')) sort = sort.split('%20').join(' ');
+                    
+                    upDataSearchFilter(document.getElementById('sortSelect').options, sort);
+                }
+            </script>
+
+            <!-- 
+                http://127.0.0.1:5000/search_solutions/None%3Fpage=0&platform=leetcode&language=javascript&topic=array&sort=name 
+            -->
+
+            <!-- form submit -->
+            <script>
+
+                document.addEventListener('DOMContentLoaded', function() {
+                    const selects = document.querySelectorAll('.form-select');
+                    const form = document.getElementById('searchForm');
+                    
+                    selects.forEach(select => {
+                        select.addEventListener('change', function() {
+
+                            form.submit();
+                        });
+                    });
+                });
+
+            </script>
+        
+        </form> 
+    </div>
+    
+    <!-- Main Content -->
+    <div class="pt-1 pt-md-3 pb-4 px-3">
+        <div class="row m-0 p-4" style="border-radius: 10px; border: 1px solid #ededed26; background: linear-gradient(169deg, rgba(255, 255, 255, 0.2) 8.61%, rgba(255, 255, 255, 0.1) 76.57%);">
+
+            <p class="m-0 p-1">Search coding challenge solutions here! Explore detailed solutions from LeetCode, HackerRank, and Project Euler with pseudocode, actual code, and explanations.</p>
+    
         </div>
 
-        <div class="col-4 text-center p-3 p-md-4">
-            <a href="#">
-                <img src="/static/img/hackerrank-soutions.webp" alt="words HackerRank with a dark background, featuring a stylized coding symbol in green and white on the left, and the text 'HackerRank' in a clean, rounded font on the right." class="img-fluid" style="border-radius: 10px; border: 1px solid #ededed26; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);">
-            </a>
-        </div>
+        <div class="m-0 pb-4 pt-4 pt-md-5">
 
-        <div class="col-4 text-center p-3 p-md-4">
-            <a href="#">
-                <img src="/static/img/project-euler-net-soluions.webp" alt="Project Euler words with a white background, featuring a stylized infinity symbol in brown and gray above the text 'Project Euler' in bold brown font, and a pencil icon below with the text '.Net' in white." class="img-fluid" style="border-radius: 10px; border: 1px solid #ededed26; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);">
-            </a>
-        </div>
+            <div class="m-0 pt-1">
+                <h2 class="">Search By Platform</h2>
+            </div>
 
+            <div class="px-2 row">
+                <div class="col-4 text-center p-1">
+                    
+                    <a href="/search_solutions/None%3Fpage=0&platform=LeetCode">
+                        <img src="/static/img/leetcode-solutions.webp" alt="Words LeetCode with a dark background, featuring a stylized coding symbol in orange and white on the left, and the text 'LeetCode' in a clean, rounded font on the right." class="img-fluid" style="border-radius: 10px; border: 1px solid #ededed26; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);">
+                    </a>
+                </div>
+
+                <div class="col-4 text-center p-1">
+                    <a href="/search_solutions/None%3Fpage=0&platform=HackerRank">
+                        <img src="/static/img/hackerrank-soutions.webp" alt="words HackerRank with a dark background, featuring a stylized coding symbol in green and white on the left, and the text 'HackerRank' in a clean, rounded font on the right." class="img-fluid" style="border-radius: 10px; border: 1px solid #ededed26; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);">
+                    </a>
+                </div>
+
+                <div class="col-4 text-center p-1">
+                    <a href="/search_solutions/None%3Fpage=0&platform=Project%20Euler">
+                        <img src="/static/img/project-euler-net-soluions.webp" alt="Project Euler words with a white background, featuring a stylized infinity symbol in brown and gray above the text 'Project Euler' in bold brown font, and a pencil icon below with the text '.Net' in white." class="img-fluid" style="border-radius: 10px; border: 1px solid #ededed26; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);">
+                    </a>
+                </div>
+            </div>
+
+        </div>
     </div>
 
-    <!-- <form class="row mx-3 mb-5 px-4 pb-4 pt-2 row-cols-lg-auto g-3 align-items-center" style="border-radius: 10px; border: 1px solid #ededed26; background: linear-gradient(169deg, rgba(255, 255, 255, 0.2) 8.61%, rgba(255, 255, 255, 0.1) 76.57%);" role="search" method="POST" action="{{url_for('search')}}">
-        
-        <div class="col-12 col-lg-12 d-none">
-            <input 
-            class="form-control me-2 search" 
-            type="search" 
-            placeholder="Search" 
-            aria-label="Search"
-            id="search2"
-            name="searched"
-        >   
-        </div>
-        
-        
-        <div class="col">
-            <label class="form-check-label" for="inlineFormSelectPref">
-                <strong>Platform</strong>
-            </label>
-            <select class="form-select" id="inlineFormSelectPref">
-                <option selected>All</option>
-
-                {% for platform in search_filters.platforms %}
-                    <option value="{{ platform }}">{{ platform }}</option>
-                {% endfor %}
-
-            </select>
-        </div>
-
-        <div class="col">
-            <label class="form-check-label" for="inlineFormSelectPref">
-                <strong>Language</strong>
-            </label>
-            <select class="form-select" id="inlineFormSelectPref">
-                <option selected>All</option>
-
-                {% for lang in search_filters.languages %}
-                    <option value="{{ search_filters.languages.lang }}">{{ lang }}</option>
-                {% endfor %}
-                
-            </select>
-        </div>
-    
-        
-        <div class="col">
-            <label class="form-check-label" for="inlineFormSelectPref">
-                <strong>Topic</strong>
-            </label>
-            <select class="form-select" id="inlineFormSelectPref">
-                <option selected>All</option>
-                
-                {% for topic in search_filters.topics %}
-                    <option value="{{ topic }}">{{ topic }}</option>
-                {% endfor %}
-
-            </select>
-        </div>
-
-        <div class="col">
-            <label class="form-check-label" for="inlineFormSelectPref">
-                <strong>Sort By</strong>
-            </label>
-            <select class="form-select" id="inlineFormSelectPref">
-                <option selected> ...</option>
-
-                <option value="name">Name</option>
-                
-            </select>
-        </div>
-      
-        <div class="col">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="inlineFormCheck">
-            <label class="form-check-label" for="inlineFormCheck">
-              <strong>Sort By Name</strong>
-            </label>
-          </div>
-        </div>
-    
-    </form> -->
-
-
-    <form class="row mx-3 mb-5 px-4 pb-4 pt-2 row-cols-lg-auto g-3 align-items-center" style="border-radius: 10px; border: 1px solid #ededed26; background: linear-gradient(169deg, rgba(255, 255, 255, 0.2) 8.61%, rgba(255, 255, 255, 0.1) 76.57%);" role="search" method="POST" action="{{url_for('search')}}" id="searchForm">
-        
-        <div class="col-12 col-lg-12 d-none">
-            <input 
-                class="form-control me-2 Query" 
-                type="Query" 
-                placeholder="Query" 
-                aria-label="Query"
-                id="Query"
-                name="Query"
-            >   
-        </div>
-
-        
-        
-        <div class="col">
-            <label class="form-check-label" for="platformSelect">
-                <strong>Platform</strong>
-            </label>
-            <select class="form-select" id="platformSelect" name="platform">
-                <option selected>All</option>
-
-                {% for platform in search_filters.platforms %}
-                    <option value="{{ platform }}">{{ platform }}</option>
-                {% endfor %}
-
-            </select>
-        </div>
-
-        <div class="col">
-            <label class="form-check-label" for="languageSelect">
-                <strong>Language</strong>
-            </label>
-            <select class="form-select" id="languageSelect" name="language">
-                <option selected>All</option>
-
-                {% for lang in search_filters.languages %}
-                    <option value="{{ lang }}">{{ lang }}</option>
-                {% endfor %}
-                
-            </select>
-        </div>
-    
-        
-        <div class="col">
-            <label class="form-check-label" for="topicSelect">
-                <strong>Topic</strong>
-            </label>
-            <select class="form-select" id="topicSelect" name="topic">
-                <option selected>All</option>
-                
-                {% for topic in search_filters.topics %}
-                    <option value="{{ topic }}">{{ topic }}</option>
-                {% endfor %}
-
-            </select>
-        </div>
-
-        <div class="col">
-            <label class="form-check-label" for="sortSelect">
-                <strong>Sort By</strong>
-            </label>
-            <select class="form-select" id="sortSelect" name="sort">
-                <option selected>...</option>
-
-                <option value="name">Name</option>
-                
-            </select>
-        </div>
-      
-        <!-- <div class="col">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="inlineFormCheck">
-            <label class="form-check-label" for="inlineFormCheck">
-              <strong>Sort By Name</strong>
-            </label>
-          </div>
-        </div> -->
-
-        <!-- set form -->
-        <script>
-            query = window.location.href.split('/search_solutions/')[1];
-
-            // add search query to search input
-            document.getElementById('Query').value = query;
-
-            const upDataSearchFilter = (options, val) => {
-                // loop through options and set selected
-                for (let i = 0; i < options.length; i++) {
-
-                // remove selected
-                if(options[i].hasAttribute("selected")) options[i].removeAttribute("selected");
-
-                // set new >>> selected
-                if (options[i].value.toLowerCase() == val) {
-                    
-                    options[i].setAttribute("selected", "");
-                }
-                }
-            }
-
-            // set platform select
-            if (query.includes('platform')) {
-                platform = query.split('platform=')[1]
-
-                if(platform.includes('&')) platform = platform.split('&')[0];
-
-                upDataSearchFilter(document.getElementById('platformSelect').options, platform);
-
-            }
-            // set language select
-            if (query.includes('language')) {
-                language = query.split('language=')[1]
-
-                if(language.includes('&')) language = language.split('&')[0]
-
-                upDataSearchFilter(document.getElementById('languageSelect').options, language);
-
-                
-            }
-            // set topic select
-            if (query.includes('topic')) {
-                topic = query.split('topic=')[1]
-
-                if(topic.includes('&')) topic = topic.split('&')[0]
-                
-                upDataSearchFilter(document.getElementById('topicSelect').options, topic);
-            }
-            // set sort select
-            if (query.includes('sort')) {
-                console.log("HERE _ SORT")
-                sort = query.split('sort=')[1]
-
-                if(sort.includes('&')) sort = sort.split('&')[0]
-                
-                upDataSearchFilter(document.getElementById('sortSelect').options, sort);
-            }
-        </script>
-    
-</form> 
-
-<!-- 
-    http://127.0.0.1:5000/search_solutions/None%3Fpage=0&platform=leetcode&language=javascript&topic=array&sort=name 
--->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const selects = document.querySelectorAll('.form-select');
-        const form = document.getElementById('searchForm');
-        
-        selects.forEach(select => {
-            select.addEventListener('change', function() {
-                form.submit();
-            });
-        });
-    });
-</script>
-
+    <hr class="mx-5 my-3 my-md-4 p-0" style="background: white; color: white; height: 1px;">
 
     <!--search-res-Pagination-->
     {% macro render_pagination() %}
-        <div class="row py-2 pt-5 m-0" id="search-res-Pagination"> 
+        <div class="row py-2 py-5 m-0" id="search-res-Pagination"> 
             <!-- *PAGINATION* -->
 
 
@@ -295,7 +205,7 @@
                     <!-- Left arrow to previous page -->
                     <li>
                         {% if page_number > 0 %}
-                            <a class="rounded-circle mx-2 pg-nav-active" href="/search_solutions/{{ searched }}/{{ page_number-1 }}">&lt;</a>
+                            <a class="rounded-circle mx-2 pg-nav-active" href="/search_solutions/{{ searched }}%3Fpage={{ page_number-1 }}{{ filter_data }}">&lt;</a>
                         {% else %}
                             <span class="rounded-circle mx-2 pg-nav-active">&lt;</span>
                         {% endif %}
@@ -304,7 +214,7 @@
                     <!-- current pg / 1st pagination area/number -->
                     <li>
                         {% if pg_nav2_var %}
-                            <a class="pg-nav-active" style="{{ page_link_style_nav1 }}" href="/search_solutions/{{ searched }}/{{ pg_nav1_var-1 }}">{{ pg_nav1_var }}</a>
+                            <a class="pg-nav-active" style="{{ page_link_style_nav1 }}" href="/search_solutions/{{ searched }}%3Fpage={{ pg_nav1_var-1 }}{{ filter_data }}">{{ pg_nav1_var }}</a>
                         {% else %}
                             <span class="pg-nav-active" style="{{ page_link_style_nav1 }}">{{ pg_nav1_var }}</span>
                         {% endif %}
@@ -314,7 +224,7 @@
                     <!-- 2nd & 3rd pagination areas/numbers -->
                     {% for link in pagination_links %}
                         <li>
-                            <a class="pg-nav-active" style="{{ link.page_link_style }}" href="/search_solutions/{{ searched }}/{{ link.pg_nav_var-1 }}">{{ link.pg_nav_var }}</a>
+                            <a class="pg-nav-active" style="{{ link.page_link_style }}" href="/search_solutions/{{ searched }}%3Fpage={{ link.pg_nav_var-1 }}{{ filter_data }}">{{ link.pg_nav_var }}</a>
                         </li>
                     {% endfor %}
 
@@ -328,7 +238,7 @@
                     <!-- 5th/last pagination area/number -->
                     {% if show_last_page_link %}
                         <li>
-                            <a class="pg-nav-active" style="{{ last_page_link_style }}" href="/search_solutions/{{ searched }}/{{ pg_nav4_var-1 }}">{{ pg_nav4_var }}</a>
+                            <a class="pg-nav-active" style="{{ last_page_link_style }}" href="/search_solutions/{{ searched }}%3Fpage={{ pg_nav4_var-1 }}{{ filter_data }}">{{ pg_nav4_var }}</a>
                         </li>
                     {% endif %}
 
@@ -336,7 +246,7 @@
                     <!-- res_count/24 = total_page_numbers ; if res_count < total_page_numbers show right arrow -->
                     <li>
                         {% if res_count/24 > page_number+1 %}
-                            <a class="rounded-circle mx-2 pg-nav-active" href="/search_solutions/{{ searched }}/{{ page_number+1 }}">&gt;</a>
+                            <a class="rounded-circle mx-2 pg-nav-active" href="/search_solutions/{{ searched }}%3Fpage={{ page_number+1 }}{{ filter_data }}">&gt;</a>
                         {% else %}
                             <span class="rounded-circle mx-2 pg-nav-active">&gt;</span>
                         {% endif %}
@@ -350,7 +260,7 @@
 
     
     <!-- Search Res content -->
-    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xxl-6 m-0" id="search-query-res">
+    <div class="pt-4 row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xxl-6 m-0" id="search-query-res">
 
         {% for solution in solutions %}
 
@@ -382,10 +292,24 @@
 
     </div>
 
-
-
     <!-- search-res-Pagination BOTTOM -->
     {{ render_pagination() }}
+
+    <div class="m-0 p-0 mb-4 pb-4">
+        <hr class="mx-5 mb-3 mb-md-4 p-0" style="background: white; color: white; height: 1px;">
+    </div>
+
+    <!-- Page Explanation Content -->
+    <div class="row m-0 p-4" style="border-radius: 10px; border: 1px solid #ededed26; background: linear-gradient(169deg, rgba(255, 255, 255, 0.2) 8.61%, rgba(255, 255, 255, 0.1) 76.57%);">
+        <p>This is the Tech Career Time coding challenge solutions page! Here, you can easily search for solutions to coding challenges from top platforms like LeetCode, HackerRank, and Project Euler.</p> 
+ 
+        <p>This page has been designed to be your ultimate companion on your coding journey. With our detailed explanations, you'll not only find the solution but also understand the logic behind it. In each solution page coding challenges are broken down into pseudocode, additionally you will find the actual code, and will be give a thorough explanation of the steps to solve it.</p>
+ 
+        <p>Whether you're a beginner looking to learn or a pro sharpening your skills, our solutions are crafted to be both educational and engaging. Dive in and explore a world of coding challenges made simple and fun!</p> 
+ 
+        <p>Happy coding!</p>
+ 
+    </div>
     
     <!-- 
 
