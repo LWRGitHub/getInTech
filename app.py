@@ -256,9 +256,6 @@ def search():
     """
 
     old_url = request.referrer
-    # "/search_solutions" in old_url 
-    # print(request.referrer)
-
     search_text = old_search_text = page = topic = platform = language = sort = None
 
     # assing search_text
@@ -323,7 +320,7 @@ def search():
     if "language" in form and form.language.data != None: 
         language = form.language.data if form.language.data != "All" else None
     if "sort" in form and form.sort.data != None: 
-        sort = form.sort.data if form.sort.data != "..." else None
+        sort = form.sort.data if form.sort.data != "Relevance" else None
     
     query = f"{search_text}?page={page if page else 0}{f'&platform={platform}'if platform else ''}{f'&topic={topic}'if topic else ''}{f'&language={language}'if language else ''}{f'&sort={sort}'if sort else ''}"
 
@@ -340,14 +337,10 @@ def search_solutions(query):
     sort = all_query_data = other_query_data = page_number = platform = topic = language = None
     filter_data = ""
 
-    # print(query)
-
     # filter data (not page or search text)
     if "&" in query:
         idx = query.index("&")
         filter_data = query[idx:]
-
-    print(filter_data)
 
     context["filter_data"] = filter_data
 
@@ -359,7 +352,6 @@ def search_solutions(query):
         # check if <search filter> is in query
         # if it is get the <search filter>
         if "page" in other_query_data:
-            print("HERE_page")
             # find index of page
             page_number = other_query_data.split("page=")[1]
             # remove & and all after if it exists
@@ -383,6 +375,11 @@ def search_solutions(query):
             language = other_query_data.split("language=")[1]
             if "&" in language:
                 language = language.split("&")[0]
+            if language.lower() == "csharp":
+                
+                language = "C#"
+            if language.lower() == "cpp":
+                language = "C++"
 
         if "sort" in other_query_data:
             sort = other_query_data.split("sort=")[1]
@@ -391,9 +388,6 @@ def search_solutions(query):
         
     else:
         query = "None"
-
-
-    # page_number = int(page_number)
     
     context["page_number"] = page_number
 
@@ -413,21 +407,199 @@ def search_solutions(query):
             idx += 1
         
         return solution_to_send
+    
+    def filter_search(solution, platform=None, topic=None, language=None):
 
-    if query != "None":
-        context["searched"] = query
-        # get all solutions that match the query
-        search_res = [solution for solution in solutions_info if query.lower() in solution["name"].lower()]
+        def has_language(solution):
+                        
+            for lang in solution["languages"]:
+                if language.lower() == lang["name"].lower():
+                    return True
+                # elif language.lower() in solution["abbreviation_for_prism_styles"].lower():
+                #     return True
+            
+            return False
+        
+        def has_topic(solution, topic):
 
-        context["solutions"] = get_24_seach_res(search_res)
-        context["res_count"] = len(search_res)
+            if "markdown_how_to_solve" in solution and topic.lower() in solution["markdown_how_to_solve"].lower():
+                return True
+            elif topic.lower() in solution["name"].lower():
+                return True
+            
+            return False
 
-        # context["solutions"] = [solution for solution in solutions if query.lower() in solution["name"].like('%{query}%')]
-        # context["solutions"] = solutions.filter(solutions.name.like(f"%{query}%"))
+        if platform:
+            if platform.lower() in solution["site"].lower():
+                # 
+                if topic:
+                    # print("HERE")
+                    if has_topic(solution, topic):
+                        print("HERE")
+                        if language:
+                            if has_language(solution):
+                                return solution
+                        else:
+                            return solution
+                elif language:
+                    if has_language(solution):
+                        return solution
+                else:
+                    return solution
+
+        elif topic:
+            if has_topic(solution, topic):
+                if language:
+                    if has_language(solution):
+                        return solution
+                else:
+                    return solution
+        elif language:
+            if has_language(solution):
+                return solution
+            
+        return False
+    
+    def get_all_search_res(query, all_solutions, platform=None, topic=None, language=None):
+        main_res = []
+        mid_res1 = []
+        mid_res2 = []
+        sub_res = []
+        has_filters = platform or topic or language
+
+        # print(f"\n*** has_filters ***\n\n{has_filters}\n\n*** has_filters ***\n")
+
+
+        missing_md_how_to_solve = []
+        for solution in all_solutions:
+            if "markdown_how_to_solve" not in solution:
+                missing_md_how_to_solve.append(solution["name"])
+
+        # print(f"\n*****\n\nMissing markdown_how_to_solve: {missing_md_how_to_solve}\n\n*****\n")
+        
+        for solution in all_solutions:
+            
+            
+            all_q_words = query.split(" ")
+            # remove filler words like "how to" "a" "the" etc.
+            filler_words = 'how to a the an and or but if else for while do done in on at to from with by as of'
+            for word in all_q_words:
+                if word.lower() in filler_words:
+                    all_q_words.remove(word)
+
+            if query.lower() in solution["name"].lower():
+                print("HERE_1")
+                if has_filters:
+                    qualifies = filter_search(solution, platform, topic, language)
+                    if qualifies: main_res.append(qualifies)
+                else:
+                    main_res.append(solution)
+
+            elif "markdown_how_to_solve" in solution and query.lower() in solution["markdown_how_to_solve"].lower():
+                print("HERE_2")
+                if has_filters:
+                    qualifies = filter_search(solution, platform, topic, language)
+                    if qualifies: mid_res2.append(qualifies)
+                else:
+                    mid_res2.append(solution)
+
+            # elif topic and solution["name"].lower() == topic.lower():
+            #     print("HERE_3")
+            #     qualifies = filter_search(solution, platform, topic, language)
+            #     if qualifies: mid_res1.append(qualifies)
+            
+            else:
+                print("HERE_4")
+                for word in all_q_words:
+                    
+
+                    if word.lower() in solution["name"].lower():
+                        if has_filters:
+                            qualifies = filter_search(solution, platform, topic, language)
+                            if qualifies: 
+                                mid_res1.append(qualifies)
+                                break
+                        else:
+                            mid_res1.append(solution)
+                            break
+
+                    elif "markdown_how_to_solve" in solution and word.lower() in solution["markdown_how_to_solve"].lower():
+                        if has_filters:
+                            qualifies = filter_search(solution, platform, topic, language)
+                            if qualifies: 
+                                sub_res.append(qualifies)
+                                break
+                        else:
+                            sub_res.append(solution)
+                            break
+                
+                    # elif topic and word.lower() == topic.lower():
+                        
+                    #     qualifies = filter_search(solution, platform, topic, language)
+                    #     if qualifies: 
+                    #         sub_res.append(qualifies)
+                    #         break
+
+        # res = add sub_res to main_res
+
+        main_res_names = [solution["name"] for solution in main_res]
+        sub_res_names = [solution["name"] for solution in sub_res]
+        mid_res1_names = [solution["name"] for solution in mid_res1]
+        mid_res2_names = [solution["name"] for solution in mid_res2]
+
+        res = main_res + mid_res1 + mid_res2 + sub_res
+
+        return res
+    
+
+    def if_search_text_eg_query(query, solutions_info, platform, topic, language):
+
+        # if filters e.g. platform, topic, language, sort are in query
+        if platform or topic or language:
+            search_res = get_all_search_res(query, solutions_info, platform, topic, language)
+
+        else:
+            # get all solutions that match the query
+            # search_res = [solution for solution in solutions_info if query.lower() in solution["name"].lower()]
+            search_res = get_all_search_res(query, solutions_info)
+
+        return search_res
+
+    context["searched"] = query
+    search_res = []
+
+    if platform or topic or language:
+
+        if query != "None":
+            search_res = if_search_text_eg_query(query, solutions_info, platform, topic, language)
+
+        else:
+            res = []
+            for solution in solutions_info:
+                qualifies = filter_search(solution, platform, topic, language)
+                if qualifies: 
+                    res.append(qualifies)
+            search_res = res
     else:
-        context["searched"] = "None"
-        context["solutions"] = get_24_seach_res(solutions_info)
-        context["res_count"] = len(solutions_info)
+        if query != "None":
+            search_res = if_search_text_eg_query(query, solutions_info, platform, topic, language)
+        else:
+            search_res = solutions_info
+
+    if len(search_res) != 0 and sort:
+        
+        if sort.lower()  == "a-z":
+            search_res = sorted(search_res, key=lambda x: x["name"])
+        elif sort.lower()  == "z-a":
+            search_res = sorted(search_res, key=lambda x: x["name"], reverse=True)
+        # TODO: 
+        # elif sort == "Oldest":
+        #     res = sorted(res, key=lambda x: x["date"])
+        # elif sort == "Newest":
+        #     res = sorted(res, key=lambda x: x["date"], reverse=True)
+
+    context["solutions"] = get_24_seach_res(search_res)
+    context["res_count"] = len(search_res)
 
     # Add search filter data
     search_filters = {}
@@ -442,6 +614,8 @@ def search_solutions(query):
 
         # Get the current page number from the URL
         pg_num = page_number + 1
+
+        print(pg_num)
 
         # Determines how many pagination navigation numbers will show,
         # depending on the current page and the number of search results
@@ -458,17 +632,23 @@ def search_solutions(query):
                 pg_nav3_var = pg_num - 1
 
         else:
-            if search_solutions_count > 95:
+            if search_solutions_count > 72:
                 pg_nav1_var = 1
                 pg_nav2_var = 2
                 pg_nav3_var = 3
                 pg_nav4_var = math.ceil(search_solutions_count / 24)
 
+            elif search_solutions_count > 48:
+                pg_nav1_var = 1
+                pg_nav2_var = 2
+                pg_nav3_var = 3
+                pg_nav4_var = False
+
             elif search_solutions_count > 24:
                 pg_nav1_var = 1
                 pg_nav2_var = 2
                 pg_nav3_var = False
-                pg_nav4_var = math.ceil(search_solutions_count / 24)
+                pg_nav4_var = False
 
             else:
                 pg_nav1_var = 1

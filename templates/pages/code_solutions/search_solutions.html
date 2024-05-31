@@ -27,9 +27,9 @@
                 </label>
                 <select class="form-select" id="languageSelect" name="language">
                     <option selected>All</option>
-
-                    {% for lang in search_filters.languages %}
-                        <option value="{{ lang }}">{{ lang }}</option>
+                 
+                    {% for lang_key, lang_val in search_filters.languages.items() %}
+                        <option value="{{ lang_val }}">{{ lang_key }}</option>
                     {% endfor %}
                     
                 </select>
@@ -55,9 +55,13 @@
                     <strong>Sort By</strong>
                 </label>
                 <select class="form-select" id="sortSelect" name="sort">
-                    <option selected>...</option>
+                    <option selected>Relevance</option>
 
-                    <option value="name">Name</option>
+                    <option value="a-z">A - Z</option>
+                    <option value="z-a">Z - A</option>
+
+                    <!-- <option value="oldest">Oldest</option>
+                    <option value="newest">Newest</option> -->
                     
                 </select>
             </div>
