@@ -3,15 +3,318 @@
 
 
 <main>
-    
-    <!-- Main content -->
-    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xxl-6 m-0" id="search-query-res"> 
-        <!-- *SEARCH RES* -->
+
+    <div class="pt-0 pb-4 px-3">
+        <form class="row mx-0 px-4 pb-4 pt-2 row-cols-2 row-cols-md-auto g-3 align-items-center" style="margin-top: -8px; border-radius: 0px 0px 10px 10px; border: 1px solid #ededed26; background: linear-gradient(169deg, rgba(255, 255, 255, 0.2) 8.61%, rgba(255, 255, 255, 0.1) 76.57%); top: 50px;" role="search" method="POST" action="{{url_for('search')}}" id="searchForm">
+            
+            <div class="col">
+                <label class="form-check-label" for="platformSelect">
+                    <strong>Platform</strong>
+                </label>
+                <select class="form-select" id="platformSelect" name="platform">
+                    <option selected>All</option>
+
+                    {% for platform in search_filters.platforms %}
+                        <option value="{{ platform }}">{{ platform }}</option>
+                    {% endfor %}
+
+                </select>
+            </div>
+
+            <div class="col">
+                <label class="form-check-label" for="languageSelect">
+                    <strong>Language</strong>
+                </label>
+                <select class="form-select" id="languageSelect" name="language">
+                    <option selected>All</option>
+                 
+                    {% for lang_key, lang_val in search_filters.languages.items() %}
+                        <option value="{{ lang_val }}">{{ lang_key }}</option>
+                    {% endfor %}
+                    
+                </select>
+            </div>
+        
+            
+            <div class="col">
+                <label class="form-check-label" for="topicSelect">
+                    <strong>Topic</strong>
+                </label>
+                <select class="form-select" id="topicSelect" name="topic">
+                    <option selected>All</option>
+                    
+                    {% for topic in search_filters.topics %}
+                        <option value="{{ topic }}">{{ topic }}</option>
+                    {% endfor %}
+
+                </select>
+            </div>
+
+            <div class="col">
+                <label class="form-check-label" for="sortSelect">
+                    <strong>Sort By</strong>
+                </label>
+                <select class="form-select" id="sortSelect" name="sort">
+                    <option selected>Relevance</option>
+
+                    <option value="a-z">A - Z</option>
+                    <option value="z-a">Z - A</option>
+
+                    <!-- <option value="oldest">Oldest</option>
+                    <option value="newest">Newest</option> -->
+                    
+                </select>
+            </div>
+
+            <!-- set form filters -->
+            <script>
+                query = window.location.href.split('/search_solutions/')[1];
+
+                // add search query to search input
+                // document.getElementById('Query').value = query;
+
+                const upDataSearchFilter = (options, val) => {
+                    // loop through options and set selected
+                    for (let i = 0; i < options.length; i++) {
+                        if(val == "python")
+                        // remove selected
+                        if(options[i].hasAttribute("selected")) options[i].removeAttribute("selected");
+
+                        // set new >>> selected
+                        if (options[i].value.toLowerCase() == val) {
+                            
+                            options[i].setAttribute("selected", "");
+                        }
+                    }
+                }
+
+                // set platform select
+                if (query.includes('platform')) {
+                    platform = query.split('platform=')[1]
+
+                    if(platform.includes('&')) platform = platform.split('&')[0];
+
+                    if(platform.includes('%20')) platform = platform.split('%20').join(' ');
+
+                    upDataSearchFilter(document.getElementById('platformSelect').options, platform.toLowerCase());
+
+                }
+                // set language select
+                if (query.includes('language')) {
+                    language = query.split('language=')[1]
+
+                    if(language.includes('&')) language = language.split('&')[0]
+
+                    if(language.includes('%20')) language = language.split('%20').join(' ');
+
+                    upDataSearchFilter(document.getElementById('languageSelect').options, language.toLowerCase());
+                    
+                }
+                // set topic select
+                if (query.includes('topic')) {
+                    topic = query.split('topic=')[1]
+
+                    if(topic.includes('&')) topic = topic.split('&')[0]
+
+                    if(topic.includes('%20')) topic = topic.split('%20').join(' ');
+                    
+                    upDataSearchFilter(document.getElementById('topicSelect').options, topic.toLowerCase());
+                }
+                // set sort select
+                if (query.includes('sort')) {
+                    sort = query.split('sort=')[1]
+
+                    if(sort.includes('&')) sort = sort.split('&')[0]
+
+                    if(sort.includes('%20')) sort = sort.split('%20').join(' ');
+                    
+                    upDataSearchFilter(document.getElementById('sortSelect').options, sort);
+                }
+            </script>
+
+            <!-- 
+                http://127.0.0.1:5000/search_solutions/None%3Fpage=0&platform=leetcode&language=javascript&topic=array&sort=name 
+            -->
+
+            <!-- form submit -->
+            <script>
+
+                document.addEventListener('DOMContentLoaded', function() {
+                    const selects = document.querySelectorAll('.form-select');
+                    const form = document.getElementById('searchForm');
+                    
+                    selects.forEach(select => {
+                        select.addEventListener('change', function() {
+
+                            form.submit();
+                        });
+                    });
+                });
+
+            </script>
+        
+        </form> 
     </div>
-    <div class="row py-2 pt-5 m-0" id="search-res-Pagination"> <!--search-res-Pagination-->
-        <!-- *PAGINATION* -->
+    
+    <!-- Main Content -->
+    <div class="pt-1 pt-md-3 pb-4 px-3">
+        <div class="row m-0 p-4" style="border-radius: 10px; border: 1px solid #ededed26; background: linear-gradient(169deg, rgba(255, 255, 255, 0.2) 8.61%, rgba(255, 255, 255, 0.1) 76.57%);">
+
+            <p class="m-0 p-1">Search coding challenge solutions here! Explore detailed solutions from LeetCode, HackerRank, and Project Euler with pseudocode, actual code, and explanations.</p>
+    
+        </div>
+
+        <div class="m-0 pb-4 pt-4 pt-md-5">
+
+            <div class="m-0 pt-1">
+                <h2 class="">Search By Platform</h2>
+            </div>
+
+            <div class="px-2 row">
+                <div class="col-4 text-center p-1">
+                    
+                    <a href="/search_solutions/None%3Fpage=0&platform=LeetCode">
+                        <img src="/static/img/leetcode-solutions.webp" alt="Words LeetCode with a dark background, featuring a stylized coding symbol in orange and white on the left, and the text 'LeetCode' in a clean, rounded font on the right." class="img-fluid" style="border-radius: 10px; border: 1px solid #ededed26; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);">
+                    </a>
+                </div>
+
+                <div class="col-4 text-center p-1">
+                    <a href="/search_solutions/None%3Fpage=0&platform=HackerRank">
+                        <img src="/static/img/hackerrank-soutions.webp" alt="words HackerRank with a dark background, featuring a stylized coding symbol in green and white on the left, and the text 'HackerRank' in a clean, rounded font on the right." class="img-fluid" style="border-radius: 10px; border: 1px solid #ededed26; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);">
+                    </a>
+                </div>
+
+                <div class="col-4 text-center p-1">
+                    <a href="/search_solutions/None%3Fpage=0&platform=Project%20Euler">
+                        <img src="/static/img/project-euler-net-soluions.webp" alt="Project Euler words with a white background, featuring a stylized infinity symbol in brown and gray above the text 'Project Euler' in bold brown font, and a pencil icon below with the text '.Net' in white." class="img-fluid" style="border-radius: 10px; border: 1px solid #ededed26; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);">
+                    </a>
+                </div>
+            </div>
+
+        </div>
     </div>
 
+    <hr class="mx-5 my-3 my-md-4 p-0" style="background: white; color: white; height: 1px;">
+
+    <!--search-res-Pagination-->
+    {% macro render_pagination() %}
+        <div class="row py-2 py-5 m-0" id="search-res-Pagination"> 
+            <!-- *PAGINATION* -->
+
+
+            <div class="mx-auto">
+
+                <ul class="m-0 text-center text mt-3 p-0" id="all-pagination-links">
+
+                    <!-- Left arrow to previous page -->
+                    <li>
+                        {% if page_number > 0 %}
+                            <a class="rounded-circle mx-2 pg-nav-active" href="/search_solutions/{{ searched }}%3Fpage={{ page_number-1 }}{{ filter_data }}">&lt;</a>
+                        {% else %}
+                            <span class="rounded-circle mx-2 pg-nav-active">&lt;</span>
+                        {% endif %}
+                    </li>
+
+                    <!-- current pg / 1st pagination area/number -->
+                    <li>
+                        {% if pg_nav2_var %}
+                            <a class="pg-nav-active" style="{{ page_link_style_nav1 }}" href="/search_solutions/{{ searched }}%3Fpage={{ pg_nav1_var-1 }}{{ filter_data }}">{{ pg_nav1_var }}</a>
+                        {% else %}
+                            <span class="pg-nav-active" style="{{ page_link_style_nav1 }}">{{ pg_nav1_var }}</span>
+                        {% endif %}
+                    </li>
+
+                    <!-- next/other pg(s) -->
+                    <!-- 2nd & 3rd pagination areas/numbers -->
+                    {% for link in pagination_links %}
+                        <li>
+                            <a class="pg-nav-active" style="{{ link.page_link_style }}" href="/search_solutions/{{ searched }}%3Fpage={{ link.pg_nav_var-1 }}{{ filter_data }}">{{ link.pg_nav_var }}</a>
+                        </li>
+                    {% endfor %}
+
+                    <!-- 4th pagination area -->
+                    {% if pg_nav3_var and pg_nav4_var %}
+                        <li>
+                            <span>...</span>
+                        </li>
+                    {% endif %}
+
+                    <!-- 5th/last pagination area/number -->
+                    {% if show_last_page_link %}
+                        <li>
+                            <a class="pg-nav-active" style="{{ last_page_link_style }}" href="/search_solutions/{{ searched }}%3Fpage={{ pg_nav4_var-1 }}{{ filter_data }}">{{ pg_nav4_var }}</a>
+                        </li>
+                    {% endif %}
+
+                    <!-- Right arrow to next pg-->
+                    <!-- res_count/24 = total_page_numbers ; if res_count < total_page_numbers show right arrow -->
+                    <li>
+                        {% if res_count/24 > page_number+1 %}
+                            <a class="rounded-circle mx-2 pg-nav-active" href="/search_solutions/{{ searched }}%3Fpage={{ page_number+1 }}{{ filter_data }}">&gt;</a>
+                        {% else %}
+                            <span class="rounded-circle mx-2 pg-nav-active">&gt;</span>
+                        {% endif %}
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    {% endmacro %}
+
+    
+    <!-- Search Res content -->
+    <div class="pt-4 row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xxl-6 m-0" id="search-query-res">
+
+        {% for solution in solutions %}
+
+            <div class="col d-flex">
+                <a class="card flex-fill btn btn-outline-dark p-0" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);" href="/code_solution/{{solution._id}}">
+
+                    <h5 class="card-title text-center" style="font-size: 15px; font-weight: bold; padding: 15px;">{{solution.name}}</h5>
+
+                    {% if solution.site == "LeetCode" %}
+                        <div class="card-body d-flex flex-column" style="padding: 0px 23% 15px 23%;">
+                            <strong class="card-text text-center rounded py-1 px-2 mt-auto d-inline-block" style="font-size: 12px; background: linear-gradient(to bottom right, orange, rgb(90, 89, 89), black, black, rgb(45, 45, 45)); color: white; font-family: 'Source Code Pro', monospace; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); display: inline-block;">{{solution.site}}</strong>
+                        </div>
+                    {% elif solution.site == "HackerRank" %}
+                        <div class="card-body d-flex flex-column" style="padding: 0px 18% 15px 18%;">
+                            <strong class="card-text text-center rounded py-1 px-2 mt-auto d-inline-block" style="font-size: 12px; background: linear-gradient(to top right, rgb(90, 89, 89), black, black, rgb(45, 45, 45),green,greenyellow ); color: white; font-family: 'Source Code Pro', monospace; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); display: inline-block;">HackerRank</strong>
+                        </div>
+                    {% elif solution.site == "Project Euler" %}
+                    <div class="card-body d-flex flex-column" style="padding: 0px 12% 15px 12%;">
+                        <strong class="card-text text-center rounded py-1 px-2 mt-auto d-inline-block" style="font-size: 12px; background: linear-gradient(to bottom right, rgb(231, 231, 231), white, white, rgb(231, 231, 231), rgb(90, 45, 5)); color: black; border: 0.25px solid rgb(181, 181, 181); font-family: 'Source Code Pro', monospace; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px white, 0 0 25px white, 0 0 30px white, 0 0 35px white; display: inline-block;">ProjectEuler</strong>
+                    </div>
+                    {% else %}
+                        <strong class="card-text text-center py-1 px-2 mt-auto d-inline-block" style="font-size: 12px; font-family: 'Source Code Pro', monospace; display: inline-block;">HackerRank</strong>
+                    {% endif %}
+
+                </a>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- search-res-Pagination BOTTOM -->
+    {{ render_pagination() }}
+
+    <div class="m-0 p-0 mb-4 pb-4">
+        <hr class="mx-5 mb-3 mb-md-4 p-0" style="background: white; color: white; height: 1px;">
+    </div>
+
+    <!-- Page Explanation Content -->
+    <div class="row m-0 p-4" style="border-radius: 10px; border: 1px solid #ededed26; background: linear-gradient(169deg, rgba(255, 255, 255, 0.2) 8.61%, rgba(255, 255, 255, 0.1) 76.57%);">
+        <p>This is the Tech Career Time coding challenge solutions page! Here, you can easily search for solutions to coding challenges from top platforms like LeetCode, HackerRank, and Project Euler.</p> 
+ 
+        <p>This page has been designed to be your ultimate companion on your coding journey. With our detailed explanations, you'll not only find the solution but also understand the logic behind it. In each solution page coding challenges are broken down into pseudocode, additionally you will find the actual code, and will be give a thorough explanation of the steps to solve it.</p>
+ 
+        <p>Whether you're a beginner looking to learn or a pro sharpening your skills, our solutions are crafted to be both educational and engaging. Dive in and explore a world of coding challenges made simple and fun!</p> 
+ 
+        <p>Happy coding!</p>
+ 
+    </div>
+    
     <!-- 
 
         TODO: 
@@ -21,42 +324,43 @@
 
      -->
 
+
     <!-- This <script> Allows us to load the next page without doing a new API call "Saves Money 💰" -->
-    <script>
+    <!-- <script>
 
         const searchSolutions = {{solutions|tojson}}; // get solutions from server Jinja2
         let pgNum; // Global variable to store page/pagination number
 
-        const upDateContent = () =>{
+        // const upDateContent = () =>{
 
-            let pgNumMinus1 = Number(window.location.href.split("/").pop()); // get page number from URL
-            let showFromIdx = (pgNumMinus1 * 24); // get starting index for solutions to show
+        //     let pgNumMinus1 = Number(window.location.href.split("/").pop()); // get page number from URL
+        //     let showFromIdx = (pgNumMinus1 * 24); // get starting index for solutions to show
             
-            // loop through solutions and show only 24 solutions
-            for (let i = showFromIdx; i < showFromIdx + 24; i++) {
+        //     // loop through solutions and show only 24 solutions
+        //     for (let i = showFromIdx; i < showFromIdx + 24; i++) {
 
-                if (searchSolutions[i]) {
+        //         if (searchSolutions[i]) {
 
-                    const solution = searchSolutions[i];
-                    const card = document.createElement("div"); // create search result element
-                    card.classList.add("col"); // add bootstrap class
+        //             const solution = searchSolutions[i];
+        //             const card = document.createElement("div"); // create search result element
+        //             card.classList.add("col"); // add bootstrap class
 
-                    // add data, design, etc. to search result element
-                    card.innerHTML = `
-                        <a class="card h-100 btn btn-outline-dark p-0" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);" href="/code_solution/${solution._id}">
-                            <div class="card-body" style="padding: 15px;">
-                                <h5 class="card-title text-center" style="font-size: 15px; font-weight: bold;">${solution.name}</h5>
-                                <p class="card-text text-center" style="font-size: 12px;">${solution.site}</p>
-                            </div>
-                        </a>
-                    `;
-                    document.getElementById("search-query-res").appendChild(card);
+        //             // add data, design, etc. to search result element
+        //             card.innerHTML = `
+        //                 <a class="card h-100 btn btn-outline-dark p-0" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);" href="/code_solution/${solution._id}">
+        //                     <div class="card-body" style="padding: 15px;">
+        //                         <h5 class="card-title text-center" style="font-size: 15px; font-weight: bold;">${solution.name}</h5>
+        //                         <p class="card-text text-center" style="font-size: 12px;">${solution.site}</p>
+        //                     </div>
+        //                 </a>
+        //             `;
+        //             document.getElementById("search-query-res").appendChild(card);
 
-                }
+        //         }
 
-            }
-        }
-        upDateContent(); // run function to show solutions
+        //     }
+        // }
+        // upDateContent(); // run function to show solutions
 
         
         let pgNav1Var, pgNav2Var, pgNav3Var, pgNav4Var; // Global variables to store pagination numbers
@@ -152,7 +456,7 @@
             pagination.innerHTML = `
                 <ul class="m-0 text-center text mt-3 p-0" id="all-pagination-links">
 
-                    <!-- Left arrow to previous page -->
+                    
                     <li>
                         <span class="rounded-circle mx-2 pg-nav-active"  onclick="pgNavLeft()">&lt;</span>
                     </li>
@@ -240,7 +544,9 @@
             upDatePagination() // update pagination
         });
 
-    </script>        
+    </script>         -->
+    
+    
     <!-- 
 
         TODO: 

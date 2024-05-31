@@ -720,7 +720,7 @@ class Swe_career_guide:
                                             {
                                                 'type': 'a',
                                                 'content': 'TechCareerTime.com',
-                                                'href': 'https://techcareertime.com/search_solutions/None/0' 
+                                                'href': '/search_solutions/None%3Fpage=0' 
                                             },
                                             {
                                                 'type': 'span',
@@ -729,7 +729,7 @@ class Swe_career_guide:
                                             {
                                                 'type': 'a',
                                                 'content': 'Coding Solutions',
-                                                'href': 'https://techcareertime.com/search_solutions/None/0' 
+                                                'href': '/search_solutions/None%3Fpage=0' 
                                             },
                                             {
                                                 'type': 'span',
@@ -1181,7 +1181,7 @@ class Swe_career_guide:
                                             {
                                                 'type': 'a',
                                                 'content': 'TechCareerTime.com',
-                                                'href': 'https://techcareertime.com/search_solutions/None/0' 
+                                                'href': '/search_solutions/None%3Fpage=0' 
                                             },
                                             {
                                                 'type': 'span',
@@ -1190,7 +1190,7 @@ class Swe_career_guide:
                                             {
                                                 'type': 'a',
                                                 'content': 'Coding Solutions',
-                                                'href': 'https://techcareertime.com/search_solutions/None/0' 
+                                                'href': '/search_solutions/None%3Fpage=0' 
                                             },
                                             {
                                                 'type': 'span',
@@ -1220,7 +1220,7 @@ class Swe_career_guide:
                                             {
                                                 'type': 'a',
                                                 'content': 'TechCareerTime.com',
-                                                'href': 'https://techcareertime.com/search_solutions/None/0' 
+                                                'href': '/search_solutions/None%3Fpage=0' 
                                             },
                                             
                                             {

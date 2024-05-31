@@ -6,164 +6,28 @@
     <link href="../../../static/css/prism.css" rel="stylesheet" />
 </head>
 
-<main>
+<main class="pt-5">
+    <div class="pt-1">
 
-    <!-- 1st Content box / My Personal Solution(s) & Video(s) -->
-    <div class="row pt-0 pb-5 py-md-2 m-0">
-        <div class="col-12 p-0 m-0 pb-5">
-            <div class="p-0 p-md-5 m-0 pb-4" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);">
-
-                <div class="row py-2 m-0 text-center">
-                    <h1 class="col-12 m-0">{{name}}</h1>
-                </div>
-
-                <!-- YouTube Video(s) -->
-                <!-- Carousel  -->
-                <!-- {% if video.has_video %} 
-                    <div class="row py-2 text-center m-0 px-0 py-5">
-
-                        <div id="carousel1" class="carousel slide p-0 m-0" data-bs-ride="carousel">
-
-                            <div class="carousel-inner">
-
-                                {% for src in video.scripts%}
-                                    {% if loop.index-1 == 0 %}
-                                        <div class="carousel-item active" data-bs-interval="10000">
-                                        
-                                            <iframe class="code-solution-youtube-video" width="450" height="253" src="{{src}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                        </div>
-                                    {% else %}
-                                        <div class="carousel-item" data-bs-interval="10000">
-
-                                            <iframe class="code-solution-youtube-video" width="450" height="253" src="{{src}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-
-                            {% if video.scripts|length > 1 %}
-                                <button style="width: 5%;" class="carousel-control-prev p-0 m-0" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                
-                                <button style="width: 5%;" class="carousel-control-next p-0 m-0" type="button" data-bs-target="#carousel1" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            {% endif %}
-
-                        </div>
-
-                    </div>
-                {% endif %}  -->
-
-                {% if how_to %}
-                    <div class="row py-2 m-0 px-0">
-                        {% for data in how_to %}
-
-                            {% if data.tag == "p" %}
-                                <p class="col-12 m-0 py-3">{{data.content}}</p>
-                            {% elif data.tag == "h2" %}
-                                <h2 class="col-12 m-0 py-3">{{data.content}}</h2>
-                            {% elif data.tag == "h5" %}
-                            <h5 class="col-12 m-0 py-1">{{data.content}}</h5>
-                            {% elif data.tag == "span" %}
-                            <span class="col-12 m-0 py-1">{{data.content}}</span>
-                            <br>
-
-                            {% elif data.tag == "ul" %}
-                            <ul class="col-12 m-0 py-1 p-5">
-                                {% for li in data.content %}
-
-                                    <li>{{ li }}</li>
-
-                                {% endfor %}
-                            </ul>
-
-                            {% elif data.tag == "ol" %}
-                            <ol class="col-12 m-0 py-1 p-5">
-                                {% for li in data.content %}
-
-                                    <li>{{ li }}</li>
-
-                                {% endfor %}
-                            </ol>
-
-                            {% elif data.tag == "code" %}
-                                <pre class="line-numbers py-3">
-                                    <code class="language-markup">{{data.content}}</code>
-                                </pre>
-                            {% endif %}
-                        {% endfor %}
-                {% endif %}
-
-            
-
-                <!-- Solutions in language tabs -->
-                <div class="row py-2 m-0 px-0">
-
-                    <!-- Choose language -->
-                    <!-- Folder like tabs -->
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-
-                            {% for language in languages %}
-                                {% if loop.index-1 == 0 %}
-                                    <button class="nav-link active" id="nav-{{language.name}}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{language.name}}" type="button" role="tab" aria-controls="nav-{{language.name}}" aria-selected="true">{{language.name}}</button>
-                                {% else %}
-                                    <button class="nav-link" id="nav-{{language.name}}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{language.name}}" type="button" role="tab" aria-controls="nav-{{language.name}}" aria-selected="false">{{language.name}}</button>
-                                {% endif %}
-                            {% endfor %}
-
-                        </div>
-                    </nav>
-
-                    <!-- My Code Solution -->
-                    <div class="tab-content p-0" id="nav-tabContent">
-                        
-                        {% for language in languages %}
-                            {% if loop.index-1 == 0 %}
-                                <div class="tab-pane fade show active" id="nav-{{language.name}}" role="tabpanel" aria-labelledby="nav-{{language.name}}-tab" tabindex="0">
-                                    <pre class="line-numbers">
-                                        <code class="language-{{language.abbreviation_for_prism_styles}}">{{language.code}}</code>
-                                    </pre>
-                                </div>
-                            {% else %}
-                                <div class="tab-pane fade" id="nav-{{language.name}}" role="tabpanel" aria-labelledby="nav-{{language.name}}-tab" tabindex="0">
-                                    <pre class="line-numbers">
-                                        <code class="language-{{language.abbreviation_for_prism_styles}}">{{language.code}}</code>
-                                    </pre>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 2nd Content box / Seach Res -->
-    <!-- {% if search_res %}
-        <div class="row p-0 py-md-2 m-0">
-            <div class="col-12 p-0 m-0">
-                <div class="p-0 pb-4 p-md-5 m-0" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);">
+        <!-- 1st Content box / My Personal Solution(s) & Video(s) -->
+        <div class="row pt-0 pb-5 py-md-2 m-0">
+            <div class="col-12 p-0 m-0 pb-5">
+                <div class="p-0 p-md-5 m-0 pb-4" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);">
 
                     <div class="row py-2 m-0 text-center">
-                        <h3 class="col-12 m-0">Search Results</h3>
-                    </div> -->
+                        <h1 class="col-12 m-0">{{name}}</h1>
+                    </div>
 
                     <!-- YouTube Video(s) -->
                     <!-- Carousel  -->
-                    <!-- {% if search_res.video.has_video %} 
-                        <div class="row py-2 text-center m-0 p-0">
+                    <!-- {% if video.has_video %} 
+                        <div class="row py-2 text-center m-0 px-0 py-5">
 
-                            <div id="carouse2" class="carousel slide m-0 p-0" data-bs-ride="carousel">
+                            <div id="carousel1" class="carousel slide p-0 m-0" data-bs-ride="carousel">
 
                                 <div class="carousel-inner">
 
-                                    {% for src in search_res.video.src%}
+                                    {% for src in video.scripts%}
                                         {% if loop.index-1 == 0 %}
                                             <div class="carousel-item active" data-bs-interval="10000">
                                             
@@ -178,13 +42,13 @@
                                     {% endfor %}
                                 </div>
 
-                                {% if search_res.video.src|length > 1 %}
-                                    <button style="width: 5%;" class="carousel-control-prev m-0 p-0" type="button" data-bs-target="#carouse2" data-bs-slide="prev">
+                                {% if video.scripts|length > 1 %}
+                                    <button style="width: 5%;" class="carousel-control-prev p-0 m-0" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                         <span class="visually-hidden">Previous</span>
                                     </button>
                                     
-                                    <button style="width: 5%;" class="carousel-control-next m-0 p-0" type="button" data-bs-target="#carouse2" data-bs-slide="next">
+                                    <button style="width: 5%;" class="carousel-control-next p-0 m-0" type="button" data-bs-target="#carousel1" data-bs-slide="next">
                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                         <span class="visually-hidden">Next</span>
                                     </button>
@@ -195,124 +59,478 @@
                         </div>
                     {% endif %}  -->
 
+                    {% if markdown_how_to_solve %}
+                        {% if how_to %}
+
+                            {% macro render_content(data) %}
+
+                                <!-- Check if Str -->
+                                {% if data.content | is_str %}
+
+                                    {% if data.tag == "p" %}
+                                        <span class="col-12 m-0 py-3">{{data.content}}</span>
+                                    {% elif data.tag == "h2" %}
+                                        <h2 class="col-12 m-0 py-3">{{data.content}}</h2>
+                                    {% elif data.tag == "h4" %}
+                                        <h4 class="col-12 m-0 py-3">{{data.content}}</h4>
+                                    {% elif data.tag == "h5" %}
+                                        <h5 class="col-12 m-0 py-1">{{data.content}}</h5>
+                                    {% elif data.tag == "span" %}
+                                        <span>{{data.content}}</span>
+                                    {% elif data.tag == "li" %}
+                                        <li>{{data.content}}</li>
+                                    {% elif data.tag == "code" %}
+                                        <!-- <code class="px-1" style="background-color: rgb(235, 227, 228); border-radius: 3px; font-family: 'Source Code Pro', monospace;">{{data.content}}</code> -->
+                                        <!-- <code class="px-1" style="background-color: rgb(86, 86, 86); border-radius: 3px; font-family: 'Source Code Pro', monospace; color: rgb(191, 255, 0);">{{data.content}}</code> -->
+                                        <!-- <code class="px-1" style="background-color: rgb(109, 109, 109); border-radius: 3px; font-family: 'Source Code Pro', monospace; color: rgb(255, 196, 0);">{{data.content}}</code> -->
+
+                                        <!-- <code class="px-1" style="background: linear-gradient(70deg, rgba(0, 0, 128), rgba(255, 0, 0), rgba(255, 192, 0), rgba(128, 255, 128), rgba(0, 255, 255), rgba(0, 255, 255), rgba(0, 192, 255), rgba(0, 192, 255), rgba(0, 192, 255), rgba(0, 128, 255), rgba(0, 128, 255), rgba(0, 128, 255), rgb(0, 128, 255), rgb(0, 102, 180)); border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 5px solid rgb(0, 0, 0); border-radius: 3px; font-family: 'Source Code Pro', monospace; color: black; text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fff, 0 0 30px #fff; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);">{{data.content}}</code> -->
+
+                                        
+                                        <div style="display: inline-block; position: relative; margin: 0px 0px 1px 0px;">
+                                            <code style="padding: 0px 2.5px 0px 2.5px; background: linear-gradient(70deg, rgba(0, 0, 128), rgba(255, 0, 0), rgba(255, 192, 0), rgba(128, 255, 128), rgba(0, 255, 255), rgba(0, 255, 255), rgba(0, 192, 255), rgba(0, 192, 255), rgba(0, 192, 255), rgba(0, 128, 255), rgba(0, 128, 255), rgba(0, 128, 255), rgb(0, 128, 255), rgb(0, 102, 180)); border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 5px solid rgb(0, 0, 0); border-radius: 3px; font-family: 'Source Code Pro', monospace; color: black; text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fff, 0 0 30px #fff; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);">{{data.content}}</code>
+                                            <div style="position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 25%; height: 3px; background: rgb(34, 33, 33); border-radius: 0 0 2px 2px;"></div>
+                                        </div>
+                                        
+
+                                    {% elif data.tag == "fenced_code_block" %}
+                                        <pre class="line-numbers py-3">
+                                            <code class="language-markup">{{data.content}}</code>
+                                        </pre>
+                                    {% elif data.tag == "hr" %}
+                                        <hr>
+                                    {% elif data.tag == "em" %}
+                                        <em>{{data.content}}</em>
+                                    {% elif data.tag == "strong" %}
+                                        <strong>{{data.content}}</strong>
+                                    <!-- {% elif data.tag == "ul" %}
+                                        <ul class="col-12 m-0 py-1 p-5">
+                                            <li>{{ data.content }}</li>
+                                        </ul>
+                                    {% elif data.tag == "ol" %}
+                                        <ol class="col-12 m-0 py-1 p-5">
+                                            <li>{{ data.content }}</li>
+                                        </ol> -->
+                                    {% endif %}
+
+                                <!-- Check if List -->
+                                {% elif data.content | is_list %}
+
+                                    {% if data.tag == "p" %}
+                                        <span class="col-12 m-0 py-3">
+                                            {% for item in data.content %}
+                                                {{ render_content(item) }}
+                                            {% endfor %}
+                                        </span>
+                                    {% elif data.tag == "h2" %}
+                                        <h2 class="col-12 m-0 py-3">
+                                            {% for item in data.content %}
+                                                {{ render_content(item) }}
+                                            {% endfor %}
+                                        </h2>
+                                    {% elif data.tag == "h4" %}
+                                        <h4 class="col-12 m-0 py-3">
+                                            {% for item in data.content %}
+                                                {{ render_content(item) }}
+                                            {% endfor %}
+                                        </h4>
+                                    {% elif data.tag == "h5" %}
+                                        <h5 class="col-12 m-0 py-1">
+                                            {% for item in data.content %}
+                                                {{ render_content(item) }}
+                                            {% endfor %}
+                                        </h5>
+                                    {% elif data.tag == "span" %}
+                                        <span>
+                                            {% for item in data.content %}
+                                                {{ render_content(item) }}
+                                            {% endfor %}
+                                        </span>
+                                    {% elif data.tag == "li" %}
+                                        <li>
+                                            {% for item in data.content %}
+                                                {{ render_content(item) }}
+                                            {% endfor %}
+                                        </li>
+                                    {% elif data.tag == "code" %}
+                                        <code>
+                                            {% for item in data.content %}
+                                                {{ render_content(item) }}
+                                            {% endfor %}
+                                        </code>
+                                    <!-- {% elif data.tag == "fenced_code_block" %}
+                                        <pre class="line-numbers py-3">
+                                            <code class="language-markup">
+                                                {% for item in data.content %}
+                                                    {{ render_content(item) }}
+                                                {% endfor %}
+                                            </code>
+                                        </pre>
+                                    {% elif data.tag == "hr" %}
+                                        <hr> -->
+                                    {% elif data.tag == "em" %}
+                                        <em>
+                                            {% for item in data.content %}
+                                                {{ render_content(item) }}
+                                            {% endfor %}
+                                        </em>
+                                    {% elif data.tag == "strong" %}
+                                        <strong>
+                                            {% for item in data.content %}
+                                                {{ render_content(item) }}
+                                            {% endfor %}
+                                        </strong>
+                                    {% elif data.tag == "ul" %}
+                                        <ul class="col-12 m-0 py-1 p-5">
+                                            {% for item in data.content %}
+                                                {{ render_content(item) }}
+                                            {% endfor %}
+                                        </ul>
+                                    {% elif data.tag == "ol" %}
+                                        <ol class="col-12 m-0 py-1 p-5">
+                                            {% for item in data.content %}
+                                                {{ render_content(item) }}
+                                            {% endfor %}
+                                        </ol>
+                                    {% endif %}
+                                    
+
+                                <!-- is Dict -->
+                                {% else %}
+                                    {% if data.tag == "p" %}
+                                        <span class="col-12 m-0 py-3">
+                                            {{ render_content(data.content) }}
+                                        </span>
+                                    {% elif data.tag == "span" %}
+                                        <span>
+                                            {{ render_content(data.content) }}
+                                        </span>
+                                    {% elif data.tag == "li" %}
+                                        <li>
+                                            {{ render_content(data.content) }}
+                                        </li>
+                                    {% elif data.tag == "ol" %}
+                                        <ol class="col-12 m-0 py-1 p-5">
+                                            <li>
+                                                {{ render_content(data.content) }}
+                                            </li>
+                                        </ol>
+                                    {% elif data.tag == "ul" %}
+                                        <ul class="col-12 m-0 py-1 p-5">
+                                            <li>
+                                                {{ render_content(data.content) }}
+                                            </li>
+                                        </ul>
+                                    <!-- {% elif data.tag == "code" %}
+                                        <code>
+                                            {{ render_content(data.content) }}
+                                        </code> -->
+                                    <!-- {% elif data.tag == "fenced_code_block" %}
+                                        <pre class="line-numbers py-3">
+                                            <code class="language-markup">
+                                                {{ render_content(data.content) }}
+                                            </code>
+                                        </pre> -->
+                                    {% elif data.tag == "h2" %}
+                                        <h2 class="col-12 m-0 py-3">
+                                            {{ render_content(data.content) }}
+                                        </h2>
+                                    {% elif data.tag == "h4" %}
+                                        <h4 class="col-12 m-0 py-3">
+                                            {{ render_content(data.content) }}
+                                        </h4>
+                                    {% elif data.tag == "h5" %}
+                                        <h5 class="col-12 m-0 py-1">
+                                            {{ render_content(data.content) }}
+                                        </h5>
+                                    {% elif data.tag == "hr" %}
+                                        <hr>
+                                    {% elif data.tag == "em" %}
+                                        <em>
+                                            {{ render_content(data.content) }}
+                                        </em>
+                                    {% elif data.tag == "strong" %}
+                                        <strong>
+                                            {{ render_content(data.content) }}
+                                        </strong>
+                                    <!-- {% elif data.tag == "ul" %}
+                                        <ul class="col-12 m-0 py-1 p-5">
+                                            <li>
+                                                {{ render_content(data.content) }}
+                                            </li>
+                                        </ul>
+                                    -->
+                                    {% endif %}
+                                {% endif %}
+
+                            {% endmacro %}
+                    
+                            <div class="row py-2 m-0 px-0">
+                                
+                                {% for data in how_to %}
+                                    {{ render_content(data) }}
+                                {% endfor %}
+                            </div>
+                                
+                        {% endif %}
+                    
+
+                    {% else %}
+                        <div class="row py-2 m-0 px-0">
+                            {% for data in how_to %}
+
+                                {% if data.tag == "p" %}
+                                    <p class="col-12 m-0 py-3">{{data.content}}</p>
+                                {% elif data.tag == "h2" %}
+                                    <h2 class="col-12 m-0 py-3">{{data.content}}</h2>
+                                {% elif data.tag == "h5" %}
+                                    <h5 class="col-12 m-0 py-1">{{data.content}}</h5>
+                                {% elif data.tag == "span" %}
+                                    <span class="col-12 m-0 py-1">{{data.content}}</span>
+                                    <br>
+
+                                {% elif data.tag == "ul" %}
+                                    <ul class="col-12 m-0 py-1 p-5">
+                                        {% for li in data.content %}
+
+                                            <li>{{ li }}</li>
+
+                                        {% endfor %}
+                                    </ul>
+
+                                {% elif data.tag == "ol" %}
+                                    <ol class="col-12 m-0 py-1 p-5">
+                                        {% for li in data.content %}
+
+                                            <li>{{ li }}</li>
+
+                                        {% endfor %}
+                                    </ol>
+
+                                {% elif data.tag == "code" %}
+                                    <pre class="line-numbers py-3">
+                                        <code class="language-markup">{{data.content}}</code>
+                                    </pre>
+                                {% endif %}
+                            {% endfor %}
+                    {% endif %}
+
+                
+
                     <!-- Solutions in language tabs -->
-                    <!-- <div class="row ppy-2 m-0"> -->
+                    <div class="row py-2 m-0 px-0">
 
                         <!-- Choose language -->
                         <!-- Folder like tabs -->
-                        <!-- <nav>
+                        <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
-                                {% for language in search_res.languages %}
+                                {% for language in languages %}
                                     {% if loop.index-1 == 0 %}
-                                        <button class="nav-link active" id="nav-{{language.name}}-search-res-tab" data-bs-toggle="tab" data-bs-target="#nav-{{language.name}}-search-res" type="button" role="tab" aria-controls="nav-{{language.name}}-search-res" aria-selected="true">
-                                            {{ language.name|replace("-Sharp", "#")|replace("-Plus-Plus", "++") }}
-                                        </button>
+                                        <button class="nav-link active" id="nav-{{language.abbreviation_for_prism_styles}}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{language.abbreviation_for_prism_styles}}" type="button" role="tab" aria-controls="nav-{{language.abbreviation_for_prism_styles}}" aria-selected="true">{{language.name}}</button>
                                     {% else %}
-                                        <button class="nav-link" id="nav-{{language.name}}-search-res-tab" data-bs-toggle="tab" data-bs-target="#nav-{{language.name}}-search-res" type="button" role="tab" aria-controls="nav-{{language.name}}-search-res" aria-selected="false">
-                                            {{language.name|replace("-Sharp", "#")|replace("-Plus-Plus", "++")}}
-                                        </button>
+                                        <button class="nav-link" id="nav-{{language.abbreviation_for_prism_styles}}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{language.abbreviation_for_prism_styles}}" type="button" role="tab" aria-controls="nav-{{language.abbreviation_for_prism_styles}}" aria-selected="false">{{language.name}}</button>
                                     {% endif %}
                                 {% endfor %}
 
                             </div>
-                        </nav> -->
+                        </nav>
 
-                        
-
-                        <!-- Other Sites Solution(s) UI -->
-                        <!-- <div class="tab-content" id="nav-tabContent">
+                        <!-- My Code Solution -->
+                        <div class="tab-content p-0" id="nav-tabContent">
                             
-                            {% for language in search_res.languages %}
-
+                            {% for language in languages %}
                                 {% if loop.index-1 == 0 %}
+                                    <div class="tab-pane fade show active" id="nav-{{language.abbreviation_for_prism_styles}}" role="tabpanel" aria-labelledby="nav-{{language.abbreviation_for_prism_styles}}-tab" tabindex="0">
+                                        <pre class="line-numbers">
+                                            <code class="language-{{language.abbreviation_for_prism_styles}}">{{language.code}}</code>
+                                        </pre>
+                                    </div>
+                                {% else %}
+                                    <div class="tab-pane fade" id="nav-{{language.abbreviation_for_prism_styles}}" role="tabpanel" aria-labelledby="nav-{{language.abbreviation_for_prism_styles}}-tab" tabindex="0">
+                                        <pre class="line-numbers">
+                                            <code class="language-{{language.abbreviation_for_prism_styles}}">{{language.code}}</code>
+                                        </pre>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
 
-                                    <div class="tab-pane fade show active" id="nav-{{language.name}}-search-res" role="tabpanel" aria-labelledby="nav-{{language.name}}-search-res-tab" tabindex="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xxl-6 m-0" id="search-query-{{language.name}}-res">  -->
-                                            <!-- *SEARCH RES* -->
-                                        <!-- </div>
-                                        
-                                        <script>
+        <!-- 2nd Content box / Seach Res -->
+        <!-- {% if search_res %}
+            <div class="row p-0 py-md-2 m-0">
+                <div class="col-12 p-0 m-0">
+                    <div class="p-0 pb-4 p-md-5 m-0" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);">
 
-                                            // inject search results
-                                            const upDateContent = (searchSolutions, language) => {
-                                                                
-                                                let pgNumMinus1 = 0; // get page number 
-                                                let showFromIdx = (pgNumMinus1 * 24); // get starting index for solutions to show
+                        <div class="row py-2 m-0 text-center">
+                            <h3 class="col-12 m-0">Search Results</h3>
+                        </div> -->
+
+                        <!-- YouTube Video(s) -->
+                        <!-- Carousel  -->
+                        <!-- {% if search_res.video.has_video %} 
+                            <div class="row py-2 text-center m-0 p-0">
+
+                                <div id="carouse2" class="carousel slide m-0 p-0" data-bs-ride="carousel">
+
+                                    <div class="carousel-inner">
+
+                                        {% for src in search_res.video.src%}
+                                            {% if loop.index-1 == 0 %}
+                                                <div class="carousel-item active" data-bs-interval="10000">
                                                 
-                                                // loop through solutions and show only 24 solutions
-                                                for (let i = showFromIdx; i < showFromIdx + 24; i++) {
-                                    
-                                                    if (searchSolutions[i]) {
-                                    
-                                                        const solution = searchSolutions[i];
-                                                        const card = document.createElement("div"); // create search result element
-                                                        card.classList.add("col"); // add bootstrap class
-                                    
-                                                        // add data, design, etc. to search result element
-                                                        card.innerHTML = `
-                                                            <a class="card h-100 btn btn-outline-dark p-0" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);" href="${solution.href}">
-                                                                <div class="card-body" style="padding: 15px;">
-                                                                    <h5 class="card-title text-center" style="font-size: 15px; font-weight: bold;">${solution.site_name}</h5>
-                                                                    <p class="card-text text-center" style="font-size: 12px;"><i>Solution</i></p>
-                                                                </div>
-                                                            </a>
-                                                        `;
-                                                        document.getElementById(`search-query-${language}-res`).appendChild(card);
-                                    
-                                                    }
-                                                }
-                                            }
+                                                    <iframe class="code-solution-youtube-video" width="450" height="253" src="{{src}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                                </div>
+                                            {% else %}
+                                                <div class="carousel-item" data-bs-interval="10000">
 
-                                            let language = {{language|tojson}};
-                                            const languageObj = {}
-                                            languageObj[language.name] = language.name;
-
-                                            const searchSolutionsObj = {}
-                                            searchSolutionsObj[language.name] = language.solutions;
-
-                                            // const searchSolutions = {{language.solutions|tojson}};
-                                            
-                                            upDateContent(searchSolutionsObj[language.name], language.name)
-                                        </script>
-                                    </div> -->
-
-                                <!-- {% else %}
-
-                                    <div class="tab-pane fade"  id="nav-{{language.name}}-search-res" role="tabpanel" aria-labelledby="nav-{{language.name}}-search-res-tab" tabindex="0">
-                                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xxl-6 m-0" id="search-query-{{language.name}}-res">  -->
-                                            <!-- *SEARCH RES* -->
-                                        <!-- </div>
-                                        
-                                        <script>
-
-                                            // inject search results
-                                        
-                                            
-                                            language = {{language|tojson}};
-                                            languageObj[language.name] = language.name;
-                                            searchSolutionsObj[language.name] = language.solutions;
-
-                                            upDateContent(searchSolutionsObj[language.name], language.name)
-                                        </script>
+                                                    <iframe class="code-solution-youtube-video" width="450" height="253" src="{{src}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
                                     </div>
 
-                                {% endif %}
-                                    
-                            {% endfor %}
+                                    {% if search_res.video.src|length > 1 %}
+                                        <button style="width: 5%;" class="carousel-control-prev m-0 p-0" type="button" data-bs-target="#carouse2" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        
+                                        <button style="width: 5%;" class="carousel-control-next m-0 p-0" type="button" data-bs-target="#carouse2" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+                        {% endif %}  -->
+
+                        <!-- Solutions in language tabs -->
+                        <!-- <div class="row ppy-2 m-0"> -->
+
+                            <!-- Choose language -->
+                            <!-- Folder like tabs -->
+                            <!-- <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+                                    {% for language in search_res.languages %}
+                                        {% if loop.index-1 == 0 %}
+                                            <button class="nav-link active" id="nav-{{language.name}}-search-res-tab" data-bs-toggle="tab" data-bs-target="#nav-{{language.name}}-search-res" type="button" role="tab" aria-controls="nav-{{language.name}}-search-res" aria-selected="true">
+                                                {{ language.name|replace("-Sharp", "#")|replace("-Plus-Plus", "++") }}
+                                            </button>
+                                        {% else %}
+                                            <button class="nav-link" id="nav-{{language.name}}-search-res-tab" data-bs-toggle="tab" data-bs-target="#nav-{{language.name}}-search-res" type="button" role="tab" aria-controls="nav-{{language.name}}-search-res" aria-selected="false">
+                                                {{language.name|replace("-Sharp", "#")|replace("-Plus-Plus", "++")}}
+                                            </button>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </div>
+                            </nav> -->
+
+                            
+
+                            <!-- Other Sites Solution(s) UI -->
+                            <!-- <div class="tab-content" id="nav-tabContent">
+                                
+                                {% for language in search_res.languages %}
+
+                                    {% if loop.index-1 == 0 %}
+
+                                        <div class="tab-pane fade show active" id="nav-{{language.name}}-search-res" role="tabpanel" aria-labelledby="nav-{{language.name}}-search-res-tab" tabindex="0">
+
+                                            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xxl-6 m-0" id="search-query-{{language.name}}-res">  -->
+                                                <!-- *SEARCH RES* -->
+                                            <!-- </div>
+                                            
+                                            <script>
+
+                                                // inject search results
+                                                const upDateContent = (searchSolutions, language) => {
+                                                                    
+                                                    let pgNumMinus1 = 0; // get page number 
+                                                    let showFromIdx = (pgNumMinus1 * 24); // get starting index for solutions to show
+                                                    
+                                                    // loop through solutions and show only 24 solutions
+                                                    for (let i = showFromIdx; i < showFromIdx + 24; i++) {
+                                        
+                                                        if (searchSolutions[i]) {
+                                        
+                                                            const solution = searchSolutions[i];
+                                                            const card = document.createElement("div"); // create search result element
+                                                            card.classList.add("col"); // add bootstrap class
+                                        
+                                                            // add data, design, etc. to search result element
+                                                            card.innerHTML = `
+                                                                <a class="card h-100 btn btn-outline-dark p-0" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);" href="${solution.href}">
+                                                                    <div class="card-body" style="padding: 15px;">
+                                                                        <h5 class="card-title text-center" style="font-size: 15px; font-weight: bold;">${solution.site_name}</h5>
+                                                                        <p class="card-text text-center" style="font-size: 12px;"><i>Solution</i></p>
+                                                                    </div>
+                                                                </a>
+                                                            `;
+                                                            document.getElementById(`search-query-${language}-res`).appendChild(card);
+                                        
+                                                        }
+                                                    }
+                                                }
+
+                                                let language = {{language|tojson}};
+                                                const languageObj = {}
+                                                languageObj[language.name] = language.name;
+
+                                                const searchSolutionsObj = {}
+                                                searchSolutionsObj[language.name] = language.solutions;
+
+                                                // const searchSolutions = {{language.solutions|tojson}};
+                                                
+                                                upDateContent(searchSolutionsObj[language.name], language.name)
+                                            </script>
+                                        </div> -->
+
+                                    <!-- {% else %}
+
+                                        <div class="tab-pane fade"  id="nav-{{language.name}}-search-res" role="tabpanel" aria-labelledby="nav-{{language.name}}-search-res-tab" tabindex="0">
+                                            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 row-cols-xxl-6 m-0" id="search-query-{{language.name}}-res">  -->
+                                                <!-- *SEARCH RES* -->
+                                            <!-- </div>
+                                            
+                                            <script>
+
+                                                // inject search results
+                                            
+                                                
+                                                language = {{language|tojson}};
+                                                languageObj[language.name] = language.name;
+                                                searchSolutionsObj[language.name] = language.solutions;
+
+                                                upDateContent(searchSolutionsObj[language.name], language.name)
+                                            </script>
+                                        </div>
+
+                                    {% endif %}
+                                        
+                                {% endfor %}
+
+                            </div>
 
                         </div>
 
                     </div>
-
                 </div>
-            </div>
-        </div> -->
-    <!-- {% endif %}  -->
+            </div> -->
+        <!-- {% endif %}  -->
 
-    <!-- Prism JS code -->
-    <script src="../../../static/js/prism.js"></script>
+        <!-- Prism JS code -->
+        <script src="../../../static/js/prism.js"></script>
+    </div>
 </main>
 
 {% endblock content2 %}

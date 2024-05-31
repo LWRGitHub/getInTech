@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    </head>
+    <body>
+
+       
+
+                {% if how_to %}
+
+                    {% macro render_content(data) %}
+
+                        <!-- Check if Str -->
+                        {% if data.content | is_str %}
+
+                            {% if data.tag == "p" %}
+                                <p class="col-12 m-0 py-3">{{data.content}}</p>
+                            {% elif data.tag == "h2" %}
+                                <h2 class="col-12 m-0 py-3">{{data.content}}</h2>
+                            {% elif data.tag == "h4" %}
+                                <h4 class="col-12 m-0 py-3">{{data.content}}</h4>
+                            {% elif data.tag == "h5" %}
+                                <h5 class="col-12 m-0 py-1">{{data.content}}</h5>
+                            {% elif data.tag == "span" %}
+                                <span class="col-12 m-0 py-1">{{data.content}}</span>
+                                <!-- <br> -->
+                            {% elif data.tag == "li" %}
+                                <li>{{data.content}}</li>
+                            {% elif data.tag == "code" %}
+                                <pre class="line-numbers py-3">
+                                    <code class="language-markup">{{data.content}}</code>
+                                </pre>
+                            {% elif data.tag == "hr" %}
+                                <hr>
+                            {% elif data.tag == "em" %}
+                                <em>{{data.content}}</em>
+                            {% elif data.tag == "strong" %}
+                                <strong>{{data.content}}</strong>
+                            <!-- {% elif data.tag == "ul" %}
+                                <ul class="col-12 m-0 py-1 p-5">
+                                    <li>{{ data.content }}</li>
+                                </ul>
+                            {% elif data.tag == "ol" %}
+                                <ol class="col-12 m-0 py-1 p-5">
+                                    <li>{{ data.content }}</li>
+                                </ol> -->
+                            {% endif %}
+
+                        <!-- Check if List -->
+                        {% elif data.content | is_list %}
+
+                            {% if data.tag == "p" %}
+                                <p class="col-12 m-0 py-3">
+                                    {% for item in content %}
+                                        {{ render_content(item) }}
+                                    {% endfor %}
+                                </p>
+                            {% elif data.tag == "h2" %}
+                                <h2 class="col-12 m-0 py-3">
+                                    {% for item in content %}
+                                        {{ render_content(item) }}
+                                    {% endfor %}
+                                </h2>
+                            {% elif data.tag == "h4" %}
+                                <h4 class="col-12 m-0 py-3">
+                                    {% for item in content %}
+                                        {{ render_content(item) }}
+                                    {% endfor %}
+                                </h4>
+                            {% elif data.tag == "h5" %}
+                                <h5 class="col-12 m-0 py-1">
+                                    {% for item in content %}
+                                        {{ render_content(item) }}
+                                    {% endfor %}
+                                </h5>
+                            {% elif data.tag == "span" %}
+                                <span class="col-12 m-0 py-1">
+                                    {% for item in content %}
+                                        {{ render_content(item) }}
+                                    {% endfor %}
+                                </span>
+                                <!-- <br> -->
+                            {% elif data.tag == "li" %}
+                                <li>
+                                    {% for item in content %}
+                                        {{ render_content(item) }}
+                                    {% endfor %}
+                                </li>
+                            <!-- {% elif data.tag == "code" %}
+                                <pre class="line-numbers py-3">
+                                    <code class="language-markup">
+                                        {% for item in content %}
+                                        {{ render_content(item) }}
+                                    {% endfor %}
+                                    </code>
+                                </pre>
+                            {% elif data.tag == "hr" %}
+                                <hr> -->
+                            {% elif data.tag == "em" %}
+                                <em>
+                                    {% for item in content %}
+                                        {{ render_content(item) }}
+                                    {% endfor %}
+                                </em>
+                            {% elif data.tag == "strong" %}
+                                <strong>
+                                    {% for item in content %}
+                                        {{ render_content(item) }}
+                                    {% endfor %}
+                                </strong>
+                            {% elif data.tag == "ul" %}
+                                <ul class="col-12 m-0 py-1 p-5">
+                                    {% for li in data.content %}
+
+                                        {% for item in content %}
+                                            {{ render_content(item) }}
+                                        {% endfor %}
+
+                                    {% endfor %}
+                                </ul>
+                            {% elif data.tag == "ol" %}
+                                <ol class="col-12 m-0 py-1 p-5">
+                                    {% for li in data.content %}
+
+                                        {% for item in data %}
+                                            {{ render_content(item) }}
+                                        {% endfor %}
+
+                                    {% endfor %}
+                                </ol>
+                            {% endif %}
+                            
+
+                        <!-- is Dict -->
+                        {% else %}
+                            {% if data.tag == "p" %}
+                                <p class="col-12 m-0 py-3">
+                                    {{ render_content(content.content) }}
+                                </p>
+                            {% elif data.tag == "span" %}
+                                <span class="col-12 m-0 py-1">
+                                    {{ render_content(content.content) }}
+                                </span>
+                                <br>
+                            {% elif data.tag == "li" %}
+                                <li>
+                                    {{ render_content(content.content) }}
+                                </li>
+                            {% elif data.tag == "ol" %}
+                                <ol class="col-12 m-0 py-1 p-5">
+                                    <li>
+                                        {{ render_content(content.content) }}
+                                    </li>
+                                </ol>
+                            <!-- {% elif data.tag == "code" %}
+                                <pre class="line-numbers py-3">
+                                    <code class="language-markup">
+                                        {{ render_content(content.content) }}
+                                    </code>
+                                </pre> -->
+                            {% elif data.tag == "h2" %}
+                                <h2 class="col-12 m-0 py-3">
+                                    {{ render_content(content.content) }}
+                                </h2>
+                            {% elif data.tag == "h4" %}
+                                <h4 class="col-12 m-0 py-3">
+                                    {{ render_content(content.content) }}
+                                </h4>
+                            {% elif data.tag == "h5" %}
+                                <h5 class="col-12 m-0 py-1">
+                                    {{ render_content(content.content) }}
+                                </h5>
+                            {% elif data.tag == "hr" %}
+                                <hr>
+                            {% elif data.tag == "em" %}
+                                <em>
+                                    {{ render_content(content.content) }}
+                                </em>
+                            {% elif data.tag == "strong" %}
+                                <strong>
+                                    {{ render_content(content.content) }}
+                                </strong>
+                            <!-- {% elif data.tag == "ul" %}
+                                <ul class="col-12 m-0 py-1 p-5">
+                                    <li>
+                                        {{ render_content(content.content) }}
+                                    </li>
+                                </ul>
+                             -->
+                            {% endif %}
+                        {% endif %}
+
+                    {% endmacro %}
+            
+                    <div class="row py-2 m-0 px-0">
+                        {% for data in how_to %}
+                            {{ render_content(data) }}
+                        {% endfor %}
+                    </div>
+                        
+                {% endif %}
+
+    </body>
+</html>

@@ -1,0 +1,53 @@
+[
+    17,
+    3,
+    {
+        "tag": "ul",
+        "content": [
+            {
+                "tag": "li",
+                "content": "Similar to the search method, we start at the root and traverse through each character of the prefix."
+            },
+            {
+                "tag": "li",
+                "content": {
+                    "tag": "span",
+                    "content": [
+                        {
+                            "tag": "span",
+                            "content": "If any character in the prefix is not found in the current node, the prefix does not exist in the Trie and we return "
+                        },
+                        {
+                            "tag": "code",
+                            "content": "False"
+                        },
+                        {
+                            "tag": "span",
+                            "content": "."
+                        }
+                    ]
+                }
+            },
+            {
+                "tag": "li",
+                "content": {
+                    "tag": "span",
+                    "content": [
+                        {
+                            "tag": "span",
+                            "content": "If we successfully traverse through all characters, we return "
+                        },
+                        {
+                            "tag": "code",
+                            "content": "True"
+                        },
+                        {
+                            "tag": "span",
+                            "content": " since the prefix exists in the Trie."
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+]
