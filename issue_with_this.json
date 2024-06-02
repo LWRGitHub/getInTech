@@ -1,0 +1,81 @@
+{
+    "name": "Convert The Temperature",
+    "site": "LeetCode",
+    "_id": "LeetCode-Convert-The-Temperature",
+    "href": "/solution/LeetCode-Convert-The-Temperature",
+    "video": {
+        "has_video": false,
+        "scripts": [
+            "Video Script Goes Here",
+            "Video2 Script Goes Here"
+        ]
+    },
+    "how_to": [
+        {
+            "tag": "p",
+            "content": "To solve this coding challenge, you'll need to perform two straightforward calculations to convert a temperature from Celsius to Kelvin and Fahrenheit. The given formulas are:"
+        },
+        {
+            "tag": "h5",
+            "content": "Kelvin = Celsius + 273.15"
+        },
+        {
+            "tag": "h5",
+            "content": "Fahrenheit = Celsius * 1.80 + 32.00"
+        },
+        {
+            "tag": "p",
+            "content": "Using these formulas, you can easily write a function that takes celsius as its input and returns an array containing the converted temperatures in Kelvin and Fahrenheit."
+        },
+        {
+            "tag": "h2",
+            "content": "Pseudo Code"
+        },
+        {
+            "tag": "code",
+            "content": "\nFunction convertTemperature(celsius)\n    // Initialize an empty array 'ans'\n    Initialize ans = []\n\n    // Convert Celsius to Kelvin and add to 'ans'\n    kelvin = celsius + 273.15\n    Add kelvin to ans\n\n    // Convert Celsius to Fahrenheit and add to 'ans'\n    fahrenheit = celsius * 1.80 + 32.00\n    Add fahrenheit to ans\n\n    // Return the 'ans' array\n    Return ans\nEnd Function"
+        },
+        {
+            "tag": "h2",
+            "content": "Explanation"
+        },
+        {
+            "tag": "h5",
+            "content": "Kelvin Conversion:"
+        },
+        {
+            "tag": "p",
+            "content": "You add 273.15 to the Celsius value to convert it to Kelvin and store this value in the first element of the answer array."
+        },
+        {
+            "tag": "h5",
+            "content": "Fahrenheit Conversion:"
+        },
+        {
+            "tag": "p",
+            "content": "You multiply the Celsius value by 1.80 and add 32.00 to convert it to Fahrenheit, then store this value as the second element of the answer array."
+        },
+        {
+            "tag": "p",
+            "content": "Finally, you return the array containing both converted temperatures."
+        },
+        {
+            "tag": "p",
+            "content": "This approach ensures the conversion is accurate to two decimal places as specified, assuming the arithmetic operations in the programming environment adhere to the typical rules of floating-point arithmetic."
+        }
+    ],
+    "languages": [
+        {
+            "name": "JavaScript",
+            "abbreviation_for_prism_styles": "js",
+            "code": "\nconst convertTemperature = (celsius) => [celsius+273.15, celsius*9/5+32];"
+        },
+        {
+            "name": "Python",
+            "abbreviation_for_prism_styles": "py",
+            "code": "\nclass Solution(object):\n    def convertTemperature(self, celsius):\n        return [celsius+273.15, celsius*9/5+32]"
+        }
+    ],
+    "markdown_how_to_solve": "To solve this coding challenge, we need to transform a given temperature measured in degrees Celsius into two other temperature measurements: Kelvin and Fahrenheit. We'll use the provided formulas for the two conversions. Kelvin is calculated by adding 273.15 to the Celsius value, while Fahrenheit is calculated by multiplying the Celsius value by 1.80 (or 9/5) and then adding 32.\n\n## Explanation\n\nLet's break down the problem and the necessary steps to solve it in detail:\n\n1. **Understanding Formulas**:\n    - The formula to convert Celsius to Kelvin is: \n```\n      [ \\text{Kelvin} = \\text{Celsius} + 273.15 ]\n```\n      This formula simply adds a constant (273.15) to the Celsius temperature to convert it to Kelvin.\n      \n    - The formula to convert Celsius to Fahrenheit is: \n```\n      [ \\text{Fahrenheit} = \\text{Celsius} \\times 1.8 + 32 ]\n```\n      Or equivalently: \n```\n      [ \\text{Fahrenheit} = \\text{Celsius} \\times \\frac{9}{5} + 32 ]\n```\n      This formula involves a multiplication factor (9/5 or 1.8) and an addition constant (+32).\n\n2. **Input and Output Requirements**:\n    - **Input**: A single non-negative floating-point number representing the temperature in Celsius. The input is rounded to two decimal places.\n    - **Output**: An array containing two floating-point numbers (Kelvin and Fahrenheit), each to a precision of five decimal places.\n\n3. **Constraints**:\n    - The given Celsius value falls within the range [0, 1000].\n    - Returned values must be accurate within \\(10^{-5}\\) of the actual answers.\n\n4. **Algorithm Steps**:\n    - Read the input value for Celsius temperature.\n    - Calculate the Kelvin temperature using the first formula.\n    - Calculate the Fahrenheit temperature using the second formula.\n    - Format both results to five decimal places.\n    - Return the results as an array.\n\n## Step-by-Step Explanation\n\n### Detailed Steps in Pseudocode\n\n1. **Initialization**: \n    - Define a function or method that takes a single argument, `celsius`.\n\n2. **Calculations**: \n    - Calculate Kelvin using the formula \\(\\text{celsius} + 273.15\\).\n    - Calculate Fahrenheit using the formula \\(\\text{celsius} \\times 1.8 + 32\\).\n\n3. **Output Preparation**: \n    - Create an array containing the Kelvin and Fahrenheit values.\n    - Ensure the values are formatted to five decimal places.\n\n4. **Return the Result**: \n    - Return the array from the function.\n\n### Pseudocode\n\n```plaintext\n# Define function to convert temperature from Celsius to Kelvin and Fahrenheit\nfunction convertTemperature(celsius):\n    # Calculate Kelvin from Celsius\n    kelvin = celsius + 273.15  # Kelvin is Celsius plus 273.15\n    \n    # Calculate Fahrenheit from Celsius\n    fahrenheit = (celsius * 1.80) + 32.00  # Fahrenheit is Celsius times 1.80 plus 32.00\n    \n    # Create an array of results with Kelvin and Fahrenheit\n    result = [kelvin, fahrenheit]\n    \n    # Return the result array\n    return result\n```\n\n## Summary\n\nWith the provided pseudocode, the following steps are accomplished:\n- Initialization and definition of the function.\n- Implementation of the necessary temperature conversions.\n- Preparation of the output in the required format.\n- Returning the results in an appropriate array structure.\n\nBy following these steps, the conversion of temperatures from Celsius to both Kelvin and Fahrenheit is achieved effectively and efficiently."
+    // "markdown_how_to_solve": "To solve this coding challenge, we need to transform a given temperature measured in degrees Celsius into two other temperature measurements: Kelvin and Fahrenheit. We'll use the provided formulas for the two conversions. Kelvin is calculated by adding 273.15 to the Celsius value, while Fahrenheit is calculated by multiplying the Celsius value by 1.80 (or 9/5) and then adding 32.\n\n## Explanation\n\nLet's break down the problem and the necessary steps to solve it in detail:\n\n1. **Understanding Formulas**:\n    - The formula to convert Celsius to Kelvin is: `[ \\text{Kelvin} = \\text{Celsius} + 273.15 ]` This formula simply adds a constant (273.15) to the Celsius temperature to convert it to Kelvin.\n      \n    - The formula to convert Celsius to Fahrenheit is: `[ \\text{Fahrenheit} = \\text{Celsius} \\times 1.8 + 32 ]` Or equivalently: `[ \\text{Fahrenheit} = \\text{Celsius} \\times \\frac{9}{5} + 32 ]` This formula involves a multiplication factor (9/5 or 1.8) and an addition constant (+32).\n\n2. **Input and Output Requirements**:\n    - **Input**: A single non-negative floating-point number representing the temperature in Celsius. The input is rounded to two decimal places.\n    - **Output**: An array containing two floating-point numbers (Kelvin and Fahrenheit), each to a precision of five decimal places.\n\n3. **Constraints**:\n    - The given Celsius value falls within the range [0, 1000].\n    - Returned values must be accurate within \\(10^{-5}\\) of the actual answers.\n\n4. **Algorithm Steps**:\n    - Read the input value for Celsius temperature.\n    - Calculate the Kelvin temperature using the first formula.\n    - Calculate the Fahrenheit temperature using the second formula.\n    - Format both results to five decimal places.\n    - Return the results as an array.\n\n## Step-by-Step Explanation\n\n### Detailed Steps in Pseudocode\n\n1. **Initialization**: \n    - Define a function or method that takes a single argument, `celsius`.\n\n2. **Calculations**: \n    - Calculate Kelvin using the formula \\(\\text{celsius} + 273.15\\).\n    - Calculate Fahrenheit using the formula \\(\\text{celsius} \\times 1.8 + 32\\).\n\n3. **Output Preparation**: \n    - Create an array containing the Kelvin and Fahrenheit values.\n    - Ensure the values are formatted to five decimal places.\n\n4. **Return the Result**: \n    - Return the array from the function.\n\n### Pseudocode\n\n```plaintext\n# Define function to convert temperature from Celsius to Kelvin and Fahrenheit\nfunction convertTemperature(celsius):\n    # Calculate Kelvin from Celsius\n    kelvin = celsius + 273.15  # Kelvin is Celsius plus 273.15\n    \n    # Calculate Fahrenheit from Celsius\n    fahrenheit = (celsius * 1.80) + 32.00  # Fahrenheit is Celsius times 1.80 plus 32.00\n    \n    # Create an array of results with Kelvin and Fahrenheit\n    result = [kelvin, fahrenheit]\n    \n    # Return the result array\n    return result\n```\n\n## Summary\n\nWith the provided pseudocode, the following steps are accomplished:\n- Initialization and definition of the function.\n- Implementation of the necessary temperature conversions.\n- Preparation of the output in the required format.\n- Returning the results in an appropriate array structure.\n\nBy following these steps, the conversion of temperatures from Celsius to both Kelvin and Fahrenheit is achieved effectively and efficiently."
+},
