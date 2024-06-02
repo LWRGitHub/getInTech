@@ -34,6 +34,10 @@ class Markdown_to_json:
 
         markdown_list = remove_empty_lines(markdown_list)
 
+        # print("\n**********\n\n")
+        # pprint.pprint(markdown_list)
+        # print("\n\n**********\n")
+
         f = open('markdown_list_2.json', 'w', encoding="utf-8")
         json.dump(markdown_list, f, indent=4)
         f.close()         
@@ -262,7 +266,7 @@ class Markdown_to_json:
             return astrict_data
         
         # make html list data >>> ol | ul
-        def make_html_list_data(html_data, markdown_list, idx, prior_line_has_callout, how_to, depth):
+        def make_html_list_data(html_data, markdown_list, idx, prior_line_has_callout, how_to, depth, pre_li_num=False, has_Larger_number_ol_li_tag_down_the_line=False):
             
             li_data = {}
             li_data["tag"] = "ol" if markdown_list[idx].lstrip()[0].isnumeric() else "ul"
@@ -270,10 +274,18 @@ class Markdown_to_json:
 
             # use to keep track of the parent type (e.g. ol | ul) incase of children so onece the children are done we can continue with the sibling node of the parent
             main_old_idx = idx 
-            is_ol_main = "ol" if li_data["tag"] == "ol" else "ul" 
+            html_list_type = "ol" if li_data["tag"] == "ol" else "ul" 
+            if (html_list_type == "ol" 
+                and 
+                pre_li_num == False 
+                and 
+                len(markdown_list[idx]) - len(markdown_list[idx].lstrip()) == 0
+                ):
+                # html_list_type_origins_include_ol = True
+                pre_li_num = markdown_list[idx].lstrip()[0:markdown_list[idx].lstrip().find('.')]
             
             # while not empty line and starts with number immediately followed by '.' or starts with space(s) then number immediately followed by '.'
-            def make_li_tags(idx, markdown_list, depth, li_data):
+            def make_li_tags(idx, markdown_list, depth, li_data, pre_li_num=False, has_Larger_number_ol_li_tag_down_the_line=False):
 
                 # while current is <li> 
                 while (
@@ -303,6 +315,12 @@ class Markdown_to_json:
                                 ) 
                                 or 
                                 len(markdown_list[idx]) - len(markdown_list[idx].lstrip()) > 0
+                                or 
+                                (
+                                    pre_li_num
+                                    and 
+                                    has_Larger_number_ol_li_tag_down_the_line
+                                )
                             )
                         )
                     ):
@@ -313,9 +331,12 @@ class Markdown_to_json:
                     # if line spaces in front of the number make sub list
                     if spaces > depth:
 
-                        content_res, idx = make_html_list_data(html_data, markdown_list, idx, prior_line_has_callout, how_to, spaces)
+                        content_res, idx = make_html_list_data(html_data, markdown_list, idx, prior_line_has_callout, how_to, spaces, pre_li_num, has_Larger_number_ol_li_tag_down_the_line)
                         li_data["content"].append(content_res)
                         idx += 1
+                        # remove pre_li_num last index
+                        # if len(pre_li_num) > 0:
+                        #     pre_li_num.pop()
                         
                         continue
 
@@ -353,6 +374,7 @@ class Markdown_to_json:
                             "tag": "li",
                             "content": data,
                         })
+
                     else:
 
                         data = markdown_list[idx].lstrip()
@@ -416,10 +438,62 @@ class Markdown_to_json:
                         })
 
                     idx += 1
+
+                    if pre_li_num != False:
+                        # has_Larger_number_ol_li_tag_down_the_line
+                        continue_looking = True
+                        look_idx = idx
+
+                        while ( look_idx < len(markdown_list)):
+                            if(
+                                (
+                                    len(markdown_list[look_idx]) > 0 
+                                    and 
+                                    markdown_list[look_idx] != ''
+                                )
+                                and 
+                                (
+                                    markdown_list[look_idx].find('.') != -1
+                                    and
+                                    markdown_list[look_idx][0:markdown_list[look_idx].find('.')].isnumeric() 
+                                )
+                            ):
+                                if int(markdown_list[look_idx][0:markdown_list[look_idx].find('.')]) > int(pre_li_num):
+                                    has_Larger_number_ol_li_tag_down_the_line = True
+                                    break
+                            
+                            if look_idx == len(markdown_list)-1:
+                                has_Larger_number_ol_li_tag_down_the_line = False
+                                break
+                            
+                            look_idx += 1
+                
+
+                    # print(pprint.pprint(li_data["content"][-1]["content"]))
+                    # # print(pprint.pprint(type(li_data["content"][-1]["content"])))
+                    # if idx < len(markdown_list) and len(markdown_list[idx]) != 0 and markdown_list[idx].lstrip() != '' and len(pre_li_num) > 0:
+                    #     print("\n**********\n\n")
+
+                    #     print("html_list_type_origins_include_ol: ", html_list_type_origins_include_ol)
+                    #     print( 'html_list_type == "ol": ', html_list_type == "ol")
+
+                    #     print("markdown_list[idx].lstrip()[0:markdown_list[idx].lstrip().find('.')].isnumeric(): ", markdown_list[idx].lstrip()[0:markdown_list[idx].lstrip().find('.')].isnumeric()) 
+
+                    #     print("len(pre_li_num) > 0: ", len(pre_li_num) > 0)
+                        
+                    #     print(
+                    #         "pre_li_num[-1] < markdown_list[idx].lstrip()[0:markdown_list[idx].lstrip().find('.')]: ", 
+                    #         pre_li_num[-1]
+                    #         < markdown_list[idx].lstrip()[0:markdown_list[idx].lstrip().find('.')]
+                    #         )
+                        
+                    #     print("markdown_list[idx].lstrip()[0:markdown_list[idx].lstrip().find('.')]; ", markdown_list[idx].lstrip()[0:markdown_list[idx].lstrip().find('.')])
+
+                    #     print("\n\n**********\n")
                 
                 return [idx, li_data]
 
-            idx, li_data = make_li_tags(idx, markdown_list, depth, li_data)
+            idx, li_data = make_li_tags(idx, markdown_list, depth, li_data, pre_li_num, has_Larger_number_ol_li_tag_down_the_line)
 
 
             # if prior_line_has_callout & "bd_callout" in html_data add to last dict in how_to
