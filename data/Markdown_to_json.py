@@ -1,5 +1,6 @@
 import re
 import json
+import pprint # pprint.pprint(data)
 
 class Markdown_to_json:
 
@@ -7,7 +8,6 @@ class Markdown_to_json:
         pass
 
     def markdown_to_json(self, context):
-        # print("here")
         how_to = []
 
         def remove_empty_lines(markdown_list):
@@ -15,10 +15,10 @@ class Markdown_to_json:
             cleaned_list = []
 
             for line in markdown_list:
-                if line.strip().startswith('```'):
+                if line.lstrip().startswith('```'):
                     in_code_block = not in_code_block
                     cleaned_list.append(line)
-                elif not in_code_block and not line.strip():
+                elif not in_code_block and not line.lstrip():
                     continue
                 else:
                     cleaned_list.append(line)
@@ -33,8 +33,6 @@ class Markdown_to_json:
         f.close() 
 
         markdown_list = remove_empty_lines(markdown_list)
-
-        # print(markdown_list)
 
         f = open('markdown_list_2.json', 'w', encoding="utf-8")
         json.dump(markdown_list, f, indent=4)
@@ -278,8 +276,38 @@ class Markdown_to_json:
             def make_li_tags(idx, markdown_list, depth, li_data):
 
                 # while current is <li> 
-                while (idx < len(markdown_list) and len(markdown_list[idx]) > 0 and markdown_list[idx] != '') and (markdown_list[idx].lstrip()[0] == '-' or (markdown_list[idx].lstrip()[0].isnumeric() and markdown_list[idx].lstrip()[1] == '.') or (markdown_list[idx].lstrip()[0:2].isnumeric() and markdown_list[idx].lstrip()[2] == '.')):
-                    
+                while (
+                        (
+                            idx < len(markdown_list) 
+                            and 
+                            len(markdown_list[idx]) > 0 
+                            and 
+                            markdown_list[idx] != ''
+                        ) 
+                        and 
+                        (
+                            markdown_list[idx].lstrip() != ''
+                            and
+                            (
+                                markdown_list[idx].lstrip()[0] == '-' 
+                                or 
+                                (
+                                    markdown_list[idx].lstrip()[0].isnumeric() 
+                                    and 
+                                    markdown_list[idx].lstrip()[1] == '.') 
+                                or 
+                                (
+                                    markdown_list[idx].lstrip()[0:2].isnumeric() 
+                                    and 
+                                    markdown_list[idx].lstrip()[2] == '.'
+                                ) 
+                                or 
+                                len(markdown_list[idx]) - len(markdown_list[idx].lstrip()) > 0
+                            )
+                        )
+                    ):
+
+
                     spaces = len(markdown_list[idx]) - len(markdown_list[idx].lstrip())
 
                     # if line spaces in front of the number make sub list
@@ -294,24 +322,98 @@ class Markdown_to_json:
                     elif spaces < depth:
                         return [idx, li_data]
                     
+                    rm_count = 0
+                    
                     # remove the number and the '.' or the '-' and the spaces
-                    rm_count = 2 if markdown_list[idx].lstrip()[0] == '-' else 3 
+                    if markdown_list[idx].lstrip()[0] == '-' or (markdown_list[idx].lstrip()[0].isnumeric() and markdown_list[idx].lstrip()[1] == '.') or (markdown_list[idx].lstrip()[0:2].isnumeric() and markdown_list[idx].lstrip()[2] == '.'):
 
-                    data = markdown_list[idx].lstrip()[rm_count:]
+                        if markdown_list[idx].lstrip()[0] == '-':
+                            rm_count = 2
+                        elif markdown_list[idx].lstrip()[0].isnumeric():
+                            rm_count = 3
+                            # if the number is greater than 9
+                            if markdown_list[idx].lstrip()[2] == '.':
+                                rm_count = 4
+                            # if the number is greater than 99
+                            elif markdown_list[idx].lstrip()[3] == '.':
+                                rm_count = 5
 
-                    # check if even instances of ** are present in the line
-                    if data.find('*') != -1 and data.count("*") % 2 == 0:
-                        ch_idxs = find(data)
-                        data = sort_buld_italic(data, ch_idxs)
-                    elif data.find('`') != -1 and data.count("`") % 2 == 0:
-                        ch_idxs = find_back_ticks(data)
-                        data = sort_buld_sm_code_block(data, ch_idxs)
-                        
-                    # make {tag: li, content: data}
-                    li_data["content"].append({
-                        "tag": "li",
-                        "content": data,
-                    })
+                        data = markdown_list[idx].lstrip()[rm_count:]
+
+                        # check if even instances of ** are present in the line
+                        if data.find('*') != -1 and data.count("*") % 2 == 0:
+                            ch_idxs = find(data)
+                            data = sort_buld_italic(data, ch_idxs)
+                        elif data.find('`') != -1 and data.count("`") % 2 == 0:
+                            ch_idxs = find_back_ticks(data)
+                            data = sort_buld_sm_code_block(data, ch_idxs)
+                            
+                        # make {tag: li, content: data}
+                        li_data["content"].append({
+                            "tag": "li",
+                            "content": data,
+                        })
+                    else:
+
+                        data = markdown_list[idx].lstrip()
+                        in_side_li_html_data = {}
+
+                        # check if code block e.g. ``` 
+                        if data.find("```") != -1:
+                            
+                            # loop through the list until the next ``` is found
+                            idx += 1
+                            # make {tag: code, content: code}
+                            in_side_li_html_data["tag"] = "fenced_code_block"
+                            in_side_li_html_data["content"] = '\n'
+
+                            # loop through code_lines and add each line to the content keep indentations "space(s)" the same
+                            while idx < len(markdown_list) and markdown_list[idx].lstrip().find("```") == -1:
+                                in_side_li_html_data["content"] += f"{markdown_list[idx].lstrip()}\n"
+                                idx += 1
+                            
+                            data = markdown_list[idx].lstrip()
+
+                            # if prior_line_has_callout & "bd_callout" in in_side_li_html_data add to last dict in how_to
+                            if_need_add_callout_line(prior_line_has_callout, how_to, in_side_li_html_data)
+                            
+                        # check if line starts with # | ## | ### followed by a space
+                        elif data[0] == "#":
+                            symbol_count = 1
+                            if data[0:2] == "##":
+                                if data[0:3] == "###":
+
+                                    symbol_count = 3
+                                    in_side_li_html_data["tag"] = "h5"
+                                else:
+                                    symbol_count = 2
+                                    in_side_li_html_data["tag"] = "h4"
+                            else:
+                                in_side_li_html_data["tag"] = "h2"
+                            
+                            in_side_li_html_data["content"] = f"{data[symbol_count+1:]}"
+
+                        # if --- create hr tag & continue
+                        elif data[0:3] == "---":
+                            in_side_li_html_data["tag"] = "hr"
+                            in_side_li_html_data["content"] = ""
+                        else:
+
+                            # check if even instances of ** are present in the line
+                            if data.find('*') != -1 and data.count("*") % 2 == 0:
+                                ch_idxs = find(data)
+                                data = sort_buld_italic(data, ch_idxs)
+                            elif data.find('`') != -1 and data.count("`") % 2 == 0:
+                                ch_idxs = find_back_ticks(data)
+                                data = sort_buld_sm_code_block(data, ch_idxs)
+
+                            in_side_li_html_data["tag"] = "p"
+                            in_side_li_html_data["content"] = data
+
+                        li_data["content"].append({
+                            "tag": in_side_li_html_data["tag"],
+                            "content": in_side_li_html_data["content"],
+                        })
 
                     idx += 1
                 
@@ -376,6 +478,10 @@ class Markdown_to_json:
             # check if line starts with >
             html_data = bd_callout(markdown_list, idx)
 
+            # if markdown_list[idx].lstrip() != '':
+            #     idx += 1
+            #     continue
+
             # check if code block e.g. ``` 
             if markdown_list[idx].find("```") != -1:
                 # loop through the list until the next ``` is found
@@ -393,6 +499,8 @@ class Markdown_to_json:
                 if_need_add_callout_line(prior_line_has_callout, how_to, html_data)
                 
             # check if line starts with # | ## | ### followed by a space
+            # TODO:
+            # add h2 - h6 here vvv & Jinja2 "code_solution.html" 
             elif markdown_list[idx][0] == "#":
                 symbol_count = 1
                 if markdown_list[idx][0:2] == "##":
@@ -414,7 +522,7 @@ class Markdown_to_json:
                 html_data["content"] = ""
 
             # ? Starts w/ (num >>> '.' | '-')  | space(s) >>> ( "-" | num >>> '.' )  
-            elif markdown_list[idx].lstrip()[0].isnumeric() and markdown_list[idx].lstrip()[1] == '.' or markdown_list[idx].lstrip()[0] == '-':
+            elif markdown_list[idx].lstrip() != '' and (markdown_list[idx].lstrip()[0].isnumeric() and markdown_list[idx].lstrip()[1] == '.' or markdown_list[idx].lstrip()[0] == '-'):
 
                 # get indent info
                 depth = len(markdown_list[idx]) - len(markdown_list[idx].lstrip())
