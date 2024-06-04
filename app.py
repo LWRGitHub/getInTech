@@ -410,6 +410,9 @@ def search_solutions(query):
         return solution_to_send
     
     def get_24_seach_suggest(res):
+        if not res:
+            return res
+        
         solution_to_send  = []
         idx = 0
 
@@ -609,7 +612,7 @@ def search_solutions(query):
 
     if len(context["solutions"]) <  24:
 
-        if len(search_suggestions) > 0:
+        if search_suggestions and len(search_suggestions) > 0:
             search_suggestions = search_suggestions[:24-len(context["solutions"])]
             context["search_suggestions"] = search_suggestions
         else:
