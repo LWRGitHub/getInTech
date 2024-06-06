@@ -17,7 +17,7 @@
             <div class="col-12 p-0 m-0 pb-5">
                 <div class="p-0 p-md-5 m-0 pb-4" style="border-radius: 10px; border: 1px solid #EDEDED; background: linear-gradient(169deg, rgba(255, 255, 255, 0.75) 8.61%, rgba(255, 255, 255, 0.42) 76.57%);">
 
-                    <div class="row py-2 m-0 text-center">
+                    <div class="row py-2 pb-5 m-0 text-center">
                         <h1 class="col-12 m-0">{{name}}</h1>
                     </div>
 
@@ -61,6 +61,47 @@
 
                         </div>
                     {% endif %}  -->
+
+                    <!-- Solutions in language tabs -->
+                    <div class="row py-2 m-0 px-0">
+
+                        <!-- Choose language -->
+                        <!-- Folder like tabs -->
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+                                {% for language in languages %}
+                                    {% if loop.index-1 == 0 %}
+                                        <button class="nav-link active" id="nav-{{language.abbreviation_for_prism_styles}}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{language.abbreviation_for_prism_styles}}" type="button" role="tab" aria-controls="nav-{{language.abbreviation_for_prism_styles}}" aria-selected="true">{{language.name}}</button>
+                                    {% else %}
+                                        <button class="nav-link" id="nav-{{language.abbreviation_for_prism_styles}}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{language.abbreviation_for_prism_styles}}" type="button" role="tab" aria-controls="nav-{{language.abbreviation_for_prism_styles}}" aria-selected="false">{{language.name}}</button>
+                                    {% endif %}
+                                {% endfor %}
+
+                            </div>
+                        </nav>
+
+                        <!-- My Code Solution -->
+                        <div class="tab-content p-0" id="nav-tabContent">
+                            
+                            {% for language in languages %}
+                                {% if loop.index-1 == 0 %}
+                                    <div class="tab-pane fade show active" id="nav-{{language.abbreviation_for_prism_styles}}" role="tabpanel" aria-labelledby="nav-{{language.abbreviation_for_prism_styles}}-tab" tabindex="0">
+                                        <pre class="line-numbers">
+                                            <code class="language-{{language.abbreviation_for_prism_styles}}">{{language.code}}</code>
+                                        </pre>
+                                    </div>
+                                {% else %}
+                                    <div class="tab-pane fade" id="nav-{{language.abbreviation_for_prism_styles}}" role="tabpanel" aria-labelledby="nav-{{language.abbreviation_for_prism_styles}}-tab" tabindex="0">
+                                        <pre class="line-numbers">
+                                            <code class="language-{{language.abbreviation_for_prism_styles}}">{{language.code}}</code>
+                                        </pre>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
+                        </div>
+                    </div>
 
                     {% if markdown_how_to_solve %}
                         {% if how_to %}
@@ -320,46 +361,8 @@
 
                 
 
-                    <!-- Solutions in language tabs -->
-                    <div class="row py-2 m-0 px-0">
+                    
 
-                        <!-- Choose language -->
-                        <!-- Folder like tabs -->
-                        <nav>
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-
-                                {% for language in languages %}
-                                    {% if loop.index-1 == 0 %}
-                                        <button class="nav-link active" id="nav-{{language.abbreviation_for_prism_styles}}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{language.abbreviation_for_prism_styles}}" type="button" role="tab" aria-controls="nav-{{language.abbreviation_for_prism_styles}}" aria-selected="true">{{language.name}}</button>
-                                    {% else %}
-                                        <button class="nav-link" id="nav-{{language.abbreviation_for_prism_styles}}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{language.abbreviation_for_prism_styles}}" type="button" role="tab" aria-controls="nav-{{language.abbreviation_for_prism_styles}}" aria-selected="false">{{language.name}}</button>
-                                    {% endif %}
-                                {% endfor %}
-
-                            </div>
-                        </nav>
-
-                        <!-- My Code Solution -->
-                        <div class="tab-content p-0" id="nav-tabContent">
-                            
-                            {% for language in languages %}
-                                {% if loop.index-1 == 0 %}
-                                    <div class="tab-pane fade show active" id="nav-{{language.abbreviation_for_prism_styles}}" role="tabpanel" aria-labelledby="nav-{{language.abbreviation_for_prism_styles}}-tab" tabindex="0">
-                                        <pre class="line-numbers">
-                                            <code class="language-{{language.abbreviation_for_prism_styles}}">{{language.code}}</code>
-                                        </pre>
-                                    </div>
-                                {% else %}
-                                    <div class="tab-pane fade" id="nav-{{language.abbreviation_for_prism_styles}}" role="tabpanel" aria-labelledby="nav-{{language.abbreviation_for_prism_styles}}-tab" tabindex="0">
-                                        <pre class="line-numbers">
-                                            <code class="language-{{language.abbreviation_for_prism_styles}}">{{language.code}}</code>
-                                        </pre>
-                                    </div>
-                                {% endif %}
-                            {% endfor %}
-
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
