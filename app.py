@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template, url_for
+from flask import Flask, request, redirect, render_template, url_for, send_from_directory
 from flask_talisman import Talisman
 import os
 import time
@@ -76,6 +76,10 @@ def home():
 
     return render_template('pages/home.html', **context)
 
+
+@app.route('/sw.js')
+def serve_js():
+    return send_from_directory(os.path.abspath(os.path.dirname(__file__)), 'js/sw.js')
 
 # Carreer Guide pg
 @app.route('/swe_career_guide/<step>/<step_sections>')
