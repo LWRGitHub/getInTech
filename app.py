@@ -79,7 +79,7 @@ def home():
 
 @app.route('/sw.js')
 def serve_js():
-    return send_from_directory(os.path.abspath(os.path.dirname(__file__)), 'js/sw.js')
+    return send_from_directory(os.path.abspath(os.path.dirname(__file__)), 'ads/sw.js')
 
 # Carreer Guide pg
 @app.route('/swe_career_guide/<step>/<step_sections>')
