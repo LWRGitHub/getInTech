@@ -37,7 +37,8 @@ This platform will encompass not only a comprehensive guide for users aspiring t
 - Web Advertising/Affiliate Marketing (Ads)
 - Photoshop
 - Google Analytics
-- [XML-Sitemaps.com](https://www.xml-sitemaps.com/)
+- XML
+    - [XML-Sitemaps.com](https://www.xml-sitemaps.com/)
 
 
 
